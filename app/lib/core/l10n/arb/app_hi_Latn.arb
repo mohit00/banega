@@ -1,0 +1,2544 @@
+{
+  "@@locale": "hi_Latn",
+  "appTitle": "Banega",
+  "@appTitle": {
+    "description": "App name"
+  },
+  "wordmark": "banega",
+  "@wordmark": {
+    "description": "Wordmark text; the green dot is drawn separately"
+  },
+  "aiMaharajBadge": "AI MAHARAJ",
+  "@aiMaharajBadge": {
+    "description": "Ink badge on splash"
+  },
+  "thaliAlt": "Ghar ki thali",
+  "@thaliAlt": {
+    "description": "Accessibility label for the thali illustration"
+  },
+  "back": "Back",
+  "@back": {
+    "description": "Back button accessibility label"
+  },
+  "splashTitle": "Aaj khaane\nmein kya hai?",
+  "@splashTitle": {
+    "description": "Splash H1"
+  },
+  "splashBody": "Har ghar ka roz ka sawaal. Ek AI jo aapke poore parivaar ki pasand yaad rakhta hai — aur har meal pe options deta hai.",
+  "@splashBody": {
+    "description": "Splash paragraph"
+  },
+  "splashCta": "Apna ghar set karo",
+  "@splashCta": {
+    "description": "Splash primary CTA"
+  },
+  "splashDemo": "Demo family ke saath dekho",
+  "@splashDemo": {
+    "description": "Splash secondary action"
+  },
+  "stepOneOfTwo": "STEP 1 OF 2",
+  "@stepOneOfTwo": {
+    "description": "Onboarding progress eyebrow"
+  },
+  "familyTitle": "Ghar mein kaun\nkaun hai?",
+  "@familyTitle": {
+    "description": "Family H1"
+  },
+  "familyBody": "Har member ki pasand alag. Tap karke set karo — Maharaj sab yaad rakhega.",
+  "@familyBody": {
+    "description": "Family paragraph"
+  },
+  "addMember": "Member jodo",
+  "@addMember": {
+    "description": "Dashed add-member button"
+  },
+  "familyCta": "{count} log · Aage badho",
+  "@familyCta": {
+    "description": "Family footer CTA",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "spiceSummary": "{spice} mirch",
+  "@spiceSummary": {
+    "description": "Member summary spice fragment",
+    "placeholders": {
+      "spice": {
+        "type": "String"
+      }
+    }
+  },
+  "prefsStep": "STEP 2 OF 2 · PASAND",
+  "@prefsStep": {
+    "description": "Prefs header eyebrow"
+  },
+  "prefsTitle": "{name} ki pasand",
+  "@prefsTitle": {
+    "description": "Prefs member title",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "prefsSubtitle": "Maharaj isi hisaab se suggest karega",
+  "@prefsSubtitle": {
+    "description": "Prefs subtitle"
+  },
+  "prefsDietTitle": "Kya khaate hain?",
+  "@prefsDietTitle": {
+    "description": "Diet section title"
+  },
+  "prefsSpiceTitle": "Mirch kitni?",
+  "@prefsSpiceTitle": {
+    "description": "Spice section title"
+  },
+  "prefsNeedsTitle": "Koi zaroorat ya parhez?",
+  "@prefsNeedsTitle": {
+    "description": "Needs section title"
+  },
+  "prefsCuisineTitle": "Favourite cuisine",
+  "@prefsCuisineTitle": {
+    "description": "Cuisine section title"
+  },
+  "prefsSave": "Save · {name}",
+  "@prefsSave": {
+    "description": "Prefs footer CTA",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dietVeg": "Veg",
+  "dietVegHint": "Shakahari",
+  "dietJain": "Jain",
+  "dietJainHint": "Bina pyaaz-lahsun",
+  "dietEgg": "Egg",
+  "dietEggHint": "Veg + ande",
+  "dietNonveg": "Non-veg",
+  "dietNonvegHint": "Sab kuch",
+  "dietJainFriendly": "Jain-friendly",
+  "@dietJainFriendly": {
+    "description": "Detail meta diet label for Jain-safe recipes"
+  },
+  "spiceKam": "Kam",
+  "spiceMedium": "Medium",
+  "spiceTeekha": "Teekha",
+  "needLowOil": "Low oil",
+  "needLowSugar": "Low sugar",
+  "needHighProtein": "High protein",
+  "needNoMaida": "No maida",
+  "needKidFriendly": "Kid-friendly",
+  "cuisineNorthIndian": "North Indian",
+  "cuisineSouthIndian": "South Indian",
+  "cuisineGujarati": "Gujarati",
+  "cuisineRajasthani": "Rajasthani",
+  "cuisineBengali": "Bengali",
+  "cuisineMaharashtrian": "Maharashtrian",
+  "cuisineIndoChinese": "Indo-Chinese",
+  "loadingTitle": "Maharaj aapke ghar\nko samajh raha hai…",
+  "@loadingTitle": {
+    "description": "Loading title"
+  },
+  "constraintLine": "Dhyaan rakha: {items}",
+  "@constraintLine": {
+    "description": "Constraint line with up to three items",
+    "placeholders": {
+      "items": {
+        "type": "String"
+      }
+    }
+  },
+  "constraintNone": "Sabki pasand dhyaan mein hai",
+  "@constraintNone": {
+    "description": "Constraint line when nothing special"
+  },
+  "constraintJain": "{name} (Jain)",
+  "@constraintJain": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "constraintLowSugar": "{name} (low sugar)",
+  "@constraintLowSugar": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "constraintKamMirch": "{name} (kam mirch)",
+  "@constraintKamMirch": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "householdName": "Purohit Parivaar",
+  "@householdName": {
+    "description": "Demo household name (from Household.name later)"
+  },
+  "familyLine": "{count} log · {items}",
+  "@familyLine": {
+    "description": "Home header family line",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "items": {
+        "type": "String"
+      }
+    }
+  },
+  "slotBreakfast": "Nashta",
+  "slotLunch": "Lunch",
+  "slotDinner": "Dinner",
+  "eyebrowBreakfast": "SUBAH KA NASHTA",
+  "eyebrowLunch": "DOPAHAR KA KHAANA",
+  "eyebrowDinner": "RAAT KA KHAANA",
+  "searchPrefix": "Pucho",
+  "@searchPrefix": {
+    "description": "Search bar lead word"
+  },
+  "tickerAsk1": "“15 min mein nashta”",
+  "tickerAsk2": "“Dadi ke liye Jain dinner”",
+  "tickerAsk3": "“baarish wala khaana”",
+  "tickerAsk4": "“Daughter ka tiffin”",
+  "maharajPick": "MAHARAJ KA PICK",
+  "@maharajPick": {
+    "description": "Hero badge"
+  },
+  "heroMeta": "{fitLabel} · {mins} min",
+  "@heroMeta": {
+    "description": "Hero meta line",
+    "placeholders": {
+      "fitLabel": {
+        "type": "String"
+      },
+      "mins": {
+        "type": "int"
+      }
+    }
+  },
+  "recipeDekho": "Recipe dekho",
+  "@recipeDekho": {
+    "description": "Hero button"
+  },
+  "quickAsk15Min": "15 min mein kuch",
+  "quickAskHalka": "Kuch halka",
+  "quickAskBaarish": "Baarish special",
+  "quickAskTiffin": "Daughter ka tiffin",
+  "quickAskMehmaan": "Mehmaan aa rahe hain",
+  "quickAskProtein": "High protein",
+  "slotOptions": "{slot} ke options",
+  "@slotOptions": {
+    "description": "Grid section title",
+    "placeholders": {
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "sabkeHisaab": "sabke hisaab se",
+  "@sabkeHisaab": {
+    "description": "Grid section aside"
+  },
+  "minBadge": "{mins} MIN",
+  "@minBadge": {
+    "description": "Minutes badge on tiles",
+    "placeholders": {
+      "mins": {
+        "type": "int"
+      }
+    }
+  },
+  "addLabel": "ADD",
+  "addedLabel": "ADDED",
+  "planBarTitle": "{count} dish · Aaj ka menu",
+  "@planBarTitle": {
+    "description": "Sticky menu bar title",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cookKoBhejo": "Cook ko bhejo",
+  "@cookKoBhejo": {
+    "description": "Sticky menu bar action"
+  },
+  "navGhar": "Ghar",
+  "navMaharaj": "Maharaj se pucho",
+  "navParivaar": "Parivaar",
+  "chatName": "Maharaj",
+  "@chatName": {
+    "description": "Chat header name"
+  },
+  "chatMemory": "{count} logon ki pasand yaad hai",
+  "@chatMemory": {
+    "description": "Chat header status",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatMenuPill": "Menu · {count}",
+  "@chatMenuPill": {
+    "description": "Chat header plan pill",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatGreeting": "Namaste! Main Maharaj hoon. Ghar ke {count} logon ki pasand mujhe yaad hai.\nBas pucho — aaj kya banaun?",
+  "@chatGreeting": {
+    "description": "First bot message",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatChipLunch": "Aaj lunch mein kya?",
+  "chatChipHalkaDinner": "Kuch halka dinner",
+  "chatChipNashta": "15 min mein nashta",
+  "chatChipMehmaan": "Mehmaan aa rahe hain",
+  "chatPlaceholder": "Aaj dinner mein kuch halka…",
+  "@chatPlaceholder": {
+    "description": "Chat input placeholder"
+  },
+  "chatVoice": "Voice",
+  "chatSend": "Send",
+  "typing": "rotiyaan sek raha hoon…",
+  "@typing": {
+    "description": "Typing indicator"
+  },
+  "voiceToast": "Voice input — real app mein Hinglish mein bol sakte ho",
+  "chatError": "Maharaj abhi jawab nahi de paaye. Phir se pucho.",
+  "@chatError": {
+    "description": "Bot bubble when a chat reply fails (not a connection error)"
+  },
+  "chatInputLabel": "Maharaj se pucho",
+  "@chatInputLabel": {
+    "description": "Chat input accessibility label"
+  },
+  "chatNoMatch": "Is combo mein exact match nahi mila. {slot} ke liye ye sabse kareeb hain:",
+  "@chatNoMatch": {
+    "placeholders": {
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "chatOptions": "{slot} ke liye {count} options",
+  "@chatOptions": {
+    "placeholders": {
+      "slot": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatOptionsWhy": "{options} — {why}",
+  "@chatOptionsWhy": {
+    "description": "Options line with reasons appended",
+    "placeholders": {
+      "options": {
+        "type": "String"
+      },
+      "why": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFamilyCan": "{ok} mein poora parivaar kha sakta hai.",
+  "@chatFamilyCan": {
+    "placeholders": {
+      "ok": {
+        "type": "int"
+      }
+    }
+  },
+  "whyHalka": "halka",
+  "whyProtein": "high protein",
+  "whyMehmaan": "mehmaan-worthy",
+  "whyBaarish": "baarish wala",
+  "whyKid": "bachchon ko pasand",
+  "why20Min": "20 min ke andar",
+  "whyPaneer": "paneer wala",
+  "whyMember": "{name} ke hisaab se",
+  "@whyMember": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "followProteinNashta": "Protein wala nashta",
+  "followTiffin": "Daughter ka tiffin",
+  "followSouth": "Kuch South Indian",
+  "followHalka": "Kuch halka",
+  "followBaarish": "Baarish special",
+  "followPaneer": "Paneer wala kuch",
+  "followDadi": "Dadi ke liye kya?",
+  "fitAllPerfect": "Sabke liye perfect",
+  "fitAllPerfectShort": "Sabke liye",
+  "fitAllTweak": "Sabke liye · {count} tweak",
+  "@fitAllTweak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "fitAllTweakShort": "Sab · {count} tweak",
+  "@fitAllTweakShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "fitPartial": "{can}/{total} ke liye",
+  "@fitPartial": {
+    "placeholders": {
+      "can": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "fitNotFor": "{names} ke liye nahi",
+  "@fitNotFor": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "fitAllHappy": "Sab khush, koi badlaav nahi",
+  "fitTweakNote": "{name}: {note}",
+  "@fitTweakNote": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "reasonOnionGarlic": "Pyaaz-lahsun hai",
+  "@reasonOnionGarlic": {
+    "description": "Engine reason (no)"
+  },
+  "reasonEgg": "Isme anda hai",
+  "@reasonEgg": {
+    "description": "Engine reason (no)"
+  },
+  "reasonNonveg": "Non-veg hai",
+  "@reasonNonveg": {
+    "description": "Engine reason (no)"
+  },
+  "reasonMaida": "Maida hai",
+  "@reasonMaida": {
+    "description": "Engine reason (no)"
+  },
+  "reasonLessChilli": "Unki katori mein kam mirch",
+  "@reasonLessChilli": {
+    "description": "Engine reason (tweak)"
+  },
+  "reasonExtraChilli": "Upar se laal mirch / achaar",
+  "@reasonExtraChilli": {
+    "description": "Engine reason (tweak)"
+  },
+  "reasonLowSugar": "Portion chhota, salad zyada",
+  "@reasonLowSugar": {
+    "description": "Engine reason (tweak)"
+  },
+  "reasonLowOil": "Kam tel mein banao",
+  "@reasonLowOil": {
+    "description": "Engine reason (tweak)"
+  },
+  "reasonProtein": "Saath mein dahi/paneer",
+  "@reasonProtein": {
+    "description": "Engine reason (tweak)"
+  },
+  "reasonKid": "Bachche ke liye alag, halka",
+  "@reasonKid": {
+    "description": "Engine reason (tweak)"
+  },
+  "reasonFavCuisine": "Favourite cuisine bhi",
+  "@reasonFavCuisine": {
+    "description": "Engine reason (fit)"
+  },
+  "reasonPerfect": "Bilkul sahi",
+  "@reasonPerfect": {
+    "description": "Engine reason (fit)"
+  },
+  "verdictPerfect": "Perfect",
+  "verdictTweak": "Tweak",
+  "verdictNo": "Nahi",
+  "detailMeta": "{diet} · {cuisine} · {mins} min",
+  "@detailMeta": {
+    "placeholders": {
+      "diet": {
+        "type": "String"
+      },
+      "cuisine": {
+        "type": "String"
+      },
+      "mins": {
+        "type": "int"
+      }
+    }
+  },
+  "kaunKhayega": "Kaun khayega",
+  "saaman": "Saaman",
+  "kaiseBanega": "Kaise banega",
+  "videoRecipe": "Video recipe",
+  "menuMeinDaalo": "Menu mein daalo",
+  "menuMeinHai": "Menu mein hai",
+  "planTitle": "Aaj ka {slot} menu",
+  "@planTitle": {
+    "placeholders": {
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "planSubtitle": "{count} logon ke liye · {coverage}",
+  "@planSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "coverage": {
+        "type": "String"
+      }
+    }
+  },
+  "planCoverageAll": "har member ke liye kuch na kuch hai",
+  "planCoverageSome": "kuch members ke liye aur dish chahiye",
+  "planEmpty": "Menu khaali hai — Ghar se dishes ADD karo.",
+  "planSaamanList": "Saaman ki list",
+  "planSendCook": "Maharaj / cook ko bhejo",
+  "planOrderMissing": "Missing saaman order karo",
+  "toastSentCook": "Menu + saaman list cook ko WhatsApp par bhej di",
+  "toastMissingCart": "Missing saaman cart mein daal diya",
+  "galleryTitle": "Component gallery",
+  "@galleryTitle": {
+    "description": "Design-system gallery screen title (internal)"
+  },
+  "dietNoOnionGarlic": "No pyaaz-lahsun",
+  "@dietNoOnionGarlic": {
+    "description": "Diet: no onion/garlic (not on the Prefs grid yet)"
+  },
+  "dietNoOnionGarlicHint": "Veg, bina pyaaz-lahsun",
+  "dietPescatarian": "Pescatarian",
+  "@dietPescatarian": {
+    "description": "Diet: veg + fish"
+  },
+  "dietPescatarianHint": "Veg + machli",
+  "reasonAllergen": "{item} se allergy",
+  "@reasonAllergen": {
+    "description": "Engine reason (no): allergen",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "reasonRootVeg": "Zameen ke neeche ki sabzi hai",
+  "@reasonRootVeg": {
+    "description": "Engine reason (no): Jain + root vegetable"
+  },
+  "reasonNonvegItem": "Isme {item} hai",
+  "@reasonNonvegItem": {
+    "description": "Engine reason (no): meat the member skips",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "reasonDairy": "Dairy hai",
+  "@reasonDairy": {
+    "description": "Engine reason (no): no-dairy member"
+  },
+  "reasonDislikeMain": "Unko {item} pasand nahi",
+  "@reasonDislikeMain": {
+    "description": "Engine reason (no): disliked main ingredient",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "reasonDislikeSkip": "Unki katori mein {item} mat daalo",
+  "@reasonDislikeSkip": {
+    "description": "Engine reason (tweak): disliked minor ingredient",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "reasonVrat": "Aaj vrat hai",
+  "@reasonVrat": {
+    "description": "Engine reason (no): fasting day"
+  },
+  "allergenPeanut": "Moongphali",
+  "allergenTreeNut": "Kaju-badaam",
+  "allergenDairy": "Dairy",
+  "allergenGluten": "Gehun (gluten)",
+  "allergenEgg": "Anda",
+  "allergenFish": "Machhli",
+  "allergenSesame": "Til",
+  "allergenSoy": "Soya",
+  "demoDataPill": "Demo data",
+  "@demoDataPill": {
+    "description": "Home header pill when showing the local demo sandbox instead of the API"
+  },
+  "servingsCount": "{count} log",
+  "@servingsCount": {
+    "description": "Detail servings stepper value",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "servingsLess": "Kam log",
+  "@servingsLess": {
+    "description": "Servings stepper minus (accessibility)"
+  },
+  "servingsMore": "Zyada log",
+  "@servingsMore": {
+    "description": "Servings stepper plus (accessibility)"
+  },
+  "batchWarning": "Itne logon ke liye do batch mein pakao",
+  "@batchWarning": {
+    "description": "Detail note when servings are far above the recipe base"
+  },
+  "homeLoadError": "Options load nahi hue",
+  "@homeLoadError": {
+    "description": "Home error state"
+  },
+  "retry": "Phir se try karo",
+  "navRasoi": "Rasoi",
+  "@navRasoi": {
+    "description": "Bottom-nav tab for cook mode (only with a cook role)"
+  },
+  "slotTiffin": "Tiffin",
+  "@slotTiffin": {
+    "description": "Optional slot"
+  },
+  "slotShaam": "Shaam ka nashta",
+  "@slotShaam": {
+    "description": "Optional slot"
+  },
+  "dateToday": "Aaj",
+  "@dateToday": {
+    "description": "Plan date chip"
+  },
+  "dateTomorrow": "Kal",
+  "@dateTomorrow": {
+    "description": "Plan date chip"
+  },
+  "planTitleOn": "{day} ka {slot} menu",
+  "@planTitleOn": {
+    "description": "Plan title for a date other than today",
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "planCoverageMissing": "{names} ke liye aur dish chahiye",
+  "@planCoverageMissing": {
+    "description": "Plan coverage line naming uncovered eaters",
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "planLoadError": "Menu load nahi hua",
+  "@planLoadError": {
+    "description": "Plan error state"
+  },
+  "planEatersTitle": "Kaun kha raha hai?",
+  "@planEatersTitle": {
+    "description": "Plan eaters section"
+  },
+  "planGuestAdults": "Mehmaan · bade",
+  "@planGuestAdults": {
+    "description": "Guest counter row"
+  },
+  "planGuestKids": "Mehmaan · bachche",
+  "@planGuestKids": {
+    "description": "Guest counter row"
+  },
+  "planGuestDiet": "Mehmaan kya khaate hain?",
+  "@planGuestDiet": {
+    "description": "Guest diet chips label"
+  },
+  "planServingsTitle": "Kitne log",
+  "@planServingsTitle": {
+    "description": "Plan servings section"
+  },
+  "planServingsValue": "{servings} servings",
+  "@planServingsValue": {
+    "description": "Servings readout",
+    "placeholders": {
+      "servings": {
+        "type": "String"
+      }
+    }
+  },
+  "planServingsHint": "Bade 1 · bachche ½ · mehmaan jode",
+  "@planServingsHint": {
+    "description": "How servings are counted"
+  },
+  "planDueTitle": "Kab tak",
+  "@planDueTitle": {
+    "description": "Plan due-time section"
+  },
+  "planDueHint": "Khaana kitne baje tak taiyaar ho",
+  "@planDueHint": {
+    "description": "Due-time hint"
+  },
+  "planAssigneeTitle": "Kaun banayega",
+  "@planAssigneeTitle": {
+    "description": "Plan assignee section"
+  },
+  "planAssigneeNone": "Koi nahi",
+  "@planAssigneeNone": {
+    "description": "No assignee chip"
+  },
+  "cookChipLabel": "{name} ({kind})",
+  "@cookChipLabel": {
+    "description": "Cook chip: Ramesh ji (hired)",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "cookKindHired": "hired",
+  "@cookKindHired": {
+    "description": "Cook kind"
+  },
+  "cookKindFamily": "family",
+  "@cookKindFamily": {
+    "description": "Cook kind"
+  },
+  "cookOffDutyTag": "Chhutti",
+  "@cookOffDutyTag": {
+    "description": "Off-duty suffix on a cook chip"
+  },
+  "planViewTicket": "Ticket dekho",
+  "@planViewTicket": {
+    "description": "Plan CTA once sent"
+  },
+  "planShareWhatsApp": "WhatsApp par bhi bhejo",
+  "@planShareWhatsApp": {
+    "description": "Share-sheet CTA"
+  },
+  "removeDish": "Hatao",
+  "@removeDish": {
+    "description": "Remove dish (accessibility)"
+  },
+  "toastTicketSent": "Ticket bhej diya",
+  "@toastTicketSent": {
+    "description": "Confirm toast"
+  },
+  "toastOrderSoon": "Saaman order karna jaldi aa raha hai",
+  "@toastOrderSoon": {
+    "description": "Missing-saaman stub toast (Phase 6)"
+  },
+  "toastError": "Kuch gadbad hui, phir se try karo",
+  "@toastError": {
+    "description": "Generic error toast"
+  },
+  "toastConflict": "Ticket badal gaya tha — naya status dikha rahe hain",
+  "@toastConflict": {
+    "description": "409 toast"
+  },
+  "itemIn": "Hai",
+  "@itemIn": {
+    "description": "Stock pill"
+  },
+  "itemLow": "Kam hai",
+  "@itemLow": {
+    "description": "Stock pill"
+  },
+  "itemOut": "Khatam",
+  "@itemOut": {
+    "description": "Stock pill"
+  },
+  "itemUntracked": "Pata nahi",
+  "@itemUntracked": {
+    "description": "Stock pill"
+  },
+  "statusNew": "Naya",
+  "@statusNew": {
+    "description": "Ticket status"
+  },
+  "statusUnassigned": "Kisi ko nahi mila",
+  "@statusUnassigned": {
+    "description": "Ticket status"
+  },
+  "statusAccepted": "Accept ho gaya",
+  "@statusAccepted": {
+    "description": "Ticket status"
+  },
+  "statusCooking": "Ban raha hai",
+  "@statusCooking": {
+    "description": "Ticket status"
+  },
+  "statusReady": "Taiyaar",
+  "@statusReady": {
+    "description": "Ticket status"
+  },
+  "statusCompleted": "Ho gaya",
+  "@statusCompleted": {
+    "description": "Ticket status"
+  },
+  "statusNotConfirmed": "Confirm nahi hua",
+  "@statusNotConfirmed": {
+    "description": "Ticket status"
+  },
+  "statusCancelled": "Cancel",
+  "@statusCancelled": {
+    "description": "Ticket status"
+  },
+  "ticketTitle": "Ticket",
+  "@ticketTitle": {
+    "description": "Ticket screen fallback title"
+  },
+  "ticketCardTitle": "{slot} ka ticket",
+  "@ticketCardTitle": {
+    "description": "Home ticket card title",
+    "placeholders": {
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "dueBy": "Kab tak {time}",
+  "@dueBy": {
+    "description": "Due time",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketNoAssignee": "Kisi ko assign nahi",
+  "@ticketNoAssignee": {
+    "description": "Ticket without assignee"
+  },
+  "ticketGuests": "+{count} mehmaan",
+  "@ticketGuests": {
+    "description": "Guests on a ticket",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ticketDishes": "Dishes",
+  "@ticketDishes": {
+    "description": "Ticket section"
+  },
+  "ticketNotes": "Note",
+  "@ticketNotes": {
+    "description": "Ticket section"
+  },
+  "ticketNotesHint": "Cook ke liye note…",
+  "@ticketNotesHint": {
+    "description": "Notes field hint"
+  },
+  "ticketChangeLog": "Kya kya badla",
+  "@ticketChangeLog": {
+    "description": "Ticket section"
+  },
+  "ticketEdit": "Badlo",
+  "@ticketEdit": {
+    "description": "Ticket action"
+  },
+  "ticketSave": "Save karo",
+  "@ticketSave": {
+    "description": "Edit sheet CTA"
+  },
+  "ticketSavedToast": "Ticket update ho gaya",
+  "@ticketSavedToast": {
+    "description": "Edit toast"
+  },
+  "ticketCancel": "Cancel karo",
+  "@ticketCancel": {
+    "description": "Ticket action"
+  },
+  "ticketCancelReason": "Cancel kyun kar rahe ho?",
+  "@ticketCancelReason": {
+    "description": "Reason dialog (cooking)"
+  },
+  "ticketCancelReasonHint": "Wajah likho",
+  "@ticketCancelReasonHint": {
+    "description": "Reason field hint"
+  },
+  "ticketCancelConfirm": "Haan, cancel karo",
+  "@ticketCancelConfirm": {
+    "description": "Cancel confirm"
+  },
+  "ticketKeep": "Rehne do",
+  "@ticketKeep": {
+    "description": "Cancel dismiss"
+  },
+  "ticketCancelledToast": "Ticket cancel ho gaya",
+  "@ticketCancelledToast": {
+    "description": "Cancel toast"
+  },
+  "ticketMarkDone": "Ho gaya mark karo",
+  "@ticketMarkDone": {
+    "description": "Admin completes a ticket"
+  },
+  "ticketAskCook": "Cook se baat karo",
+  "@ticketAskCook": {
+    "description": "Open thread"
+  },
+  "ticketUpdatedTag": "Badla gaya",
+  "@ticketUpdatedTag": {
+    "description": "Updated tag"
+  },
+  "ticketStockIssueTag": "Saaman khatam",
+  "@ticketStockIssueTag": {
+    "description": "Stock issue tag"
+  },
+  "ticketLoadError": "Ticket load nahi hua",
+  "@ticketLoadError": {
+    "description": "Ticket error"
+  },
+  "khanaBanaPrompt": "Khaana bana?",
+  "@khanaBanaPrompt": {
+    "description": "Not-confirmed prompt"
+  },
+  "khanaBanaHint": "Cook ne 'Ban gaya' nahi dabaya. Bata do, taaki hisaab sahi rahe.",
+  "@khanaBanaHint": {
+    "description": "Not-confirmed prompt body"
+  },
+  "khanaBanaYes": "Haan, bana",
+  "@khanaBanaYes": {
+    "description": "Not-confirmed yes"
+  },
+  "khanaBanaNo": "Nahi bana",
+  "@khanaBanaNo": {
+    "description": "Not-confirmed no"
+  },
+  "logCreated": "Ticket bana",
+  "@logCreated": {
+    "description": "Change log"
+  },
+  "logAccepted": "Accept kiya",
+  "@logAccepted": {
+    "description": "Change log"
+  },
+  "logCooking": "Banana shuru",
+  "@logCooking": {
+    "description": "Change log"
+  },
+  "logReady": "Taiyaar",
+  "@logReady": {
+    "description": "Change log"
+  },
+  "logCompleted": "Ho gaya",
+  "@logCompleted": {
+    "description": "Change log"
+  },
+  "logCancelled": "Cancel kiya",
+  "@logCancelled": {
+    "description": "Change log"
+  },
+  "logNotConfirmed": "Confirm nahi hua",
+  "@logNotConfirmed": {
+    "description": "Change log"
+  },
+  "logUpdated": "Badla",
+  "@logUpdated": {
+    "description": "Change log"
+  },
+  "logItemOut": "Saaman khatam",
+  "@logItemOut": {
+    "description": "Change log"
+  },
+  "logClaimed": "Claim kiya",
+  "@logClaimed": {
+    "description": "Change log"
+  },
+  "logReassigned": "Dusre cook ko diya",
+  "@logReassigned": {
+    "description": "Change log"
+  },
+  "logUnassigned": "Assign hataya",
+  "@logUnassigned": {
+    "description": "Change log"
+  },
+  "logAutoCancelled": "Apne aap cancel",
+  "@logAutoCancelled": {
+    "description": "Change log"
+  },
+  "inboxTitle": "Inbox",
+  "@inboxTitle": {
+    "description": "Inbox screen / bell"
+  },
+  "inboxBellUnread": "Inbox, {count} naye",
+  "@inboxBellUnread": {
+    "description": "Bell accessibility label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "inboxEmpty": "Abhi koi khabar nahi",
+  "@inboxEmpty": {
+    "description": "Inbox empty"
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings stub"
+  },
+  "settingsDemoCook": "Demo: cook role",
+  "@settingsDemoCook": {
+    "description": "Settings stub section"
+  },
+  "settingsDemoCookHint": "Cook role ho to neeche 'Rasoi' tab dikhega (cook mode).",
+  "@settingsDemoCookHint": {
+    "description": "Settings stub hint"
+  },
+  "cookTitle": "Aaj ke tickets",
+  "@cookTitle": {
+    "description": "K1 title"
+  },
+  "cookTabToday": "Aaj",
+  "@cookTabToday": {
+    "description": "K1 tab"
+  },
+  "cookTabTomorrow": "Kal",
+  "@cookTabTomorrow": {
+    "description": "K1 tab"
+  },
+  "cookDueBy": "Kab tak {time}",
+  "@cookDueBy": {
+    "description": "K1 due",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "cookActionAccept": "Accept karo",
+  "@cookActionAccept": {
+    "description": "Cook action"
+  },
+  "cookActionStart": "Shuru karo",
+  "@cookActionStart": {
+    "description": "Cook action"
+  },
+  "cookActionDone": "Ban gaya",
+  "@cookActionDone": {
+    "description": "Cook action"
+  },
+  "cookActionReady": "Taiyaar",
+  "@cookActionReady": {
+    "description": "Cook action"
+  },
+  "cookEmpty": "Koi ticket nahi",
+  "@cookEmpty": {
+    "description": "K1 empty"
+  },
+  "cookOnDuty": "On duty",
+  "@cookOnDuty": {
+    "description": "Duty toggle"
+  },
+  "cookOffDuty": "Chhutti",
+  "@cookOffDuty": {
+    "description": "Duty toggle"
+  },
+  "cookOffDutyUntil": "{date} tak chhutti",
+  "@cookOffDutyUntil": {
+    "description": "Duty toggle with date",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "cookOffDutyAsk": "Kab tak chhutti?",
+  "@cookOffDutyAsk": {
+    "description": "Off-duty sheet"
+  },
+  "cookOffDutyToday": "Sirf aaj",
+  "@cookOffDutyToday": {
+    "description": "Off-duty option"
+  },
+  "cookOffDutyTomorrow": "Kal tak",
+  "@cookOffDutyTomorrow": {
+    "description": "Off-duty option"
+  },
+  "cookOffDutyPick": "Date chuno",
+  "@cookOffDutyPick": {
+    "description": "Off-duty option"
+  },
+  "cookFamilyMode": "Parivaar",
+  "@cookFamilyMode": {
+    "description": "Switch back to family mode"
+  },
+  "cookOffline": "Net nahi hai — purani jaankari dikh rahi hai",
+  "@cookOffline": {
+    "description": "Offline banner"
+  },
+  "cookNotSent": "Bheja nahi gaya",
+  "@cookNotSent": {
+    "description": "Queued write indicator"
+  },
+  "cookQueued": "Net aane par bhej denge",
+  "@cookQueued": {
+    "description": "Queued toast"
+  },
+  "cookDishes": "Kya banana hai",
+  "@cookDishes": {
+    "description": "K2 section"
+  },
+  "cookEaters": "Kaun khayega",
+  "@cookEaters": {
+    "description": "K2 section"
+  },
+  "cookServings": "{servings} logon ke liye",
+  "@cookServings": {
+    "description": "Servings",
+    "placeholders": {
+      "servings": {
+        "type": "String"
+      }
+    }
+  },
+  "cookGuests": "+{count} mehmaan",
+  "@cookGuests": {
+    "description": "Guests",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cookNotes": "Note",
+  "@cookNotes": {
+    "description": "K2 section"
+  },
+  "cookItems": "Zaroori saaman",
+  "@cookItems": {
+    "description": "K2 section"
+  },
+  "cookItemOut": "Khatam hai",
+  "@cookItemOut": {
+    "description": "Mark item out"
+  },
+  "cookAskFamily": "Family se poochho",
+  "@cookAskFamily": {
+    "description": "Open thread"
+  },
+  "cookOpenRecipe": "Recipe",
+  "@cookOpenRecipe": {
+    "description": "Open recipe"
+  },
+  "cookIngredients": "Saaman",
+  "@cookIngredients": {
+    "description": "K5 section"
+  },
+  "cookSteps": "Kaise banana hai",
+  "@cookSteps": {
+    "description": "K5 section"
+  },
+  "cookPlay": "Suno",
+  "@cookPlay": {
+    "description": "Step play"
+  },
+  "cookPause": "Roko",
+  "@cookPause": {
+    "description": "Step pause"
+  },
+  "cookSpeed": "Awaaz ki speed",
+  "@cookSpeed": {
+    "description": "K5 speed"
+  },
+  "cookSpeedSlow": "Dheere",
+  "@cookSpeedSlow": {
+    "description": "0.8x"
+  },
+  "cookSpeedNormal": "Normal",
+  "@cookSpeedNormal": {
+    "description": "1.0x"
+  },
+  "cookSpeedFast": "Tez",
+  "@cookSpeedFast": {
+    "description": "1.2x"
+  },
+  "cookThread": "Parivaar se baat",
+  "@cookThread": {
+    "description": "K6 title"
+  },
+  "cookThreadHint": "Sandesh likho…",
+  "@cookThreadHint": {
+    "description": "K6 input"
+  },
+  "cookSend": "Bhejo",
+  "@cookSend": {
+    "description": "K6 send"
+  },
+  "cookThreadEmpty": "Abhi koi baat nahi",
+  "@cookThreadEmpty": {
+    "description": "K6 empty"
+  },
+  "cookConflict": "Ticket badal gaya — naya status dikha rahe hain",
+  "@cookConflict": {
+    "description": "409 toast"
+  },
+  "cookError": "Kuch gadbad hui",
+  "@cookError": {
+    "description": "Cook error toast"
+  },
+  "cookLoadError": "Load nahi hua — phir se try karo",
+  "@cookLoadError": {
+    "description": "Cook load error"
+  },
+  "stockTitle": "Rasoi stock",
+  "@stockTitle": {
+    "description": "S15 title"
+  },
+  "stockSubtitle": "{count} cheezein · {low} kam ya khatam",
+  "@stockSubtitle": {
+    "description": "S15 subtitle",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "low": {
+        "type": "int"
+      }
+    }
+  },
+  "stockSearchHint": "Dhoondho: dahi, pyaaz…",
+  "@stockSearchHint": {
+    "description": "S15 search"
+  },
+  "stockFilterAll": "Sab",
+  "@stockFilterAll": {
+    "description": "S15 filter"
+  },
+  "stockFilterLowOut": "Low + Out",
+  "@stockFilterLowOut": {
+    "description": "S15 filter"
+  },
+  "stockAllIn": "Sab In",
+  "@stockAllIn": {
+    "description": "S15 bulk action"
+  },
+  "stockAllInDone": "Sab stock mein",
+  "@stockAllInDone": {
+    "description": "S15 toast"
+  },
+  "stockLevelIn": "In",
+  "@stockLevelIn": {
+    "description": "Stock pill"
+  },
+  "stockLevelLow": "Low",
+  "@stockLevelLow": {
+    "description": "Stock pill"
+  },
+  "stockLevelOut": "Out",
+  "@stockLevelOut": {
+    "description": "Stock pill"
+  },
+  "stockEmpty": "Kuch nahi mila",
+  "@stockEmpty": {
+    "description": "S15 empty"
+  },
+  "stockLoadError": "Stock load nahi hua",
+  "@stockLoadError": {
+    "description": "S15 error"
+  },
+  "stockCatSabzi": "Sabzi",
+  "@stockCatSabzi": {
+    "description": "Stock category"
+  },
+  "stockCatDairy": "Doodh-dahi",
+  "@stockCatDairy": {
+    "description": "Stock category"
+  },
+  "stockCatDal": "Dal",
+  "@stockCatDal": {
+    "description": "Stock category"
+  },
+  "stockCatAnaaj": "Aata-chawal",
+  "@stockCatAnaaj": {
+    "description": "Stock category"
+  },
+  "stockCatMasale": "Masale",
+  "@stockCatMasale": {
+    "description": "Stock category"
+  },
+  "stockCatTelGhee": "Tel-ghee",
+  "@stockCatTelGhee": {
+    "description": "Stock category"
+  },
+  "stockCatDryFruits": "Dry fruits",
+  "@stockCatDryFruits": {
+    "description": "Stock category"
+  },
+  "stockCatOther": "Aur",
+  "@stockCatOther": {
+    "description": "Stock category"
+  },
+  "rationTitle": "Ration",
+  "@rationTitle": {
+    "description": "S13 title"
+  },
+  "rationTabPending": "Pending",
+  "@rationTabPending": {
+    "description": "S13 tab"
+  },
+  "rationTabApproved": "Approved",
+  "@rationTabApproved": {
+    "description": "S13 tab"
+  },
+  "rationTabBought": "Kharida",
+  "@rationTabBought": {
+    "description": "S13 tab"
+  },
+  "rationEmpty": "Koi request nahi",
+  "@rationEmpty": {
+    "description": "S13 empty"
+  },
+  "rationRaisedBy": "{name} ne maanga",
+  "@rationRaisedBy": {
+    "description": "S13 row",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rationItems": "{count} cheezein",
+  "@rationItems": {
+    "description": "S13 row",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rationApprove": "Approve karo",
+  "@rationApprove": {
+    "description": "S13 action"
+  },
+  "rationReject": "Mana karo",
+  "@rationReject": {
+    "description": "S13 action"
+  },
+  "rationNoteHint": "Note (optional)",
+  "@rationNoteHint": {
+    "description": "Decide note"
+  },
+  "rationBought": "Kharid liya",
+  "@rationBought": {
+    "description": "S13 action"
+  },
+  "rationStatusPending": "Pending",
+  "@rationStatusPending": {
+    "description": "Ration status"
+  },
+  "rationStatusApproved": "Approved",
+  "@rationStatusApproved": {
+    "description": "Ration status"
+  },
+  "rationStatusRejected": "Mana hua",
+  "@rationStatusRejected": {
+    "description": "Ration status"
+  },
+  "rationStatusBought": "Aa gaya",
+  "@rationStatusBought": {
+    "description": "Ration status"
+  },
+  "rationApprovedToast": "Approve ho gaya",
+  "@rationApprovedToast": {
+    "description": "Toast"
+  },
+  "rationRejectedToast": "Mana kar diya",
+  "@rationRejectedToast": {
+    "description": "Toast"
+  },
+  "rationBoughtToast": "Saaman stock mein aa gaya",
+  "@rationBoughtToast": {
+    "description": "Toast"
+  },
+  "rationSentToast": "Ration request bhej di",
+  "@rationSentToast": {
+    "description": "Toast"
+  },
+  "rationNothingMissing": "Sab saaman hai — kuch order nahi karna",
+  "@rationNothingMissing": {
+    "description": "Toast"
+  },
+  "rationSelfApproved": "Khud approve",
+  "@rationSelfApproved": {
+    "description": "Ration tag"
+  },
+  "cookRasoi": "Rasoi",
+  "@cookRasoi": {
+    "description": "K1 stock button"
+  },
+  "cookRationAsk": "Ration maango",
+  "@cookRationAsk": {
+    "description": "K2 action"
+  },
+  "cookRationTitle": "Mera ration",
+  "@cookRationTitle": {
+    "description": "Cook ration list"
+  },
+  "cookRationSheetTitle": "Kya chahiye?",
+  "@cookRationSheetTitle": {
+    "description": "Ration sheet"
+  },
+  "cookRationFreeHint": "Aur kuch? Likho",
+  "@cookRationFreeHint": {
+    "description": "Ration sheet"
+  },
+  "cookRationAdd": "Jodo",
+  "@cookRationAdd": {
+    "description": "Ration sheet"
+  },
+  "cookRationSend": "Bhejo",
+  "@cookRationSend": {
+    "description": "Ration sheet"
+  },
+  "cookRationSent": "Maang bhej di",
+  "@cookRationSent": {
+    "description": "Toast"
+  },
+  "cookRationNew": "Nayi maang",
+  "@cookRationNew": {
+    "description": "Cook ration list"
+  },
+  "ladderTitle": "{item} khatam hai",
+  "@ladderTitle": {
+    "description": "Ladder title",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "ladderSkipAsk": "Bina {item} ke bana lo?",
+  "@ladderSkipAsk": {
+    "description": "Ladder step 1",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "ladderSkipYes": "Haan, bina iske",
+  "@ladderSkipYes": {
+    "description": "Ladder step 1"
+  },
+  "ladderMoreWays": "Aur raaste",
+  "@ladderMoreWays": {
+    "description": "Ladder next"
+  },
+  "ladderSwapTitle": "Iski jagah kya daalein?",
+  "@ladderSwapTitle": {
+    "description": "Ladder step 2"
+  },
+  "ladderSwapDo": "Badal do",
+  "@ladderSwapDo": {
+    "description": "Ladder step 2"
+  },
+  "ladderNoSwap": "Koi safe badli nahi mili",
+  "@ladderNoSwap": {
+    "description": "Ladder step 2"
+  },
+  "ladderChangeDish": "Dish badlo",
+  "@ladderChangeDish": {
+    "description": "Ladder step 3"
+  },
+  "ladderDishTitle": "Inme se kya banayein?",
+  "@ladderDishTitle": {
+    "description": "Ladder step 3"
+  },
+  "ladderDishPick": "Yeh banao",
+  "@ladderDishPick": {
+    "description": "Ladder step 3"
+  },
+  "ladderNoDish": "Koi aur dish stock mein nahi",
+  "@ladderNoDish": {
+    "description": "Ladder step 3"
+  },
+  "ladderPending": "Family se poochh rahe hain…",
+  "@ladderPending": {
+    "description": "Ladder pending"
+  },
+  "ladderPendingHint": "{mins} min mein jawab nahi aaya to admin ko alert jayega",
+  "@ladderPendingHint": {
+    "description": "Ladder pending",
+    "placeholders": {
+      "mins": {
+        "type": "int"
+      }
+    }
+  },
+  "ladderTimeout": "Time out — admin ko alert gaya",
+  "@ladderTimeout": {
+    "description": "Ladder timeout"
+  },
+  "ladderDone": "Ho gaya — ticket badal gaya",
+  "@ladderDone": {
+    "description": "Toast"
+  },
+  "ladderRejected": "Family ne mana kiya — doosra raasta chuno",
+  "@ladderRejected": {
+    "description": "Ladder rejected"
+  },
+  "ladderOpen": "Raasta dekho",
+  "@ladderOpen": {
+    "description": "K2 action"
+  },
+  "ladderClose": "Band karo",
+  "@ladderClose": {
+    "description": "Sheet close"
+  },
+  "approvalTitle": "Aapki haan chahiye",
+  "@approvalTitle": {
+    "description": "Approval sheet"
+  },
+  "approvalSwap": "Saaman badlo: {detail}",
+  "@approvalSwap": {
+    "description": "Approval",
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "approvalChangeDish": "Dish badlo: {detail}",
+  "@approvalChangeDish": {
+    "description": "Approval",
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "approvalAskedBy": "{name} ne poochha",
+  "@approvalAskedBy": {
+    "description": "Approval",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "approvalExpires": "{time} tak jawab do",
+  "@approvalExpires": {
+    "description": "Approval",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "approvalYes": "Haan",
+  "@approvalYes": {
+    "description": "Approval"
+  },
+  "approvalNo": "Nahi",
+  "@approvalNo": {
+    "description": "Approval"
+  },
+  "approvalApprovedToast": "Cook ko bata diya: haan",
+  "@approvalApprovedToast": {
+    "description": "Toast"
+  },
+  "approvalRejectedToast": "Cook ko bata diya: nahi",
+  "@approvalRejectedToast": {
+    "description": "Toast"
+  },
+  "approvalGone": "Yeh sawaal ab khula nahi hai",
+  "@approvalGone": {
+    "description": "Toast"
+  },
+  "ticketIssueChoosing": "Cook raasta chun raha hai",
+  "@ticketIssueChoosing": {
+    "description": "Stock banner"
+  },
+  "ticketIssuePending": "Cook ne poochha: {detail}",
+  "@ticketIssuePending": {
+    "description": "Stock banner",
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketRate": "Kaisa bana?",
+  "@ticketRate": {
+    "description": "Rate action"
+  },
+  "ticketRated": "Rating di — shukriya!",
+  "@ticketRated": {
+    "description": "Rated tag"
+  },
+  "logSkip": "Bina saaman ke banaya",
+  "@logSkip": {
+    "description": "Change log"
+  },
+  "logSwap": "Saaman badla",
+  "@logSwap": {
+    "description": "Change log"
+  },
+  "logChangeDish": "Dish badli",
+  "@logChangeDish": {
+    "description": "Change log"
+  },
+  "logApprovalRequested": "Family se poochha",
+  "@logApprovalRequested": {
+    "description": "Change log"
+  },
+  "logApproved": "Family ne haan kaha",
+  "@logApproved": {
+    "description": "Change log"
+  },
+  "logRejected": "Family ne mana kiya",
+  "@logRejected": {
+    "description": "Change log"
+  },
+  "logTimeout": "Time out — admin ko alert",
+  "@logTimeout": {
+    "description": "Change log"
+  },
+  "rateTitle": "{slot} kaisa bana?",
+  "@rateTitle": {
+    "description": "Rate sheet",
+    "placeholders": {
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "rateThanksFamily": "{name} ne banaya — shukriya bolo!",
+  "@rateThanksFamily": {
+    "description": "Rate sheet, family cook",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rateHint": "Har khaane wale ke liye ek tap",
+  "@rateHint": {
+    "description": "Rate sheet"
+  },
+  "rateBura": "Bura",
+  "@rateBura": {
+    "description": "Score 1"
+  },
+  "rateTheek": "Theek",
+  "@rateTheek": {
+    "description": "Score 2"
+  },
+  "rateBahutAccha": "Bahut accha",
+  "@rateBahutAccha": {
+    "description": "Score 3"
+  },
+  "rateProxy": "Unki taraf se",
+  "@rateProxy": {
+    "description": "Proxy tag"
+  },
+  "rateNoteHint": "Kuch kehna hai? (optional)",
+  "@rateNoteHint": {
+    "description": "Rate note"
+  },
+  "rateNoteHintFamily": "Kya badlein agli baar?",
+  "@rateNoteHintFamily": {
+    "description": "Rate note, family cook"
+  },
+  "rateSubmit": "Rating bhejo",
+  "@rateSubmit": {
+    "description": "Rate submit"
+  },
+  "rateSubmitFamily": "Shukriya bhejo",
+  "@rateSubmitFamily": {
+    "description": "Rate submit, family cook"
+  },
+  "rateDone": "Shukriya! Maharaj yaad rakhega",
+  "@rateDone": {
+    "description": "Toast"
+  },
+  "rateNeedOne": "Kam se kam ek rating do",
+  "@rateNeedOne": {
+    "description": "Toast"
+  },
+  "recipeHomeRating": "Ghar ki rating",
+  "@recipeHomeRating": {
+    "description": "Recipe detail"
+  },
+  "recipeRatingValue": "{avg}/3 · {count} rating",
+  "@recipeRatingValue": {
+    "description": "Recipe detail",
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trialBanner": "Free trial · {days} din baaki",
+  "@trialBanner": {
+    "description": "Home banner",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "graceBanner": "Payment atki hai — 3 din mein theek karo",
+  "@graceBanner": {
+    "description": "Home banner"
+  },
+  "expiredBanner": "Plan band hai — sirf dekh sakte ho",
+  "@expiredBanner": {
+    "description": "Home banner"
+  },
+  "planBandTitle": "Plan band hai",
+  "@planBandTitle": {
+    "description": "Read-only sheet"
+  },
+  "planBandBody": "Naya menu, Maharaj chat aur cook ticket ke liye ₹50/hafta wala plan chalu karo. Aaj aur kal ke tickets cook bana sakta hai.",
+  "@planBandBody": {
+    "description": "Read-only sheet"
+  },
+  "planBandCta": "Plan dekho",
+  "@planBandCta": {
+    "description": "Read-only sheet"
+  },
+  "weeklyTitle": "Is hafte",
+  "@weeklyTitle": {
+    "description": "Weekly card"
+  },
+  "weeklyTop": "Top: {name}",
+  "@weeklyTop": {
+    "description": "Weekly card",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyOnTime": "{pct}% time par",
+  "@weeklyOnTime": {
+    "description": "Weekly card",
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyCoverage": "{pct}% sabke liye",
+  "@weeklyCoverage": {
+    "description": "Weekly card",
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyMeals": "{count} meal bane",
+  "@weeklyMeals": {
+    "description": "Weekly card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paywallTitle": "Banega plan",
+  "@paywallTitle": {
+    "description": "S10 title"
+  },
+  "paywallPrice": "₹50/hafta",
+  "@paywallPrice": {
+    "description": "S10 price"
+  },
+  "paywallBody": "Poore ghar ke liye sab kuch, ek hi plan mein.",
+  "@paywallBody": {
+    "description": "S10 body"
+  },
+  "paywallFeature1": "Har meal pe sabke hisaab se options",
+  "@paywallFeature1": {
+    "description": "S10 feature"
+  },
+  "paywallFeature2": "Cook ko ticket, stock aur ration",
+  "@paywallFeature2": {
+    "description": "S10 feature"
+  },
+  "paywallFeature3": "Ratings se Maharaj seekhta hai",
+  "@paywallFeature3": {
+    "description": "S10 feature"
+  },
+  "paywallSubscribe": "₹50/hafta · Chalu karo",
+  "@paywallSubscribe": {
+    "description": "S10 CTA"
+  },
+  "paywallRestore": "Purchase restore karo",
+  "@paywallRestore": {
+    "description": "S10 restore"
+  },
+  "paywallRestored": "Plan status update ho gaya",
+  "@paywallRestored": {
+    "description": "Toast"
+  },
+  "paywallActive": "Plan chalu hai",
+  "@paywallActive": {
+    "description": "S10 status"
+  },
+  "paywallRenews": "Agla renewal {date}",
+  "@paywallRenews": {
+    "description": "S10 status",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallTrial": "Free trial: {days} din baaki",
+  "@paywallTrial": {
+    "description": "S10 status",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywallGrace": "Payment atki hai — store mein theek karo",
+  "@paywallGrace": {
+    "description": "S10 status"
+  },
+  "paywallSubscribed": "Plan chalu! Shukriya",
+  "@paywallSubscribed": {
+    "description": "Toast"
+  },
+  "paywallStoreSoon": "Store billing jald aa raha hai",
+  "@paywallStoreSoon": {
+    "description": "Toast"
+  },
+  "paywallCancelNote": "Cancel kabhi bhi Play Store / App Store se",
+  "@paywallCancelNote": {
+    "description": "S10 note"
+  },
+  "subStatusTrial": "Free trial",
+  "@subStatusTrial": {
+    "description": "Subscription status"
+  },
+  "subStatusActive": "Chalu",
+  "@subStatusActive": {
+    "description": "Subscription status"
+  },
+  "subStatusGrace": "Payment atki",
+  "@subStatusGrace": {
+    "description": "Subscription status"
+  },
+  "subStatusExpired": "Band",
+  "@subStatusExpired": {
+    "description": "Subscription status"
+  },
+  "consentTitle": "Aapka data, aapka haq",
+  "@consentTitle": {
+    "description": "Consent title (contract key consent_title)"
+  },
+  "consentBody": "Banega aapke ghar ke members ki pasand, allergy aur khaane ka itihaas sirf menu banane, cook ko ticket bhejne aur Maharaj ke sujhav ke liye rakhta hai. Data kabhi becha nahi jaata. Settings se kabhi bhi export ya delete kar sakte ho.",
+  "@consentBody": {
+    "description": "Consent body (contract key consent_body)"
+  },
+  "consentLlmNote": "Maharaj chat ke sawaal ek AI service ko jaate hain; unke saath naam ya phone number nahi bheje jaate.",
+  "@consentLlmNote": {
+    "description": "Consent LLM note (contract key consent_llm_note)"
+  },
+  "consentKids": "Bachchon ki profile aap maa-baap ya guardian ki tarah bana rahe ho.",
+  "@consentKids": {
+    "description": "Consent kids line"
+  },
+  "consentAccept": "Maan liya",
+  "@consentAccept": {
+    "description": "Consent CTA"
+  },
+  "consentPrivacy": "Privacy policy padho",
+  "@consentPrivacy": {
+    "description": "Consent link"
+  },
+  "settingsHousehold": "Ghar",
+  "@settingsHousehold": {
+    "description": "Settings section"
+  },
+  "settingsHouseholdName": "Ghar ka naam",
+  "@settingsHouseholdName": {
+    "description": "Settings row"
+  },
+  "settingsEdit": "Badlo",
+  "@settingsEdit": {
+    "description": "Settings action"
+  },
+  "settingsSave": "Save karo",
+  "@settingsSave": {
+    "description": "Dialog save"
+  },
+  "settingsCancel": "Rehne do",
+  "@settingsCancel": {
+    "description": "Dialog cancel"
+  },
+  "settingsSaved": "Save ho gaya",
+  "@settingsSaved": {
+    "description": "Toast"
+  },
+  "settingsMembers": "Parivaar ke members",
+  "@settingsMembers": {
+    "description": "Settings row"
+  },
+  "settingsCooks": "Cook setup",
+  "@settingsCooks": {
+    "description": "Settings section"
+  },
+  "settingsCookPrimary": "Primary",
+  "@settingsCookPrimary": {
+    "description": "Cook role"
+  },
+  "settingsCookBackup": "Backup",
+  "@settingsCookBackup": {
+    "description": "Cook role"
+  },
+  "settingsCookRemove": "Hatao",
+  "@settingsCookRemove": {
+    "description": "Cook action"
+  },
+  "settingsCookRemoveAsk": "{name} ko hatayein? Unke khule tickets unassigned ho jayenge.",
+  "@settingsCookRemoveAsk": {
+    "description": "Cook remove confirm",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAddHiredCook": "Hired cook jodo",
+  "@settingsAddHiredCook": {
+    "description": "Cook add"
+  },
+  "settingsCookName": "Naam",
+  "@settingsCookName": {
+    "description": "Cook add field"
+  },
+  "settingsCookPhone": "Phone number",
+  "@settingsCookPhone": {
+    "description": "Cook add field"
+  },
+  "settingsCookAdded": "{name} jud gaye",
+  "@settingsCookAdded": {
+    "description": "Toast",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsHiredLimit": "Ek ghar mein ek hi hired cook ho sakta hai",
+  "@settingsHiredLimit": {
+    "description": "Error"
+  },
+  "settingsPhoneTaken": "Yeh phone kisi aur ghar mein hai",
+  "@settingsPhoneTaken": {
+    "description": "Error"
+  },
+  "settingsInvalidPhone": "Sahi phone number daalo",
+  "@settingsInvalidPhone": {
+    "description": "Error"
+  },
+  "settingsLanguage": "Bhasha",
+  "@settingsLanguage": {
+    "description": "Settings section"
+  },
+  "settingsLanguageHint": "Cook mode hamesha Hindi mein rehta hai",
+  "@settingsLanguageHint": {
+    "description": "Settings hint"
+  },
+  "langHinglish": "Hinglish",
+  "@langHinglish": {
+    "description": "Language option"
+  },
+  "langEnglish": "English",
+  "@langEnglish": {
+    "description": "Language option"
+  },
+  "langHindi": "हिंदी",
+  "@langHindi": {
+    "description": "Language option"
+  },
+  "settingsNotifications": "Notifications",
+  "@settingsNotifications": {
+    "description": "Settings section"
+  },
+  "settingsNotifMandatory": "Zaroori — hamesha on",
+  "@settingsNotifMandatory": {
+    "description": "Settings hint"
+  },
+  "settingsRatings": "Ratings",
+  "@settingsRatings": {
+    "description": "Settings toggle"
+  },
+  "settingsRatingsHint": "Khaane ke baad 'Kaisa bana?' poochho. Family cook band kar sakti hai.",
+  "@settingsRatingsHint": {
+    "description": "Settings hint"
+  },
+  "settingsAutoDecrement": "Khaane ke baad stock ghatao",
+  "@settingsAutoDecrement": {
+    "description": "Settings toggle"
+  },
+  "settingsAutoDecrementHint": "Taaza saaman (dahi, sabzi) 'Low' ho jayega",
+  "@settingsAutoDecrementHint": {
+    "description": "Settings hint"
+  },
+  "settingsShowNames": "Cook ko rating mein naam dikhao",
+  "@settingsShowNames": {
+    "description": "Settings toggle"
+  },
+  "settingsShowNamesHint": "Band ho to cook ko sirf average dikhta hai",
+  "@settingsShowNamesHint": {
+    "description": "Settings hint"
+  },
+  "settingsCookSwaps": "Cook khud swap chun sakta hai",
+  "@settingsCookSwaps": {
+    "description": "Settings toggle"
+  },
+  "settingsCookSwapsHint": "Band ho to har swap pe aapki haan chahiye",
+  "@settingsCookSwapsHint": {
+    "description": "Settings hint"
+  },
+  "settingsKitchen": "Rasoi",
+  "@settingsKitchen": {
+    "description": "Settings section"
+  },
+  "settingsSubscription": "Plan",
+  "@settingsSubscription": {
+    "description": "Settings section"
+  },
+  "settingsPrivacy": "Privacy aur data",
+  "@settingsPrivacy": {
+    "description": "Settings section"
+  },
+  "settingsConsent": "Consent dobara padho",
+  "@settingsConsent": {
+    "description": "Settings row"
+  },
+  "settingsGrievance": "Shikayat ke liye: privacy@banega.app",
+  "@settingsGrievance": {
+    "description": "Settings row"
+  },
+  "settingsExport": "Mera data export karo",
+  "@settingsExport": {
+    "description": "Settings row"
+  },
+  "settingsExportToast": "Inbox mein link aayega",
+  "@settingsExportToast": {
+    "description": "Toast"
+  },
+  "settingsDeleteHousehold": "Ghar delete karo",
+  "@settingsDeleteHousehold": {
+    "description": "Settings row"
+  },
+  "settingsDeleteHouseholdAsk": "Poore ghar ka data (members, menu, tickets, ratings, stock) 7 din baad hamesha ke liye mit jayega. 7 din tak 'Wapas lao' se undo kar sakte ho. Store subscription alag se cancel karna hoga.",
+  "@settingsDeleteHouseholdAsk": {
+    "description": "Delete confirm"
+  },
+  "settingsDeleteConfirm": "Haan, delete karo",
+  "@settingsDeleteConfirm": {
+    "description": "Delete confirm"
+  },
+  "settingsDeletePending": "Ghar {date} ko delete hoga",
+  "@settingsDeletePending": {
+    "description": "Deletion banner",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsRestore": "Wapas lao",
+  "@settingsRestore": {
+    "description": "Deletion undo"
+  },
+  "settingsRestored": "Ghar wapas aa gaya",
+  "@settingsRestored": {
+    "description": "Toast"
+  },
+  "settingsDeleteMe": "Mera account delete karo",
+  "@settingsDeleteMe": {
+    "description": "Settings row"
+  },
+  "settingsDeleteMeAsk": "Aapka login hat jayega; ghar aur baaki members rahenge. 7 din tak undo ho sakta hai.",
+  "@settingsDeleteMeAsk": {
+    "description": "Delete me confirm"
+  },
+  "settingsDeletedMe": "Account delete ho gaya — 7 din mein wapas aa sakte ho",
+  "@settingsDeletedMe": {
+    "description": "Toast"
+  },
+  "eventTicketCreated": "Naya ticket",
+  "@eventTicketCreated": {
+    "description": "Event"
+  },
+  "eventTicketAccepted": "Ticket accept hua",
+  "@eventTicketAccepted": {
+    "description": "Event"
+  },
+  "eventTicketUpdated": "Ticket badla",
+  "@eventTicketUpdated": {
+    "description": "Event"
+  },
+  "eventTicketCompleted": "Khaana ban gaya",
+  "@eventTicketCompleted": {
+    "description": "Event"
+  },
+  "eventNotConfirmed": "'Khaana bana?' sawaal",
+  "@eventNotConfirmed": {
+    "description": "Event"
+  },
+  "eventCookOffDuty": "Cook chhutti par",
+  "@eventCookOffDuty": {
+    "description": "Event"
+  },
+  "eventNoShow": "Cook ne accept nahi kiya",
+  "@eventNoShow": {
+    "description": "Event"
+  },
+  "eventStockLow": "Stock kam",
+  "@eventStockLow": {
+    "description": "Event"
+  },
+  "eventRationRequest": "Ration ki maang",
+  "@eventRationRequest": {
+    "description": "Event"
+  },
+  "eventRationDecided": "Ration ka jawab",
+  "@eventRationDecided": {
+    "description": "Event"
+  },
+  "eventStockIssue": "Saaman khatam",
+  "@eventStockIssue": {
+    "description": "Event"
+  },
+  "eventApprovalRequest": "Haan/nahi sawaal",
+  "@eventApprovalRequest": {
+    "description": "Event"
+  },
+  "eventApprovalDecided": "Haan/nahi jawab",
+  "@eventApprovalDecided": {
+    "description": "Event"
+  },
+  "eventStockTimeout": "Jawab ka time out",
+  "@eventStockTimeout": {
+    "description": "Event"
+  },
+  "eventRatePrompt": "Rating do",
+  "@eventRatePrompt": {
+    "description": "Event"
+  },
+  "eventExpiry": "Plan reminder",
+  "@eventExpiry": {
+    "description": "Event"
+  },
+  "eventWeekly": "Hafte ki report",
+  "@eventWeekly": {
+    "description": "Event"
+  },
+  "eventTomorrow": "Kal ke tickets",
+  "@eventTomorrow": {
+    "description": "Event"
+  },
+  "offlineBanner": "Internet nahi hai. Jo pehle aaya tha wahi dikh raha hai.",
+  "@offlineBanner": {
+    "description": "Offline banner on Home / Plan / Chat / cook mode"
+  },
+  "offlineRetry": "Phir se",
+  "@offlineRetry": {
+    "description": "Offline banner retry button"
+  },
+  "authPhoneTitle": "Apna number",
+  "@authPhoneTitle": {
+    "description": "Phone login title"
+  },
+  "authPhoneBody": "OTP se login hoga. Number sirf login ke liye hai.",
+  "@authPhoneBody": {
+    "description": "Phone login body"
+  },
+  "authPhoneHint": "10 digit mobile number",
+  "@authPhoneHint": {
+    "description": "Phone field hint"
+  },
+  "authSendOtp": "OTP bhejo",
+  "@authSendOtp": {
+    "description": "Phone screen CTA"
+  },
+  "authPhoneInvalid": "10 digit ka sahi number daalo",
+  "@authPhoneInvalid": {
+    "description": "Phone validation"
+  },
+  "authOtpTitle": "OTP daalo",
+  "@authOtpTitle": {
+    "description": "OTP screen title"
+  },
+  "authOtpBody": "{phone} par 6 digit ka code bheja hai",
+  "@authOtpBody": {
+    "description": "OTP screen body",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "authOtpResendIn": "{seconds} sec mein dobara bhej sakte ho",
+  "@authOtpResendIn": {
+    "description": "Resend countdown",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "authOtpResend": "OTP dobara bhejo",
+  "@authOtpResend": {
+    "description": "Resend OTP button"
+  },
+  "authOtpDevCode": "Dev code: {code}",
+  "@authOtpDevCode": {
+    "description": "Debug builds: code returned by a dev backend",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "authOtpWrong": "Code galat hai, phir se daalo",
+  "@authOtpWrong": {
+    "description": "Wrong OTP"
+  },
+  "authOtpDigit": "OTP ka {index} number",
+  "@authOtpDigit": {
+    "description": "Semantics for an OTP box",
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "authVerify": "Aage badho",
+  "@authVerify": {
+    "description": "OTP verify CTA"
+  },
+  "authChangeNumber": "Number badlo",
+  "@authChangeNumber": {
+    "description": "Back to phone entry"
+  },
+  "householdCreateTitle": "Ghar ka naam",
+  "@householdCreateTitle": {
+    "description": "Create household title"
+  },
+  "householdCreateBody": "Yeh naam parivaar aur cook, sabko dikhega.",
+  "@householdCreateBody": {
+    "description": "Create household body"
+  },
+  "householdCreateSuffix": "Parivaar",
+  "@householdCreateSuffix": {
+    "description": "Default household name suffix (typed surname goes before it)"
+  },
+  "householdCreateCta": "Ghar banao",
+  "@householdCreateCta": {
+    "description": "Create household CTA"
+  },
+  "householdNameRequired": "Ghar ka naam likho",
+  "@householdNameRequired": {
+    "description": "Household name validation"
+  },
+  "notFoundTitle": "Yeh page nahi mila",
+  "@notFoundTitle": {
+    "description": "Unknown route"
+  },
+  "notFoundHome": "Ghar par jao",
+  "@notFoundHome": {
+    "description": "Unknown route: back to the app"
+  },
+  "addMemberTitle": "Naya member",
+  "@addMemberTitle": {
+    "description": "Add member dialog title"
+  },
+  "addMemberHint": "Naam likho",
+  "@addMemberHint": {
+    "description": "Add member name field"
+  },
+  "addMemberSuggestions": "Ya inme se chuno",
+  "@addMemberSuggestions": {
+    "description": "Name suggestions label"
+  },
+  "addMemberCta": "Jodo",
+  "@addMemberCta": {
+    "description": "Add member confirm"
+  },
+  "commonCancel": "Rehne do",
+  "@commonCancel": {
+    "description": "Dialog cancel"
+  },
+  "removeMember": "Member hatao",
+  "@removeMember": {
+    "description": "Prefs: archive the member"
+  },
+  "removeMemberConfirm": "{name} ko parivaar se hatayein?",
+  "@removeMemberConfirm": {
+    "description": "Archive confirm title",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeMemberBody": "Unki pasand ab menu mein nahi gini jayegi.",
+  "@removeMemberBody": {
+    "description": "Archive confirm body"
+  },
+  "removeMemberYes": "Haan, hatao",
+  "@removeMemberYes": {
+    "description": "Archive confirm button"
+  },
+  "membersLoadError": "Parivaar load nahi hua",
+  "@membersLoadError": {
+    "description": "Family list failed"
+  },
+  "membersEmpty": "Abhi koi member nahi. Pehla member jodo.",
+  "@membersEmpty": {
+    "description": "Family list empty"
+  },
+  "memberSaveError": "Save nahi hua, phir se try karo",
+  "@memberSaveError": {
+    "description": "Member write failed (rolled back)"
+  },
+  "prefsKidTitle": "Bachcha hai",
+  "@prefsKidTitle": {
+    "description": "Kid toggle"
+  },
+  "prefsKidHint": "Aadhi serving gini jayegi",
+  "@prefsKidHint": {
+    "description": "Kid toggle hint"
+  },
+  "prefsAllergensTitle": "Allergy (bilkul nahi)",
+  "@prefsAllergensTitle": {
+    "description": "Allergen section"
+  },
+  "@allergenPeanut": {
+    "description": "Allergen"
+  },
+  "@allergenTreeNut": {
+    "description": "Allergen"
+  },
+  "allergenMilk": "Doodh",
+  "@allergenMilk": {
+    "description": "Allergen"
+  },
+  "@allergenGluten": {
+    "description": "Allergen"
+  },
+  "@allergenSesame": {
+    "description": "Allergen"
+  },
+  "@allergenSoy": {
+    "description": "Allergen"
+  },
+  "@allergenEgg": {
+    "description": "Allergen"
+  },
+  "@allergenFish": {
+    "description": "Allergen"
+  },
+  "allergenShellfish": "Jhinga",
+  "@allergenShellfish": {
+    "description": "Allergen"
+  },
+  "allergenMustard": "Sarson",
+  "@allergenMustard": {
+    "description": "Allergen"
+  },
+  "prefsDislikesTitle": "Pasand nahi",
+  "@prefsDislikesTitle": {
+    "description": "Dislikes section"
+  },
+  "prefsDislikesHint": "Jaise baingan, karela",
+  "@prefsDislikesHint": {
+    "description": "Dislike input hint"
+  },
+  "prefsDislikeAdd": "Jodo",
+  "@prefsDislikeAdd": {
+    "description": "Add a dislike"
+  },
+  "prefsDislikeRemove": "{item} hatao",
+  "@prefsDislikeRemove": {
+    "description": "Semantics: remove a dislike",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "prefsVratTitle": "Vrat ke din",
+  "@prefsVratTitle": {
+    "description": "Vrat weekdays section"
+  },
+  "weekdayMon": "Som",
+  "@weekdayMon": {
+    "description": "Weekday short"
+  },
+  "weekdayTue": "Mangal",
+  "@weekdayTue": {
+    "description": "Weekday short"
+  },
+  "weekdayWed": "Budh",
+  "@weekdayWed": {
+    "description": "Weekday short"
+  },
+  "weekdayThu": "Guru",
+  "@weekdayThu": {
+    "description": "Weekday short"
+  },
+  "weekdayFri": "Shukra",
+  "@weekdayFri": {
+    "description": "Weekday short"
+  },
+  "weekdaySat": "Shani",
+  "@weekdaySat": {
+    "description": "Weekday short"
+  },
+  "weekdaySun": "Ravi",
+  "@weekdaySun": {
+    "description": "Weekday short"
+  },
+  "prefsNonvegTitle": "Non-veg mein kya nahi",
+  "@prefsNonvegTitle": {
+    "description": "Non-veg exclusions"
+  },
+  "nonvegNoBeef": "Beef nahi",
+  "@nonvegNoBeef": {
+    "description": "Non-veg exclusion"
+  },
+  "nonvegNoPork": "Pork nahi",
+  "@nonvegNoPork": {
+    "description": "Non-veg exclusion"
+  },
+  "nonvegHalalOnly": "Sirf halal",
+  "@nonvegHalalOnly": {
+    "description": "Non-veg exclusion"
+  },
+  "prefsNoDairyTitle": "Doodh-dahi nahi",
+  "@prefsNoDairyTitle": {
+    "description": "No dairy toggle"
+  },
+  "prefsNoDairyHint": "Paneer, ghee, dahi sab hataye jayenge",
+  "@prefsNoDairyHint": {
+    "description": "No dairy hint"
+  },
+  "prefsShowOnHomeTitle": "Home par health dikhao",
+  "@prefsShowOnHomeTitle": {
+    "description": "Privacy toggle (F-5.3-05)"
+  },
+  "prefsShowOnHomeHint": "Band ho to sirf diet dikhegi",
+  "@prefsShowOnHomeHint": {
+    "description": "Privacy toggle hint"
+  },
+  "cookSyncDropped": "Kuch badlav bheje nahi ja sake — ticket pehle hi badal gaya tha",
+  "@cookSyncDropped": {
+    "description": "Offline queue: a replayed write was rejected (409/412/422)"
+  },
+  "settingsLogout": "Log out karo",
+  "@settingsLogout": {
+    "description": "Settings: sign out (API mode)"
+  },
+  "statusUnknown": "Update karo",
+  "@statusUnknown": {
+    "description": "Ticket status this app version does not know (no actions)"
+  },
+  "cookHindiVoiceMissing": "Hindi awaaz install karein",
+  "@cookHindiVoiceMissing": {
+    "description": "K5: no hi-IN TTS voice and no server audio"
+  },
+  "cookHindiVoiceHint": "Phone Settings → Bhasha → Text-to-speech mein Hindi chuno.",
+  "@cookHindiVoiceHint": {
+    "description": "K5: where to install the voice"
+  },
+  "cookOpenSettings": "Settings kholo",
+  "@cookOpenSettings": {
+    "description": "K5: open TTS settings"
+  },
+  "cookAudioError": "Awaaz nahi chal payi",
+  "@cookAudioError": {
+    "description": "K5: TTS / audio error"
+  },
+  "subStatusUnknown": "Status pata nahi chala",
+  "@subStatusUnknown": {
+    "description": "Subscription status could not be read"
+  },
+  "videoOpenFailed": "Video nahi khul paya",
+  "@videoOpenFailed": {
+    "description": "Detail: launching the video link failed"
+  },
+  "settingsDisplay": "Display",
+  "@settingsDisplay": {
+    "description": "Settings section"
+  },
+  "settingsLightAnimations": "Halki animation",
+  "@settingsLightAnimations": {
+    "description": "Settings: keep the thali still"
+  },
+  "settingsLightAnimationsHint": "Purane ya dheeme phone ke liye: thali ghoomegi nahi",
+  "@settingsLightAnimationsHint": {
+    "description": "Settings: light animations hint"
+  },
+  "cookLanguage": "Cook mode ki bhasha",
+  "@cookLanguage": {
+    "description": "Semantics: cook-mode language switch"
+  }
+}

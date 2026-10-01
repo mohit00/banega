@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block header %}{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <div class="container-tight">
+        <form class="card card-md" action="{{ request.url }}" method="POST" autocomplete="off">
+            {{ csrf_input(request) }}
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Banega staff login</h2>
+                {% if error %}
+                    <div class="alert alert-danger mb-3" role="alert">{{ error }}</div>
+                {% endif %}
+                <div class="mb-3">
+                    <label class="form-label" for="username">Email</label>
+                    <input type="text" id="username" name="username" class="form-control"
+                           value="{{ email or '' }}" autocomplete="username" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control"
+                           autocomplete="current-password" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="totp">Authenticator code</label>
+                    <input type="text" id="totp" name="totp" class="form-control"
+                           inputmode="numeric" pattern="[0-9 ]*" maxlength="8"
+                           autocomplete="one-time-code" placeholder="6 digits" />
+                    <small class="form-hint">Leave empty on your very first login to set up the authenticator.</small>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

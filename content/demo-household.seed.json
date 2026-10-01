@@ -1,0 +1,88 @@
+{
+  "household": {
+    "name": "Purohit Parivaar",
+    "timezone": "Asia/Kolkata",
+    "default_servings": 5
+  },
+  "members": [
+    {
+      "name": "Papa",
+      "colour": "#2F5FC4",
+      "diet": "veg",
+      "spice": "medium",
+      "needs": [
+        "Low sugar",
+        "Low oil"
+      ],
+      "cuisines": [
+        "North Indian",
+        "Rajasthani"
+      ],
+      "is_kid": false
+    },
+    {
+      "name": "Mummy",
+      "colour": "#B8386A",
+      "diet": "veg",
+      "spice": "medium",
+      "needs": [
+        "High protein"
+      ],
+      "cuisines": [
+        "Gujarati",
+        "North Indian"
+      ],
+      "is_kid": false
+    },
+    {
+      "name": "Dadi",
+      "colour": "#7549BF",
+      "diet": "jain",
+      "spice": "kam",
+      "needs": [
+        "Low oil"
+      ],
+      "cuisines": [
+        "Rajasthani",
+        "Gujarati"
+      ],
+      "is_kid": false
+    },
+    {
+      "name": "Daughter",
+      "colour": "#B85A0C",
+      "diet": "eggetarian",
+      "spice": "kam",
+      "needs": [
+        "Kid-friendly"
+      ],
+      "cuisines": [
+        "Indo-Chinese",
+        "South Indian"
+      ],
+      "is_kid": true
+    },
+    {
+      "name": "Wife",
+      "colour": "#0E7C3A",
+      "diet": "non_veg",
+      "spice": "teekha",
+      "needs": [
+        "High protein"
+      ],
+      "cuisines": [
+        "Bengali",
+        "South Indian"
+      ],
+      "is_kid": false
+    }
+  ],
+  "stock": {
+    "curd": "out",
+    "paneer": "low",
+    "tomato": "low",
+    "green-chilli": "low",
+    "coriander-leaves": "out",
+    "milk": "low"
+  }
+}

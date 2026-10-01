@@ -1,0 +1,126 @@
+# Prod override, from the repo root:
+#   docker compose -f infra/docker-compose.yml -f infra/docker-compose.prod.yml up -d
+# Pinned images, every secret required from the environment / infra/.env (":?" fails the
+# deploy when one is missing), Redis with a password, no bind mounts, restart policies, daily
+# backups. The API refuses to start with an unsafe configuration (app/core/config.py):
+# no fake store, no memory Redis, no default DB password, Play webhook auth and App Store
+# credentials set, PUSH_PROVIDER=fcm (or ALLOW_NOOP_PUSH=1 on staging).
+# TLS: terminate at a load balancer (nginx passes X-Forwarded-Proto through) or use
+# infra/nginx/tls.conf.example.
+
+x-restart: &restart
+  restart: unless-stopped
+
+x-prod-env: &prod-env
+  ENV: prod
+  DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-banega}:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-banega}
+  REDIS_URL: redis://:${REDIS_PASSWORD:?set REDIS_PASSWORD}@redis:6379/0
+  JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET}
+  OTP_PROVIDER: ${OTP_PROVIDER:?set OTP_PROVIDER (msg91)}
+  STORE_VERIFIER: store
+  PLAY_WEBHOOK_SECRET: ${PLAY_WEBHOOK_SECRET:?set PLAY_WEBHOOK_SECRET}
+  APPSTORE_BUNDLE_ID: ${APPSTORE_BUNDLE_ID:?set APPSTORE_BUNDLE_ID}
+  APPSTORE_ISSUER_ID: ${APPSTORE_ISSUER_ID:?set APPSTORE_ISSUER_ID}
+  APPSTORE_KEY_ID: ${APPSTORE_KEY_ID:?set APPSTORE_KEY_ID}
+  APPSTORE_PRIVATE_KEY: ${APPSTORE_PRIVATE_KEY:?set APPSTORE_PRIVATE_KEY}
+  PUSH_PROVIDER: ${PUSH_PROVIDER:-fcm}
+  ALLOW_NOOP_PUSH: ${ALLOW_NOOP_PUSH:-0}
+  OTP_HMAC_KEY: ${OTP_HMAC_KEY:-}
+  INVITE_HMAC_KEY: ${INVITE_HMAC_KEY:-}
+
+services:
+  db:
+    <<: *restart
+    ports: !reset []
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+
+  redis:
+    <<: *restart
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD:?set REDIS_PASSWORD}"]
+    environment:
+      REDISCLI_AUTH: ${REDIS_PASSWORD:?set REDIS_PASSWORD}
+
+  migrate:
+    image: ${REGISTRY:-banega}/banega-api:${IMAGE_TAG:?set IMAGE_TAG}
+    volumes: !reset []
+    environment: *prod-env
+
+  api:
+    <<: *restart
+    image: ${REGISTRY:-banega}/banega-api:${IMAGE_TAG:?set IMAGE_TAG}
+    command:
+      - uvicorn
+      - app.main:app
+      - --host=0.0.0.0
+      - --port=8000
+      - --workers=2
+      # The API resolves the client IP from X-Forwarded-For itself (TRUSTED_PROXIES).
+      - --no-proxy-headers
+    # No bind mounts; the media volume holds data exports (MEDIA_DIR/exports).
+    volumes: !override
+      - media_data:/srv/media
+    environment: *prod-env
+
+  worker:
+    <<: *restart
+    image: ${REGISTRY:-banega}/banega-api:${IMAGE_TAG:?set IMAGE_TAG}
+    command: ["arq", "app.workers.worker.WorkerSettings"]
+    volumes: !override
+      - media_data:/srv/media
+    environment: *prod-env
+
+  admin:
+    <<: *restart
+    image: ${REGISTRY:-banega}/banega-admin:${IMAGE_TAG:?set IMAGE_TAG}
+    command:
+      - uvicorn
+      - main:app
+      - --host=0.0.0.0
+      - --port=8001
+      - --proxy-headers
+      - --forwarded-allow-ips=*
+    # No bind mounts in prod; keep only the uploaded-photos volume.
+    volumes: !override
+      - media_data:/srv/media
+    environment:
+      <<: *prod-env
+      # Staff log in with their own accounts (python -m app.cli staff-create); the env
+      # credential is ignored outside dev.
+      ADMIN_PASSWORD: ""
+      ADMIN_SECRET_KEY: ${ADMIN_SECRET_KEY:?set ADMIN_SECRET_KEY}
+
+  nginx:
+    <<: *restart
+    ports: !override
+      - "80:80"
+    environment:
+      # e.g. office / VPN egress: "203.0.113.0/24,198.51.100.7". Empty = open (+ TOTP).
+      ADMIN_ALLOW_CIDR: ${ADMIN_ALLOW_CIDR:-}
+
+  # Daily pg_dump (custom format), 14-day retention in a volume.
+  # TODO: sync /backups to object storage (not the same VM); restore drill before launch.
+  db-backup:
+    <<: *restart
+    image: pgvector/pgvector:pg16
+    environment:
+      PGHOST: db
+      PGUSER: ${POSTGRES_USER:-banega}
+      PGPASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      PGDATABASE: ${POSTGRES_DB:-banega}
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        while true; do
+        pg_dump -Fc -f "/backups/banega-$$(date +%Y%m%d-%H%M).dump" &&
+        find /backups -name "banega-*.dump" -mtime +14 -delete;
+        sleep 86400;
+        done
+    volumes:
+      - db_backups:/backups
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_backups:

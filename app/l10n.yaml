@@ -1,0 +1,9 @@
+# gen-l10n config. Hinglish (hi-Latn) is the template/default locale;
+# app_en.arb and app_hi.arb are copies to be translated later.
+arb-dir: lib/core/l10n/arb
+template-arb-file: app_hi_Latn.arb
+output-dir: lib/core/l10n/gen
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+preferred-supported-locales: [hi_Latn]
+nullable-getter: false

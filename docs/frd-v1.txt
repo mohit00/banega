@@ -1,0 +1,1256 @@
+Banega -- Functional Requirements Document
+
+Banega -- Functional Requirements
+Document
+
+ Sep 26, 2026 · @Anshul
+
+1. Overview
+
+Banega answers "aaj khaane mein kya hai?" for a whole household. It stores every family
+member's food rules once, then suggests recipes for each meal that the most people can
+eat. Suggestions come from an AI assistant called Maharaj.
+
+Problem. Indian homes decide three meals a day across mixed diets (Jain, veg, egg, non-
+veg), spice levels and health needs. The decision usually happens between the person
+cooking (family, cook or house help) and whoever is home, from memory.
+
+Goals for v1
+
+    Onboard a household and every member's preferences in under 3 minutes.
+    Return 3­6 meal options per query, each labelled with who can eat it and what to
+    tweak.
+    Turn chosen dishes into a daily cooking ticket for the cook, with required items
+    checked against kitchen stock.
+
+Reference prototype. The clickable design on the Banega canvas (artboard "App
+prototype") is the source of truth for layout, copy and motion. Its recipe list and AI replies
+are hard-coded; this document defines the real behaviour behind them.
+
+2. Users and roles
+
+One household account holds one admin, many member profiles and optional cook
+access.
+
+Role                                        Logs in?         Can do
+Household admin                             Yes (phone OTP)
+                                                             Create household,
+                                                             add/edit/remove members, ask
+                                                             Maharaj, Order staples,
+                                                             recieves messages on
+                                                             whatsapp from the app /
+                                                             maharaj on low inventory etc,
+                                                             build menu, send to cook, invite
+                                                             others
+
+                                                                               Page 1 of 25
+Banega -- Functional Requirements Document
+
+Role                                        Logs in?                  Can do
+Family member (adult)                       Optional, via invite
+                                                                      Edit own preferences, ask
+Profile-only member (kids, No                                         Maharaj, add dishes to the day
+elders)                                                               menu
+
+Cook (hired, or a family                    Yes. Hired cook: own OTP  Exists as a preference profile
+member such as mom)                         login, cook mode only.    managed by the admin
+                                            Family cook: same login,
+                                            switches between family   Gets a daily cooking ticket,
+                                            and cook mode             opens recipes, marks items out
+                                                                      of stock, requests ration, closes
+                                                                      tickets, sees ratings
+
+Cooking is a role, not a person. In most homes the person cooking is mom or another
+family member; some homes have a hired cook, and many mix both. Onboarding asks
+"Ghar mein khaana kaun banata hai?" and sets one of these setups:
+
+Setup    Who holds the cook role                                  How the app behaves
+
+Family   One family member (e.g. Mummy)                           No separate cook login; tickets appear
+cooks                                                             as "Aaj ka plan" in her own app; no
+                                                                  accept step; she approves her own
+                                                                  substitutes and ration list
+
+Hired cook Maharaj / didi with their own                          Separate Hindi-first cook mode; tickets
+                    phone                                         need accepting; dish changes need
+                                                                  admin approval
+
+Both     Hired cook for some meals, family Each ticket is assigned per meal (e.g.
+
+         for others                                               cook does lunch, Mummy does dinner)
+
+Rotates  Several family members take                              Each ticket has an assignee chosen
+         turns                                                    when the menu is confirmed
+
+The setup can be changed any time in settings.
+
+3. Scope
+
+v1 is a mobile app (iOS + Android) covering onboarding, recommendations, chat, recipe
+detail and the day menu. Everything else waits.
+
+                                                                                       Page 2 of 25
+Banega -- Functional Requirements Document
+
+Area            v1 (MVP)                                             Later
+
+Onboarding      Household + member profiles,                         Import from contacts, member
+                diet, spice, needs, cuisines                         photos
+
+Recommendations Per-meal ranked list with family-                    Weekly planner, leftovers,
+                              fit labels                             seasonal and festival menus
+
+Maharaj chat    Text queries in English, Hindi and Voice input, image of
+
+                Hinglish                                             fridge/pantry
+
+Recipe source   1,000+ curated home recipes                          User-submitted family recipes
+                covering all Indian regional
+                cuisines
+
+Menu            Day menu becomes a cooking                           Barcode/bill scan for stock, cook
+                ticket for the cook; kitchen stock,                  attendance and salary, multiple
+                ration requests, AI substitutes,                     cooks per household
+                ratings
+
+Commerce        "Order missing items" as a bill-                     Grocery partner integration and
+                style list; admin orders manually                    in-app checkout
+
+Pricing. 7-day free trial, then 50 per week for all v1 features, billed as an auto-renewing
+weekly subscription through Google Play and the App Store. Plans and prices will change
+as features are added.
+
+4. Screens and flow
+
+First launch runs Welcome  Family  Preferences  Loading  Home. Every later launch
+opens on Home.
+
+# Screen                                    Purpose                  Main actions        Goes to
+                                                                                         S2, S4
+S1 Welcome                                  Brand intro with the 3D  Set up household;   S3, S5
+                                            thali                    view demo family    S2
+                                                                                         S4
+S2 Family ("Ghar mein List of member cards with                      Tap member; add
+                                                                     member; continue
+      kaun kaun hai?")                      a one-line summary
+                                                                     Switch member tab;
+S3 Preferences                              Edit one member: diet,   save
+                                            spice, needs, cuisines
+                                                                     None
+S5 Loading                                  Shown while the first
+                                            recommendations are
+                                            computed (max 3 s)
+
+                                                                                                  Page 3 of 25
+Banega -- Functional Requirements Document
+
+# Screen                                    Purpose                     Main actions          Goes to
+S4 Home
+                                            Meal-slot tabs, Maharaj's   Search/ask; switch    S6, S7,
+S6 Maharaj chat                             pick, quick asks, recipe    slot; ADD; open       S8, S2
+S7 Recipe detail                            grid, menu bar, bottom nav  recipe
+S8 Day menu
+                                            Conversation with recipe    Send text; tap chip;  S7, S8
+                                            cards and follow-up chips   ADD; open recipe
+
+                                            Photo, who can eat it,      Add to menu; open     Back to
+                                            ingredients, steps          video recipe          origin
+
+                                            Chosen dishes, merged       Remove dish; send to S4
+                                            grocery list                cook; order missing
+                                                                        items
+
+Back navigation from S7 returns to whichever screen opened it (Home, Chat or Menu).
+
+Cook app screens. A hired cook lands straight in cook mode with Hindi-first copy, large
+type and icons. A family cook sees the same screens as an "Aaj ka plan" tab in her normal
+app, in her chosen language, without the accept and approval steps.
+
+# Screen          Purpose                              Main actions                           Goes
+                                                                                              to
+
+K1 Aaj ke         Today's cooking tickets by           Open ticket                            K2
+
+tickets           meal, with status and due
+
+                  time
+
+K2 Ticket detail Dishes, servings, who is              Accept; start cooking; mark K3, K4,
+
+                  eating, per-member tweaks, item out of stock; open                          K5
+
+                  required items with stock            recipe; complete
+
+                  status
+
+K3 Recipe         Steps and ingredients                Back                                   K2
+
+(cook view) scaled to today's servings,
+
+                  with an audio read-out
+
+K4 Stock issue AI's alternate recipe or                Accept suggestion; ask                 K2
+                               replacement dish for a
+                               missing item            family
+
+K5 Rasoi stock Household staples by                    Update levels; request                 K6
+
+                  category with in-stock / low / ration
+
+                  out
+
+                                                                                                 Page 4 of 25
+Banega -- Functional Requirements Document
+
+# Screen          Purpose                            Main actions                 Goes
+                                                                                  to
+K6 Ration         Items to buy with quantities,      Send to admin                K5
+         request  pre-filled from low stock and
+                  upcoming tickets                                                --
+
+K7 Meri ratings Ratings and comments per             View details
+                               dish, weekly average
+
+Family-side additions: a ticket status card on Home, a ration approval screen, and a rate-
+the-meal sheet shown after a ticket closes.
+
+5. Functional requirements
+
+Each requirement has an ID for tickets and QA. "Must" items block v1 release; "Should"
+items can slip one sprint.
+
+5.1 Account and household
+
+ID  Priority Requirement                             Acceptance criteria
+
+FR- Must Sign up and log in with Indian              OTP arrives in under 30 s; 3 wrong
+                                                     attempts lock for 10 min
+A1                mobile number + OTP
+
+FR- Must          Create one household with a name   Name shows in the Home header
+A2                ("Purohit Parivaar")
+
+FR- Should Invite an adult member by                 Invitee lands logged in to the same
+                                                     household
+A3                WhatsApp link
+
+FR- Must "View demo family" skips setup              Demo data is clearly labelled and
+                                                     can be cleared
+A4                with 5 sample members
+
+FR- Must Onboarding asks who cooks: a                Answer sets the cook setup
+
+A5                family member, a hired cook, both, (section 2); a family member can
+
+                  or several people in turns         be picked as cook without a
+
+                                                     second phone
+
+FR- Must 7-day free trial from household             Reminder on day 5 and day 7; after
+
+A6                creation, then a 50/week           expiry the app is read-only until
+
+                  subscription paid by the admin; one the admin subscribes
+
+                  subscription covers the whole
+
+                  household including the cook
+
+                                                                                  Page 5 of 25
+Banega -- Functional Requirements Document
+
+5.2 Member profiles
+
+ID  Priority Requirement                        Acceptance criteria
+
+FR- Must Add, rename and remove members New member defaults to Veg,
+
+M1        (max 12)                              Medium spice, no needs
+
+FR- Must Diet: exactly one of Veg, Jain, Egg, Single-select; change saves
+
+M2        Non-veg                               instantly
+
+FR- Must Spice: exactly one of Kam, Medium, Segmented control
+
+M3        Teekha
+
+FR- Must Needs (multi-select): Low oil, Low Any combination, including none
+
+M4        sugar, High protein, No maida, Kid-
+
+          friendly
+
+FR- Must Favourite cuisines (multi-select), Any combination
+
+M5        grouped by region as in section 7.4,
+
+          plus Indo-Chinese and Continental
+
+FR- Should Free-text dislikes and allergies (e.g. Allergy items become hard
+
+M6        "no baingan", "peanut allergy")       exclusions in the matching engine
+
+FR- Must Member card shows diet badge + Summary never wraps; truncates
+
+M7        one-line summary                      with ellipsis
+
+5.3 Home
+
+ID  Priority Requirement                        Acceptance criteria
+                                                User can switch slot; choice
+FR- Must  Default meal slot by device time:     persists for the session
+H1        Nashta before 11:00, Lunch 11:00­
+          16:00, Dinner after 16:00             Tapping opens Recipe detail
+
+FR- Must  "Maharaj ka pick" banner shows        Each tile: photo, veg/egg/non-veg
+H2        the top-ranked dish for the slot      mark, time, name, cuisine, fit
+                                                badge, ADD
+FR- Must Recipe grid shows 8 top-ranked         Opens Chat with the query already
+                                                sent
+H3        dishes for the slot
+
+FR- Must Quick-ask chips send a preset
+
+H4        query to Maharaj
+
+                                                                             Page 6 of 25
+Banega -- Functional Requirements Document
+
+ID  Priority Requirement                                   Acceptance criteria
+
+FR- Must           Search bar opens Chat;                  Rotation every 2.5 s
+H5                 placeholder rotates example
+                   queries
+
+FR- Must           Sticky menu bar appears once one        Shows count and names; tap opens
+H6                 dish is added                           Day menu
+
+FR- Must           Header shows household name             Max 3 constraints shown
+H7                 and key constraints (e.g. "Dadi
+                   (Jain) · Papa (low sugar)")
+
+5.4 Maharaj chat
+
+ID  Priority Requirement                                   Acceptance criteria
+
+FR- Must           Accept free text in English, Hindi      Same query in all three returns the
+C1                 (Devanagari) and Hinglish               same intent
+
+FR- Must Show a typing state while the                     Appears within 200 ms of send
+
+C2                 answer is prepared
+
+FR- Must           Reply = one short message + 3­4         First token in under 2 s, full reply in
+C3                 recipe cards + 2­4 follow-up chips      under 6 s (p90)
+
+FR- Must           Each card: photo, mark, time, name, Note names the main tweak or
+C4
+                   fit badge, one-line note, ADD           who can't eat it
+
+FR- Must Keep conversation context within a Follow-up narrows the previous
+
+C5                 session ("aur halka?" refines the       result set
+
+                   last answer)
+
+FR- Must           When nothing matches, say so and        Never an empty reply
+C6                 show the closest options
+
+FR- Should Chat history saved for 30 days                  Visible when Chat reopens
+C7
+
+5.5 Recipe detail
+
+ID  Priority Requirement                                   Acceptance criteria
+
+FR- Must           Hero photo, diet label, cuisine, total  Photo loads under 1 s on 4G
+R1                 time, name, one-line description
+
+                                                                                        Page 7 of 25
+Banega -- Functional Requirements Document
+
+ID  Priority Requirement                      Acceptance criteria
+
+FR- Must  "Kaun khayega": every member with Uses the matching engine
+R2        Perfect / Tweak / Nahi and a reason (section 6)
+
+FR- Must  Ingredients list with quantities,   Scaling rounds to kitchen units
+R3        scaled to household size            (cup, tsp, pieces)
+
+FR- Must  Numbered steps                      3­10 steps
+R4
+
+FR- Must "Video recipe" opens the source      Opens in-app browser
+
+R5        video or page
+
+FR- Must Add to / remove from day menu        Button state mirrors the menu
+R6
+
+5.6 Day menu and sharing
+
+ID  Priority Requirement                      Acceptance criteria
+
+FR- Must  One menu per household per meal     Adding the same dish twice is
+P1        slot per date                       ignored
+
+FR- Must  Coverage line: whether every        Names the uncovered members
+P2        member has at least one dish they   when false
+          can eat
+
+FR- Must  Merged grocery list with duplicates Checkboxes persist per menu
+P3        combined
+
+FR- Must  "Send to cook" turns the menu into  Message readable without the app;
+P4        a cooking ticket in the cook app    Hindi option
+          (WhatsApp message only if the
+          cook has no app)
+
+FR- Should "Order missing items" generates a List can be shared on WhatsApp,
+
+P5        bill-style list of unchecked items  saved as image or copied
+
+          (item, quantity, unit); the admin
+
+          orders manually from any shop or
+
+          app
+
+5.7 Cook app and daily tickets
+
+Every confirmed menu becomes one ticket per meal. The cook works only from tickets.
+
+                                                                             Page 8 of 25
+Banega -- Functional Requirements Document
+
+ID     Priority Requirement                           Acceptance criteria
+
+FR- Must       Admin gives the cook role to a         Cook cannot edit member profiles
+K1             family member or to a hired cook       or other households' data
+               (name + phone); a hired cook logs
+               in with OTP and sees only cook
+               mode, a family cook switches
+               modes
+
+FR- Must       A ticket is created when the family    Holds date, meal slot, dishes,
+K2             confirms a meal's menu                 servings, eaters, due time, notes
+
+FR- Must       Cook gets a push notification for      Arrives within 10 s; ticket shows
+K3             each new or changed ticket             "Updated" tag with what changed
+
+FR- Must       Ticket lists per-member tweaks         Pulled from the matching engine
+K4             (e.g. "Dadi: bina pyaaz-lahsun katori
+               alag")
+
+FR- Must       Cook opens any dish's recipe,          Includes audio read-out in Hindi
+K5             scaled to the ticket's servings
+
+FR- Must       Cook can message the family on         Family sees it on the Home ticket
+K6             the ticket ("dahi khatam hai, kya      card
+               karoon?")
+
+FR- Must       Admin can edit or cancel a ticket      Later edits need cook acceptance
+K7             until status is Cooking
+
+Ticket states
+
+State          Set by                                 Next states
+                                                      Accepted, Cancelled
+New            System when menu is confirmed          Stock issue, Cooking, Cancelled
+                                                      Accepted (after a substitute is
+Accepted Cook                                         approved)
+                                                      Ready
+Stock          Cook marks a required item out of      Completed
+issue          stock                                  Rated (after ratings come in)
+                                                      --
+Cooking        Cook
+
+Ready          Cook
+
+Completed Cook or admin after serving
+
+Cancelled Admin
+
+                                                                                       Page 9 of 25
+Banega -- Functional Requirements Document
+
+Cook availability (On duty / Off duty toggle)
+
+Every person with the cook role, hired or family, has an On duty / Off duty switch at the
+top of cook mode. Turning it off marks them logged out of the kitchen for that period.
+
+ID   Priority Requirement                      Acceptance criteria
+
+FR- Must Cook toggles On duty / Off duty,      Status shows on the family Home
+                                               screen within 10 s
+K8        with an optional reason (chhutti,
+
+          beemar, bahar gaye) and return
+
+          date/time
+
+FR- Must Off duty can be set now or            Recurring and one-off schedules
+
+K9        scheduled ahead (e.g. Sunday off both supported
+
+          every week, leave from 12­15 Oct)
+
+FR- Must  While Off duty, the cook gets no     Tickets already accepted stay with
+K10       new tickets or push notifications    them unless reassigned
+
+FR- Must Open and upcoming tickets for the Admin reassigns to another cook-
+
+K11       off-duty period move to              role member in one tap
+
+          "Unassigned" and the admin is
+
+          alerted
+
+FR- Must If nobody else can cook, Maharaj      Suggestions respect everyone's
+
+K12       suggests easy options: 15-minute diet rules
+
+          dishes, ready-to-cook items in
+
+          stock, or ordering in
+
+FR- Should Off-duty history is visible to the  For hired cooks, supports
+                                               attendance and salary later
+K13       admin as a simple monthly
+
+          calendar
+
+Turning back On duty restores notifications and shows tickets assigned for the rest of the
+day.
+
+Primary cook, backup cook and "Chef for the day"
+
+The household names one primary cook and optionally one backup. Anyone else in the
+family (mom, father, a teenager) can also step in for a day.
+
+ID   Priority Requirement                      Acceptance criteria
+
+FR- Must Admin sets a primary cook and an When the primary goes Off duty,
+
+K14       optional backup cook from the        tickets go to the backup first, then
+
+          household's members or hired         to Unassigned
+
+          cook
+
+                                                                            Page 10 of 25
+Banega -- Functional Requirements Document
+
+ID   Priority Requirement                      Acceptance criteria
+
+FR- Must Any member with the app can           They get cook mode for those
+
+K15       switch on "Aaj main chef hoon"       tickets; the regular cook is told
+
+          (Chef for the day) for today, or for they are free for those meals
+
+          chosen meals
+
+FR- Must Only one person holds each ticket; Ticket shows the current chef's
+
+K16       if two people claim the same meal, name and avatar
+
+          the first claim wins and the second
+
+          sees who has it
+
+FR- Must Chef for the day ends                 Unfinished tickets return to the
+
+K17       automatically at midnight or when primary or backup cook
+
+          they switch it off
+
+FR- Should Ratings for that meal go to whoever Shown in their own "Meri ratings",
+
+K18       cooked it                            even if they are not the usual cook
+
+5.8 Kitchen stock and ration
+
+The app keeps a live list of the household's staples (the "Rasoi stock"). Every ticket
+checks it and builds a list of required items. The full starter catalogue of about 110 items is
+in the Kitchen staples tab.
+
+Full catalogue: K itchen staples
+
+ID   Priority Requirement                      Acceptance criteria
+
+FR- Must  New households start with the        Catalogue is grouped by category,
+S1        staples catalogue; admin or cook     Hindi + English names
+          removes what they never use
+
+FR- Must  Each item has a stock level: In      Cook changes level in one tap
+S2        stock / Low / Out, with an optional
+          quantity and unit
+
+FR- Must  Each ticket shows "Required          Each line shows stock status; Out
+S3        items": every ingredient of every    items are highlighted
+          dish, merged, with quantity for the
+          servings
+
+FR- Must  Completing a ticket lowers stock     Items crossing a threshold turn
+S4        estimates for used items             Low automatically
+
+                                                                    Page 11 of 25
+Banega -- Functional Requirements Document
+
+ID  Priority Requirement                      Acceptance criteria
+
+FR- Must  Cook raises a ration request: pre-  Cook can edit items and quantities
+S5        filled with Low and Out items plus  before sending
+          items needed for tickets in the
+          next 48 h
+
+FR- Must  Admin approves, edits or rejects a  Approved request becomes a bill-
+S6        ration request                      style list; admin orders manually,
+                                              then marks it "Bought"
+
+FR- Must  Marking a request Bought sets its   Cook is notified
+S7        items back to In stock
+
+FR- Should Weekly ration suggestion based on Shown every Sunday morning
+
+S8        the week's planned tickets
+
+5.9 Out-of-stock handling
+
+When a required item is Out, Maharaj tries to save the same dish first, and only then
+suggests a different one. The family always approves a dish change.
+
+1. Trigger. The cook marks an item Out on a ticket, or the stock check at ticket creation
+    finds one.
+
+2. Same dish, different recipe. Maharaj searches for an alternate recipe of the same dish
+    that avoids the missing item, using only In-stock items (e.g. no dahi for kadhi  kadhi
+    with buttermilk from milk + lemon). The result must still pass the matching engine for
+    everyone who could eat the original.
+
+3. Substitute ingredient. If no alternate recipe exists, suggest a safe swap (e.g. tomato
+    puree for fresh tomatoes) with the change in quantity.
+
+4. Different dish. If neither works, suggest up to 3 replacement dishes for the same slot
+    that are fully in stock and rank highest for the family.
+
+5. Approval. Steps 2­3 can be accepted by the cook alone if the admin allowed it in
+    settings; step 4 always goes to the admin, who picks a dish or lets the cook choose.
+
+6. Timeout. If nobody answers within 30 min of the due time, the cook may use the top
+    suggestion; the ticket records who approved what.
+
+ID  Priority Requirement                      Acceptance criteria
+
+FR- Must Suggestions appear within 5 s of an Shows which step (2, 3 or 4) the
+
+O1        item being marked Out               suggestion came from
+
+                                                                         Page 12 of 25
+Banega -- Functional Requirements Document
+
+ID  Priority Requirement                         Acceptance criteria
+                                                 Enforced by the matching engine,
+FR- Must No suggestion may break a               not the LLM
+                                                 Change log visible on the ticket
+O2        member's No rules (Jain, veg,
+                                                 Cook can remove it
+          allergy)
+
+FR- Must Accepted changes update the
+
+O3        ticket, required items and the
+
+          family's view
+
+FR- Should The missing item is added to the
+
+O4        next ration request automatically
+
+5.10 Ratings and learning
+
+After a ticket is Completed, everyone who ate rates the food; the cook sees every rating,
+and Maharaj learns from it. Rewards for the cook are out of v1.
+
+ID  Priority Requirement                         Acceptance criteria
+
+FR- Must  30 min after Completed, each eater     One prompt per meal, not per dish
+F1        with the app gets a "Khaana kaisa
+          laga?" prompt
+
+FR- Must  Rating = 1­5 per dish, optional quick  Admin can rate on behalf of
+F2        tags (Perfect namak, Zyada teekha,     profile-only members (kids, elders)
+          Kam pakka, Bahut tasty) and an
+          optional note
+
+FR- Must  Cook sees each rating with the         Visible within 1 min of submission
+F3        member's name, tags and note on
+          the ticket and in Meri ratings
+
+FR- Must  Weekly average and top-rated           Updated every Monday
+F4        dishes shown to cook and admin
+
+FR- Must  Maharaj learns from meals: ratings,    A dish rated 4­5 by a member
+F5        tags and what was actually cooked      ranks higher for them; 1­2 lowers it
+          (including substitutes) re-rank        for 30 days; repeated tags propose
+          future suggestions per household       a tweak (e.g. "Papa: kam namak")
+          and per member                         that the admin confirms
+
+FR- Must  Cooked history is kept per             Maharaj avoids repeating the same
+F6        household                              dish within 3 days unless asked
+
+                                                                       Page 13 of 25
+Banega -- Functional Requirements Document
+
+When the cook is a family member, the rating prompt leads with appreciation tags (Bahut
+tasty, Perfect namak) and asks "kya badlein agli baar?" instead of showing stars first. She
+can turn ratings off from her own settings.
+
+6. Family-fit matching engine
+
+For every (member, recipe) pair the engine returns Fit, Tweak or No, plus one reason.
+Rankings and every badge in the app come from these results. Run it server-side and
+deterministically; the AI never overrides a No.
+
+6.1 Per-member rules (checked in this order; the first No wins)
+
+Rule      Condition                            Result Reason shown
+
+Jain      Member is Jain and recipe is not Jain- No  Pyaaz-lahsun hai
+
+          safe
+
+Veg       Member is Veg and recipe contains    No    Isme anda hai / Non-veg
+
+          egg or meat                                hai
+
+Egg       Member is Egg and recipe contains    No    Non-veg hai
+
+          meat or fish
+
+No maida  Member has No maida and recipe       No    Maida hai
+          uses maida
+
+Allergy   Recipe contains a listed allergen    No    Contains <allergen>
+
+Spice down Member is Kam and recipe spice = 3 Tweak Unki katori mein kam mirch
+
+Spice up  Member is Teekha and recipe spice =  Tweak Upar se laal mirch / achaar
+          1
+
+Low sugar Recipe not tagged low-sugar          Tweak Portion chhota, salad
+                                                            zyada
+
+Low oil   Recipe not tagged low-oil            Tweak Kam tel mein banao
+
+High      Recipe not tagged protein            Tweak Saath mein dahi/paneer
+protein
+
+Kid-      Recipe not kid-tagged and spice > 1  Tweak Bachche ke liye alag, halka
+friendly
+
+Otherwise --                                   Fit   Bilkul sahi / Favourite
+
+                                                     cuisine bhi
+
+                                                                              Page 14 of 25
+Banega -- Functional Requirements Document
+
+When several Tweaks apply, show the first; store all.
+
+6.2 Recipe score and badge
+
+Score = 10 × members who can eat it (Fit or Tweak) + 3 × Fit members + 2 × members
+whose favourite cuisine matches - 15 if anyone is No. Ties break on shorter cooking time.
+
+Badge        Condition                      Colour token
+
+Sabke liye   Everyone is Fit                fit-soft
+
+Sab · N tweak Everyone can eat, N need a tweak tweak-soft
+
+X/Y ke liye  At least one member is No      no-soft
+
+6.3 Recipe tags the engine needs
+
+Every recipe must carry: diet (veg / egg / nonveg), jain_safe (bool), spice (1­3), meal slots
+(nashta / lunch / dinner), cuisine, cook time in minutes, and tags from this set: low_oil,
+low_sugar, protein, kid, light, rainy, special, maida. Tagging is done by the content team
+with AI assistance and human review.
+
+7. Maharaj AI assistant
+
+Maharaj is an LLM that turns the user's words into structured filters, lets the matching
+engine pick recipes, then writes a short Hinglish reply. The LLM never invents recipes,
+ingredients or nutrition claims.
+
+7.1 Request pipeline
+
+1. Parse. Send the query, the last 6 chat turns, the household profile and the current slot
+    to the LLM. It returns JSON only: {slot, filters[], cuisines[], member_focus,
+    max_minutes, keywords[]} .
+
+2. Retrieve. Query the recipe database with those filters (hard filters first, then keyword
+    and embedding search). If fewer than 3 results, drop soft filters one at a time and note
+    which were dropped.
+
+3. Rank. Run the matching engine (section 6) on the results; take the top 4.
+4. Write. The LLM writes one message of at most 2 sentences plus 2­4 follow-up chips,
+
+    using only the ranked results and their fit data.
+5. Return the message, recipe IDs, fit summaries and chips to the app.
+
+                                                           Page 15 of 25
+Banega -- Functional Requirements Document
+
+7.2 Intents the parser must recognise
+
+User says (examples)                        Filter produced
+
+nashta, breakfast, subah / lunch, dopahar / slot
+dinner, raat
+
+halka, light, bimaar, simple                tag: light
+
+jaldi, quick, 15 min, fast                  max_minutes: 20
+
+protein, gym                                tag: protein
+
+mehmaan, guest, party, special              tag: special
+
+baarish, rain                               tag: rainy
+
+tiffin, bachchon ke liye, beti/daughter     tag: kid
+
+paneer, dal, any ingredient                 keyword
+
+any region or cuisine name (kerala, kashmiri, cuisine
+chettinad, gujarati, bengali, chinese...)
+
+A member's name ("Dadi ke liye")            member_focus: only recipes where that
+                                            member is not No
+
+7.3 Reply rules
+
+    Hinglish by default; switch to the language of the query when it is clearly English or
+    Hindi.
+    The first line states the count and the filters applied (e.g. "Dinner ke liye 4 options --
+    halka").
+    The second line names how many options work for the whole family and the key
+    constraints respected.
+    No medical advice. "Low sugar" and similar are preference tags, not health claims.
+
+7.4 Recipe sourcing
+
+    v1 ships with at least 1,000 everyday home recipes covering every region of India, each
+    with photo, tags, ingredients mapped to staples, and steps.
+    Recipes are gathered from publicly available sources. The content team rewrites steps
+    in Banega's own words and format, uses photos that are shot, generated or licensed,
+    and stores and credits the source link on Recipe detail.
+    Do not scrape sites whose terms forbid it. The "Video recipe" link must point to the
+    recipe's own source.
+
+                                                             Page 16 of 25
+Banega -- Functional Requirements Document
+
+Coverage target for the first 1,000 recipes. Weighted toward what Indian homes cook
+daily: dals, sabzis, rotis, rice, breakfasts. Festival and restaurant-style dishes stay under
+10%.
+
+Region                                      Cuisines covered                         Target
+North                                                                                recipes
+West
+South                                       Punjabi, Delhi/UP, Awadhi, Kashmiri,     200
+
+East                                        Himachali, Uttarakhandi
+North-East
+Central                                     Rajasthani, Gujarati, Maharashtrian, Goan, 200
+Pan-Indian everyday                         Sindhi, Parsi
+Indo-Chinese and Continental
+home-style                                  Tamil (incl. Chettinad), Kerala, Karnataka 220
+Total                                       (incl. Udupi, Mangalorean), Andhra,
+                                            Telangana/Hyderabadi
+
+                                            Bengali, Odia, Bihari, Jharkhandi        130
+
+                                            Assamese, Manipuri, Naga, Meghalayan, 60
+                                            Sikkimese
+
+                                            Madhya Pradesh, Chhattisgarhi            50
+
+                                            Khichdi, dal-chawal, parathas, chillas,  100
+
+                                            tiffin items, kids' food
+
+                                            Hakka noodles, fried rice, pasta,        40
+
+                                            sandwiches
+
+                                                                                     1,000
+
+Every recipe must carry the section 6.3 tags, including jain_safe, so each region has Jain,
+veg, egg and non-veg options where the cuisine allows.
+
+8. Data model
+
+Fifteen core entities (no Reward entity in v1). IDs are UUIDs; all tables carry created_at
+and updated_at.
+
+Entity  Key fields                                                    Relations
+User                                                                  belongs to one Household
+        phone, name, language (en / hi /
+        hinglish), role (admin / member /
+        cook)
+
+                                                                                            Page 17 of 25
+Banega -- Functional Requirements Document
+
+Entity        Key fields                              Relations
+Household                                             has many Members, Cooks,
+Subscription  name, city, default_servings,           Menus, Tickets, PantryItems
+Member        cook_setup (family / hired / both /     belongs to Household
+Cook          rotates), cook_can_approve_swaps        belongs to Household
+              (bool)
+Recipe                                                belongs to Household
+              household_id, store (play /
+Menu          app_store), status (trial / active /    many-to-many with Menus
+Ticket        expired), trial_ends_at, renews_at,
+              price_inr (50/week)                     belongs to Household;
+Staple                                                creates one Ticket
+              name, color, diet (veg / jain / egg /   belongs to Menu
+              nonveg), spice (kam / medium /
+              teekha), needs[], cuisines[],           global catalogue
+              allergies[], dislikes[], is_kid,
+              linked_user_id?
+
+              member_id or user_id, is_hired, rank
+              (primary / backup / none),
+              duty_status (on / off),
+              off_duty_schedule[],
+              chef_for_day_until?, phone,
+              languages[]
+
+              name, subtitle, photo_url, region,
+              cuisine, diet, jain_safe, spice (1­3),
+              meals[], minutes, tags[],
+              ingredients[{staple_id, qty, unit}],
+              steps[], alt_recipe_ids[], source_url,
+              source_credit
+
+              household_id, date, slot (nashta /
+              lunch / dinner), recipe_ids[],
+              confirmed_at
+
+              menu_id, assignee_id (primary,
+              backup or chef for the day), status,
+              due_at, servings, eaters[],
+              dishes[{recipe_id, tweaks[]}],
+              required_items[{staple_id, qty, unit,
+              stock_status}], change_log[],
+              messages[]
+
+              name_en, name_hi, category,
+              default_unit, perishable (bool)
+
+                                                      Page 18 of 25
+Banega -- Functional Requirements Document
+
+Entity          Key fields                                Relations
+PantryItem
+                household_id, staple_id, level (in / low  belongs to Household
+RationRequest   / out), qty?, unit?, updated_by,
+                updated_at
+Rating
+CookedHistory   household_id, raised_by,                  belongs to Household;
+ChatSession,    items[{staple_id, qty, unit}], status     renders as a bill-style list
+FitCache        (draft / sent / approved / rejected /
+                bought), approved_by
+
+                ticket_id, recipe_id, member_id,          belongs to Ticket
+                cook_id, stars (1­5), tags[], note
+
+                household_id, date, slot, recipe_id,      feeds Maharaj's learning (FR-
+                substitutes_used[], avg_rating            F5, FR-F6)
+
+                chat messages; per member × recipe        belong to Household
+                fit result and reason
+
+9. APIs and integrations
+
+The app talks to one REST backend; the backend talks to the LLM, recipe sources and
+WhatsApp.
+
+9.1 App  backend endpoints
+
+Method          Path                                   Purpose
+POST            /auth/otp, /auth/verify
+                                                       Phone login (admin, member or
+GET / POST      /subscription,                         cook)
+GET / PUT       /subscription/verify
+                                                       Trial status; validate store
+                /household                             purchase
+
+GET / POST /    /members, /members/{id}                Read or rename household, cook
+PATCH / DELETE  /cooks, /cooks/{id}                    setup and permissions
+                /cooks/chef-for-day
+GET / POST /                                           Manage member profiles
+PATCH / DELETE
+                                                       Add cooks, set primary/backup,
+POST / DELETE                                          duty status and schedule
+
+                                                       Claim or release today's meals as
+                                                       Chef for the day
+
+                                                                                Page 19 of 25
+Banega -- Functional Requirements Document
+
+Method        Path                          Purpose
+GET           /recommendations?
+              slot=&date=                   Ranked recipes with fit summaries
+POST          /chat                         for Home
+                                            Send a query; streams the reply
+GET           /recipes/{id}?servings=       (server-sent events)
+
+GET / PUT     /menus?date=&slot=            Recipe detail with per-member fit
+POST          /menus/{id}/confirm           and scaled ingredients
+
+GET           /tickets?date=&status=        Read or update the day menu
+PATCH         /tickets/{id}
+                                            Confirm menu and create the
+POST          /tickets/{id}/stock-issue     ticket
+
+POST          /tickets/{id}/resolve         Cook's and family's ticket lists
+
+POST          /tickets/{id}/messages        Change status, reassign, edit,
+                                            cancel
+GET / PATCH   /pantry, /pantry/{staple_id}
+GET / POST /  /ration-requests, /ration-    Report an out-of-stock item;
+PATCH         requests/{id}                 returns AI suggestions
+GET           /ration-requests/{id}/bill,
+              /menus/{id}/bill              Accept a suggested recipe, swap
+POST          /tickets/{id}/ratings         or new dish
+
+GET           /cooks/{id}/ratings           Cook  family messages on a
+                                            ticket
+                                            Read and update stock levels
+
+                                            Raise, edit, approve, mark bought
+
+                                            Bill-style list for manual ordering
+                                            (JSON + shareable image)
+
+                                            Submit ratings for a completed
+                                            ticket
+
+                                            Ratings feed and weekly summary
+                                            for the cook
+
+                                            Page 20 of 25
+Banega -- Functional Requirements Document
+
+9.2 External services
+
+Service                                     Used for                       Notes
+LLM API
+                                            Query parsing, reply writing,  JSON-schema output for
+Embedding + vector                          out-of-stock alternates        parsing; temperature 0.3 for
+search                                                                     replies
+SMS OTP provider
+Push notifications (FCM /                   Keyword and semantic           Index recipe name, tags,
+APNs)                                       recipe search                  ingredients
+
+Google Play Billing, App                    Login                          India DLT-compliant sender
+Store subscriptions
+WhatsApp share intent                       New tickets, stock issues,     Per-role notification settings
+                                            rating prompts, off-duty
+Product analytics                           alerts
+
+                                            7-day trial, then 50/week      Server-side receipt validation
+
+                                            Sharing bill-style lists and   Device share sheet; no
+                                            menus; fallback for a cook     WhatsApp Business API in v1
+                                            without the app
+                                                                           No personal food data in
+                                            Events in section 12           event names
+
+10. Non-functional requirements
+
+Area           Requirement
+
+Performance    Home ready in under 1.5 s on a mid-range Android
+               phone over 4G; animations hold 60 fps
+
+Motion budget  At most one continuously animated 3D element on
+               screen at a time; all animations use
+               transform/opacity only; honour the OS reduce-
+               motion setting
+
+Images         Serve WebP, 440 px for tiles and 1080 px for detail;
+               lazy-load below the fold; show a cream placeholder
+               while loading
+
+Offline        Last Home list, open menu and grocery list
+               readable offline; chat shows "net nahi hai" and
+               queues nothing
+
+                                                                                                     Page 21 of 25
+Banega -- Functional Requirements Document
+
+Area           Requirement
+Language
+Accessibility  UI copy in Hinglish (default), English and Hindi; all
+               strings externalised
+Privacy
+               Touch targets at least 44 px; text contrast at least
+Reliability    4.5:1; every icon button has a label; screen-reader
+Platforms      order matches visual order
+
+               Diet, allergy and health-like tags are personal data:
+               encrypted at rest, never sold, deletable with the
+               household
+
+               Chat falls back to the rule-based parser if the LLM
+               fails or times out after 8 s
+
+               iOS 16+ and Android 10+; phone portrait only in v1
+
+11. Design system and motion
+
+Build the component library in three tiers, as on the "Design library" artboard: Constants
+(tokens)  Elements (atoms)  Components. Screens use components only, never raw
+values.
+
+11.1 Colour tokens
+
+Token                                       Hex      Use
+haldi                                       #FFCC33  Headers, brand surfaces
+dhaniya                                     #0E7C3A  Primary buttons, ADD, selected
+                                                     states
+dhaniya-deep                                #0E5F31  Hero banner, pressed ledge
+                                                     (#095A29)
+tawa                                        #1B1B18  Body text, user chat bubble
+                                                     Spice indicators, errors
+mirchi                                      #C4331F  App background
+                                                     Photo placeholders
+chaawal                                     #F4F5EF  Fit badges
+
+malai                                       #F7F3E6
+
+fit-soft / tweak-soft / no- #E7F4EA / #FFF1C7 /
+
+soft                                        #FCE6E2
+
+                                                                      Page 22 of 25
+Banega -- Functional Requirements Document
+
+11.2 Type, spacing, radius
+
+    Display and titles: Bricolage Grotesque 800 (40 / 26 px). UI and body: Figtree 500­800
+    (16 / 14 / 12 px).
+    Spacing on a 4-pt scale: 4, 8, 12, 16, 24, 32, 48.
+    Radius: 6 badge, 10 segment, 14 button, 16 card, 20 banner, full for chips.
+
+11.3 Key components
+
+Recipe tile, member card, chip, segmented control, ADD button (outline  filled when
+added), veg/egg/non-veg mark, fit badge, chat bubbles (user / Maharaj), recipe carousel
+card, sticky menu bar, bottom nav with raised Maharaj button, toast.
+
+11.4 Motion
+
+    3D thali on Welcome, Loading and the Home banner: the real thali photo on a plane
+    tilted 62°, spinning once per 18 s, floating 10 px on a 4.5 s loop, with rising steam.
+    Screen entry: 18 px rise + fade, 450 ms. Recipe tiles pop in with a 38° tilt, staggered 70
+    ms. Chat cards flip in from 65° on the Y axis.
+    Primary buttons sit on a 4 px ledge that collapses on press. Typing indicator = three
+    flipping rotis.
+    Recipe detail photo slowly zooms 2%  14% over 14 s.
+
+12. Analytics and success metrics
+
+Track these events from day one; targets are set after the first 4 weeks of beta data.
+
+Event                                       Fired when               Properties
+onboarding_completed                        Household reaches        member_count,
+                                            Home the first time      seconds_taken, used_demo,
+trial_started / subscribed /                                         cook_setup
+trial_expired                               Subscription state       day of trial, store
+query_sent                                  changes
+                                            Chat message or quick    source (chip / typed / search),
+recommendation_shown                        ask sent                 slot, language
+                                            Home grid or chat cards  slot, recipe_ids, fit_badges
+recipe_opened                               rendered
+                                            Recipe detail opened     origin screen, rank position,
+                                                                     role
+
+                                                                     Page 23 of 25
+Banega -- Functional Requirements Document
+
+Event                                       Fired when                  Properties
+dish_added                                  ADD tapped                  origin screen, fit_badge
+ticket_created                              Menu confirmed              dish_count,
+ticket_status_changed                                                   minutes_before_due
+cook_duty_changed                           Any ticket state change     from, to, actor role
+                                            Cook goes on or off duty,   type, scheduled (bool)
+stock_issue_raised                          or someone claims Chef
+                                            for the day                 staple category, resolution
+ration_request_sent                         Item marked Out on a        step (alt recipe / swap / new
+bill_generated                              ticket                      dish)
+rating_submitted                                                        item_count, auto_filled_share
+                                            Cook or admin sends a
+                                            request                     source (menu / ration),
+                                            Bill-style list created or  item_count, shared (bool)
+                                            shared                      stars, tag_count, on_behalf
+                                            A member rates a dish
+
+Metrics to watch: onboarding completion rate, share of days with at least one menu
+shared, queries per menu shared, share of shared menus where every member is covered,
+tickets completed on time, stock issues resolved without a dish change, and the cook's
+average rating.
+
+13. Decisions, assumptions and open questions
+
+Assumptions made in this document
+
+    Native mobile app first; no web app in v1.
+    Cooking is a role: most often mom or another family member, sometimes a hired cook,
+    often both. WhatsApp is only a fallback for a hired cook without a smartphone.
+    Recipes come from a curated, licensed database, not live web scraping.
+    Meal-slot cut-off times (11:00 and 16:00) are defaults and may need tuning.
+
+Decisions taken
+
+                                                                        Page 24 of 25
+Banega -- Functional Requirements Document
+
+Question                                    Decision
+
+Recipe source                               At least 1,000 recipes curated from publicly
+                                            available sources, covering every Indian regional
+                                            cuisine, seen from a home-kitchen angle (section
+                                            7.4). No paid content partner in v1
+
+Grocery ordering                            No grocery partner. "Order missing items" and
+                                            approved ration requests produce a bill-style list;
+                                            the household admin orders manually
+
+Pricing                                     7-day free trial, then 50 per week for all v1
+                                            features. Pricing will change with later upgrades
+
+Learning from meals                         Yes. Maharaj uses ratings and what was actually
+                                            cooked to re-rank future suggestions (FR-F5)
+
+Cooks working in several homes Phase 2. v1 onboards families; the cook is only the
+                                                 executor inside one household
+
+Rewards for the cook                        Dropped from v1. Cooks see ratings only
+
+Voice-only cook mode                        Not needed in v1
+
+Still open
+    Do we need Hindi-script recipe steps for cooks who don't read English?
+
+                                                                                                 Page 25 of 25
+

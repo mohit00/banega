@@ -1,0 +1,8389 @@
+[
+  {
+    "slug": "onion",
+    "name_en": "Onion",
+    "name_hi": "प्याज़",
+    "aliases": [
+      "pyaaz",
+      "pyaz",
+      "pyaj",
+      "kanda",
+      "onion",
+      "onions"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": true
+  },
+  {
+    "slug": "garlic",
+    "name_en": "Garlic",
+    "name_hi": "लहसुन",
+    "aliases": [
+      "lahsun",
+      "lehsun",
+      "lasun",
+      "lassan",
+      "garlic"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": true
+  },
+  {
+    "slug": "spring-onion",
+    "name_en": "Spring onion",
+    "name_hi": "हरा प्याज़",
+    "aliases": [
+      "hara pyaaz",
+      "hari pyaz",
+      "spring onion"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "shallot",
+    "name_en": "Shallot",
+    "name_hi": "छोटा प्याज़",
+    "aliases": [
+      "chhota pyaaz",
+      "sambar onion",
+      "shallots"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "potato",
+    "name_en": "Potato",
+    "name_hi": "आलू",
+    "aliases": [
+      "aloo",
+      "alu",
+      "batata",
+      "potato",
+      "potatoes"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": true
+  },
+  {
+    "slug": "sweet-potato",
+    "name_en": "Sweet potato",
+    "name_hi": "शकरकंद",
+    "aliases": [
+      "shakarkand",
+      "shakarkandi",
+      "sweet potato"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "carrot",
+    "name_en": "Carrot",
+    "name_hi": "गाजर",
+    "aliases": [
+      "gajar",
+      "carrot",
+      "carrots"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "radish",
+    "name_en": "Radish",
+    "name_hi": "मूली",
+    "aliases": [
+      "mooli",
+      "muli",
+      "radish"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "beetroot",
+    "name_en": "Beetroot",
+    "name_hi": "चुकंदर",
+    "aliases": [
+      "chukandar",
+      "beetroot",
+      "beet"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "ginger",
+    "name_en": "Ginger (fresh)",
+    "name_hi": "अदरक",
+    "aliases": [
+      "adrak",
+      "adrakh",
+      "ginger"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": true
+  },
+  {
+    "slug": "yam",
+    "name_en": "Elephant foot yam",
+    "name_hi": "सूरन",
+    "aliases": [
+      "suran",
+      "jimikand",
+      "zimikand",
+      "yam"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "arbi",
+    "name_en": "Colocasia",
+    "name_hi": "अरबी",
+    "aliases": [
+      "arbi",
+      "arvi",
+      "colocasia",
+      "taro"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "tomato",
+    "name_en": "Tomato",
+    "name_hi": "टमाटर",
+    "aliases": [
+      "tamatar",
+      "tamater",
+      "tomato",
+      "tomatoes"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": true
+  },
+  {
+    "slug": "green-peas",
+    "name_en": "Green peas",
+    "name_hi": "मटर",
+    "aliases": [
+      "matar",
+      "mattar",
+      "peas",
+      "hare matar"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "bottle-gourd",
+    "name_en": "Bottle gourd",
+    "name_hi": "लौकी",
+    "aliases": [
+      "lauki",
+      "ghiya",
+      "dudhi",
+      "doodhi",
+      "bottle gourd"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "drumstick",
+    "name_en": "Drumstick",
+    "name_hi": "सहजन",
+    "aliases": [
+      "drumstick",
+      "drumsticks",
+      "sahjan",
+      "saijan",
+      "moringa"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "okra",
+    "name_en": "Okra",
+    "name_hi": "भिंडी",
+    "aliases": [
+      "bhindi",
+      "okra",
+      "ladyfinger",
+      "bhendi"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "spinach",
+    "name_en": "Spinach",
+    "name_hi": "पालक",
+    "aliases": [
+      "palak",
+      "spinach"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "cabbage",
+    "name_en": "Cabbage",
+    "name_hi": "पत्ता गोभी",
+    "aliases": [
+      "patta gobhi",
+      "patta gobi",
+      "bandh gobhi",
+      "cabbage"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "cauliflower",
+    "name_en": "Cauliflower",
+    "name_hi": "फूल गोभी",
+    "aliases": [
+      "phool gobhi",
+      "gobhi",
+      "gobi",
+      "cauliflower"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "capsicum",
+    "name_en": "Capsicum",
+    "name_hi": "शिमला मिर्च",
+    "aliases": [
+      "shimla mirch",
+      "capsicum",
+      "bell pepper"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "brinjal",
+    "name_en": "Brinjal",
+    "name_hi": "बैंगन",
+    "aliases": [
+      "baingan",
+      "baigan",
+      "brinjal",
+      "eggplant",
+      "vangi"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "green-chilli",
+    "name_en": "Green chilli",
+    "name_hi": "हरी मिर्च",
+    "aliases": [
+      "hari mirch",
+      "hari mirchi",
+      "green chilli"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": true
+  },
+  {
+    "slug": "cucumber",
+    "name_en": "Cucumber",
+    "name_hi": "खीरा",
+    "aliases": [
+      "kheera",
+      "khira",
+      "cucumber",
+      "pahadi kakdi",
+      "kakdi",
+      "dosakaya"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "pumpkin",
+    "name_en": "Pumpkin",
+    "name_hi": "कद्दू",
+    "aliases": [
+      "kaddu",
+      "sitaphal",
+      "pumpkin"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "bitter-gourd",
+    "name_en": "Bitter gourd",
+    "name_hi": "करेला",
+    "aliases": [
+      "karela",
+      "bitter gourd",
+      "karele",
+      "chhote karele"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "ridge-gourd",
+    "name_en": "Ridge gourd",
+    "name_hi": "तुरई",
+    "aliases": [
+      "turai",
+      "tori",
+      "ridge gourd"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "tinda",
+    "name_en": "Round gourd",
+    "name_hi": "टिंडा",
+    "aliases": [
+      "tinda",
+      "tinde"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "parwal",
+    "name_en": "Pointed gourd",
+    "name_hi": "परवल",
+    "aliases": [
+      "parwal",
+      "parval"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "french-beans",
+    "name_en": "French beans",
+    "name_hi": "फ्रेंच बीन्स",
+    "aliases": [
+      "beans",
+      "french beans",
+      "fansi"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "corn",
+    "name_en": "Sweet corn",
+    "name_hi": "भुट्टा",
+    "aliases": [
+      "bhutta",
+      "makka",
+      "corn",
+      "sweet corn",
+      "bhutte",
+      "bhutta dane"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "raw-banana",
+    "name_en": "Raw banana",
+    "name_hi": "कच्चा केला",
+    "aliases": [
+      "kachcha kela",
+      "kacha kela",
+      "raw banana"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "methi-leaves",
+    "name_en": "Fenugreek leaves",
+    "name_hi": "मेथी",
+    "aliases": [
+      "methi",
+      "taaza methi",
+      "methi patta"
+    ],
+    "category": "herb",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "mushroom",
+    "name_en": "Mushroom",
+    "name_hi": "मशरूम",
+    "aliases": [
+      "mushroom",
+      "mushrooms",
+      "khumbi",
+      "dhingri",
+      "rugra",
+      "putu"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": true,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "lemon",
+    "name_en": "Lemon",
+    "name_hi": "नींबू",
+    "aliases": [
+      "nimbu",
+      "neembu",
+      "nimboo",
+      "lemon"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "pc",
+    "pack_size": 6,
+    "perishable": true
+  },
+  {
+    "slug": "pomegranate",
+    "name_en": "Pomegranate",
+    "name_hi": "अनार",
+    "aliases": [
+      "anaar",
+      "anar",
+      "pomegranate"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "banana",
+    "name_en": "Banana",
+    "name_hi": "केला",
+    "aliases": [
+      "kela",
+      "banana",
+      "pake kele",
+      "pakka kela",
+      "nendran kele",
+      "pake nendran kele",
+      "nendran"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "mango",
+    "name_en": "Mango",
+    "name_hi": "आम",
+    "aliases": [
+      "aam",
+      "mango"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "raw-mango",
+    "name_en": "Raw mango",
+    "name_hi": "कच्चा आम",
+    "aliases": [
+      "kachcha aam",
+      "kairi",
+      "raw mango"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "apple",
+    "name_en": "Apple",
+    "name_hi": "सेब",
+    "aliases": [
+      "seb",
+      "apple"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "coconut",
+    "name_en": "Coconut",
+    "name_hi": "नारियल",
+    "aliases": [
+      "nariyal",
+      "naariyal",
+      "coconut",
+      "khopra",
+      "thengai"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "poha",
+    "name_en": "Flattened rice (poha)",
+    "name_hi": "पोहा",
+    "aliases": [
+      "poha",
+      "mota poha",
+      "pohe",
+      "chivda",
+      "aval",
+      "chura",
+      "chuda",
+      "chiura",
+      "mota chura",
+      "mota chuda"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "rice",
+    "name_en": "Rice",
+    "name_hi": "चावल",
+    "aliases": [
+      "chawal",
+      "chaawal",
+      "rice",
+      "pake chawal"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 5,
+    "perishable": false
+  },
+  {
+    "slug": "basmati-rice",
+    "name_en": "Basmati rice",
+    "name_hi": "बासमती चावल",
+    "aliases": [
+      "basmati",
+      "basmati chawal",
+      "basmati rice"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 5,
+    "perishable": false
+  },
+  {
+    "slug": "atta",
+    "name_en": "Whole wheat flour",
+    "name_hi": "गेहूं का आटा",
+    "aliases": [
+      "aata",
+      "atta",
+      "gehun ka aata",
+      "gehu ka aata",
+      "gehun"
+    ],
+    "category": "grain",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 5,
+    "perishable": false
+  },
+  {
+    "slug": "maida",
+    "name_en": "Refined flour (maida)",
+    "name_hi": "मैदा",
+    "aliases": [
+      "maida",
+      "refined flour"
+    ],
+    "category": "grain",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "sooji",
+    "name_en": "Semolina",
+    "name_hi": "सूजी",
+    "aliases": [
+      "sooji",
+      "suji",
+      "rava",
+      "rawa",
+      "semolina"
+    ],
+    "category": "grain",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "besan",
+    "name_en": "Gram flour",
+    "name_hi": "बेसन",
+    "aliases": [
+      "besan",
+      "gram flour",
+      "chane ka aata"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "rice-flour",
+    "name_en": "Rice flour",
+    "name_hi": "चावल का आटा",
+    "aliases": [
+      "chawal ka aata",
+      "rice flour",
+      "puttu podi",
+      "puttu flour"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "bajra",
+    "name_en": "Pearl millet flour",
+    "name_hi": "बाजरा",
+    "aliases": [
+      "bajra",
+      "bajre ka aata"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "jowar",
+    "name_en": "Sorghum flour",
+    "name_hi": "ज्वार",
+    "aliases": [
+      "jowar",
+      "jowar ka aata"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "ragi",
+    "name_en": "Finger millet",
+    "name_hi": "रागी",
+    "aliases": [
+      "ragi",
+      "nachni"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "dalia",
+    "name_en": "Broken wheat",
+    "name_hi": "दलिया",
+    "aliases": [
+      "dalia",
+      "daliya",
+      "broken wheat"
+    ],
+    "category": "grain",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "oats",
+    "name_en": "Oats",
+    "name_hi": "ओट्स",
+    "aliases": [
+      "oats"
+    ],
+    "category": "grain",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "sabudana",
+    "name_en": "Sago",
+    "name_hi": "साबूदाना",
+    "aliases": [
+      "sabudana",
+      "sago"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "vermicelli",
+    "name_en": "Vermicelli",
+    "name_hi": "सेंवई",
+    "aliases": [
+      "seviyan",
+      "sevai",
+      "vermicelli",
+      "semiya",
+      "sewai",
+      "barik sewai",
+      "seviyan barik"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 400,
+    "perishable": false
+  },
+  {
+    "slug": "bread",
+    "name_en": "Bread",
+    "name_hi": "ब्रेड",
+    "aliases": [
+      "bread",
+      "double roti",
+      "pav"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "hakka-noodles",
+    "name_en": "Hakka noodles",
+    "name_hi": "हक्का नूडल्स",
+    "aliases": [
+      "noodles",
+      "hakka noodles"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 300,
+    "perishable": false
+  },
+  {
+    "slug": "idli-batter",
+    "name_en": "Idli batter",
+    "name_hi": "इडली बैटर",
+    "aliases": [
+      "idli batter",
+      "idli ka ghol",
+      "dosa batter",
+      "idli dosa ghol",
+      "dosa ka ghol"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "kuttu-atta",
+    "name_en": "Buckwheat flour",
+    "name_hi": "कुट्टू का आटा",
+    "aliases": [
+      "kuttu",
+      "kuttu ka aata"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 500,
+    "perishable": false
+  },
+  {
+    "slug": "singhara-atta",
+    "name_en": "Water chestnut flour",
+    "name_hi": "सिंघाड़े का आटा",
+    "aliases": [
+      "singhara",
+      "singhare ka aata"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 500,
+    "perishable": false
+  },
+  {
+    "slug": "moong-dal",
+    "name_en": "Moong dal (yellow)",
+    "name_hi": "पीली मूंग दाल",
+    "aliases": [
+      "moong dal",
+      "peeli moong dal",
+      "dhuli moong",
+      "moong"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "whole-moong",
+    "name_en": "Whole green moong",
+    "name_hi": "साबुत मूंग",
+    "aliases": [
+      "sabut moong",
+      "hari moong"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "toor-dal",
+    "name_en": "Toor dal",
+    "name_hi": "तूर दाल",
+    "aliases": [
+      "toor",
+      "toor dal",
+      "tuvar",
+      "tuvar dal",
+      "arhar",
+      "arhar dal"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "masoor-dal",
+    "name_en": "Masoor dal",
+    "name_hi": "मसूर दाल",
+    "aliases": [
+      "masoor",
+      "masoor dal",
+      "lal masoor"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "chana-dal",
+    "name_en": "Chana dal",
+    "name_hi": "चना दाल",
+    "aliases": [
+      "chana dal",
+      "chane ki dal"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "urad-dal",
+    "name_en": "Urad dal",
+    "name_hi": "उड़द दाल",
+    "aliases": [
+      "urad dal",
+      "urad",
+      "dhuli urad",
+      "udad dal",
+      "udad",
+      "sabut udad",
+      "sabut urad"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "rajma",
+    "name_en": "Kidney beans",
+    "name_hi": "राजमा",
+    "aliases": [
+      "rajma",
+      "kidney beans"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "kabuli-chana",
+    "name_en": "Chickpeas",
+    "name_hi": "काबुली चना",
+    "aliases": [
+      "chole",
+      "kabuli chana",
+      "chickpeas",
+      "chhole"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "kala-chana",
+    "name_en": "Black chickpeas",
+    "name_hi": "काला चना",
+    "aliases": [
+      "kala chana",
+      "kaala chana",
+      "kaale chane",
+      "kale chane",
+      "kala chane",
+      "kaala chane"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "lobia",
+    "name_en": "Black-eyed beans",
+    "name_hi": "लोबिया",
+    "aliases": [
+      "lobia",
+      "chawli"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "soya-chunks",
+    "name_en": "Soya chunks",
+    "name_hi": "सोया चंक्स",
+    "aliases": [
+      "soya chunks",
+      "soya badi",
+      "nutrela"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "soy"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "milk",
+    "name_en": "Milk",
+    "name_hi": "दूध",
+    "aliases": [
+      "doodh",
+      "dudh",
+      "milk"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "l",
+    "pack_size": 1,
+    "perishable": true
+  },
+  {
+    "slug": "curd",
+    "name_en": "Curd",
+    "name_hi": "दही",
+    "aliases": [
+      "dahi",
+      "curd",
+      "khatta dahi",
+      "yogurt"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 400,
+    "perishable": true
+  },
+  {
+    "slug": "paneer",
+    "name_en": "Paneer",
+    "name_hi": "पनीर",
+    "aliases": [
+      "paneer",
+      "cottage cheese"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": true
+  },
+  {
+    "slug": "ghee",
+    "name_en": "Ghee",
+    "name_hi": "घी",
+    "aliases": [
+      "ghee",
+      "desi ghee"
+    ],
+    "category": "oil_fat",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "l",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "butter",
+    "name_en": "Butter",
+    "name_hi": "मक्खन",
+    "aliases": [
+      "makhan",
+      "makkhan",
+      "butter"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": true
+  },
+  {
+    "slug": "cream",
+    "name_en": "Fresh cream",
+    "name_hi": "मलाई",
+    "aliases": [
+      "malai",
+      "cream",
+      "fresh cream"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "khoya",
+    "name_en": "Khoya",
+    "name_hi": "खोया",
+    "aliases": [
+      "khoya",
+      "mawa"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "cheese",
+    "name_en": "Cheese",
+    "name_hi": "चीज़",
+    "aliases": [
+      "cheese"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "buttermilk",
+    "name_en": "Buttermilk",
+    "name_hi": "छाछ",
+    "aliases": [
+      "chhaas",
+      "chaas",
+      "chhachh",
+      "buttermilk",
+      "chaach",
+      "chhaach",
+      "chhach",
+      "chach",
+      "mattha"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "egg",
+    "name_en": "Egg",
+    "name_hi": "अंडा",
+    "aliases": [
+      "ande",
+      "anda",
+      "anday",
+      "egg",
+      "eggs"
+    ],
+    "category": "egg",
+    "allergens": [
+      "egg"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": true,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "pc",
+    "pack_size": 12,
+    "perishable": true
+  },
+  {
+    "slug": "chicken",
+    "name_en": "Chicken",
+    "name_hi": "चिकन",
+    "aliases": [
+      "chicken",
+      "murgh",
+      "murga"
+    ],
+    "category": "meat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "chicken",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "mutton",
+    "name_en": "Mutton (goat)",
+    "name_hi": "मटन",
+    "aliases": [
+      "mutton",
+      "gosht",
+      "bakra"
+    ],
+    "category": "meat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "mutton",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "keema",
+    "name_en": "Mutton mince",
+    "name_hi": "कीमा",
+    "aliases": [
+      "keema",
+      "qeema"
+    ],
+    "category": "meat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "mutton",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "beef",
+    "name_en": "Beef",
+    "name_hi": "बीफ",
+    "aliases": [
+      "beef",
+      "buff"
+    ],
+    "category": "meat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "beef",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "pork",
+    "name_en": "Pork",
+    "name_hi": "पोर्क",
+    "aliases": [
+      "pork"
+    ],
+    "category": "meat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "pork",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "rohu",
+    "name_en": "Rohu fish",
+    "name_hi": "रोहू",
+    "aliases": [
+      "rohu",
+      "rui",
+      "machli",
+      "machhli",
+      "maach",
+      "fish"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "fish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "fish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "pomfret",
+    "name_en": "Pomfret",
+    "name_hi": "पॉम्फ्रेट",
+    "aliases": [
+      "pomfret",
+      "paplet"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "fish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "fish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "surmai",
+    "name_en": "King fish",
+    "name_hi": "सुरमई",
+    "aliases": [
+      "surmai",
+      "king fish",
+      "seer fish"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "fish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "fish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "prawns",
+    "name_en": "Prawns",
+    "name_hi": "झींगा",
+    "aliases": [
+      "jhinga",
+      "prawns",
+      "prawn",
+      "shrimp",
+      "jhinge",
+      "chhote jhinge",
+      "sukhe jhinge",
+      "jheenga",
+      "kolambi",
+      "chingri",
+      "chemmeen"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "shellfish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "shellfish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "turmeric",
+    "name_en": "Turmeric powder",
+    "name_hi": "हल्दी",
+    "aliases": [
+      "haldi",
+      "turmeric"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "red-chilli",
+    "name_en": "Red chilli powder",
+    "name_hi": "लाल मिर्च",
+    "aliases": [
+      "laal mirch",
+      "lal mirch",
+      "lal mirchi",
+      "red chilli"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "kashmiri-chilli",
+    "name_en": "Kashmiri chilli",
+    "name_hi": "कश्मीरी मिर्च",
+    "aliases": [
+      "kashmiri mirch"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "coriander-powder",
+    "name_en": "Coriander powder",
+    "name_hi": "धनिया पाउडर",
+    "aliases": [
+      "dhaniya powder",
+      "dhania powder",
+      "pisa dhaniya"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "cumin",
+    "name_en": "Cumin seeds",
+    "name_hi": "जीरा",
+    "aliases": [
+      "jeera",
+      "zeera",
+      "cumin"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "cumin-powder",
+    "name_en": "Cumin powder",
+    "name_hi": "भुना जीरा",
+    "aliases": [
+      "jeera powder",
+      "bhuna jeera"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "mustard-seeds",
+    "name_en": "Mustard seeds",
+    "name_hi": "राई",
+    "aliases": [
+      "rai",
+      "sarson dana",
+      "mohri",
+      "mustard seeds",
+      "peeli sarson",
+      "pili sarson",
+      "peeli sarson dana",
+      "kaali sarson",
+      "kali sarson",
+      "kala sarson"
+    ],
+    "category": "spice",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "asafoetida",
+    "name_en": "Asafoetida (hing)",
+    "name_hi": "हींग",
+    "aliases": [
+      "hing",
+      "heeng",
+      "asafoetida"
+    ],
+    "category": "spice",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "ajwain",
+    "name_en": "Carom seeds",
+    "name_hi": "अजवाइन",
+    "aliases": [
+      "ajwain",
+      "ajwayan",
+      "carom"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "garam-masala",
+    "name_en": "Garam masala",
+    "name_hi": "गरम मसाला",
+    "aliases": [
+      "garam masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "sambar-masala",
+    "name_en": "Sambar masala",
+    "name_hi": "सांभर मसाला",
+    "aliases": [
+      "sambar masala",
+      "sambhar masala",
+      "sambar powder",
+      "sambhar powder"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "chaat-masala",
+    "name_en": "Chaat masala",
+    "name_hi": "चाट मसाला",
+    "aliases": [
+      "chaat masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "amchur",
+    "name_en": "Dry mango powder",
+    "name_hi": "अमचूर",
+    "aliases": [
+      "amchur",
+      "amchoor",
+      "aamchur",
+      "amchoor powder",
+      "aamchoor"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "kasuri-methi",
+    "name_en": "Dried fenugreek leaves",
+    "name_hi": "कसूरी मेथी",
+    "aliases": [
+      "kasuri methi",
+      "kasoori methi"
+    ],
+    "category": "herb",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "fenugreek-seeds",
+    "name_en": "Fenugreek seeds",
+    "name_hi": "मेथी दाना",
+    "aliases": [
+      "methi dana",
+      "methi seeds"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "fennel",
+    "name_en": "Fennel seeds",
+    "name_hi": "सौंफ",
+    "aliases": [
+      "saunf",
+      "sonf",
+      "fennel"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "panch-phoron",
+    "name_en": "Panch phoron",
+    "name_hi": "पांच फोरन",
+    "aliases": [
+      "panch phoron",
+      "panch phoran"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "bay-leaf",
+    "name_en": "Bay leaf",
+    "name_hi": "तेज पत्ता",
+    "aliases": [
+      "tej patta",
+      "tejpatta",
+      "bay leaf"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 25,
+    "perishable": false
+  },
+  {
+    "slug": "cinnamon",
+    "name_en": "Cinnamon",
+    "name_hi": "दालचीनी",
+    "aliases": [
+      "dalchini",
+      "cinnamon"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "cardamom",
+    "name_en": "Green cardamom",
+    "name_hi": "इलायची",
+    "aliases": [
+      "elaichi",
+      "ilaichi",
+      "cardamom"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 25,
+    "perishable": false
+  },
+  {
+    "slug": "clove",
+    "name_en": "Clove",
+    "name_hi": "लौंग",
+    "aliases": [
+      "laung",
+      "clove",
+      "cloves"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 25,
+    "perishable": false
+  },
+  {
+    "slug": "black-pepper",
+    "name_en": "Black pepper",
+    "name_hi": "काली मिर्च",
+    "aliases": [
+      "kali mirch",
+      "black pepper",
+      "kaali mirch",
+      "kali mirchi",
+      "kaali mirchi",
+      "kaali mirch powder"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "dry-red-chilli",
+    "name_en": "Dry red chilli",
+    "name_hi": "साबुत लाल मिर्च",
+    "aliases": [
+      "sabut lal mirch",
+      "sukhi lal mirch",
+      "laal sookhi mirch",
+      "lal sookhi mirch",
+      "sookhi lal mirch",
+      "sookhi laal mirch"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "dry-ginger",
+    "name_en": "Dry ginger powder",
+    "name_hi": "सोंठ",
+    "aliases": [
+      "saunth",
+      "sonth",
+      "dry ginger"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "salt",
+    "name_en": "Salt",
+    "name_hi": "नमक",
+    "aliases": [
+      "namak",
+      "salt"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "rock-salt",
+    "name_en": "Rock salt (sendha namak)",
+    "name_hi": "सेंधा नमक",
+    "aliases": [
+      "sendha namak",
+      "rock salt"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 500,
+    "perishable": false
+  },
+  {
+    "slug": "black-salt",
+    "name_en": "Black salt",
+    "name_hi": "काला नमक",
+    "aliases": [
+      "kala namak",
+      "black salt"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "coriander-leaves",
+    "name_en": "Coriander leaves",
+    "name_hi": "हरा धनिया",
+    "aliases": [
+      "dhaniya",
+      "dhania",
+      "hara dhaniya",
+      "kothmir",
+      "coriander"
+    ],
+    "category": "herb",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": true
+  },
+  {
+    "slug": "curry-leaves",
+    "name_en": "Curry leaves",
+    "name_hi": "करी पत्ता",
+    "aliases": [
+      "kadi patta",
+      "kadhi patta",
+      "curry patta",
+      "curry leaves",
+      "meetha neem"
+    ],
+    "category": "herb",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "mint",
+    "name_en": "Mint",
+    "name_hi": "पुदीना",
+    "aliases": [
+      "pudina",
+      "mint"
+    ],
+    "category": "herb",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "cooking-oil",
+    "name_en": "Cooking oil",
+    "name_hi": "तेल",
+    "aliases": [
+      "tel",
+      "oil",
+      "refined",
+      "refined oil"
+    ],
+    "category": "oil_fat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "l",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "mustard-oil",
+    "name_en": "Mustard oil",
+    "name_hi": "सरसों का तेल",
+    "aliases": [
+      "sarson tel",
+      "sarson ka tel",
+      "kadwa tel",
+      "mustard oil"
+    ],
+    "category": "oil_fat",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "l",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "groundnut-oil",
+    "name_en": "Groundnut oil",
+    "name_hi": "मूंगफली का तेल",
+    "aliases": [
+      "moongphali tel",
+      "groundnut oil",
+      "singtel"
+    ],
+    "category": "oil_fat",
+    "allergens": [
+      "peanut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "l",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "coconut-oil",
+    "name_en": "Coconut oil",
+    "name_hi": "नारियल तेल",
+    "aliases": [
+      "nariyal tel",
+      "coconut oil"
+    ],
+    "category": "oil_fat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "l",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "sesame-oil",
+    "name_en": "Sesame oil",
+    "name_hi": "तिल का तेल",
+    "aliases": [
+      "til tel",
+      "til ka tel",
+      "gingelly"
+    ],
+    "category": "oil_fat",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "l",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "sugar",
+    "name_en": "Sugar",
+    "name_hi": "चीनी",
+    "aliases": [
+      "cheeni",
+      "chini",
+      "shakkar",
+      "sugar"
+    ],
+    "category": "sweetener",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "jaggery",
+    "name_en": "Jaggery",
+    "name_hi": "गुड़",
+    "aliases": [
+      "gud",
+      "gur",
+      "jaggery"
+    ],
+    "category": "sweetener",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "honey",
+    "name_en": "Honey",
+    "name_hi": "शहद",
+    "aliases": [
+      "shahad",
+      "shehad",
+      "honey"
+    ],
+    "category": "sweetener",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": true,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "peanut",
+    "name_en": "Peanuts",
+    "name_hi": "मूंगफली",
+    "aliases": [
+      "moongphali",
+      "mungfali",
+      "moongfali",
+      "singdana",
+      "peanut",
+      "peanuts"
+    ],
+    "category": "nut_seed",
+    "allergens": [
+      "peanut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 500,
+    "perishable": false
+  },
+  {
+    "slug": "cashew",
+    "name_en": "Cashew",
+    "name_hi": "काजू",
+    "aliases": [
+      "kaju",
+      "cashew",
+      "cashews"
+    ],
+    "category": "nut_seed",
+    "allergens": [
+      "tree_nut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "almond",
+    "name_en": "Almond",
+    "name_hi": "बादाम",
+    "aliases": [
+      "badam",
+      "baadam",
+      "almond",
+      "almonds",
+      "badaam",
+      "badaam giri"
+    ],
+    "category": "nut_seed",
+    "allergens": [
+      "tree_nut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "raisin",
+    "name_en": "Raisins",
+    "name_hi": "किशमिश",
+    "aliases": [
+      "kishmish",
+      "raisins"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "sesame",
+    "name_en": "Sesame seeds",
+    "name_hi": "तिल",
+    "aliases": [
+      "til",
+      "sesame"
+    ],
+    "category": "nut_seed",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "makhana",
+    "name_en": "Fox nuts",
+    "name_hi": "मखाना",
+    "aliases": [
+      "makhana",
+      "phool makhana"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "desiccated-coconut",
+    "name_en": "Desiccated coconut",
+    "name_hi": "नारियल बुरादा",
+    "aliases": [
+      "nariyal burada",
+      "copra",
+      "desiccated coconut"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "tamarind",
+    "name_en": "Tamarind",
+    "name_hi": "इमली",
+    "aliases": [
+      "imli",
+      "tamarind",
+      "puli"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "soy-sauce",
+    "name_en": "Soy sauce",
+    "name_hi": "सोया सॉस",
+    "aliases": [
+      "soya sauce",
+      "soy sauce"
+    ],
+    "category": "condiment",
+    "allergens": [
+      "gluten",
+      "soy"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "ml",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "vinegar",
+    "name_en": "Vinegar",
+    "name_hi": "सिरका",
+    "aliases": [
+      "sirka",
+      "vinegar"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "ml",
+    "pack_size": 500,
+    "perishable": false
+  },
+  {
+    "slug": "tomato-ketchup",
+    "name_en": "Tomato ketchup",
+    "name_hi": "टमाटर केचप",
+    "aliases": [
+      "ketchup",
+      "tomato sauce"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 500,
+    "perishable": false
+  },
+  {
+    "slug": "pickle",
+    "name_en": "Pickle",
+    "name_hi": "अचार",
+    "aliases": [
+      "achaar",
+      "achar",
+      "pickle"
+    ],
+    "category": "condiment",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 500,
+    "perishable": false
+  },
+  {
+    "slug": "papad",
+    "name_en": "Papad",
+    "name_hi": "पापड़",
+    "aliases": [
+      "papad",
+      "papadum"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "pc",
+    "pack_size": 20,
+    "perishable": false
+  },
+  {
+    "slug": "tea",
+    "name_en": "Tea leaves",
+    "name_hi": "चाय पत्ती",
+    "aliases": [
+      "chai patti",
+      "chai",
+      "tea"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "besan-sev",
+    "name_en": "Sev",
+    "name_hi": "सेव",
+    "aliases": [
+      "sev",
+      "bhujia"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "baking-soda",
+    "name_en": "Baking soda",
+    "name_hi": "मीठा सोडा",
+    "aliases": [
+      "meetha soda",
+      "baking soda",
+      "khane ka soda"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "eno",
+    "name_en": "Fruit salt",
+    "name_hi": "ईनो",
+    "aliases": [
+      "eno",
+      "fruit salt"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "tofu",
+    "name_en": "Tofu",
+    "name_hi": "टोफू",
+    "aliases": [
+      "tofu"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "soy"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "water",
+    "name_en": "Water",
+    "name_hi": "पानी",
+    "aliases": [
+      "paani",
+      "pani",
+      "water"
+    ],
+    "category": "other",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": false
+  },
+  {
+    "slug": "nigella-seeds",
+    "name_en": "Nigella seeds",
+    "name_hi": "कलौंजी",
+    "aliases": [
+      "kalonji",
+      "kalaunji",
+      "mangrail",
+      "nigella",
+      "nigella seeds",
+      "kalo jeere"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "saffron",
+    "name_en": "Saffron",
+    "name_hi": "केसर",
+    "aliases": [
+      "kesar",
+      "kesar dhaage",
+      "kesar strands",
+      "zafran",
+      "saffron"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 1,
+    "perishable": false
+  },
+  {
+    "slug": "nutmeg",
+    "name_en": "Nutmeg",
+    "name_hi": "जायफल",
+    "aliases": [
+      "jaiphal",
+      "jayphal",
+      "jaiphal powder",
+      "nutmeg"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "poppy-seeds",
+    "name_en": "Poppy seeds",
+    "name_hi": "खसखस",
+    "aliases": [
+      "khus khus",
+      "khaskhas",
+      "khuskhus",
+      "khas khas",
+      "khus",
+      "posto",
+      "poppy seeds"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "kokum",
+    "name_en": "Kokum",
+    "name_hi": "कोकम",
+    "aliases": [
+      "kokum",
+      "amsul",
+      "aamsul",
+      "sol kokum",
+      "punarpuli"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "kudampuli",
+    "name_en": "Malabar tamarind (kudampuli)",
+    "name_hi": "कुडमपुली",
+    "aliases": [
+      "kudampuli",
+      "kodampuli",
+      "kudam puli",
+      "fish tamarind",
+      "gamboge"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "tirphal",
+    "name_en": "Tirphal",
+    "name_hi": "तिरफल",
+    "aliases": [
+      "tirphal",
+      "teppal",
+      "teefla",
+      "tefla",
+      "tirphala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "anardana",
+    "name_en": "Dried pomegranate seeds (anardana)",
+    "name_hi": "अनारदाना",
+    "aliases": [
+      "anardana",
+      "anardana powder",
+      "anar dana",
+      "dried pomegranate seeds"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "jakhiya",
+    "name_en": "Jakhiya (wild mustard seeds)",
+    "name_hi": "जख्या",
+    "aliases": [
+      "jakhiya",
+      "jakhya",
+      "jakhia",
+      "wild mustard"
+    ],
+    "category": "spice",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "khade-masale",
+    "name_en": "Whole spices (khade masale)",
+    "name_hi": "खड़े मसाले",
+    "aliases": [
+      "khade masale",
+      "khada masala",
+      "khade masala",
+      "whole spices"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "chilli-flakes",
+    "name_en": "Chilli flakes",
+    "name_hi": "चिल्ली फ्लेक्स",
+    "aliases": [
+      "chilli flakes",
+      "chili flakes",
+      "red chilli flakes",
+      "kuti lal mirch"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "paprika",
+    "name_en": "Paprika",
+    "name_hi": "पैपरिका",
+    "aliases": [
+      "paprika",
+      "smoked paprika"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "oregano",
+    "name_en": "Oregano",
+    "name_hi": "ओरिगैनो",
+    "aliases": [
+      "oregano",
+      "dried oregano"
+    ],
+    "category": "herb",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 25,
+    "perishable": false
+  },
+  {
+    "slug": "king-chilli",
+    "name_en": "King chilli (raja mircha)",
+    "name_hi": "राजा मिर्चा",
+    "aliases": [
+      "raja mircha",
+      "raja mirchi",
+      "bhut jolokia",
+      "king chilli",
+      "naga chilli"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "goda-masala",
+    "name_en": "Goda masala",
+    "name_hi": "गोडा मसाला",
+    "aliases": [
+      "goda masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "kala-masala",
+    "name_en": "Kala masala",
+    "name_hi": "काळा मसाला",
+    "aliases": [
+      "kala masala",
+      "kaala masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "malvani-masala",
+    "name_en": "Malvani masala",
+    "name_hi": "मालवणी मसाला",
+    "aliases": [
+      "malvani masala",
+      "malwani masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "rasam-powder",
+    "name_en": "Rasam powder",
+    "name_hi": "रसम पाउडर",
+    "aliases": [
+      "rasam powder",
+      "rasam masala",
+      "saaru powder",
+      "saaru pudi",
+      "rasam podi"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "kuzhambu-powder",
+    "name_en": "Kuzhambu powder",
+    "name_hi": "कुळम्बु पाउडर",
+    "aliases": [
+      "kuzhambu milagai thool",
+      "kuzhambu masala",
+      "kuzhambu powder",
+      "kulambu milagai thool",
+      "kuzhambu milagai podi"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "bisi-bele-bath-powder",
+    "name_en": "Bisi bele bath powder",
+    "name_hi": "बिसी बेले भात पाउडर",
+    "aliases": [
+      "bisi bele bath powder",
+      "bisibelebath powder",
+      "bisi bele bath masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "jeeravan-masala",
+    "name_en": "Jeeravan masala",
+    "name_hi": "जीरावन मसाला",
+    "aliases": [
+      "jeeravan masala",
+      "jeeravan",
+      "jiravan masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "dhansak-masala",
+    "name_en": "Dhansak masala",
+    "name_hi": "धानसाक मसाला",
+    "aliases": [
+      "dhansak masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "misal-masala",
+    "name_en": "Misal masala",
+    "name_hi": "मिसळ मसाला",
+    "aliases": [
+      "misal masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "usal-masala",
+    "name_en": "Usal masala",
+    "name_hi": "उसळ मसाला",
+    "aliases": [
+      "usal masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "dabeli-masala",
+    "name_en": "Dabeli masala",
+    "name_hi": "दाबेली मसाला",
+    "aliases": [
+      "dabeli masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "methia-masala",
+    "name_en": "Methia masala",
+    "name_hi": "मेथिया मसाला",
+    "aliases": [
+      "methia masala",
+      "methiya masala",
+      "achar masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "savji-masala",
+    "name_en": "Savji masala",
+    "name_hi": "सावजी मसाला",
+    "aliases": [
+      "savji masala",
+      "saoji masala"
+    ],
+    "category": "spice",
+    "allergens": [
+      "sesame"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "xacuti-masala",
+    "name_en": "Xacuti masala",
+    "name_hi": "शकुती मसाला",
+    "aliases": [
+      "xacuti masala",
+      "shagoti masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "kodava-masala",
+    "name_en": "Kodava masala powder",
+    "name_hi": "कोडवा मसाला",
+    "aliases": [
+      "kodava masala",
+      "kodava masala powder",
+      "coorg masala",
+      "pandi curry masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "bafat-masala",
+    "name_en": "Bafat masala",
+    "name_hi": "बफ़ात मसाला",
+    "aliases": [
+      "bafat masala",
+      "bafat powder"
+    ],
+    "category": "spice",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "meat-masala",
+    "name_en": "Meat masala",
+    "name_hi": "मीट मसाला",
+    "aliases": [
+      "meat masala",
+      "mutton masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "biryani-masala",
+    "name_en": "Biryani masala",
+    "name_hi": "बिरयानी मसाला",
+    "aliases": [
+      "biryani masala"
+    ],
+    "category": "spice",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "horse-gram",
+    "name_en": "Horse gram (kulthi)",
+    "name_hi": "कुलथी",
+    "aliases": [
+      "kulthi",
+      "kulthi dal",
+      "gahat",
+      "gahat dal",
+      "kollu",
+      "hurali",
+      "ulavalu",
+      "kulith",
+      "kurthi",
+      "horse gram"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "moth-beans",
+    "name_en": "Moth beans (matki)",
+    "name_hi": "मोठ",
+    "aliases": [
+      "moth",
+      "moth dal",
+      "matki",
+      "matki sprouts",
+      "mat beans",
+      "moth beans"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "val-dal",
+    "name_en": "Field bean dal (val dal)",
+    "name_hi": "वाल दाल",
+    "aliases": [
+      "val dal",
+      "vaal dal",
+      "vaal",
+      "field bean dal"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "dried-white-peas",
+    "name_en": "Dried white peas (safed vatana)",
+    "name_hi": "सफ़ेद वटाणा",
+    "aliases": [
+      "safed vatana",
+      "safed matar",
+      "white peas",
+      "white vatana",
+      "sukhe safed matar"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "dried-black-peas",
+    "name_en": "Dried black peas (kale vatane)",
+    "name_hi": "काले वटाणे",
+    "aliases": [
+      "kale vatane",
+      "kala vatana",
+      "kaale vatane",
+      "black peas"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "black-soybean",
+    "name_en": "Black soybean (bhatt)",
+    "name_hi": "भट्ट",
+    "aliases": [
+      "bhatt",
+      "kaale bhatt",
+      "kala bhatt",
+      "kale bhatt",
+      "black soybean"
+    ],
+    "category": "pulse",
+    "allergens": [
+      "soy"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "roasted-chana",
+    "name_en": "Roasted chana (bhuna chana)",
+    "name_hi": "भुना चना",
+    "aliases": [
+      "bhuna chana",
+      "bhune chane",
+      "putani",
+      "phutana",
+      "roasted chana",
+      "pottukadalai",
+      "hurigadale"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "sattu",
+    "name_en": "Sattu",
+    "name_hi": "सत्तू",
+    "aliases": [
+      "sattu",
+      "chane ka sattu"
+    ],
+    "category": "pulse",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "cornflour",
+    "name_en": "Cornflour",
+    "name_hi": "कॉर्नफ्लोर",
+    "aliases": [
+      "cornflour",
+      "corn flour",
+      "cornstarch",
+      "corn starch"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.1,
+    "perishable": false
+  },
+  {
+    "slug": "arrowroot",
+    "name_en": "Arrowroot powder",
+    "name_hi": "अरारोट",
+    "aliases": [
+      "arrowroot",
+      "arrowroot powder",
+      "ararot"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.1,
+    "perishable": false
+  },
+  {
+    "slug": "barnyard-millet",
+    "name_en": "Barnyard millet (samak)",
+    "name_hi": "झंगोरा",
+    "aliases": [
+      "jhangora",
+      "samak",
+      "sama ke chawal",
+      "samak ke chawal",
+      "samak chawal",
+      "samvat ke chawal",
+      "samvat",
+      "vari tandul",
+      "vari rice",
+      "moraiyo",
+      "barnyard millet"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "little-millet",
+    "name_en": "Little millet (kutki)",
+    "name_hi": "कुटकी",
+    "aliases": [
+      "kutki",
+      "gondli",
+      "samai",
+      "little millet"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "kodo-millet",
+    "name_en": "Kodo millet",
+    "name_hi": "कोदो",
+    "aliases": [
+      "kodo",
+      "kodon",
+      "varagu",
+      "kodo millet"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "amaranth-seeds",
+    "name_en": "Amaranth seeds (rajgira)",
+    "name_hi": "चौलाई दाना",
+    "aliases": [
+      "chaulai dana",
+      "rajgira",
+      "rajgira aata",
+      "rajgira atta",
+      "rajgire ka aata",
+      "ramdana",
+      "amaranth seeds"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "puffed-rice",
+    "name_en": "Puffed rice (murmura)",
+    "name_hi": "मुरमुरा",
+    "aliases": [
+      "murmura",
+      "murmure",
+      "kurmura",
+      "muri",
+      "mandakki",
+      "mamra",
+      "puffed rice"
+    ],
+    "category": "grain",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "pasta",
+    "name_en": "Pasta",
+    "name_hi": "पास्ता",
+    "aliases": [
+      "pasta",
+      "penne",
+      "penne pasta",
+      "macaroni",
+      "spaghetti",
+      "fusilli"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "kg",
+    "pack_size": 0.5,
+    "perishable": false
+  },
+  {
+    "slug": "walnut",
+    "name_en": "Walnut",
+    "name_hi": "अखरोट",
+    "aliases": [
+      "akhrot",
+      "akhrot giri",
+      "walnut",
+      "walnuts"
+    ],
+    "category": "nut_seed",
+    "allergens": [
+      "tree_nut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "pistachio",
+    "name_en": "Pistachio",
+    "name_hi": "पिस्ता",
+    "aliases": [
+      "pista",
+      "pista kate",
+      "pistachio",
+      "pistachios"
+    ],
+    "category": "nut_seed",
+    "allergens": [
+      "tree_nut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "chironji",
+    "name_en": "Chironji",
+    "name_hi": "चिरौंजी",
+    "aliases": [
+      "chironji",
+      "charoli",
+      "chirongi"
+    ],
+    "category": "nut_seed",
+    "allergens": [
+      "tree_nut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "melon-seeds",
+    "name_en": "Melon seeds (magaz)",
+    "name_hi": "मगज़",
+    "aliases": [
+      "magaz",
+      "magaj",
+      "char magaz",
+      "melon seeds"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "flax-seeds",
+    "name_en": "Flax seeds (alsi)",
+    "name_hi": "अलसी",
+    "aliases": [
+      "alsi",
+      "javas",
+      "jawas",
+      "flax seeds",
+      "flaxseed"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "hemp-seeds",
+    "name_en": "Hemp seeds (bhang ke beej)",
+    "name_hi": "भांग के बीज",
+    "aliases": [
+      "bhang ke beej",
+      "bhang beej",
+      "hemp seeds"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "perilla-seeds",
+    "name_en": "Perilla seeds",
+    "name_hi": "पेरिला बीज",
+    "aliases": [
+      "perilla",
+      "perilla beej",
+      "perilla seeds",
+      "akini",
+      "bhanjira"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "edible-gum",
+    "name_en": "Edible gum (gond)",
+    "name_hi": "गोंद",
+    "aliases": [
+      "gond",
+      "dink",
+      "edible gum"
+    ],
+    "category": "other",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "dry-dates",
+    "name_en": "Dry dates (chhuhara)",
+    "name_hi": "छुहारा",
+    "aliases": [
+      "chhuhara",
+      "chhuare",
+      "chuhara",
+      "kharik",
+      "dry dates"
+    ],
+    "category": "nut_seed",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "dates",
+    "name_en": "Dates (khajoor)",
+    "name_hi": "खजूर",
+    "aliases": [
+      "khajoor",
+      "khajur",
+      "khejur",
+      "dates"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "chhena",
+    "name_en": "Chhena",
+    "name_hi": "छेना",
+    "aliases": [
+      "chhena",
+      "chena",
+      "chhana"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "chhurpi",
+    "name_en": "Chhurpi (fresh)",
+    "name_hi": "छुर्पी",
+    "aliases": [
+      "chhurpi",
+      "churpi",
+      "chhurpi taaza"
+    ],
+    "category": "dairy",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "turnip",
+    "name_en": "Turnip",
+    "name_hi": "शलगम",
+    "aliases": [
+      "shalgam",
+      "shaljam",
+      "gogji",
+      "turnip"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "lotus-stem",
+    "name_en": "Lotus stem",
+    "name_hi": "कमल ककड़ी",
+    "aliases": [
+      "kamal kakdi",
+      "kamal kakri",
+      "nadru",
+      "bhee",
+      "bhein",
+      "lotus stem"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "tapioca",
+    "name_en": "Tapioca (kappa)",
+    "name_hi": "कसावा",
+    "aliases": [
+      "kappa",
+      "tapioca",
+      "cassava",
+      "maravalli kizhangu"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "chinese-potato",
+    "name_en": "Chinese potato (koorka)",
+    "name_hi": "कूर्का",
+    "aliases": [
+      "koorka",
+      "koorkka",
+      "chinese potato",
+      "sambrani kizhangu"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "purple-yam",
+    "name_en": "Purple yam (ratalu)",
+    "name_hi": "रतालू",
+    "aliases": [
+      "ratalu",
+      "kand",
+      "garadu",
+      "purple yam"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "raw-papaya",
+    "name_en": "Raw papaya",
+    "name_hi": "कच्चा पपीता",
+    "aliases": [
+      "kacha papita",
+      "kachcha papita",
+      "kaccha papita",
+      "kachha papita",
+      "raw papaya"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "raw-jackfruit",
+    "name_en": "Raw jackfruit",
+    "name_hi": "कच्चा कटहल",
+    "aliases": [
+      "kaccha kathal",
+      "kachcha kathal",
+      "kacha kathal",
+      "kathal",
+      "echor",
+      "idichakka",
+      "raw jackfruit"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "ripe-jackfruit",
+    "name_en": "Ripe jackfruit",
+    "name_hi": "पका कटहल",
+    "aliases": [
+      "pake kathal ke koye",
+      "pake kathal",
+      "pakka kathal",
+      "ripe jackfruit"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "banana-flower",
+    "name_en": "Banana flower",
+    "name_hi": "केले का फूल",
+    "aliases": [
+      "kele ka phool",
+      "kela phool",
+      "mocha",
+      "vazhaipoo",
+      "banana flower"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "banana-stem",
+    "name_en": "Banana stem",
+    "name_hi": "केले का तना",
+    "aliases": [
+      "kele ka tana",
+      "posola",
+      "vazhaithandu",
+      "vazhapindi",
+      "banana stem"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "ash-gourd",
+    "name_en": "Ash gourd (petha)",
+    "name_hi": "पेठा",
+    "aliases": [
+      "petha",
+      "ash gourd",
+      "safed kaddu",
+      "kumra",
+      "kumura",
+      "poosanikai",
+      "kumbalakai",
+      "winter melon"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "ivy-gourd",
+    "name_en": "Ivy gourd (tindora)",
+    "name_hi": "कुंदरू",
+    "aliases": [
+      "kundru",
+      "tindora",
+      "tondli",
+      "tendli",
+      "kovakkai",
+      "kovakka",
+      "dondakaya",
+      "ivy gourd"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "snake-gourd",
+    "name_en": "Snake gourd",
+    "name_hi": "चिचिंडा",
+    "aliases": [
+      "chichinda",
+      "chachinda",
+      "chichinde",
+      "padwal",
+      "pudalangai",
+      "snake gourd"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "flat-beans",
+    "name_en": "Flat beans (sem / papdi)",
+    "name_hi": "सेम",
+    "aliases": [
+      "sem",
+      "sem phali",
+      "semphali",
+      "surti papdi",
+      "val papdi",
+      "papdi dana",
+      "avarekai",
+      "avarekalu",
+      "chheeli avarekalu",
+      "broad beans",
+      "flat beans"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "cluster-beans",
+    "name_en": "Cluster beans (gawar)",
+    "name_hi": "ग्वार फली",
+    "aliases": [
+      "gawar",
+      "gavar",
+      "gwar",
+      "guar",
+      "guvar",
+      "gwar phali",
+      "gawar phali",
+      "guvar phali",
+      "gavar phali",
+      "gorikayi",
+      "cluster beans"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "chayote",
+    "name_en": "Chayote (chow chow)",
+    "name_hi": "चाउ चाउ",
+    "aliases": [
+      "chow chow",
+      "chayote",
+      "seemebadane",
+      "iskus"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "green-chickpeas",
+    "name_en": "Green chickpeas (hare chane)",
+    "name_hi": "हरे चने",
+    "aliases": [
+      "hare chane",
+      "hara chana",
+      "choliya",
+      "green chickpeas"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "kachri",
+    "name_en": "Kachri",
+    "name_hi": "कचरी",
+    "aliases": [
+      "kachri",
+      "kachariya"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "ker",
+    "name_en": "Ker berries",
+    "name_hi": "केर",
+    "aliases": [
+      "ker",
+      "kair",
+      "ker berries"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "sangri",
+    "name_en": "Sangri",
+    "name_hi": "सांगरी",
+    "aliases": [
+      "sangri",
+      "sangria beans"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "radish-pods",
+    "name_en": "Radish pods (mogri)",
+    "name_hi": "मोगरी",
+    "aliases": [
+      "mogri",
+      "moongra",
+      "radish pods"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "fiddlehead-fern",
+    "name_en": "Fiddlehead fern (lingri)",
+    "name_hi": "लिंगुड़ा",
+    "aliases": [
+      "lingri",
+      "lingra",
+      "linguda",
+      "ningro",
+      "fiddlehead fern"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "bamboo-shoot",
+    "name_en": "Bamboo shoot",
+    "name_hi": "बांस करील",
+    "aliases": [
+      "bamboo shoot",
+      "bamboo shoots",
+      "bans karil",
+      "baans kareel",
+      "bans ke kalle",
+      "bans kareel",
+      "kalale"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "fermented-bamboo-shoot",
+    "name_en": "Fermented bamboo shoot",
+    "name_hi": "खमीरी बांस करील",
+    "aliases": [
+      "fermented bamboo shoot",
+      "bamboo shoot khatta",
+      "khorisa",
+      "soibum"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "mixed-vegetables",
+    "name_en": "Mixed vegetables",
+    "name_hi": "मिक्स सब्ज़ी",
+    "aliases": [
+      "mix sabzi",
+      "mixed sabzi",
+      "mix veg",
+      "mixed vegetables"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": true,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "bohar-bhaji",
+    "name_en": "Bohar bhaji (lasoda buds)",
+    "name_hi": "बोहार भाजी",
+    "aliases": [
+      "bohar bhaji",
+      "bohar",
+      "lasoda"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "elephant-apple",
+    "name_en": "Elephant apple (chalta)",
+    "name_hi": "चालता",
+    "aliases": [
+      "chalta",
+      "oou",
+      "ou tenga",
+      "elephant apple"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "rakhia-badi",
+    "name_en": "Rakhia badi",
+    "name_hi": "रखिया बड़ी",
+    "aliases": [
+      "rakhia badi",
+      "rakhiya badi"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "mustard-greens",
+    "name_en": "Mustard greens (sarson ka saag)",
+    "name_hi": "सरसों के पत्ते",
+    "aliases": [
+      "sarson ke patte",
+      "sarson patte",
+      "sarson patta",
+      "sarson ka saag",
+      "sarson saag",
+      "lai xaak",
+      "lai saag",
+      "mustard greens"
+    ],
+    "category": "vegetable",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "bathua",
+    "name_en": "Bathua",
+    "name_hi": "बथुआ",
+    "aliases": [
+      "bathua",
+      "bathuwa",
+      "chakvat",
+      "chenopodium"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "amaranth-leaves",
+    "name_en": "Amaranth leaves (chaulai)",
+    "name_hi": "चौलाई",
+    "aliases": [
+      "chaulai",
+      "laal chaulai",
+      "lal chaulai",
+      "laal bhaji",
+      "lal bhaji",
+      "chandaliya",
+      "harive soppu",
+      "cheera",
+      "tambdi bhaji",
+      "lal shaak",
+      "amaranth"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "gongura",
+    "name_en": "Gongura (roselle leaves)",
+    "name_hi": "गोंगुरा",
+    "aliases": [
+      "gongura",
+      "ambadi",
+      "amari bhaji",
+      "amari",
+      "pitwa",
+      "roselle leaves"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "dill-leaves",
+    "name_en": "Dill leaves (soya)",
+    "name_hi": "सोआ",
+    "aliases": [
+      "sua",
+      "soya saag",
+      "soya patta",
+      "shepu",
+      "suva",
+      "savaa",
+      "dill"
+    ],
+    "category": "herb",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "collard-greens",
+    "name_en": "Collard greens (haak)",
+    "name_hi": "हाक",
+    "aliases": [
+      "haak",
+      "haakh",
+      "collard greens"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "malabar-spinach",
+    "name_en": "Malabar spinach (poi)",
+    "name_hi": "पोई साग",
+    "aliases": [
+      "vali",
+      "poi saag",
+      "poi",
+      "mayalu",
+      "basella",
+      "malabar spinach"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "chickpea-leaves",
+    "name_en": "Chickpea leaves (chane ka saag)",
+    "name_hi": "चने का साग",
+    "aliases": [
+      "chane ke patte",
+      "chane ka saag",
+      "chane ki bhaji",
+      "chane ki patti",
+      "chickpea leaves"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "nettle-leaves",
+    "name_en": "Stinging nettle leaves",
+    "name_hi": "बिच्छू घास",
+    "aliases": [
+      "kandalee",
+      "kandali",
+      "bichhu ghas",
+      "sisnu",
+      "nettle",
+      "nettle leaves"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "phutkal-leaves",
+    "name_en": "Phutkal leaves",
+    "name_hi": "फुटकल साग",
+    "aliases": [
+      "phutkal",
+      "phutkal ke patte",
+      "phutkal saag"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "kachnar-leaves",
+    "name_en": "Kachnar leaves (koinar)",
+    "name_hi": "कचनार के पत्ते",
+    "aliases": [
+      "koinar",
+      "kachnar",
+      "kachnar patte",
+      "koinar patte"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "gundruk",
+    "name_en": "Gundruk (fermented dried greens)",
+    "name_hi": "गुंड्रुक",
+    "aliases": [
+      "gundruk",
+      "gundruk saag"
+    ],
+    "category": "vegetable",
+    "allergens": [
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "pineapple",
+    "name_en": "Pineapple",
+    "name_hi": "अनानास",
+    "aliases": [
+      "ananas",
+      "anannas",
+      "annanas",
+      "pineapple"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "grapes",
+    "name_en": "Grapes",
+    "name_hi": "अंगूर",
+    "aliases": [
+      "angoor",
+      "angur",
+      "grapes"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "crab",
+    "name_en": "Crab",
+    "name_hi": "केकड़ा",
+    "aliases": [
+      "kekda",
+      "kekra",
+      "nandu",
+      "kankada",
+      "khekda",
+      "crab"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "shellfish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "shellfish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "clams",
+    "name_en": "Clams (tisrya)",
+    "name_hi": "सीपी",
+    "aliases": [
+      "tisreo",
+      "tisrya",
+      "tisre",
+      "kakka",
+      "clams",
+      "clam"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "shellfish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "shellfish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "mackerel",
+    "name_en": "Mackerel (bangda)",
+    "name_hi": "बांगडा",
+    "aliases": [
+      "bangda",
+      "bangde",
+      "bangude",
+      "ayala",
+      "ayila",
+      "mackerel"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "fish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "fish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "bombay-duck",
+    "name_en": "Bombay duck (bombil)",
+    "name_hi": "बोंबील",
+    "aliases": [
+      "bombil",
+      "bombay duck",
+      "bummalo"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "fish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "fish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "sardine",
+    "name_en": "Sardine (mathi)",
+    "name_hi": "मत्थी",
+    "aliases": [
+      "mathi",
+      "chaala",
+      "tarli",
+      "pedvey",
+      "sardine",
+      "sardines"
+    ],
+    "category": "seafood",
+    "allergens": [
+      "fish"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "fish",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "duck",
+    "name_en": "Duck",
+    "name_hi": "बत्तख",
+    "aliases": [
+      "batakh",
+      "batakh ka meat",
+      "haanh",
+      "duck"
+    ],
+    "category": "meat",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "other",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "fermented-soybean",
+    "name_en": "Fermented soybean (axone / kinema)",
+    "name_hi": "किण्वित सोयाबीन",
+    "aliases": [
+      "axone",
+      "akhuni",
+      "tungrymbai",
+      "kinema",
+      "fermented soyabean",
+      "fermented soybean"
+    ],
+    "category": "pulse",
+    "allergens": [
+      "soy"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "yeast",
+    "name_en": "Dry yeast",
+    "name_hi": "खमीर",
+    "aliases": [
+      "yeast",
+      "sookha yeast",
+      "sukha yeast",
+      "instant yeast",
+      "dry yeast",
+      "sukha khameer",
+      "sookha khameer"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 50,
+    "perishable": false
+  },
+  {
+    "slug": "chilli-sauce",
+    "name_en": "Chilli sauce",
+    "name_hi": "चिल्ली सॉस",
+    "aliases": [
+      "chilli sauce",
+      "chili sauce",
+      "red chilli sauce",
+      "green chilli sauce"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "green-chutney",
+    "name_en": "Green chutney (hari chutney)",
+    "name_hi": "हरी चटनी",
+    "aliases": [
+      "hari chutney",
+      "hara chutney",
+      "green chutney"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "pizza-sauce",
+    "name_en": "Pizza sauce",
+    "name_hi": "पिज़्ज़ा सॉस",
+    "aliases": [
+      "pizza sauce"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": true,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "mayonnaise",
+    "name_en": "Mayonnaise",
+    "name_hi": "मेयोनेज़",
+    "aliases": [
+      "mayonnaise",
+      "mayo"
+    ],
+    "category": "condiment",
+    "allergens": [
+      "egg",
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": true,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "eggless-mayonnaise",
+    "name_en": "Eggless mayonnaise",
+    "name_hi": "एगलेस मेयोनेज़",
+    "aliases": [
+      "eggless mayonnaise",
+      "eggless mayo",
+      "veg mayonnaise",
+      "veg mayo"
+    ],
+    "category": "condiment",
+    "allergens": [
+      "milk",
+      "mustard"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 250,
+    "perishable": false
+  },
+  {
+    "slug": "kewra-water",
+    "name_en": "Kewra water",
+    "name_hi": "केवड़ा जल",
+    "aliases": [
+      "kewra jal",
+      "kewra",
+      "kewda",
+      "kevda",
+      "kewra water"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "ml",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "vanilla-essence",
+    "name_en": "Vanilla essence",
+    "name_hi": "वनीला एसेंस",
+    "aliases": [
+      "vanilla essence",
+      "vanilla extract",
+      "vanilla"
+    ],
+    "category": "condiment",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "ml",
+    "pack_size": 20,
+    "perishable": false
+  },
+  {
+    "slug": "chocolate-syrup",
+    "name_en": "Chocolate syrup",
+    "name_hi": "चॉकलेट सिरप",
+    "aliases": [
+      "chocolate syrup",
+      "chocolate sauce"
+    ],
+    "category": "sweetener",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "baking-powder",
+    "name_en": "Baking powder",
+    "name_hi": "बेकिंग पाउडर",
+    "aliases": [
+      "baking powder"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "custard-powder",
+    "name_en": "Custard powder",
+    "name_hi": "कस्टर्ड पाउडर",
+    "aliases": [
+      "custard powder"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "food-colour",
+    "name_en": "Food colour",
+    "name_hi": "खाने का रंग",
+    "aliases": [
+      "peela rang",
+      "meetha peela rang",
+      "khane ka rang",
+      "food colour",
+      "food color",
+      "kesari rang"
+    ],
+    "category": "other",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 10,
+    "perishable": false
+  },
+  {
+    "slug": "boondi",
+    "name_en": "Boondi",
+    "name_hi": "बूंदी",
+    "aliases": [
+      "boondi",
+      "khari boondi"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "farsan",
+    "name_en": "Farsan (mixed namkeen)",
+    "name_hi": "फरसाण",
+    "aliases": [
+      "farsan",
+      "misal farsan",
+      "mixture namkeen",
+      "chivda mix"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "peanut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "chanachur",
+    "name_en": "Chanachur",
+    "name_hi": "चानाचूर",
+    "aliases": [
+      "chanachur",
+      "chanachoor"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "peanut"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "amritsari-wadi",
+    "name_en": "Amritsari wadi",
+    "name_hi": "अमृतसरी वड़ी",
+    "aliases": [
+      "amritsari wadi",
+      "amritsari wadiyan",
+      "urad dal wadi",
+      "wadiyan"
+    ],
+    "category": "packaged",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "rabodi",
+    "name_en": "Rabodi",
+    "name_hi": "राबोड़ी",
+    "aliases": [
+      "rabodi",
+      "rabori"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 200,
+    "perishable": false
+  },
+  {
+    "slug": "sundakkai-vathal",
+    "name_en": "Dried turkey berry (sundakkai vathal)",
+    "name_hi": "सुंडक्काई वत्तल",
+    "aliases": [
+      "sundakkai vathal",
+      "sundakkai",
+      "sundaikkai",
+      "turkey berry"
+    ],
+    "category": "vegetable",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "aamsotto",
+    "name_en": "Mango leather (aamsotto)",
+    "name_hi": "आमसत्त",
+    "aliases": [
+      "aamsotto",
+      "aam sotto",
+      "aamsatta",
+      "aam papad"
+    ],
+    "category": "fruit",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "curd-chillies",
+    "name_en": "Curd chillies (mor milagai)",
+    "name_hi": "मोर मिलगाई",
+    "aliases": [
+      "mor milagai",
+      "moru mulaku",
+      "curd chillies",
+      "sandige menasu"
+    ],
+    "category": "condiment",
+    "allergens": [
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "sublinear",
+    "trackable": true,
+    "purchase_unit": "g",
+    "pack_size": 100,
+    "perishable": false
+  },
+  {
+    "slug": "spring-roll-sheet",
+    "name_en": "Spring roll sheets",
+    "name_hi": "स्प्रिंग रोल शीट",
+    "aliases": [
+      "spring roll sheet",
+      "spring roll sheets",
+      "spring roll wrapper"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": true,
+    "purchase_unit": "pc",
+    "pack_size": 20,
+    "perishable": false
+  },
+  {
+    "slug": "pizza-base",
+    "name_en": "Pizza base",
+    "name_hi": "पिज़्ज़ा बेस",
+    "aliases": [
+      "pizza base",
+      "pizza bases"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "kulcha",
+    "name_en": "Kulcha",
+    "name_hi": "कुलचा",
+    "aliases": [
+      "kulcha",
+      "kulche"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten",
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": true
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "pheni",
+    "name_en": "Pheni",
+    "name_hi": "फेनी",
+    "aliases": [
+      "pheni",
+      "pheni lachhe",
+      "feni",
+      "sutar feni"
+    ],
+    "category": "packaged",
+    "allergens": [
+      "gluten",
+      "milk"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": true,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": false
+  },
+  {
+    "slug": "leftover-roti",
+    "name_en": "Leftover roti",
+    "name_hi": "बासी रोटी",
+    "aliases": [
+      "baasi roti",
+      "basi roti",
+      "rotli bachi hui",
+      "bachi hui roti",
+      "bachi hui rotli",
+      "leftover roti"
+    ],
+    "category": "other",
+    "allergens": [
+      "gluten"
+    ],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": true,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "sugarcane-juice",
+    "name_en": "Sugarcane juice",
+    "name_hi": "गन्ने का रस",
+    "aliases": [
+      "ganne ka ras",
+      "ganne ka juice",
+      "sugarcane juice"
+    ],
+    "category": "sweetener",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "linear",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "banana-leaf",
+    "name_en": "Banana leaf",
+    "name_hi": "केले का पत्ता",
+    "aliases": [
+      "kele ke patte",
+      "kele ka patta",
+      "kele ke patte tukde",
+      "vazhai ilai",
+      "banana leaf",
+      "banana leaves"
+    ],
+    "category": "other",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "jackfruit-leaves",
+    "name_en": "Jackfruit leaves",
+    "name_hi": "कटहल के पत्ते",
+    "aliases": [
+      "kathal ke patte",
+      "halasina ele",
+      "jackfruit leaves"
+    ],
+    "category": "other",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  },
+  {
+    "slug": "bamboo-tube",
+    "name_en": "Raw bamboo tube",
+    "name_hi": "कच्चे बांस की नली",
+    "aliases": [
+      "kacha baans ka tukda",
+      "kacha baans",
+      "bamboo tube"
+    ],
+    "category": "other",
+    "allergens": [],
+    "flags": {
+      "root_veg": false,
+      "onion_garlic": false,
+      "meat_type": "none",
+      "egg": false,
+      "dairy": false,
+      "gluten": false,
+      "honey": false,
+      "mushroom": false,
+      "fermented": false
+    },
+    "scaling_rule": "fixed",
+    "trackable": false,
+    "purchase_unit": null,
+    "pack_size": null,
+    "perishable": true
+  }
+]

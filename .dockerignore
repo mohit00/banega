@@ -1,0 +1,13 @@
+# Build context for admin/Dockerfile is the repo root: send only what it needs.
+**
+!backend/pyproject.toml
+!backend/README.md
+!backend/app/**
+!admin/pyproject.toml
+!admin/main.py
+**/__pycache__
+**/*.pyc
+!admin/*.py
+!content/golden-queries.json
+!content/*.seed.json
+!admin/templates/**

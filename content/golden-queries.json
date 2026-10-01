@@ -1,0 +1,1543 @@
+{
+ "version": 1,
+ "description": "Maharaj parse golden set (FRD review F-5.4-03). Each query in English, Devanagari and Hinglish with spelling variants; seeded from the prototype's quick asks, welcome chips, ticker asks and follow-ups. 'slot' is the slot the user named (null = none, the screen's slot is used). Always compared: slot, tags (set), max_mins, cuisines (set), member_focus. Compared when present: ingredients_include, ingredients_exclude (sets), diet, spice. CI asserts >= 95% of queries match on every compared field (tests/test_maharaj_parse.py).",
+ "household_members": [
+  "Papa",
+  "Mummy",
+  "Dadi",
+  "Daughter",
+  "Wife"
+ ],
+ "current_slot": "lunch",
+ "queries": [
+  {
+   "q": "15 min mein kuch",
+   "lang": "hinglish",
+   "source": "quick_ask",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Kuch halka",
+   "lang": "hinglish",
+   "source": "quick_ask",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Baarish special",
+   "lang": "hinglish",
+   "source": "quick_ask",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special",
+     "rainy"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Daughter ka tiffin",
+   "lang": "hinglish",
+   "source": "quick_ask",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Daughter"
+   }
+  },
+  {
+   "q": "Mehmaan aa rahe hain",
+   "lang": "hinglish",
+   "source": "quick_ask",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "High protein",
+   "lang": "en",
+   "source": "quick_ask",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "protein"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Aaj lunch mein kya?",
+   "lang": "hinglish",
+   "source": "welcome_chip",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Kuch halka dinner",
+   "lang": "hinglish",
+   "source": "welcome_chip",
+   "expect": {
+    "slot": "dinner",
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "15 min mein nashta",
+   "lang": "hinglish",
+   "source": "welcome_chip",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Dadi ke liye Jain dinner",
+   "lang": "hinglish",
+   "source": "ticker",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Dadi",
+    "diet": "jain"
+   }
+  },
+  {
+   "q": "baarish wala khaana",
+   "lang": "hinglish",
+   "source": "ticker",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "rainy"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Protein wala nashta",
+   "lang": "hinglish",
+   "source": "follow_up",
+   "expect": {
+    "slot": "nashta",
+    "tags": [
+     "protein"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Kuch South Indian",
+   "lang": "hinglish",
+   "source": "follow_up",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "South Indian"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Paneer wala kuch",
+   "lang": "hinglish",
+   "source": "follow_up",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "paneer"
+    ]
+   }
+  },
+  {
+   "q": "Dadi ke liye kya?",
+   "lang": "hinglish",
+   "source": "follow_up",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Dadi"
+   }
+  },
+  {
+   "q": "kuch halki sabzi",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "kuch halki sabji bana do",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "halka sa khana chahiye, pet kharab hai",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "mehman aa rahe hain raat ko",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "mehmano ke liye kuch special",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "barish ho rahi hai, kuch garam",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "rainy"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "barsaat mein pakode",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "rainy"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "jaldi se nashta",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "jldi kuch bana do",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "jhatpat lunch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "bachchon ke tiffin ke liye",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "bacchon ko kya pasand aayega",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "beti ke tiffin mein kya du",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Daughter"
+   }
+  },
+  {
+   "q": "teekha kuch chahiye",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "spice": "teekha"
+   }
+  },
+  {
+   "q": "tikha aur chatpata dinner",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "spice": "teekha"
+   }
+  },
+  {
+   "q": "kam mirch wala khana",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "spice": "kam"
+   }
+  },
+  {
+   "q": "gym ke baad protein wala khana",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "protein"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "proteen wala dinner",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [
+     "protein"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "naashta mein kya banau",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "nasta jaldi wala",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "dopahar ka khana",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "subah ke liye kuch halka",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "nashta",
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "raat ke khane mein kya",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "gujarati thali jaisa kuch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Gujarati"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "punjabi khana",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "North Indian"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "rajasthani dinner",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Rajasthani"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "bengali lunch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Bengali"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "chinese kuch bachchon ke liye",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [
+     "Indo-Chinese"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "maharashtrian nashta",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Maharashtrian"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "marathi style kuch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Maharashtrian"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "south indian nashta jaldi",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [
+     "South Indian"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "papa ke liye kya banega",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Papa"
+   }
+  },
+  {
+   "q": "mummy ke liye halka lunch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "lunch",
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Mummy"
+   }
+  },
+  {
+   "q": "wife ke liye teekha dinner",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Wife",
+    "spice": "teekha"
+   }
+  },
+  {
+   "q": "paneer nahi chahiye, kuch halka",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_exclude": [
+     "paneer"
+    ]
+   }
+  },
+  {
+   "q": "bina pyaaz lahsun ke kuch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "diet": "no_onion_garlic"
+   }
+  },
+  {
+   "q": "aloo wali sabzi",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "potato"
+    ]
+   }
+  },
+  {
+   "q": "bhindi ki sabji",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "okra"
+    ]
+   }
+  },
+  {
+   "q": "bhendi masala",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "okra"
+    ]
+   }
+  },
+  {
+   "q": "palak paneer type kuch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "paneer",
+     "spinach"
+    ]
+   }
+  },
+  {
+   "q": "anda curry raat ko",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "egg"
+    ]
+   }
+  },
+  {
+   "q": "30 min mein dinner",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": 30,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "aadha ghanta hai, lunch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": 30,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "10 min mein kuch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "20 min mein kya ban sakta hai",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "4 mehmaan aa rahe hain dinner pe",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": "dinner",
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "party ke liye kuch",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "dawat ka khana",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "bimaar hoon kuch simple",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "kam tel wala khana",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "lowOil"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "sada khana dal chawal type",
+   "lang": "hinglish",
+   "source": "variant",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "What should I make for dinner?",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Something light for lunch",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "lunch",
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Quick breakfast ideas",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Healthy breakfast for kids",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "nashta",
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Guests are coming tonight",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "dinner",
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Something for a rainy day",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "rainy"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "High protein dinner after gym",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "dinner",
+    "tags": [
+     "protein"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Kids tiffin for school",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "South Indian breakfast",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "South Indian"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "A Bengali fish curry for lunch",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Bengali"
+    ],
+    "member_focus": null,
+    "ingredients_include": [
+     "fish"
+    ]
+   }
+  },
+  {
+   "q": "Something with paneer",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "paneer"
+    ]
+   }
+  },
+  {
+   "q": "Dinner without onion and garlic",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_exclude": [
+     "garlic",
+     "onion"
+    ]
+   }
+  },
+  {
+   "q": "Spicy dinner please",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "spice": "teekha"
+   }
+  },
+  {
+   "q": "Food in 45 minutes",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": 45,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "What can Dadi eat for lunch?",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Dadi"
+   }
+  },
+  {
+   "q": "Chinese for the kids",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [
+     "Indo-Chinese"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Party food",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "Jain dinner",
+   "lang": "en",
+   "source": "english",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "diet": "jain"
+   }
+  },
+  {
+   "q": "आज लंच में क्या?",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "कुछ हल्का",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "कुछ हल्का डिनर",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "dinner",
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "15 मिनट में नाश्ता",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "१५ मिनट में कुछ",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "बारिश स्पेशल",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special",
+     "rainy"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "बारिश वाला खाना",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "rainy"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "मेहमान आ रहे हैं",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "special"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "हाई प्रोटीन",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "protein"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "प्रोटीन वाला नाश्ता",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "nashta",
+    "tags": [
+     "protein"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "दादी के लिए क्या?",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Dadi"
+   }
+  },
+  {
+   "q": "दादी के लिए जैन डिनर",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Dadi",
+    "diet": "jain"
+   }
+  },
+  {
+   "q": "बेटी का टिफिन",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Daughter"
+   }
+  },
+  {
+   "q": "बच्चों के लिए कुछ",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "kid"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "पनीर वाला कुछ",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "paneer"
+    ]
+   }
+  },
+  {
+   "q": "कुछ साउथ इंडियन",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "South Indian"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "गुजराती खाना",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Gujarati"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "राजस्थानी दाल बाटी जैसा",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [
+     "Rajasthani"
+    ],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "रात के खाने में क्या बनाऊं",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "dinner",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "दोपहर का खाना जल्दी",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "lunch",
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "सुबह का नाश्ता",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": "nashta",
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "तीखा कुछ",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "spice": "teekha"
+   }
+  },
+  {
+   "q": "बिना प्याज़ लहसुन",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_exclude": [
+     "garlic",
+     "onion"
+    ]
+   }
+  },
+  {
+   "q": "आलू की सब्ज़ी",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "potato"
+    ]
+   }
+  },
+  {
+   "q": "भिंडी की सब्जी",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null,
+    "ingredients_include": [
+     "okra"
+    ]
+   }
+  },
+  {
+   "q": "झटपट कुछ बना दो",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [],
+    "max_mins": 20,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "कम तेल वाला खाना",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "lowOil"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": null
+   }
+  },
+  {
+   "q": "पापा के लिए हल्का",
+   "lang": "hi",
+   "source": "devanagari",
+   "expect": {
+    "slot": null,
+    "tags": [
+     "light"
+    ],
+    "max_mins": null,
+    "cuisines": [],
+    "member_focus": "Papa"
+   }
+  }
+ ]
+}

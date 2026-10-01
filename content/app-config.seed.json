@@ -1,0 +1,116 @@
+{
+  "slots": [
+    {
+      "key": "nashta",
+      "label": "Nashta",
+      "eyebrow": "SUBAH KA NASHTA"
+    },
+    {
+      "key": "lunch",
+      "label": "Lunch",
+      "eyebrow": "DOPAHAR KA KHAANA"
+    },
+    {
+      "key": "dinner",
+      "label": "Dinner",
+      "eyebrow": "RAAT KA KHAANA"
+    }
+  ],
+  "diets": [
+    {
+      "label": "Veg",
+      "hint": "Shakahari"
+    },
+    {
+      "label": "Jain",
+      "hint": "Bina pyaaz-lahsun"
+    },
+    {
+      "label": "Egg",
+      "hint": "Veg + ande"
+    },
+    {
+      "label": "Non-veg",
+      "hint": "Sab kuch"
+    }
+  ],
+  "spice_levels": [
+    "Kam",
+    "Medium",
+    "Teekha"
+  ],
+  "needs": [
+    "Low oil",
+    "Low sugar",
+    "High protein",
+    "No maida",
+    "Kid-friendly"
+  ],
+  "cuisines": [
+    "North Indian",
+    "South Indian",
+    "Gujarati",
+    "Rajasthani",
+    "Bengali",
+    "Maharashtrian",
+    "Indo-Chinese"
+  ],
+  "quick_asks": [
+    "15 min mein kuch",
+    "Kuch halka",
+    "Baarish special",
+    "Daughter ka tiffin",
+    "Mehmaan aa rahe hain",
+    "High protein"
+  ],
+  "follow_ups": {
+    "nashta": [
+      "Protein wala nashta",
+      "Daughter ka tiffin",
+      "Kuch South Indian"
+    ],
+    "lunch": [
+      "Kuch halka",
+      "Baarish special",
+      "Paneer wala kuch",
+      "Dadi ke liye kya?"
+    ],
+    "dinner": [
+      "Kuch halka",
+      "Baarish special",
+      "Paneer wala kuch",
+      "Dadi ke liye kya?"
+    ]
+  },
+  "ticker_asks": [
+    "15 min mein nashta",
+    "Dadi ke liye Jain dinner",
+    "baarish wala khaana",
+    "Daughter ka tiffin"
+  ],
+  "welcome": "Namaste! Main Maharaj hoon. Ghar ke {n} logon ki pasand mujhe yaad hai.\nBas pucho — aaj kya banaun?",
+  "welcome_chips": [
+    "Aaj lunch mein kya?",
+    "Kuch halka dinner",
+    "15 min mein nashta",
+    "Mehmaan aa rahe hain"
+  ],
+  "consent": {
+    "version": "2026-09",
+    "consent_title": {
+      "hinglish": "Aapka data, aapki marzi",
+      "en": "Your data, your choice",
+      "hi": "आपका डेटा, आपकी मर्ज़ी"
+    },
+    "consent_body": {
+      "hinglish": "Banega aapke ghar ke logon ki khaane ki pasand, diet, allergy aur health needs rakhta hai taaki sahi khaana suggest kare aur cook ko ticket bheje. Ye data kabhi becha nahi jaata. Settings se aap apna data download ya delete kar sakte hain.",
+      "en": "Banega stores your family's food preferences, diets, allergies and health needs to suggest meals and send tickets to your cook. This data is never sold. You can download or delete it from Settings.",
+      "hi": "बनेगा आपके परिवार की खाने की पसंद, डाइट, एलर्जी और सेहत की ज़रूरतें रखता है ताकि सही खाना सुझाए और कुक को टिकट भेजे। यह डेटा कभी बेचा नहीं जाता। सेटिंग्स से आप अपना डेटा डाउनलोड या डिलीट कर सकते हैं।"
+    },
+    "consent_llm_note": {
+      "hinglish": "Maharaj chat mein aapka sawaal aur ghar ki pasand ek AI service (Anthropic) ko jaati hai jawab likhne ke liye. Naam aur phone number nahi bheje jaate.",
+      "en": "In Maharaj chat, your question and household preferences go to an AI service (Anthropic) to write the reply. Names and phone numbers are not sent.",
+      "hi": "महाराज चैट में आपका सवाल और घर की पसंद जवाब लिखने के लिए एक AI सेवा (Anthropic) को जाती है। नाम और फ़ोन नंबर नहीं भेजे जाते।"
+    }
+  }
+}

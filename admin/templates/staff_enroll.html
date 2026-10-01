@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block header %}{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <div class="container-tight">
+        <form class="card card-md" action="{{ request.url }}" method="POST" autocomplete="off">
+            {{ csrf_input(request) }}
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Set up two-factor login</h2>
+                {% if error %}
+                    <div class="alert alert-danger mb-3" role="alert">{{ error }}</div>
+                {% endif %}
+                {% if uri %}
+                    <p>Add this account to an authenticator app (Google Authenticator, 1Password,
+                        Authy...). It is shown <strong>only once</strong>.</p>
+                    <p><strong>otpauth URI</strong> (paste into the app, or into any QR generator on a
+                        trusted machine):</p>
+                    <pre class="p-2" style="white-space: pre-wrap; word-break: break-all;">{{ uri }}</pre>
+                    <p>Or type the key manually: <code>{{ secret }}</code> (time based, 6 digits, 30 s).</p>
+                {% else %}
+                    <p>The set-up key was already shown. If you did not save it, ask another staff
+                        member (or run <code>python -m app.cli staff-reset-totp --email {{ email }}</code>)
+                        to reset it.</p>
+                {% endif %}
+                <div class="mb-3">
+                    <label class="form-label" for="totp">Code from the app</label>
+                    <input type="text" id="totp" name="totp" class="form-control" inputmode="numeric"
+                           pattern="[0-9 ]*" maxlength="8" autocomplete="one-time-code" required />
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary w-100">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

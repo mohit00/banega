@@ -1,0 +1,109 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  lint:
+    name: ruff + mypy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+      - run: pip install -e "backend[dev]" -e ./admin
+      - run: ruff check backend admin
+      - run: ruff format --check backend admin
+      - run: mypy
+        working-directory: backend
+
+  test-sqlite:
+    name: tests (SQLite)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+      - run: pip install -e "backend[dev]" -e ./admin
+      - run: python -m pytest backend/tests -q
+
+  test-postgres:
+    name: tests (Postgres + pgvector, migration round trip)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: banega
+          POSTGRES_PASSWORD: ci-password
+          POSTGRES_DB: banega_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U banega -d banega_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgresql+asyncpg://banega:ci-password@127.0.0.1:5432/banega_test
+      PYTHON: python
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+      - run: pip install -e "backend[dev]" -e ./admin
+      # alembic upgrade head -> check -> downgrade base -> upgrade head -> check -> pytest
+      - run: bash scripts/test-postgres.sh
+
+  compose-build:
+    name: docker compose config + build
+    runs-on: ubuntu-latest
+    env:
+      # Placeholders so the prod override's required variables interpolate.
+      IMAGE_TAG: ci
+      JWT_SECRET: ci
+      PLAY_WEBHOOK_SECRET: ci
+      POSTGRES_PASSWORD: ci
+      REDIS_PASSWORD: ci
+      ADMIN_SECRET_KEY: ci
+      OTP_PROVIDER: msg91
+      APPSTORE_BUNDLE_ID: ci
+      APPSTORE_ISSUER_ID: ci
+      APPSTORE_KEY_ID: ci
+      APPSTORE_PRIVATE_KEY: ci
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp infra/.env.example infra/.env
+      - run: docker compose -f infra/docker-compose.yml --env-file infra/.env config -q
+      - run: >-
+          docker compose -f infra/docker-compose.yml -f infra/docker-compose.prod.yml
+          --env-file infra/.env config -q
+      - run: docker compose -f infra/docker-compose.yml --env-file infra/.env build
+      - name: nginx config renders and passes nginx -t
+        run: >-
+          docker run --rm --add-host api:127.0.0.1 --add-host admin:127.0.0.1
+          -e ADMIN_ALLOW_CIDR=10.0.0.0/8
+          -v "$PWD/infra/nginx/nginx.conf.template:/etc/nginx/nginx.conf.template:ro"
+          -v "$PWD/infra/nginx/snippets:/etc/nginx/snippets:ro"
+          -v "$PWD/infra/nginx/render.sh:/etc/nginx/render.sh:ro"
+          --entrypoint /bin/sh nginx:1.27-alpine
+          -c 'head -n -1 /etc/nginx/render.sh > /tmp/r.sh && sh /tmp/r.sh'

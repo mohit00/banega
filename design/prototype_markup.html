@@ -1,0 +1,393 @@
+
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F4F5EF; display: flex; flex-direction: column">
+<!-- ================= SPLASH ================= -->
+<sc-if value="{{isSplash}}" hint-placeholder-val="{{ true }}">
+<div class="enter" style="flex-grow: 1; display: flex; flex-direction: column; background: {{haldi}}; padding: 28px 24px 32px; position: relative; overflow: hidden">
+ <div style="display: flex; align-items: center; justify-content: space-between">
+ <div class="disp" style="font-size: 26px; font-weight: 800">banega<span style="color: #0E7C3A">.</span></div>
+ <div class="badge" style="background: #1B1B18; color: #FFCC33">AI MAHARAJ</div>
+ </div>
+ <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; position: relative">
+ <div class="orbitwrap"><div class="orbit">
+ <div class="orb" style="transform: rotateZ(0deg) translateX(150px)"><span><i class="leaf" style="display:block"></i></span></div>
+ <div class="orb" style="transform: rotateZ(60deg) translateX(150px)"><span><i class="chilli" style="display:block"></i></span></div>
+ <div class="orb" style="transform: rotateZ(120deg) translateX(150px)"><span><i class="cumin" style="display:block"></i></span></div>
+ <div class="orb" style="transform: rotateZ(180deg) translateX(150px)"><span><i class="clove" style="display:block"></i></span></div>
+ <div class="orb" style="transform: rotateZ(240deg) translateX(150px)"><span><i class="leaf" style="display:block"></i></span></div>
+ <div class="orb" style="transform: rotateZ(300deg) translateX(150px)"><span><i class="chilli" style="display:block"></i></span></div>
+ </div></div>
+ <div class="tscene">
+ <div class="tfloat"><div class="thali pthali"><img src="aef84912-4747-4ba3-96b0-e0731999c0fb" alt="Ghar ki thali"></div></div>
+ <div class="steam st1"></div><div class="steam st2"></div><div class="steam st3"></div>
+ <div class="pshadow"></div>
+ </div>
+ </div>
+ <h1 class="disp" style="margin: 0; font-size: 40px; line-height: 1.02; font-weight: 800">Aaj khaane<br>mein kya hai?</h1>
+ <p style="margin: 12px 0 24px; font-size: 16px; line-height: 1.45; font-weight: 500; color: #3A3A34">Har ghar ka roz ka sawaal. Ek AI jo aapke poore parivaar ki pasand yaad rakhta hai — aur har meal pe options deta hai.</p>
+ <button class="cta" sc-camel-on-click="{{goFamily}}">Apna ghar set karo
+ <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+ </button>
+ <button style="margin-top: 14px; height: 44px; font-size: 14px; font-weight: 700; color: #3A3A34" sc-camel-on-click="{{skipToHome}}">Demo family ke saath dekho</button>
+</div>
+</sc-if>
+<!-- ================= FAMILY ================= -->
+<sc-if value="{{isFamily}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0">
+ <div style="background: {{haldi}}; padding: 20px 20px 22px; border-radius: 0 0 24px 24px">
+ <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: .08em">
+ <span style="width: 22px; height: 6px; border-radius: 6px; background: #1B1B18"></span><span style="width: 22px; height: 6px; border-radius: 6px; background: rgba(27,27,24,.2)"></span><span style="margin-left: 4px">STEP 1 OF 2</span>
+ </div>
+ <h1 class="disp" style="margin: 14px 0 6px; font-size: 30px; line-height: 1.05; font-weight: 800">Ghar mein kaun<br>kaun hai?</h1>
+ <p style="margin: 0; font-size: 14px; font-weight: 500; color: #3A3A34">Har member ki pasand alag. Tap karke set karo — Maharaj sab yaad rakhega.</p>
+ </div>
+ <div class="scroll" style="flex-grow: 1; padding: 18px 16px; display: flex; flex-direction: column; gap: 10px">
+ <sc-for list="{{memberCards}}" as="m" hint-placeholder-count="5">
+ <button class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 14px; text-align: left; animation-delay: {{m.delay}}" sc-camel-on-click="{{m.edit}}">
+ <div class="av" style="width: 46px; height: 46px; font-size: 17px; background: {{m.color}}">{{m.initial}}</div>
+ <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+ <div style="display: flex; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 800">{{m.name}}</span><span class="badge" style="background: #F4F5EF; color: #55544E">{{m.diet}}</span></div>
+ <div style="font-size: 12.5px; color: #55544E; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{m.summary}}</div>
+ </div>
+ <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#6B6A63" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+ </button>
+ </sc-for>
+ <button style="height: 56px; border-radius: 16px; border: 1.5px dashed #B9BAAF; font-size: 14px; font-weight: 800; color: #3A3A34; display: flex; align-items: center; justify-content: center; gap: 6px" sc-camel-on-click="{{addMember}}">
+ <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Member jodo
+ </button>
+ </div>
+ <div style="padding: 12px 16px 20px; background: #fff; border-top: 1px solid #E6E6DF">
+ <button class="cta" style="width: 100%" sc-camel-on-click="{{finishOnboarding}}">{{memberCount}} log · Aage badho</button>
+ </div>
+</div>
+</sc-if>
+<!-- ================= PREFS ================= -->
+<sc-if value="{{isPrefs}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0; background: #fff">
+ <div style="padding: 14px 16px 12px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #E6E6DF">
+ <button aria-label="Back" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #F4F5EF" sc-camel-on-click="{{goFamily}}">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+ </button>
+ <div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #55544E">STEP 2 OF 2 · PASAND</div>
+ </div>
+ <div class="hscroll" style="display: flex; gap: 8px; padding: 14px 16px 4px">
+ <sc-for list="{{memberTabs}}" as="t" hint-placeholder-count="5">
+ <button class="{{t.cls}}" style="height: 44px; padding: 0 14px 0 5px" sc-camel-on-click="{{t.pick}}">
+ <span class="av" style="width: 32px; height: 32px; font-size: 12px; background: {{t.color}}">{{t.initial}}</span>{{t.name}}
+ </button>
+ </sc-for>
+ </div>
+ <div class="scroll" style="flex-grow: 1; padding: 12px 16px 20px; display: flex; flex-direction: column; gap: 22px">
+ <div style="display: flex; align-items: center; gap: 14px">
+ <div class="av" style="width: 60px; height: 60px; font-size: 22px; background: {{edit.color}}">{{edit.initial}}</div>
+ <div><div class="disp" style="font-size: 26px; font-weight: 800">{{edit.name}} ki pasand</div><div style="font-size: 13px; color: #55544E; font-weight: 500">Maharaj isi hisaab se suggest karega</div></div>
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 10px">
+ <div style="font-size: 15px; font-weight: 800">Kya khaate hain?</div>
+ <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+ <sc-for list="{{dietOpts}}" as="o" hint-placeholder-count="4">
+ <button class="{{o.cls}}" style="height: 52px; border-radius: 14px; justify-content: flex-start; padding: 0 14px" sc-camel-on-click="{{o.pick}}"><span class="{{o.mark}}"><i></i></span><span style="display: flex; flex-direction: column; align-items: flex-start"><span>{{o.label}}</span><span style="font-size: 11px; font-weight: 500; color: #55544E">{{o.hint}}</span></span></button>
+ </sc-for>
+ </div>
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 10px">
+ <div style="font-size: 15px; font-weight: 800">Mirch kitni?</div>
+ <div style="display: flex; gap: 4px; padding: 4px; border-radius: 14px; background: #F4F5EF">
+ <sc-for list="{{spiceOpts}}" as="o" hint-placeholder-count="3">
+ <button class="{{o.cls}}" style="display: flex; align-items: center; justify-content: center; gap: 4px" sc-camel-on-click="{{o.pick}}">
+ <sc-for list="{{o.dots}}" as="d" hint-placeholder-count="1"><i class="chilli" style="display: block; width: 14px; height: 5px"></i></sc-for>
+ <span style="margin-left: 4px">{{o.label}}</span>
+ </button>
+ </sc-for>
+ </div>
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 10px">
+ <div style="font-size: 15px; font-weight: 800">Koi zaroorat ya parhez?</div>
+ <div style="display: flex; flex-wrap: wrap; gap: 8px">
+ <sc-for list="{{needOpts}}" as="o" hint-placeholder-count="6"><button class="{{o.cls}}" sc-camel-on-click="{{o.pick}}">{{o.label}}</button></sc-for>
+ </div>
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 10px">
+ <div style="font-size: 15px; font-weight: 800">Favourite cuisine</div>
+ <div style="display: flex; flex-wrap: wrap; gap: 8px">
+ <sc-for list="{{cuisineOpts}}" as="o" hint-placeholder-count="7"><button class="{{o.cls}}" sc-camel-on-click="{{o.pick}}">{{o.label}}</button></sc-for>
+ </div>
+ </div>
+ </div>
+ <div style="padding: 12px 16px 20px; border-top: 1px solid #E6E6DF">
+ <button class="cta" style="width: 100%" sc-camel-on-click="{{goFamily}}">Save · {{edit.name}}</button>
+ </div>
+</div>
+</sc-if>
+<!-- ================= LOADING ================= -->
+<sc-if value="{{isLoading}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; background: {{haldi}}; padding: 24px; text-align: center">
+ <div class="tscene">
+ <div class="tfloat"><div class="thali pthali" style="animation-duration: 4s"><img src="aef84912-4747-4ba3-96b0-e0731999c0fb" alt="Ghar ki thali"></div></div>
+ <div class="steam st1"></div><div class="steam st2"></div><div class="steam st3"></div><div class="pshadow"></div>
+ </div>
+ <div class="disp" style="font-size: 26px; font-weight: 800; line-height: 1.1">Maharaj aapke ghar<br>ko samajh raha hai…</div>
+ <div style="font-size: 14px; font-weight: 600; color: #3A3A34">{{constraintLine}}</div>
+ <div class="loadbar"><i></i></div>
+</div>
+</sc-if>
+<!-- ================= HOME ================= -->
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ false }}">
+<div style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0; position: relative">
+ <div class="scroll" style="flex-grow: 1">
+ <div style="background: {{haldi}}; padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 14px">
+ <div style="display: flex; align-items: center; justify-content: space-between">
+ <button style="display: flex; flex-direction: column; align-items: flex-start; text-align: left" sc-camel-on-click="{{goFamily}}">
+ <span style="font-size: 12px; font-weight: 800; letter-spacing: .06em">{{slotEyebrow}}</span>
+ <span class="disp" style="font-size: 22px; font-weight: 800; display: flex; align-items: center; gap: 4px">Purohit Parivaar
+ <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span>
+ <span style="font-size: 12.5px; font-weight: 600; color: #3A3A34">{{familyLine}}</span>
+ </button>
+ <div style="display: flex">
+ <sc-for list="{{avStack}}" as="a" hint-placeholder-count="4"><div class="av" style="width: 32px; height: 32px; font-size: 12px; margin-left: -8px; border: 2px solid #FFCC33; background: {{a.color}}">{{a.initial}}</div></sc-for>
+ </div>
+ </div>
+ <button style="height: 48px; border-radius: 12px; background: #fff; display: flex; align-items: center; gap: 10px; padding: 0 14px; box-shadow: 0 1px 0 rgba(27,27,24,.08); text-align: left" sc-camel-on-click="{{openChatEmpty}}">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1B1B18" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+ <span style="font-size: 14px; color: #55544E; font-weight: 500">Pucho </span>
+ <span class="tick" style="flex-grow: 1; font-size: 14px; font-weight: 600; color: #1B1B18"><div><span>“15 min mein nashta”</span><span>“Dadi ke liye Jain dinner”</span><span>“baarish wala khaana”</span><span>“Daughter ka tiffin”</span><span>“15 min mein nashta”</span></div></span>
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0E7C3A" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0014 0M12 18v3"></path></svg>
+ </button>
+ </div>
+ <div style="padding: 14px 16px 0">
+ <div style="display: flex; gap: 4px; padding: 4px; border-radius: 14px; background: #E9EAE2">
+ <sc-for list="{{slotTabs}}" as="s" hint-placeholder-count="3"><button class="{{s.cls}}" sc-camel-on-click="{{s.pick}}">{{s.label}}</button></sc-for>
+ </div>
+ </div>
+ <div style="padding: 14px 16px 0">
+ <div style="position: relative; height: 176px; border-radius: 20px; background: #0E5F31; overflow: hidden; display: flex; animation: popIn .6s both">
+ <div style="position: absolute; right: -60px; top: -8px; width: 240px; height: 200px; transform: scale(.78)">
+ <div class="tscene"><div class="tfloat"><div class="thali pthali"><img src="aef84912-4747-4ba3-96b0-e0731999c0fb" alt="Ghar ki thali"></div></div><div class="steam st1"></div><div class="steam st2"></div><div class="pshadow"></div></div>
+ </div>
+ <div style="position: relative; padding: 18px; display: flex; flex-direction: column; gap: 6px; width: 64%">
+ <span class="badge" style="background: #FFCC33; color: #1B1B18; align-self: flex-start">MAHARAJ KA PICK</span>
+ <div class="disp" style="font-size: 22px; line-height: 1.08; font-weight: 800; color: #fff">{{hero.name}}</div>
+ <div style="font-size: 12.5px; color: #CFE8D5; font-weight: 600">{{hero.fitLabel}} · {{hero.mins}} min</div>
+ <button style="margin-top: auto; align-self: flex-start; height: 36px; padding: 0 14px; border-radius: 10px; background: #fff; color: #0E5F31; font-size: 13px; font-weight: 800" sc-camel-on-click="{{hero.open}}">Recipe dekho</button>
+ </div>
+ </div>
+ </div>
+ <div class="hscroll" style="display: flex; gap: 8px; padding: 14px 16px 2px">
+ <sc-for list="{{quickAsks}}" as="q" hint-placeholder-count="5"><button class="chip" sc-camel-on-click="{{q.ask}}">{{q.label}}</button></sc-for>
+ </div>
+ <div style="padding: 16px 16px 6px; display: flex; align-items: baseline; justify-content: space-between">
+ <div class="disp" style="font-size: 19px; font-weight: 800">{{slotName}} ke options</div>
+ <div style="font-size: 12px; font-weight: 700; color: #55544E">sabke hisaab se</div>
+ </div>
+ <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 6px 16px 120px">
+ <sc-for list="{{tiles}}" as="t" hint-placeholder-count="6">
+ <div class="tile" style="animation-delay: {{t.delay}}">
+ <button class="hit" sc-camel-on-click="{{t.open}}">
+ <div style="height: 124px; background: #F7F3E6; position: relative; overflow: hidden">
+ <img class="ph" src="{{t.img}}" alt="{{t.name}}" loading="lazy">
+ <div style="position: absolute; left: 8px; top: 8px"><span class="{{t.mark}}"><i></i></span></div>
+ <div class="badge" style="position: absolute; right: 8px; top: 8px; background: #fff; color: #3A3A34">
+ <svg width="11" height="11" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{t.mins}} MIN</div>
+ </div>
+ <div style="padding: 10px 10px 0; display: flex; flex-direction: column; gap: 4px">
+ <div style="font-size: 14px; font-weight: 800; line-height: 1.2; min-height: 34px">{{t.name}}</div>
+ <div style="font-size: 11.5px; color: #55544E; font-weight: 600">{{t.cuisine}}</div>
+ </div>
+ </button>
+ <div style="padding: 8px 10px 10px; display: flex; align-items: center; justify-content: space-between; gap: 6px">
+ <span class="{{t.badgeCls}}">{{t.fitShort}}</span>
+ <button class="{{t.addCls}}" sc-camel-on-click="{{t.toggle}}">{{t.addLabel}}</button>
+ </div>
+ </div>
+ </sc-for>
+ </div>
+ </div>
+ <sc-if value="{{hasPlan}}" hint-placeholder-val="{{ false }}">
+ <button class="enter" style="position: absolute; left: 12px; right: 12px; bottom: 76px; height: 58px; border-radius: 14px; background: #0E7C3A; color: #fff; display: flex; align-items: center; gap: 10px; padding: 0 12px; box-shadow: 0 10px 24px -8px rgba(14,124,58,.6); text-align: left; z-index: 5" sc-camel-on-click="{{goPlan}}">
+ <span style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a8 8 0 01-16 0zM12 3v3M8 5v2M16 5v2"></path></svg></span>
+ <span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 800">{{planCount}} dish · Aaj ka menu</span><span style="font-size: 12px; font-weight: 600; color: #CFE8D5">{{planNames}}</span></span>
+ <span style="font-size: 14px; font-weight: 800; display: flex; align-items: center">Cook ko bhejo<svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span>
+ </button>
+ </sc-if>
+ <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 68px; background: #fff; border-top: 1px solid #E6E6DF; display: flex; align-items: center; padding: 0 8px; z-index: 6">
+ <button class="navb on"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"></path></svg>Ghar</button>
+ <button class="navb" sc-camel-on-click="{{openChatEmpty}}">
+ <span class="chef" style="width: 54px; height: 54px; margin-top: -30px; border-radius: 50%; background: #FFCC33; border: 4px solid #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px -4px rgba(27,27,24,.35), inset 0 -4px 0 #E0A800">
+ <svg width="26" height="26" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1B1B18" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 14a4 4 0 01-.5-8 5 5 0 019-1.5A4 4 0 0118.5 14H6zM7 14v5h10v-5M7 17h10"></path></svg>
+ </span>Maharaj se pucho</button>
+ <button class="navb" sc-camel-on-click="{{goFamily}}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0113 0M16 4.5a3.5 3.5 0 010 7M18 14.5a6.5 6.5 0 013.5 5.5"></path></svg>Parivaar</button>
+ </div>
+</div>
+</sc-if>
+<!-- ================= CHAT ================= -->
+<sc-if value="{{isChat}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0">
+ <div style="background: {{haldi}}; padding: 12px 14px; display: flex; align-items: center; gap: 10px">
+ <button aria-label="Back" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.55)" sc-camel-on-click="{{goHome}}">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+ </button>
+ <div class="chef" style="width: 42px; height: 42px; border-radius: 50%; background: #1B1B18; display: flex; align-items: center; justify-content: center">
+ <svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFCC33" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 14a4 4 0 01-.5-8 5 5 0 019-1.5A4 4 0 0118.5 14H6zM7 14v5h10v-5M7 17h10"></path></svg>
+ </div>
+ <div style="flex-grow: 1"><div style="font-size: 16px; font-weight: 800">Maharaj</div><div style="font-size: 12px; font-weight: 600; color: #3A3A34; display: flex; align-items: center; gap: 5px"><span style="width: 7px; height: 7px; border-radius: 50%; background: #0E7C3A"></span>{{memberCount}} logon ki pasand yaad hai</div></div>
+ <sc-if value="{{hasPlan}}" hint-placeholder-val="{{ false }}">
+ <button style="height: 36px; padding: 0 12px; border-radius: 10px; background: #0E7C3A; color: #fff; font-size: 12px; font-weight: 800" sc-camel-on-click="{{goPlan}}">Menu · {{planCount}}</button>
+ </sc-if>
+ </div>
+ <div class="scroll" style="flex-grow: 1; display: flex; flex-direction: column-reverse; min-height: 0">
+ <div style="display: flex; flex-direction: column; gap: 14px; padding: 16px 0 12px">
+ <sc-for list="{{messages}}" as="msg" hint-placeholder-count="2">
+ <div class="enter" style="display: flex; flex-direction: column; gap: 10px">
+ <sc-if value="{{msg.isMe}}" hint-placeholder-val="{{ false }}">
+ <div style="align-self: flex-end; max-width: 78%; margin-right: 14px; background: #1B1B18; color: #fff; padding: 11px 14px; border-radius: 16px 16px 4px 16px; font-size: 14px; font-weight: 600; line-height: 1.4">{{msg.text}}</div>
+ </sc-if>
+ <sc-if value="{{msg.isBot}}" hint-placeholder-val="{{ true }}">
+ <div style="display: flex; gap: 8px; padding: 0 14px; align-items: flex-end">
+ <div style="width: 28px; height: 28px; border-radius: 50%; background: #1B1B18; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFCC33" stroke-width="2.2" stroke-linejoin="round"><path d="M6 14a4 4 0 01-.5-8 5 5 0 019-1.5A4 4 0 0118.5 14H6zM7 14v5h10v-5"></path></svg></div>
+ <div style="max-width: 82%; background: #fff; border: 1px solid #E6E6DF; padding: 11px 14px; border-radius: 16px 16px 16px 4px; font-size: 14px; font-weight: 500; line-height: 1.45; white-space: pre-line">{{msg.text}}</div>
+ </div>
+ </sc-if>
+ <sc-if value="{{msg.hasCards}}" hint-placeholder-val="{{ false }}">
+ <div class="hscroll" style="display: flex; gap: 10px; padding: 2px 14px 6px 50px">
+ <sc-for list="{{msg.cards}}" as="c" hint-placeholder-count="3">
+ <div class="mini" style="animation-delay: {{c.delay}}">
+ <button class="hit" sc-camel-on-click="{{c.open}}">
+ <div style="height: 112px; background: #F7F3E6; position: relative; overflow: hidden"><img class="ph" src="{{c.img}}" alt="{{c.name}}" loading="lazy">
+ <div style="position: absolute; left: 8px; top: 8px"><span class="{{c.mark}}"><i></i></span></div>
+ <div class="badge" style="position: absolute; right: 8px; top: 8px; background: #fff; color: #3A3A34">{{c.mins}} MIN</div></div>
+ <div style="padding: 10px 12px 4px; display: flex; flex-direction: column; gap: 4px">
+ <div style="font-size: 14px; font-weight: 800">{{c.name}}</div>
+ <div style="font-size: 12px; color: #55544E; font-weight: 500; line-height: 1.35; min-height: 32px">{{c.note}}</div>
+ </div>
+ </button>
+ <div style="padding: 6px 12px 12px; display: flex; align-items: center; justify-content: space-between">
+ <span class="{{c.badgeCls}}">{{c.fitShort}}</span>
+ <button class="{{c.addCls}}" sc-camel-on-click="{{c.toggle}}">{{c.addLabel}}</button>
+ </div>
+ </div>
+ </sc-for>
+ </div>
+ </sc-if>
+ <sc-if value="{{msg.hasChips}}" hint-placeholder-val="{{ false }}">
+ <div class="hscroll" style="display: flex; gap: 8px; padding: 0 14px 0 50px">
+ <sc-for list="{{msg.chips}}" as="q" hint-placeholder-count="3"><button class="chip" style="height: 34px; border-color: #0E7C3A; color: #0A5E2C" sc-camel-on-click="{{q.ask}}">{{q.label}}</button></sc-for>
+ </div>
+ </sc-if>
+ </div>
+ </sc-for>
+ <sc-if value="{{thinking}}" hint-placeholder-val="{{ false }}">
+ <div class="enter" style="display: flex; gap: 8px; padding: 0 14px; align-items: center">
+ <div style="width: 28px; height: 28px; border-radius: 50%; background: #1B1B18"></div>
+ <div style="background: #fff; border: 1px solid #E6E6DF; padding: 12px 14px; border-radius: 16px; display: flex; align-items: center; gap: 10px"><div class="typing"><i></i><i></i><i></i></div><span style="font-size: 12.5px; font-weight: 600; color: #55544E">rotiyaan sek raha hoon…</span></div>
+ </div>
+ </sc-if>
+ </div>
+ </div>
+ <div style="padding: 10px 12px 16px; background: #fff; border-top: 1px solid #E6E6DF; display: flex; gap: 8px; align-items: center">
+ <label for="ask" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Maharaj se pucho</label>
+ <input id="ask" value="{{draft}}" sc-camel-on-change="{{onDraft}}" sc-camel-on-key-down="{{onKey}}" placeholder="Aaj dinner mein kuch halka…" style="flex-grow: 1; height: 48px; border-radius: 14px; border: 1.5px solid #DEDFD6; background: #F4F5EF; padding: 0 14px; font-size: 14px; font-weight: 500; outline: none; color: #1B1B18">
+ <button aria-label="Voice" style="width: 48px; height: 48px; border-radius: 14px; background: #F4F5EF; display: flex; align-items: center; justify-content: center" sc-camel-on-click="{{voice}}">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1B1B18" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0014 0M12 18v3"></path></svg>
+ </button>
+ <button aria-label="Send" style="width: 48px; height: 48px; border-radius: 14px; background: #0E7C3A; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 0 #095A29" sc-camel-on-click="{{sendDraft}}">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+ </button>
+ </div>
+</div>
+</sc-if>
+<!-- ================= DETAIL ================= -->
+<sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0; background: #fff">
+ <div class="scroll" style="flex-grow: 1">
+ <div style="height: 290px; background: #F7F3E6; position: relative">
+ <button aria-label="Back" style="position: absolute; left: 14px; top: 14px; z-index: 2; width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #fff; box-shadow: 0 2px 6px rgba(27,27,24,.12)" sc-camel-on-click="{{goBack}}">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+ </button>
+ <div style="position: absolute; inset: 0; overflow: hidden"><img class="kb" src="{{d.img}}" alt="{{d.name}}"></div>
+ </div>
+ <div style="padding: 18px 18px 130px; display: flex; flex-direction: column; gap: 20px">
+ <div style="display: flex; flex-direction: column; gap: 8px">
+ <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #55544E"><span class="{{d.mark}}"><i></i></span>{{d.dietLabel}} · {{d.cuisine}} · {{d.mins}} min</div>
+ <h1 class="disp" style="margin: 0; font-size: 30px; line-height: 1.05; font-weight: 800">{{d.name}}</h1>
+ <div style="font-size: 14px; color: #3A3A34; font-weight: 500">{{d.sub}}</div>
+ <span class="{{d.badgeCls}}" style="align-self: flex-start">{{d.fitLabel}}</span>
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 8px">
+ <div style="font-size: 15px; font-weight: 800">Kaun khayega</div>
+ <div style="border: 1px solid #E6E6DF; border-radius: 16px; overflow: hidden">
+ <sc-for list="{{d.fits}}" as="f" hint-placeholder-count="5">
+ <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid #F0F0EA">
+ <div class="av" style="width: 32px; height: 32px; font-size: 12px; background: {{f.color}}">{{f.initial}}</div>
+ <div style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700">{{f.name}}</span><span style="font-size: 12px; color: #55544E; font-weight: 500">{{f.note}}</span></div>
+ <span class="{{f.cls}}">{{f.label}}</span>
+ </div>
+ </sc-for>
+ </div>
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 8px">
+ <div style="font-size: 15px; font-weight: 800">Saaman</div>
+ <div style="display: flex; flex-wrap: wrap; gap: 6px">
+ <sc-for list="{{d.ing}}" as="i" hint-placeholder-count="6"><span class="chip" style="height: 32px; font-size: 12.5px">{{i}}</span></sc-for>
+ </div>
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 10px">
+ <div style="font-size: 15px; font-weight: 800">Kaise banega</div>
+ <sc-for list="{{d.steps}}" as="s" hint-placeholder-count="4">
+ <div style="display: flex; gap: 10px; align-items: flex-start"><span class="step">{{s.n}}</span><span style="font-size: 14px; line-height: 1.45; font-weight: 500; padding-top: 3px">{{s.t}}</span></div>
+ </sc-for>
+ </div>
+ </div>
+ </div>
+ <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 16px 18px; background: #fff; border-top: 1px solid #E6E6DF; display: flex; gap: 10px">
+ <a class="ghost" href="{{d.link}}" target="_blank" rel="noopener" style="flex: 1">Video recipe
+ <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+ <button class="cta" style="flex: 1.3" sc-camel-on-click="{{d.toggle}}">{{d.addLabel}}</button>
+ </div>
+</div>
+</sc-if>
+<!-- ================= PLAN ================= -->
+<sc-if value="{{isPlan}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0">
+ <div style="background: {{haldi}}; padding: 12px 14px 18px; display: flex; flex-direction: column; gap: 10px">
+ <button aria-label="Back" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.55)" sc-camel-on-click="{{goHome}}">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+ </button>
+ <div class="disp" style="font-size: 28px; font-weight: 800; line-height: 1.05">Aaj ka {{slotName}} menu</div>
+ <div style="font-size: 13.5px; font-weight: 600; color: #3A3A34">{{memberCount}} logon ke liye · {{planCoverage}}</div>
+ </div>
+ <div class="scroll" style="flex-grow: 1; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+ <sc-for list="{{planItems}}" as="p" hint-placeholder-count="2">
+ <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 10px; animation-delay: {{p.delay}}">
+ <div style="width: 70px; height: 70px; border-radius: 12px; background: #F7F3E6; flex-shrink: 0; overflow: hidden"><img class="ph" src="{{p.img}}" alt="{{p.name}}" style="border-radius: 12px"></div>
+ <button class="hit" style="flex-grow: 1; gap: 3px" sc-camel-on-click="{{p.open}}"><span style="font-size: 15px; font-weight: 800">{{p.name}}</span><span style="font-size: 12px; color: #55544E; font-weight: 500">{{p.note}}</span></button>
+ <button aria-label="Remove" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center" sc-camel-on-click="{{p.toggle}}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#6B6A63" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+ </div>
+ </sc-for>
+ <sc-if value="{{noPlan}}" hint-placeholder-val="{{ false }}">
+ <div style="padding: 30px 10px; text-align: center; font-size: 14px; color: #55544E; font-weight: 600">Menu khaali hai — Ghar se dishes ADD karo.</div>
+ </sc-if>
+ <div style="margin-top: 8px; font-size: 15px; font-weight: 800">Saaman ki list</div>
+ <div style="background: #fff; border: 1px solid #E6E6DF; border-radius: 16px; padding: 6px 12px">
+ <sc-for list="{{planIng}}" as="i" hint-placeholder-count="6">
+ <div style="display: flex; align-items: center; gap: 10px; min-height: 40px; border-bottom: 1px solid #F0F0EA; font-size: 13.5px; font-weight: 600">
+ <span style="width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid #B9BAAF; flex-shrink: 0"></span>{{i}}
+ </div>
+ </sc-for>
+ </div>
+ </div>
+ <div style="padding: 12px 16px 18px; background: #fff; border-top: 1px solid #E6E6DF; display: flex; flex-direction: column; gap: 10px">
+ <button class="cta" sc-camel-on-click="{{sendCook}}">
+ <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"></path></svg>Maharaj / cook ko bhejo</button>
+ <button class="ghost" sc-camel-on-click="{{orderMissing}}">Missing saaman order karo</button>
+ </div>
+</div>
+</sc-if>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}">
+ <div class="toast"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFCC33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>{{toast}}</div>
+</sc-if>
+</div>
+</x-dc>

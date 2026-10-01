@@ -1,0 +1,823 @@
+[
+  {
+    "id": "poha",
+    "name": "Kanda Poha",
+    "sub": "Halka, 20 minute ka Maharashtrian nashta",
+    "dish_category": "breakfast",
+    "mins": 20,
+    "meal_slots": [
+      "nashta"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 1,
+    "tags": [
+      "lowOil",
+      "kid",
+      "light"
+    ],
+    "cuisine": "Maharashtrian",
+    "colour": "#F2C94C",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Mota poha 2 cup",
+      "Pyaaz 1",
+      "Moongphali",
+      "Kadi patta",
+      "Hari mirch",
+      "Nimbu",
+      "Haldi"
+    ],
+    "steps_en": [
+      "Poha dho ke 5 min chhaan lo.",
+      "Rai, kadi patta, moongphali aur pyaaz ka tadka lagao.",
+      "Haldi, namak aur poha daal ke 2 min dhak ke pakao.",
+      "Nimbu aur dhaniya se finish karo."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "cheela",
+    "name": "Moong Dal Cheela",
+    "sub": "Protein wala nashta, paneer stuffing ke saath",
+    "dish_category": "breakfast",
+    "mins": 25,
+    "meal_slots": [
+      "nashta",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": true,
+    "spice": 2,
+    "tags": [
+      "protein",
+      "lowOil",
+      "lowSugar",
+      "kid"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#D9B54A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Peeli moong dal 1 cup (bhigi)",
+      "Adrak",
+      "Hari mirch",
+      "Hing",
+      "Paneer (stuffing)",
+      "Dhaniya"
+    ],
+    "steps_en": [
+      "Dal 3 ghante bhigo ke adrak-mirch ke saath pees lo.",
+      "Hing aur namak milao.",
+      "Garam tawe pe patla phailao, thoda tel.",
+      "Paneer bhar ke fold karo."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "upma",
+    "name": "Vegetable Upma",
+    "sub": "Sooji aur sabziyon ka garam nashta",
+    "dish_category": "breakfast",
+    "mins": 20,
+    "meal_slots": [
+      "nashta"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 1,
+    "tags": [
+      "lowOil",
+      "light",
+      "kid"
+    ],
+    "cuisine": "South Indian",
+    "colour": "#EAD9A0",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Sooji 1 cup",
+      "Gajar, matar",
+      "Pyaaz",
+      "Rai, urad dal",
+      "Kadi patta",
+      "Ghee 1 tsp"
+    ],
+    "steps_en": [
+      "Sooji ko sukha bhoon lo.",
+      "Rai, urad dal, kadi patta, pyaaz aur sabzi ka tadka.",
+      "2.5 cup garam paani daal ke sooji milao.",
+      "Dhak ke 3 min, upar se ghee."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "omelette",
+    "name": "Masala Omelette",
+    "sub": "10 minute, full protein",
+    "dish_category": "breakfast",
+    "mins": 10,
+    "meal_slots": [
+      "nashta",
+      "dinner"
+    ],
+    "diet": "egg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "protein",
+      "kid"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#F4D03F",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Ande 3",
+      "Pyaaz, tamatar",
+      "Hari mirch",
+      "Dhaniya",
+      "Makhan"
+    ],
+    "steps_en": [
+      "Ande phento, namak-mirch daalo.",
+      "Pyaaz, tamatar, dhaniya milao.",
+      "Makhan mein dheemi aanch pe pakao, palto."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "idli",
+    "name": "Idli Sambar",
+    "sub": "Bhaap mein bana, bilkul kam tel",
+    "dish_category": "breakfast",
+    "mins": 30,
+    "meal_slots": [
+      "nashta"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "lowOil",
+      "light",
+      "kid",
+      "lowSugar"
+    ],
+    "cuisine": "South Indian",
+    "colour": "#F3EFE6",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Idli batter",
+      "Toor dal",
+      "Sambar masala",
+      "Drumstick, lauki",
+      "Imli",
+      "Nariyal chutney"
+    ],
+    "steps_en": [
+      "Batter ko saanchon mein bhar ke 12 min steam karo.",
+      "Toor dal ubaal lo.",
+      "Sabzi, imli, sambar masala ke saath dal pakao.",
+      "Rai-kadi patta ka tadka."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "thepla",
+    "name": "Methi Thepla",
+    "sub": "Gujarati tiffin favourite",
+    "dish_category": "roti_paratha",
+    "mins": 30,
+    "meal_slots": [
+      "nashta",
+      "lunch"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": true,
+    "spice": 1,
+    "tags": [
+      "lowSugar",
+      "kid",
+      "noMaidaOk"
+    ],
+    "cuisine": "Gujarati",
+    "colour": "#B8A15A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Gehun ka aata 2 cup",
+      "Taaza methi",
+      "Dahi",
+      "Haldi, ajwain",
+      "Til"
+    ],
+    "steps_en": [
+      "Aate mein methi, dahi, masale milao.",
+      "Naram aata goondho.",
+      "Patle bel ke tawe pe halka tel lagake seko."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "paratha",
+    "name": "Aloo Paratha",
+    "sub": "Makhan aur dahi ke saath",
+    "dish_category": "roti_paratha",
+    "mins": 35,
+    "meal_slots": [
+      "nashta",
+      "lunch"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "kid",
+      "rainy"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#D9A441",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Aata",
+      "Aloo 4 (uble)",
+      "Hari mirch",
+      "Amchur",
+      "Makhan",
+      "Dahi"
+    ],
+    "steps_en": [
+      "Aloo mein masale milao.",
+      "Aate ki loi mein bhar ke belo.",
+      "Tawe pe ghee/makhan se seko."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "rajma",
+    "name": "Rajma Chawal",
+    "sub": "Sunday wala comfort food",
+    "dish_category": "dal",
+    "mins": 45,
+    "meal_slots": [
+      "lunch"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "protein",
+      "kid"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#8E3B2E",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Rajma 1 cup (raat bhar bhiga)",
+      "Pyaaz-tamatar masala",
+      "Adrak-lahsun",
+      "Garam masala",
+      "Basmati chawal"
+    ],
+    "steps_en": [
+      "Rajma 5-6 seeti tak pakao.",
+      "Pyaaz-tamatar ka gaadha masala bhoono.",
+      "Rajma milao, 15 min dheemi aanch.",
+      "Jeera rice ke saath serve."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "daltadka",
+    "name": "Dal Tadka & Jeera Rice",
+    "sub": "Roz ka, sabko pasand",
+    "dish_category": "dal",
+    "mins": 30,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "protein",
+      "lowOil",
+      "light",
+      "kid"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#E8B73A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Toor + masoor dal",
+      "Tamatar",
+      "Jeera",
+      "Lahsun",
+      "Laal mirch",
+      "Chawal"
+    ],
+    "steps_en": [
+      "Dal haldi-namak ke saath 3 seeti.",
+      "Ghee mein jeera, lahsun, mirch ka tadka.",
+      "Dal pe tadka daalo, dhaniya.",
+      "Jeera rice alag se."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "lauki",
+    "name": "Lauki Chana Dal",
+    "sub": "Halka, kam tel, sugar-friendly",
+    "dish_category": "dal",
+    "mins": 35,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": true,
+    "spice": 1,
+    "tags": [
+      "lowOil",
+      "lowSugar",
+      "light",
+      "protein"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#C7B25A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Chana dal 1/2 cup",
+      "Lauki 300g",
+      "Tamatar",
+      "Hing",
+      "Jeera",
+      "Adrak"
+    ],
+    "steps_en": [
+      "Chana dal 30 min bhigo lo.",
+      "Hing-jeera-adrak ka tadka.",
+      "Lauki, dal, tamatar daal ke 3 seeti.",
+      "Dhaniya se garnish."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "gatte",
+    "name": "Gatte ki Sabzi",
+    "sub": "Rajasthani, bina pyaaz-lahsun",
+    "dish_category": "curry",
+    "mins": 40,
+    "meal_slots": [
+      "lunch"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": true,
+    "spice": 3,
+    "tags": [
+      "protein",
+      "special"
+    ],
+    "cuisine": "Rajasthani",
+    "colour": "#D98C2B",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Besan 1 cup",
+      "Dahi 1 cup",
+      "Ajwain",
+      "Laal mirch",
+      "Hing",
+      "Kasuri methi"
+    ],
+    "steps_en": [
+      "Besan ke gatte bana ke 10 min ubaalo.",
+      "Dahi mein masale phento.",
+      "Hing-jeera tadka, phir dahi masala dheere pakao.",
+      "Gatte daal ke 5 min simmer."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "bhindi",
+    "name": "Bhindi Masala",
+    "sub": "Sookhi sabzi, roti ke saath",
+    "dish_category": "sabzi",
+    "mins": 25,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "lowSugar"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#5E8C3A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Bhindi 400g",
+      "Pyaaz",
+      "Amchur",
+      "Dhaniya powder",
+      "Laal mirch"
+    ],
+    "steps_en": [
+      "Bhindi sukha ke kaat lo.",
+      "Tez aanch pe bhoono jab tak chipchipa na rahe.",
+      "Pyaaz aur masale daal ke 5 min."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "pbm",
+    "name": "Paneer Butter Masala",
+    "sub": "Mehmaan aayein toh yahi",
+    "dish_category": "curry",
+    "mins": 35,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "protein",
+      "kid",
+      "special"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#E0662C",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Paneer 250g",
+      "Tamatar 4",
+      "Kaju",
+      "Makhan",
+      "Malai",
+      "Kasuri methi"
+    ],
+    "steps_en": [
+      "Tamatar-kaju ubaal ke pees lo.",
+      "Makhan mein gravy pakao.",
+      "Paneer, malai, kasuri methi daal ke 5 min."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "palak",
+    "name": "Palak Paneer",
+    "sub": "Hara, protein aur iron",
+    "dish_category": "sabzi",
+    "mins": 35,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "protein",
+      "lowSugar"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#3F7D3A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Palak 2 gaddi",
+      "Paneer 200g",
+      "Pyaaz",
+      "Lahsun",
+      "Hari mirch",
+      "Malai"
+    ],
+    "steps_en": [
+      "Palak blanch karke pees lo.",
+      "Pyaaz-lahsun bhoono, palak daalo.",
+      "Paneer daal ke 5 min, upar malai."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "khichdi",
+    "name": "Moong Dal Khichdi",
+    "sub": "Pet ke liye sabse halka",
+    "dish_category": "one_pot",
+    "mins": 25,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": true,
+    "spice": 1,
+    "tags": [
+      "light",
+      "lowOil",
+      "kid",
+      "protein",
+      "lowSugar"
+    ],
+    "cuisine": "Gujarati",
+    "colour": "#E9C75A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Chawal 1/2 cup",
+      "Peeli moong dal 1/2 cup",
+      "Ghee",
+      "Jeera",
+      "Hing",
+      "Haldi"
+    ],
+    "steps_en": [
+      "Chawal-dal dho ke 20 min bhigo.",
+      "Ghee mein jeera-hing.",
+      "Haldi, namak, 4 cup paani, 3 seeti.",
+      "Dahi/papad ke saath."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "curdrice",
+    "name": "Curd Rice",
+    "sub": "Thanda, 15 minute",
+    "dish_category": "rice",
+    "mins": 15,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": true,
+    "spice": 1,
+    "tags": [
+      "light",
+      "kid",
+      "lowOil"
+    ],
+    "cuisine": "South Indian",
+    "colour": "#F5F2E8",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Pake chawal 2 cup",
+      "Dahi 1 cup",
+      "Rai",
+      "Kadi patta",
+      "Adrak",
+      "Anaar"
+    ],
+    "steps_en": [
+      "Chawal halka mash karo.",
+      "Dahi, namak milao.",
+      "Rai-kadi patta-adrak ka tadka upar."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "kadhi",
+    "name": "Kadhi Pakora",
+    "sub": "Baarish ka pakka favourite",
+    "dish_category": "curry",
+    "mins": 40,
+    "meal_slots": [
+      "lunch"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "rainy",
+      "special"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#F0C23B",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Besan",
+      "Khatta dahi",
+      "Pyaaz (pakode)",
+      "Methi dana",
+      "Laal mirch"
+    ],
+    "steps_en": [
+      "Pyaaz ke pakode tal lo.",
+      "Dahi-besan phent ke 20 min pakao.",
+      "Pakode daal ke 5 min, upar tadka."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "pakode",
+    "name": "Pyaaz Pakode",
+    "sub": "Chai ke saath, baarish mein",
+    "dish_category": "snack",
+    "mins": 20,
+    "meal_slots": [
+      "nashta",
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "rainy",
+      "kid"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#C98A2E",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Besan 1 cup",
+      "Pyaaz 3",
+      "Hari mirch",
+      "Ajwain",
+      "Tel (talne ke liye)"
+    ],
+    "steps_en": [
+      "Pyaaz patla kaat ke namak lagao.",
+      "Besan, mirch, ajwain milao, thoda paani.",
+      "Garam tel mein kurkure tal lo."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "eggcurry",
+    "name": "Anda Curry",
+    "sub": "Masaledaar, rice ke saath",
+    "dish_category": "curry",
+    "mins": 30,
+    "meal_slots": [
+      "dinner"
+    ],
+    "diet": "egg",
+    "jain_safe_editorial": false,
+    "spice": 3,
+    "tags": [
+      "protein"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#C8612C",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Ande 6 (uble)",
+      "Pyaaz-tamatar",
+      "Adrak-lahsun",
+      "Garam masala",
+      "Kasuri methi"
+    ],
+    "steps_en": [
+      "Ande halka tal lo.",
+      "Pyaaz-tamatar masala bhoono.",
+      "Paani, ande daal ke 10 min."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "chicken",
+    "name": "Chicken Curry",
+    "sub": "Ghar wali, tez masala",
+    "dish_category": "curry",
+    "mins": 50,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "non_veg",
+    "jain_safe_editorial": false,
+    "spice": 3,
+    "tags": [
+      "protein",
+      "special"
+    ],
+    "cuisine": "North Indian",
+    "colour": "#9C3B1F",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Chicken 750g",
+      "Dahi",
+      "Pyaaz 3",
+      "Adrak-lahsun",
+      "Garam masala"
+    ],
+    "steps_en": [
+      "Chicken dahi-masale mein 30 min rakho.",
+      "Pyaaz gehra bhoono.",
+      "Chicken daal ke dhak ke 25 min."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "macher",
+    "name": "Macher Jhol",
+    "sub": "Bengali, halki fish curry",
+    "dish_category": "curry",
+    "mins": 40,
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "diet": "non_veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "protein",
+      "lowOil",
+      "light"
+    ],
+    "cuisine": "Bengali",
+    "colour": "#D4822E",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Rohu 500g",
+      "Aloo",
+      "Panch phoron",
+      "Haldi",
+      "Sarson tel"
+    ],
+    "steps_en": [
+      "Machli haldi-namak laga ke halka tal lo.",
+      "Panch phoron, aloo, masale.",
+      "Paani daal ke machli, 10 min simmer."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  },
+  {
+    "id": "noodles",
+    "name": "Veg Hakka Noodles",
+    "sub": "Bachchon ki farmaish",
+    "dish_category": "other",
+    "mins": 20,
+    "meal_slots": [
+      "dinner"
+    ],
+    "diet": "veg",
+    "jain_safe_editorial": false,
+    "spice": 2,
+    "tags": [
+      "kid",
+      "maida"
+    ],
+    "cuisine": "Indo-Chinese",
+    "colour": "#D7A65A",
+    "base_servings": 4,
+    "vrat_ok": false,
+    "ingredients_text": [
+      "Hakka noodles",
+      "Patta gobhi, shimla mirch, gajar",
+      "Lahsun",
+      "Soya sauce",
+      "Sirka"
+    ],
+    "steps_en": [
+      "Noodles ubaal ke thande paani se dho lo.",
+      "Tez aanch pe lahsun aur sabzi.",
+      "Noodles, sauce, sirka daal ke toss."
+    ],
+    "steps_hi": [],
+    "status": "draft"
+  }
+]

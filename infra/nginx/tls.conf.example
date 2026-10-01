@@ -1,0 +1,86 @@
+# TLS at nginx (instead of a cloud load balancer). This file is an http-context include.
+#
+#  1. DNS: api.banega.app -> this VM; open ports 80 and 443.
+#  2. Certificate with certbot on the host, e.g.
+#       certbot certonly --standalone -d api.banega.app --agree-tos -m ops@banega.app
+#     (stop nginx for the standalone challenge; or serve /.well-known/acme-challenge/ from a
+#     shared webroot volume and use --webroot so renewals need no downtime).
+#     Renewal: certbot's systemd timer or cron, then
+#       docker compose -f infra/docker-compose.yml -f infra/docker-compose.prod.yml \
+#         exec nginx nginx -s reload
+#  3. docker-compose.prod.yml: publish "443:443", mount /etc/letsencrypt read-only and this
+#     file as /etc/nginx/tls.conf; uncomment "include /etc/nginx/tls.conf;" at the end of
+#     nginx.conf.template.
+#  4. Make the port-80 server redirect (keep /healthz for the container healthcheck):
+#       location = /healthz { return 200 '{"status":"ok"}'; }
+#       location / { return 301 https://$host$request_uri; }
+#     The admin session cookie is Secure-only outside dev: the admin needs HTTPS.
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name api.banega.app;
+
+    ssl_certificate     /etc/letsencrypt/live/api.banega.app/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.banega.app/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+    ssl_session_tickets off;
+
+    include /etc/nginx/snippets/security-headers.conf;
+
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-Request-ID $req_id;
+    proxy_read_timeout 60s;
+
+    location /v1/auth/ {
+        limit_req zone=auth burst=10 nodelay;
+        proxy_pass http://api;
+    }
+
+    location /v1/ {
+        proxy_pass http://api;
+    }
+
+    location = /admin {
+        return 301 /admin/;
+    }
+
+    location = /admin/login {
+        # allow 203.0.113.0/24; deny all;
+        limit_req zone=admin_login burst=5 nodelay;
+        include /etc/nginx/snippets/admin-headers.conf;
+        proxy_pass http://admin;
+    }
+
+    location /admin/ {
+        # allow 203.0.113.0/24; deny all;
+        limit_req zone=admin burst=60 nodelay;
+        include /etc/nginx/snippets/admin-headers.conf;
+        proxy_pass http://admin;
+    }
+
+    location /media/exports/ {
+        return 404;
+    }
+
+    location /media/ {
+        alias /srv/media/;
+        access_log off;
+        expires 30d;
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "public" always;
+        autoindex off;
+    }
+
+    location / {
+        return 404;
+    }
+}

@@ -1,0 +1,93 @@
+[
+  {
+    "from": "curd",
+    "to": "milk",
+    "ratio": 1,
+    "note_hi": "Doodh mein 1 chammach nimbu ras milakar 10 minute rakhein, dahi ki jagah daalein.",
+    "note_en": "Stir 1 tsp lemon juice into the milk, rest 10 minutes and use instead of curd."
+  },
+  {
+    "from": "paneer",
+    "to": "tofu",
+    "ratio": 1,
+    "note_hi": "Tofu ko paneer jaise tukdon mein kaatein; aakhri 2 minute mein daalein.",
+    "note_en": "Cube the tofu like paneer and add it in the last 2 minutes."
+  },
+  {
+    "from": "peanut",
+    "to": "cashew",
+    "ratio": 1,
+    "note_hi": "Moongphali ki jagah kaju (tree nut: allergy wale ke liye nahi).",
+    "note_en": "Cashews instead of peanuts (a tree nut: dropped for anyone allergic)."
+  },
+  {
+    "from": "onion",
+    "to": "onion",
+    "ratio": 0,
+    "note_hi": "Pyaaz ke bina bhi ban jayega; tadke mein chutki bhar hing daal dein.",
+    "note_en": "Works without onion; add a pinch of hing to the tempering."
+  },
+  {
+    "from": "garlic",
+    "to": "asafoetida",
+    "ratio": 0.1,
+    "note_hi": "Lahsun ki jagah chutki bhar hing, tadke mein.",
+    "note_en": "A pinch of hing in the tempering instead of garlic."
+  },
+  {
+    "from": "ghee",
+    "to": "cooking-oil",
+    "ratio": 1,
+    "note_hi": "Ghee ki jagah utna hi tel.",
+    "note_en": "The same amount of oil instead of ghee."
+  },
+  {
+    "from": "maida",
+    "to": "atta",
+    "ratio": 1,
+    "note_hi": "Maida ki jagah gehun ka aata; aata thoda naram gundhein.",
+    "note_en": "Whole-wheat atta instead of maida; knead a little softer."
+  },
+  {
+    "from": "basmati-rice",
+    "to": "rice",
+    "ratio": 1,
+    "note_hi": "Basmati nahi to koi bhi chawal chalega.",
+    "note_en": "Any rice works instead of basmati."
+  },
+  {
+    "from": "sooji",
+    "to": "poha",
+    "ratio": 1,
+    "note_hi": "Sooji ki jagah poha (dhokar); pakne ka samay kam.",
+    "note_en": "Rinsed poha instead of sooji; it cooks faster."
+  },
+  {
+    "from": "green-chilli",
+    "to": "red-chilli",
+    "ratio": 0.5,
+    "note_hi": "Hari mirch ki jagah aadhi chammach laal mirch powder.",
+    "note_en": "Half a teaspoon of red chilli powder instead of green chillies."
+  },
+  {
+    "from": "tomato",
+    "to": "amchur",
+    "ratio": 0.05,
+    "note_hi": "Tamatar ki khatas ke liye 1 chammach amchur.",
+    "note_en": "1 tsp amchur for the sourness of tomatoes."
+  },
+  {
+    "from": "tomato",
+    "to": "tamarind",
+    "ratio": 0.05,
+    "note_hi": "Tamatar ki jagah thodi imli ka paani.",
+    "note_en": "A little tamarind water instead of tomatoes."
+  },
+  {
+    "from": "cream",
+    "to": "milk",
+    "ratio": 2,
+    "note_hi": "Malai ki jagah doodh, dheemi aanch par gaadha karein.",
+    "note_en": "Milk instead of cream, reduced on a low flame."
+  }
+]

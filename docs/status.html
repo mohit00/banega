@@ -1,0 +1,643 @@
+<title>Banega Build Status</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --haldi:#FFCC33; --haldi-soft:#FFF1C7; --green:#0E7C3A; --green-dark:#0A5E2C; --green-soft:#E7F4EA;
+  --ink:#1B1B18; --ink2:#3A3A34; --ink3:#55544E; --paper:#F4F5EF; --card:#FFFFFF; --line:#E6E6DF;
+  --amber:#7A5200; --amber-soft:#FFF1C7; --red:#8B2A17; --red-soft:#FCE6E2; --code:#EDEEE6;
+  --hero-ink:#1B1B18;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --haldi:#E8B82A; --haldi-soft:#3A3113; --green:#4CC27A; --green-dark:#7AD9A0; --green-soft:#16301F;
+    --ink:#F1F1EA; --ink2:#D4D4CB; --ink3:#A9A89F; --paper:#141412; --card:#1D1D1A; --line:#2E2E29;
+    --amber:#F2C35B; --amber-soft:#3A3113; --red:#F29A85; --red-soft:#3A1D16; --code:#26261F;
+    --hero-ink:#1B1B18; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --haldi:#E8B82A; --haldi-soft:#3A3113; --green:#4CC27A; --green-dark:#7AD9A0; --green-soft:#16301F;
+  --ink:#F1F1EA; --ink2:#D4D4CB; --ink3:#A9A89F; --paper:#141412; --card:#1D1D1A; --line:#2E2E29;
+  --amber:#F2C35B; --amber-soft:#3A3113; --red:#F29A85; --red-soft:#3A1D16; --code:#26261F;
+  --hero-ink:#1B1B18; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.55 Figtree,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+.disp{font-family:"Bricolage Grotesque",Figtree,sans-serif;letter-spacing:-.02em}
+h1,h2,h3{text-wrap:balance;margin:0}
+code,.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px}
+
+/* hero */
+.hero{background:var(--haldi);color:var(--hero-ink);border-radius:0 0 24px 24px;padding-block:28px 26px}
+.hero .wrap{padding-block:0}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.word{font-size:24px;font-weight:800}.word span{color:#0E7C3A}
+.pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:6px;background:#1B1B18;color:#FFCC33;font-size:11px;font-weight:800;letter-spacing:.06em}
+.hero h1{font-size:clamp(30px,5vw,44px);line-height:1.04;font-weight:800;margin-top:18px}
+.hero p{margin:10px 0 0;max-width:62ch;color:#3A3A34;font-size:15.5px}
+.meta{margin-top:14px;font-size:12.5px;font-weight:700;color:#3A3A34}
+
+/* summary */
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:22px}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.sum b{font-size:30px;font-family:"Bricolage Grotesque",Figtree,sans-serif;font-variant-numeric:tabular-nums;line-height:1}
+.sum span{font-size:13px;color:var(--ink3);font-weight:600}
+.sum.done b{color:var(--green)} .sum.fix b{color:var(--amber)} .sum.left b{color:var(--red)}
+
+/* bar */
+.bar{display:flex;height:10px;border-radius:6px;overflow:hidden;margin-top:14px;background:var(--line)}
+.bar i{display:block}
+.bar .d{background:var(--green)} .bar .f{background:var(--haldi)} .bar .l{background:var(--red)}
+
+/* filters */
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding-block:14px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:22px}
+.chip{height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink2);font:700 13px Figtree,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--green-soft);border-color:var(--green);color:var(--green-dark)}
+.chip:focus-visible,.copy:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+/* sections */
+section{margin-top:30px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.sec-head h2{font-size:22px;font-weight:800}
+.sec-head p{margin:0;color:var(--ink3);font-size:13.5px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+
+.feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.feat-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.feat h3{font-size:16px;font-weight:800;line-height:1.25}
+.tag{flex-shrink:0;height:22px;padding:0 8px;border-radius:6px;font-size:11px;font-weight:800;display:inline-flex;align-items:center;white-space:nowrap}
+.tag.done{background:var(--green-soft);color:var(--green-dark)}
+.tag.fix{background:var(--amber-soft);color:var(--amber)}
+.tag.left{background:var(--red-soft);color:var(--red)}
+.feat p{margin:0;color:var(--ink2);font-size:14px}
+.how{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:3px;font-size:13.5px;color:var(--ink2)}
+.how li::marker{color:var(--ink3);font-weight:700}
+.lbl{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.note{font-size:12.5px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:8px}
+.where{font-size:12px;color:var(--ink3)}
+
+/* access */
+.access{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.box h3{font-size:16px;font-weight:800}
+.cmd{display:flex;align-items:flex-start;gap:8px;background:var(--code);border-radius:10px;padding:10px 12px}
+.cmd code{flex:1;white-space:pre-wrap;word-break:break-all;color:var(--ink)}
+.copy{flex-shrink:0;height:28px;padding:0 10px;border-radius:8px;border:1.5px solid var(--green);background:var(--card);color:var(--green);font:800 12px Figtree,sans-serif;cursor:pointer}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
+.kv dt{color:var(--ink3);font-weight:700}.kv dd{margin:0;font-weight:600;word-break:break-all}
+
+.tests{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+td.n{font-variant-numeric:tabular-nums;font-weight:700}
+tr:last-child td{border-bottom:0}
+
+.hidden-by-filter{display:none!important}
+footer{margin-top:36px;color:var(--ink3);font-size:12.5px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <div class="word disp">banega<span>.</span></div>
+      <span class="pill">BUILD STATUS</span>
+    </div>
+    <h1 class="disp">Kya ban gaya, kya baaki hai</h1>
+    <p>Every Banega feature across the Flutter app, the FastAPI backend and the admin panel, marked as done, being fixed now, or left. Each card says how to use the feature today.</p>
+    <div class="meta">Status as of 27 Sep 2026, evening · Stack: Flutter · FastAPI · Postgres + pgvector · Redis · Docker · Starlette-Admin</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="summary" aria-label="Summary">
+    <div class="sum done"><b>44</b><span>Features done and working</span></div>
+    <div class="sum fix"><b>0</b><span>Nothing in progress; all fixes landed</span></div>
+    <div class="sum left"><b>10</b><span>Left, mostly need outside accounts</span></div>
+    <div class="sum"><b>7/7</b><span>Build phases complete on both sides</span></div>
+  </div>
+  <div class="bar" role="img" aria-label="44 done, 0 being fixed, 10 left">
+    <i class="d" style="width:81.5%"></i><i class="f" style="width:0.0%"></i><i class="l" style="width:18.5%"></i>
+  </div>
+
+  <nav class="filters" aria-label="Filter features">
+    <button class="chip" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip" data-filter="done" aria-pressed="false">Done</button>
+    
+    <button class="chip" data-filter="left" aria-pressed="false">Left</button>
+  </nav>
+
+  <!-- ============ FAMILY APP ============ -->
+  <section id="family">
+    <div class="sec-head"><h2 class="disp">Family app</h2><p>What the household sees on the phone</p></div>
+    <div class="grid">
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Onboarding: family and pasand</h3><span class="tag done">Done</span></div>
+        <p>Splash, "Ghar mein kaun kaun hai?", per-member preferences and the Maharaj loading screen, matched to the prototype.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Open the app and tap <b>Apna ghar set karo</b>.</li>
+          <li>Tap <b>Member jodo</b> to add people, then tap a member.</li>
+          <li>Pick diet, mirch level, needs and favourite cuisines, then <b>Save</b>.</li>
+          <li>Tap <b>{n} log · Aage badho</b> to reach Home.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Demo family</h3><span class="tag done">Done</span></div>
+        <p>The Purohit Parivaar sandbox with 5 members and 22 recipes, for trying everything without a login.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>On Splash tap <b>Demo family ke saath dekho</b>.</li>
+          <li>A <b>Demo data</b> pill shows on Home while you are in the sandbox.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Consent screen</h3><span class="tag done">Done</span></div>
+        <p>DPDP notice and LLM data note shown once on first run, stored on the device and on the server.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Appears after Splash on first launch. Tap <b>Maan liya</b>.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Home recommendations</h3><span class="tag done">Done</span></div>
+        <p>Slot tabs, "Maharaj ka pick", 8 ranked tiles with Perfect / Tweak / Nahi badges, max 2 per dish type, quick-ask chips.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Switch <b>Nashta / Lunch / Dinner</b> at the top.</li>
+          <li>Read the badge on each tile: <b>Sabke liye</b>, <b>Sab · 2 tweak</b> or <b>4/5 ke liye</b>.</li>
+          <li>Tap <b>ADD</b> to put a dish in today's menu.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Recipe detail</h3><span class="tag done">Done</span></div>
+        <p>Per-member fit, ingredients scaled to servings (salt and spices scale less, whistles stay fixed), steps, video link.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Tap any tile or card.</li>
+          <li>Check <b>Kaun khayega</b> for each person's verdict and reason.</li>
+          <li>Use the servings stepper; quantities update.</li>
+          <li>Tap <b>Menu mein daalo</b> or <b>Video recipe</b>.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Maharaj chat</h3><span class="tag done">Done</span></div>
+        <p>Ask in Hinglish, English or Hindi. Recipe cards appear first, then the reply. Rule parser scores 100% on the 112-query golden set.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Tap the yellow chef button or the search bar on Home.</li>
+          <li>Type "15 min mein nashta" or "Dadi ke liye Jain dinner", or tap a chip.</li>
+          <li>Tap <b>ADD</b> on a card, or tap the card to open it.</li>
+        </ol>
+        <div class="note">Uses Claude when <code>ANTHROPIC_API_KEY</code> is set on the server; otherwise the rule parser and template replies. Small gap: follow-up chips from the server stay in Hinglish when the app is in English.</div>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Day menu and send to cook</h3><span class="tag done">Done</span></div>
+        <p>Date picker for 7 days, who is eating, guests, servings, due time, cook, saaman list with stock levels, then a real ticket.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>ADD dishes, then tap the green <b>Aaj ka menu · Cook ko bhejo</b> bar.</li>
+          <li>Set <b>Kaun kha raha hai?</b>, guests, <b>Kab tak</b> and <b>Kaun banayega</b>.</li>
+          <li>Tap <b>Maharaj / cook ko bhejo</b>. Use <b>WhatsApp par bhi bhejo</b> to share.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Ticket status and detail</h3><span class="tag done">Done</span></div>
+        <p>Status card on Home, change log, edit before cooking, cancel with reason, and "Khaana bana?" when the cook never marked it done.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Tap the ticket card under the Maharaj pick on Home.</li>
+          <li>Use <b>Edit</b>, <b>Cancel</b> or <b>Ho gaya mark karo</b>.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Inbox and approvals</h3><span class="tag done">Done</span></div>
+        <p>Bell on Home lists ticket, stock, ration, approval and rating events. Swap and dish-change approvals open a Haan / Nahi sheet.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Tap the bell on Home, then tap an item to act on it.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Kitchen stock (Rasoi)</h3><span class="tag done">Done</span></div>
+        <p>95 tracked staples with In / Low / Out, search, "Low + Out" filter and "Sab In".</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Open from Settings or the Saaman list header on the Plan screen.</li>
+          <li>Tap In, Low or Out on any item.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Ration requests</h3><span class="tag done">Done</span></div>
+        <p>Missing items become a request; the admin approves, then marks it bought, which sets stock back to In.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>On Plan tap <b>Missing saaman order karo</b>.</li>
+          <li>Open Ration, approve or reject, then tap <b>Kharid liya</b>.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Ratings</h3><span class="tag done">Done</span></div>
+        <p>After a meal, rate each dish per eater (bura / theek / bahut accha), including for kids. Ratings feed the ranking.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Tap <b>Kaisa bana?</b> on the ticket card, or the inbox rating prompt.</li>
+          <li>Ratings can be turned off in Settings.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Settings</h3><span class="tag done">Done</span></div>
+        <p>Household name, cooks (one hired cook, primary and backup), language, notifications, ratings, data export, delete with 7-day undo.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Tap the gear in the inbox screen.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Weekly summary</h3><span class="tag done">Done</span></div>
+        <p>"Is hafte" card: top dishes, on-time percentage and coverage.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Shows on Home once tickets have been completed.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Phone OTP login</h3><span class="tag done">Done</span></div>
+        <p>Phone and OTP screens, tokens in secure storage, automatic refresh, and a startup gate that sends a cook straight to cook mode.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Run the app with an API address (see "How to run it").</li>
+          <li>Enter your phone, tap <b>OTP bhejo</b>, enter the 6 digits. Debug builds show the dev code.</li>
+          <li>A new number creates a household, then goes to Family.</li>
+          <li>Log out from Settings.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Real vs demo mode</h3><span class="tag done">Done</span></div>
+        <p>Demo runs only when you pick it or when no server address is set. A real household never switches to demo data; an offline banner with Retry shows instead.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Tap <b>Demo family ke saath dekho</b> for the sandbox. Real mode needs login.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Members saved to server</h3><span class="tag done">Done</span></div>
+        <p>Add, rename and remove members through the API, with a name dialog and suggestions. Real households start empty, never with the demo family.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Family screen: <b>Member jodo</b> opens a name box. Remove from the member's Prefs page.</li></ol>
+        
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Allergies, dislikes, vrat, kid flag</h3><span class="tag done">Done</span></div>
+        <p>Prefs now has six diets, the fixed allergen list, dislikes, vrat weekdays, non-veg limits, no-dairy, "Bachcha hai" and "show health on Home".</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Open a member from Family and scroll the Prefs page. Allergic dishes show <b>Nahi</b> everywhere.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Menu per date and slot</h3><span class="tag done">Done</span></div>
+        <p>Each date and slot keeps its own dishes, so Lunch dishes never leak into Dinner.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Switch the date chips and slot tabs on Plan; each keeps its own list.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>English translation</h3><span class="tag done">Done</span></div>
+        <p>128 strings translated; the rest are dish names or already English. Phones not set to Hindi open in English. A test fails on any new untranslated string.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Settings → Language: Hinglish, English or हिंदी.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Subscription and paywall</h3><span class="tag done">Done</span></div>
+        <p>Trial, grace and expired states gate the app, and cook mode keeps working when a plan expires. "Restore purchases" sends nothing until real billing is wired.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Trial banner on Home shows days left. Tap it to open the paywall.</li></ol>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Real store billing</h3><span class="tag left">Left</span></div>
+        <p>Needs the Play Console and App Store Connect products (banega_weekly_50) and the in_app_purchase plugin wired to the adapter.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Push notifications</h3><span class="tag left">Left</span></div>
+        <p>Needs a Firebase project for FCM. The inbox works today; the cook sees new tickets when opening the app.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Recipe photos</h3><span class="tag left">Left</span></div>
+        <p>The prototype's photos were external links. Tiles show a painted katori until photos are uploaded in the admin panel.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>iOS build</h3><span class="tag left">Left</span></div>
+        <p>The code supports iOS, but building and signing needs a Mac with Xcode.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ COOK MODE ============ -->
+  <section id="cook">
+    <div class="sec-head"><h2 class="disp">Cook mode</h2><p>Hindi-first, large type, same app</p></div>
+    <div class="grid">
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Aaj ke tickets</h3><span class="tag done">Done</span></div>
+        <p>Today and tomorrow tabs sorted by due time, with big Accept, Shuru karo, Ban gaya and Taiyaar buttons.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>In demo: Settings → demo cook role → pick <b>Ramesh ji</b> or <b>Mummy</b>.</li>
+          <li>Open the <b>Rasoi</b> tab in the bottom nav.</li>
+          <li>Tap the action button on a ticket to move it forward.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Recipe with Hindi read-out</h3><span class="tag done">Done</span></div>
+        <p>Steps scaled to the ticket's servings, each read aloud in Hindi with speed 0.8× to 1.2×.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Open a ticket, tap a dish, then tap play on any step.</li></ol>
+        <div class="note">Pause resumes server audio in place; on-device voice restarts the step. If the phone has no Hindi voice, a card links to its settings.</div>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Khatam hai and the swap ladder</h3><span class="tag done">Done</span></div>
+        <p>Mark an item out and get three options: skip it, swap it (never adds an allergy or diet No), or change the dish with approval.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>On a ticket tap <b>Khatam hai</b> next to an item.</li>
+          <li>Pick <b>Bina … ke bana lo</b>, a substitute, or <b>Dish badlo</b>.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Family se poochho</h3><span class="tag done">Done</span></div>
+        <p>A message thread on each ticket between the cook and the family.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>On a ticket tap <b>Family se poochho</b>.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Duty and chhutti</h3><span class="tag done">Done</span></div>
+        <p>Cook marks leave until a date; tickets move to the backup cook, else to unassigned, and the admin is alerted.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Tap <b>On duty / Chhutti</b> in the cook header.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Ration maango and stock</h3><span class="tag done">Done</span></div>
+        <p>Cook raises a ration request, including free-text items, and updates stock in Hindi.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>On a ticket tap <b>Ration maango</b>, or <b>Rasoi</b> on the ticket list.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Offline kitchen</h3><span class="tag done">Done</span></div>
+        <p>Tickets, recipes and messages open with no network. Taps are queued, sent in order when the network or app comes back, and never lost on a server error.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Turn on airplane mode in cook mode; unsent items show <b>Bheja nahi gaya</b> until they sync.</li></ol>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ BACKEND ============ -->
+  <section id="backend">
+    <div class="sec-head"><h2 class="disp">Backend and data</h2><p>FastAPI on Postgres, 68 API endpoints</p></div>
+    <div class="grid">
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Accounts, households, invites</h3><span class="tag done">Done</span></div>
+        <p>OTP login with token rotation, one household per phone, invite links bound to a phone number, 7-day undo on delete.</p>
+        <div class="where">API: <code>/v1/auth</code>, <code>/v1/households</code>, <code>/v1/members</code>, <code>/v1/invites</code></div>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Permission table</h3><span class="tag done">Done</span></div>
+        <p>The FRD review's role table (admin, adult member, hired cook, family cook) enforced on every endpoint, with a test per cell.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Catalogue and diet tagging</h3><span class="tag done">Done</span></div>
+        <p>148 ingredients with Hindi names, 22 recipes. Jain-safe, veg, egg, allergens are worked out from ingredients, never hand-tagged.</p>
+        <div class="note">The derived rules flag 4 prototype recipes: cheela, lauki and curd rice contain adrak (root), paneer butter masala has no onion.</div>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Matching engine</h3><span class="tag done">Done</span></div>
+        <p>Same verdicts as the prototype on all 22 recipes, plus allergens, dislikes, vrat, pescatarian and halal rules. Ranks 1,000 recipes in about 30 ms.</p>
+        <div class="where">API: <code>/v1/recommendations</code>, <code>/v1/recipes/{id}</code></div>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Menus, tickets, cooks, timers</h3><span class="tag done">Done</span></div>
+        <p>Ticket state machine from the FRD review, off-duty rule, no-show alert, "Khaana bana?" after 3 hours, 20:00 tomorrow notice.</p>
+        <div class="where">API: <code>/v1/menus</code>, <code>/v1/tickets</code>, <code>/v1/cooks</code>, <code>/v1/inbox</code></div>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Stock, ration, swaps, approvals</h3><span class="tag done">Done</span></div>
+        <p>Pantry levels, ration flow, 13 substitution rules, the three-step ladder, first-answer-wins approvals with a 30-minute timeout.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Ratings, learning, insights</h3><span class="tag done">Done</span></div>
+        <p>Ratings and served history change the ranking; 3-day repeat penalty; weekly insights.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Maharaj privacy</h3><span class="tag done">Done</span></div>
+        <p>Maharaj now sends the AI only anonymised facts: allergy counts, and names only for members you typed. Health needs are never sent.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Nightly delete job</h3><span class="tag done">Done</span></div>
+        <p>Deleted accounts and households are now really purged after the 7-day undo window. Checked on Postgres.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Safety and scale hardening</h3><span class="tag done">Done</span></div>
+        <p>Allergen picklist enforced, one household per user in the database, OTP abuse limits per device and IP, safer timers with backup-cook alerts, and a production guard that refuses test settings.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Real SMS OTP</h3><span class="tag left">Left</span></div>
+        <p>Needs an MSG91 account with DLT registration. Until then login uses the dev code.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Server Hindi audio</h3><span class="tag left">Left</span></div>
+        <p>Pre-rendered TTS files per recipe. On-device Hindi voice works today.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>1,000 recipes with reviewed Hindi steps</h3><span class="tag left">Left</span></div>
+        <p>Content work: grow from 22 to the FRD's 1,000 target, with Hindi steps reviewed by a native speaker.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Multi-turn chat and semantic search</h3><span class="tag left">Left</span></div>
+        <p>Chat answers each message on its own; pgvector search switches on once an embedding key is set.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ADMIN + INFRA ============ -->
+  <section id="admin">
+    <div class="sec-head"><h2 class="disp">Admin panel and infrastructure</h2><p>For the Banega team, not households</p></div>
+    <div class="grid">
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Admin panel</h3><span class="tag done">Done</span></div>
+        <p>Users, households, members, cooks, ingredients, staples, recipes with inline ingredients, swaps, config, menus, tickets, stock, ration, approvals, ratings, subscriptions.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Run <code>scripts\dev-servers.bat</code>, then open <code>http://127.0.0.1:8766/admin/login</code>.</li>
+          <li>Recipes: fill the form, add ingredient rows, upload a photo, then <b>Reviewed → Publish</b>. Publish refuses recipes with diet-policy violations.</li>
+          <li>Use <b>Card preview</b>, <b>Ticket board</b>, <b>Kitchen health</b> and <b>Maharaj golden set</b> pages.</li>
+          <li>Import or export ingredients and recipes as CSV.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Docker stack</h3><span class="tag done">Done</span></div>
+        <p>Separate containers for db (Postgres + pgvector), redis, migrate, api, worker, admin and nginx. Admin image build fixed today.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Android build script</h3><span class="tag done">Done</span></div>
+        <p><code>scripts\android.bat</code> starts the Pixel 8 emulator, builds debug or release APKs, installs and runs.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Admin staff accounts and audit log</h3><span class="tag done">Done</span></div>
+        <p>Per-staff email, password and TOTP, lockout after 5 failures, an audit log of every edit, and soft deletes instead of hard deletes.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Create a staff login: <code>python -m app.cli staff-create --email you@kornea.in --password …</code> from <code>backend</code>.</li>
+          <li>Add the printed TOTP link to an authenticator app, then log in with email, password and code.</li>
+          <li>In dev, <b>admin / change-me</b> keeps working until the first staff account exists.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>CI on Postgres</h3><span class="tag done">Done</span></div>
+        <p>GitHub Actions runs lint, types, the tests on SQLite and on Postgres, a migration round trip, and a Docker build check.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Production deploy</h3><span class="tag left">Left</span></div>
+        <p>Needs a domain, a VM, TLS certificates, off-machine backups and real secrets. The nginx TLS template is being added.</p>
+      </article>
+
+      <article class="feat" data-status="left">
+        <div class="feat-top"><h3>Release signing key</h3><span class="tag left">Left</span></div>
+        <p>The build now reads <code>android/key.properties</code>. Create a keystore and that file before the Play Store; until then release APKs use the debug key.</p>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>App tested against the live server</h3><span class="tag done">Done</span></div>
+        <p>Checked on the Pixel 8 emulator against the local API: phone login with OTP, Home with real recommendations, and Maharaj chat with live cards and notes. Three mismatches found and fixed on the way.</p>
+        <div class="note">Not yet clicked through live: Plan and send-to-cook, cook mode, stock and ration. Their API shapes are covered by tests.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ACCESS ============ -->
+  <section id="access">
+    <div class="sec-head"><h2 class="disp">How to run it</h2><p>Local machine, Windows</p></div>
+    <div class="access">
+      <div class="box">
+        <h3>Android app</h3>
+        <p class="where">From the repo root <code>C:\Users\PC\Desktop\banega</code></p>
+        <div class="cmd"><code>scripts\android.bat run</code><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><code>scripts\android.bat release</code><button class="copy" type="button">Copy</button></div>
+        <p class="where">Against the local server, from the <code>app</code> folder:</p>
+        <div class="cmd"><code>flutter run -d emulator-5554 --dart-define=BANEGA_API_BASE_URL=http://10.0.2.2:8765</code><button class="copy" type="button">Copy</button></div>
+        <p class="where">Also <code>debug</code>, <code>install</code>, <code>all</code>, <code>emulator</code>. Release APK: <code>app\build\app\outputs\flutter-apk\app-release.apk</code></p>
+      </div>
+
+      <div class="box">
+        <h3>Admin panel</h3>
+        <dl class="kv">
+          <dt>URL</dt><dd>http://127.0.0.1:8766/admin/login</dd>
+          <dt>Username</dt><dd>admin</dd>
+          <dt>Password</dt><dd>change-me</dd>
+        </dl>
+        <p class="where">Dev defaults from <code>infra/.env.example</code>. Change them before any real deployment.</p>
+      </div>
+
+      <div class="box">
+        <h3>Database, API and admin</h3>
+        <div class="cmd"><code>scripts\dev-servers.bat</code><button class="copy" type="button">Copy</button></div>
+        <p class="where">Starts Postgres and Redis in Docker, migrates, then opens the API and admin in their own windows. Add <code>seed</code> the first time to load the demo data.</p>
+        <dl class="kv">
+          <dt>API</dt><dd>http://127.0.0.1:8765/v1/health</dd>
+          <dt>From emulator</dt><dd>http://10.0.2.2:8765</dd>
+          <dt>Demo admin</dt><dd>+919999999999, OTP shown as dev_code</dd>
+          <dt>Demo cook</dt><dd>Ramesh ji, +919999999990</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="tests">
+    <div class="sec-head"><h2 class="disp">Checks</h2><p>Last verified runs</p></div>
+    <div class="tests">
+      <table>
+        <thead><tr><th>Check</th><th>Result</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Backend tests</td><td class="n">693 passed</td><td>On SQLite and on Postgres; ruff and mypy strict clean</td></tr>
+          <tr><td>Flutter tests</td><td class="n">286 passed</td><td>flutter analyze clean; goldens and 200% text checks included</td></tr>
+          <tr><td>Migrations on Postgres</td><td class="n">0001 → 0010</td><td>Round trip down and up passes</td></tr>
+          <tr><td>App on emulator, live server</td><td class="n">Passed</td><td>OTP login, Home recommendations, Maharaj chat</td></tr>
+          <tr><td>Maharaj parser</td><td class="n">112 / 112</td><td>Golden set, 95% gate</td></tr>
+          <tr><td>Docker images</td><td class="n">Build</td><td>API and admin; nginx config passes nginx -t</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>Built by the Council: Fable plans, Opus builds, Sonnet and Opus review. Reviews and contracts live in <code>docs/</code> in the repo.</footer>
+</main>
+
+<script>
+(function(){
+  var chips=document.querySelectorAll('.chip');
+  var cards=document.querySelectorAll('.feat');
+  var sections=document.querySelectorAll('section');
+  function apply(f){
+    cards.forEach(function(c){ c.classList.toggle('hidden-by-filter', f!=='all' && c.dataset.status!==f); });
+    sections.forEach(function(s){
+      var grid=s.querySelector('.grid'); if(!grid) return;
+      var any=[].some.call(grid.querySelectorAll('.feat'),function(c){return !c.classList.contains('hidden-by-filter');});
+      s.classList.toggle('hidden-by-filter', !any);
+    });
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.filter===f)); });
+    try{ localStorage.setItem('banega-status-filter', f); }catch(e){}
+  }
+  chips.forEach(function(c){ c.addEventListener('click', function(){ apply(c.dataset.filter); }); });
+  try{ var saved=localStorage.getItem('banega-status-filter'); if(saved) apply(saved); }catch(e){}
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click', function(){
+      var code=b.parentNode.querySelector('code');
+      var text=code.textContent;
+      function done(){ b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy'; },1500); }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, function(){ select(code); });
+      } else { select(code); }
+    });
+  });
+  function select(el){ var r=document.createRange(); r.selectNodeContents(el); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+})();
+</script>

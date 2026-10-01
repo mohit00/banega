@@ -1,0 +1,222 @@
+# Banega dev stack. Run from the repo root:
+#   cp infra/.env.example infra/.env
+#   docker compose -f infra/docker-compose.yml up --build
+# Prod: add -f infra/docker-compose.prod.yml (no bind mounts, restart policies, backups).
+name: banega
+
+x-backend-env: &backend-env
+  ENV: ${ENV:-dev}
+  DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://banega:banega-dev-password@db:5432/banega}
+  REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+  JWT_SECRET: ${JWT_SECRET:-dev-only-jwt-secret-change-me-please-0123456789}
+  OTP_PROVIDER: ${OTP_PROVIDER:-dev}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+  LOG_JSON: ${LOG_JSON:-true}
+  SENTRY_DSN: ${SENTRY_DSN:-}
+  ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+  MAHARAJ_PARSE_MODEL: ${MAHARAJ_PARSE_MODEL:-claude-sonnet-5}
+  MAHARAJ_WRITE_MODEL: ${MAHARAJ_WRITE_MODEL:-claude-sonnet-5}
+  MAHARAJ_DAILY_BUDGET: ${MAHARAJ_DAILY_BUDGET:-200}
+  # Phase 5: push adapter (noop logs only; fcm needs FCM_PROJECT_ID + credentials, TODO).
+  PUSH_PROVIDER: ${PUSH_PROVIDER:-noop}
+  FCM_PROJECT_ID: ${FCM_PROJECT_ID:-}
+  ALLOW_NOOP_PUSH: ${ALLOW_NOOP_PUSH:-0}
+  # Phase 7: store verification (auto = fake in dev), Play RTDN auth (header secret or
+  # Pub/Sub OIDC), App Store (bundle, env, Server API key), DPDP notice version, data exports
+  # under MEDIA_DIR/exports (shared media volume; nginx denies /media/exports/).
+  STORE_VERIFIER: ${STORE_VERIFIER:-auto}
+  PLAY_WEBHOOK_SECRET: ${PLAY_WEBHOOK_SECRET:-}
+  PLAY_PUBSUB_AUDIENCE: ${PLAY_PUBSUB_AUDIENCE:-}
+  PLAY_PUBSUB_SERVICE_ACCOUNT: ${PLAY_PUBSUB_SERVICE_ACCOUNT:-}
+  APPSTORE_BUNDLE_ID: ${APPSTORE_BUNDLE_ID:-}
+  APPSTORE_ENVIRONMENT: ${APPSTORE_ENVIRONMENT:-Production}
+  APPSTORE_ISSUER_ID: ${APPSTORE_ISSUER_ID:-}
+  APPSTORE_KEY_ID: ${APPSTORE_KEY_ID:-}
+  APPSTORE_PRIVATE_KEY: ${APPSTORE_PRIVATE_KEY:-}
+  CONSENT_VERSION: ${CONSENT_VERSION:-2026-09}
+  MEDIA_DIR: /srv/media
+  # Separate HMAC keys for OTP codes / invite tokens (empty = derived from JWT_SECRET).
+  OTP_HMAC_KEY: ${OTP_HMAC_KEY:-}
+  INVITE_HMAC_KEY: ${INVITE_HMAC_KEY:-}
+  # X-Forwarded-For is trusted only from these (nginx on the compose network).
+  TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.1/32,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+
+x-backend-build: &backend-build
+  context: ../backend
+  dockerfile: Dockerfile
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-banega}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-banega-dev-password}
+      POSTGRES_DB: ${POSTGRES_DB:-banega}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    # Dev convenience only (psql / GUI on localhost). Removed by the prod override.
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # One-shot `alembic upgrade head`. api, worker and admin start only after it exits 0.
+  migrate:
+    build: *backend-build
+    image: banega-api:${IMAGE_TAG:-dev}
+    command: ["alembic", "upgrade", "head"]
+    environment: *backend-env
+    volumes:
+      - ../backend:/srv/backend
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+    healthcheck:
+      disable: true
+
+  api:
+    build: *backend-build
+    image: banega-api:${IMAGE_TAG:-dev}
+    command:
+      - uvicorn
+      - app.main:app
+      - --host=0.0.0.0
+      - --port=8000
+      - --reload
+      - --reload-dir=/srv/backend/app
+      # No --proxy-headers: with "*" uvicorn would trust the client-controlled left end of
+      # X-Forwarded-For. The API resolves the client IP itself (TRUSTED_PROXIES).
+      - --no-proxy-headers
+    environment: *backend-env
+    volumes:
+      - ../backend:/srv/backend
+      # Seed files for `docker compose exec api python -m app.cli seed`.
+      - ../content:/srv/content:ro
+      - media_data:/srv/media
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/v1/health/ready', timeout=3).status == 200 else 1)"
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  worker:
+    build: *backend-build
+    image: banega-api:${IMAGE_TAG:-dev}
+    command: ["arq", "--watch", "/srv/backend/app", "app.workers.worker.WorkerSettings"]
+    environment: *backend-env
+    volumes:
+      - ../backend:/srv/backend
+      - media_data:/srv/media
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "arq", "--check", "app.workers.worker.WorkerSettings"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  admin:
+    build:
+      context: ..
+      dockerfile: admin/Dockerfile
+    image: banega-admin:${IMAGE_TAG:-dev}
+    command:
+      - uvicorn
+      - main:app
+      - --host=0.0.0.0
+      - --port=8001
+      - --reload
+      - --reload-dir=/srv/admin
+      - --reload-dir=/srv/backend/app
+      - --proxy-headers
+      - --forwarded-allow-ips=*
+    environment:
+      <<: *backend-env
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      ADMIN_SECRET_KEY: ${ADMIN_SECRET_KEY:-}
+      ADMIN_BASE_URL: /admin
+      # Recipe photos uploaded in the admin; nginx serves them at /media (S3 + CDN later).
+      MEDIA_DIR: /srv/media
+      MEDIA_URL: /media
+    volumes:
+      - ../admin/main.py:/srv/admin/main.py
+      - ../admin/catalogue_admin.py:/srv/admin/catalogue_admin.py
+      - ../admin/kitchen_admin.py:/srv/admin/kitchen_admin.py
+      - ../admin/pantry_admin.py:/srv/admin/pantry_admin.py
+      - ../admin/security.py:/srv/admin/security.py
+      - ../admin/templates:/srv/admin/templates:ro
+      - ../backend/app:/srv/backend/app
+      - ../content:/srv/content:ro
+      - media_data:/srv/media
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8001/healthz', timeout=2).status == 200 else 1)"
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  nginx:
+    image: nginx:1.27-alpine
+    # render.sh fills nginx.conf.template (ADMIN_ALLOW_CIDR) and starts nginx.
+    entrypoint: ["/bin/sh", "/etc/nginx/render.sh"]
+    environment:
+      ADMIN_ALLOW_CIDR: ${ADMIN_ALLOW_CIDR:-}
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+    volumes:
+      - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template:ro
+      - ./nginx/snippets:/etc/nginx/snippets:ro
+      - ./nginx/render.sh:/etc/nginx/render.sh:ro
+      - media_data:/srv/media:ro
+    depends_on:
+      api:
+        condition: service_healthy
+      admin:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  db_data:
+  redis_data:
+  media_data:

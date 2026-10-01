@@ -1,0 +1,28 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+node_modules/
+app/build/
+app/.dart_tool/
+app/.flutter-plugins*
+*.log
+.DS_Store
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+*.db
+
+# runtime data and generated scratch
+backend/media/
+media/
+content/templates/_unmatched*.json
+app/test/failures/
+
+# signing and machine-local Android config
+*.jks
+*.keystore
+app/android/key.properties
+app/android/local.properties

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "banega-admin"
+version = "0.1.0"
+description = "Banega staff admin panel (Starlette-Admin) over the backend models"
+requires-python = ">=3.12"
+# The backend package (banega-api, import name `app`) is installed alongside from ../backend:
+#   pip install -e ../backend && pip install -e .
+# (pip cannot express a relative path dependency portably, so it is not listed here.)
+dependencies = [
+    "starlette-admin>=1.0,<1.1",
+    "itsdangerous>=2.1",
+    "uvicorn[standard]>=0.30",
+]
+
+[tool.setuptools]
+py-modules = ["main", "catalogue_admin", "kitchen_admin", "pantry_admin", "security"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]

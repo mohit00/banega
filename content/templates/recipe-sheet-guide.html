@@ -1,0 +1,226 @@
+<title>Banega Recipe Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --haldi:#FFCC33;--green:#0E7C3A;--green-dark:#0A5E2C;--green-soft:#E7F4EA;
+  --ink:#1B1B18;--ink2:#3A3A34;--ink3:#55544E;--paper:#F4F5EF;--card:#FFFFFF;--line:#E6E6DF;
+  --amber:#7A5200;--amber-soft:#FFF1C7;--red:#8B2A17;--red-soft:#FCE6E2;--code:#EDEEE6;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --haldi:#E8B82A;--green:#4CC27A;--green-dark:#7AD9A0;--green-soft:#16301F;
+    --ink:#F1F1EA;--ink2:#D4D4CB;--ink3:#A9A89F;--paper:#141412;--card:#1D1D1A;--line:#2E2E29;
+    --amber:#F2C35B;--amber-soft:#3A3113;--red:#F29A85;--red-soft:#3A1D16;--code:#26261F;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --haldi:#E8B82A;--green:#4CC27A;--green-dark:#7AD9A0;--green-soft:#16301F;
+  --ink:#F1F1EA;--ink2:#D4D4CB;--ink3:#A9A89F;--paper:#141412;--card:#1D1D1A;--line:#2E2E29;
+  --amber:#F2C35B;--amber-soft:#3A3113;--red:#F29A85;--red-soft:#3A1D16;--code:#26261F;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.55 Figtree,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+.disp{font-family:"Bricolage Grotesque",Figtree,sans-serif;letter-spacing:-.02em}
+h1,h2,h3{margin:0;text-wrap:balance}
+code,.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px}
+.hi{font-family:"Noto Sans Devanagari",Figtree,sans-serif}
+.hero{background:var(--haldi);color:#1B1B18;border-radius:0 0 24px 24px;padding-block:26px 24px}
+.hero .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.word{font-size:24px;font-weight:800}.word span{color:#0E7C3A}
+.pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:6px;background:#1B1B18;color:#FFCC33;font-size:11px;font-weight:800;letter-spacing:.06em}
+.hero h1{font-size:clamp(28px,4.6vw,40px);line-height:1.05;font-weight:800;margin-top:16px}
+.hero p{margin:10px 0 0;max-width:64ch;color:#3A3A34}
+section{margin-top:28px}
+h2{font-size:21px;font-weight:800;margin-bottom:10px}
+p.lead{margin:0 0 12px;color:var(--ink2);max-width:70ch}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;gap:12px}
+.num{flex-shrink:0;width:28px;height:28px;border-radius:8px;background:var(--haldi);color:#1B1B18;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step b{display:block;margin-bottom:2px}
+.step span{color:var(--ink2);font-size:14px}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);background:var(--card);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td:first-child code{font-weight:700;color:var(--ink)}
+.req{display:inline-block;font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px}
+.req.y{background:var(--green-soft);color:var(--green-dark)}
+.req.n{background:var(--code);color:var(--ink3)}
+.req.r{background:var(--amber-soft);color:var(--amber)}
+.group td{background:var(--paper);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.ex{color:var(--ink2)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.box h3{font-size:16px;font-weight:800;margin-bottom:8px}
+.box ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;color:var(--ink2);font-size:14px}
+.warn{border-color:var(--red-soft);background:var(--red-soft)}
+.warn h3{color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{font-family:"JetBrains Mono",Consolas,monospace;font-size:12px;background:var(--code);border-radius:6px;padding:2px 7px;color:var(--ink)}
+.csvbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.btn{height:36px;padding:0 14px;border-radius:10px;border:0;background:var(--green);color:#fff;font:800 13px Figtree,sans-serif;cursor:pointer}
+.btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+pre.csv{margin:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;overflow:auto;max-height:340px;font-family:"JetBrains Mono",Consolas,monospace;font-size:12px;line-height:1.5;white-space:pre}
+.example{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:6px 14px;font-size:14px}
+.example dt{color:var(--ink3);font-weight:700}
+.example dd{margin:0}
+@media (max-width:520px){.example{grid-template-columns:1fr}.example dt{margin-top:6px}}
+footer{margin-top:32px;color:var(--ink3);font-size:12.5px}
+</style>
+<header class="hero">
+  <div class="wrap">
+    <div class="top"><div class="word disp">banega<span>.</span></div><span class="pill">RECIPE SHEET</span></div>
+    <h1 class="disp">How to fill the Banega recipe sheet</h1>
+    <p>One row per dish. Every row becomes a recipe card in the app, with its ingredients, steps in English and Hindi, and a photo. The Banega team imports the sheet as it is, so please keep the column names and the formats below.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2 class="disp">The four rules that matter most</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><b>One row per dish</b><span>Do not merge cells or add blank rows between dishes.</span></div></div>
+      <div class="step"><div class="num">2</div><div><b>Use <code>|</code> to separate items</b><span>Ingredients, steps, tags and slots are lists. Put a <code>|</code> between items, never a new line.</span></div></div>
+      <div class="step"><div class="num">3</div><div><b>Same number of steps in both languages</b><span>Step 3 in English must be step 3 in Hindi. The app reads them out step by step.</span></div></div>
+      <div class="step"><div class="num">4</div><div><b>Save as CSV UTF-8</b><span>In Excel: File → Save As → "CSV UTF-8". In Google Sheets: File → Download → CSV. This keeps Hindi text intact.</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="disp">Columns</h2>
+    <p class="lead">The first 21 columns are imported into the app. The last 4 are for the review only and are ignored by the import.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Column</th><th>Needed</th><th>What to write</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr class="group"><td colspan="4">The dish</td></tr>
+          <tr><td><code>slug</code></td><td><span class="req y">Required</span></td><td>A short unique id: lowercase, words joined with hyphens. Never change it once published.</td><td class="ex"><code>moong-dal-khichdi</code></td></tr>
+          <tr><td><code>name</code></td><td><span class="req y">Required</span></td><td>The dish name as a family would say it.</td><td class="ex">Moong Dal Khichdi</td></tr>
+          <tr><td><code>name_hi</code></td><td><span class="req r">Recommended</span></td><td>Name in Hindi (Devanagari).</td><td class="ex hi">मूंग दाल खिचड़ी</td></tr>
+          <tr><td><code>sub</code></td><td><span class="req r">Recommended</span></td><td>One short line under the name, in Hinglish. Under 60 characters.</td><td class="ex">Pet ke liye sabse halka</td></tr>
+          <tr><td><code>dish_category</code></td><td><span class="req y">Required</span></td><td>One of the values listed under "Allowed values".</td><td class="ex"><code>one_pot</code></td></tr>
+          <tr><td><code>cuisine</code></td><td><span class="req y">Required</span></td><td>Region the dish comes from.</td><td class="ex">Gujarati</td></tr>
+          <tr><td><code>meal_slots</code></td><td><span class="req y">Required</span></td><td>When it is eaten. One or more, separated by <code>|</code>.</td><td class="ex"><code>lunch|dinner</code></td></tr>
+          <tr><td><code>mins</code></td><td><span class="req y">Required</span></td><td>Total time in minutes, including soaking you do on the day. Whole number.</td><td class="ex">25</td></tr>
+          <tr><td><code>spice</code></td><td><span class="req y">Required</span></td><td>1 = mild, 2 = medium, 3 = spicy.</td><td class="ex">1</td></tr>
+          <tr><td><code>tags</code></td><td><span class="req r">Recommended</span></td><td>Any that apply, separated by <code>|</code>. See "Allowed values".</td><td class="ex"><code>light|lowOil|kid</code></td></tr>
+          <tr><td><code>colour</code></td><td><span class="req n">Optional</span></td><td>Hex colour of the cooked dish, used while the photo loads.</td><td class="ex"><code>#E9C75A</code></td></tr>
+          <tr class="group"><td colspan="4">Photo and video</td></tr>
+          <tr><td><code>image_url</code></td><td><span class="req y">Required</span></td><td>A direct link to the photo file (ends in .jpg, .png or .webp). See "Photos" below.</td><td class="ex"><code>https://…/cover.jpg</code></td></tr>
+          <tr><td><code>video_url</code></td><td><span class="req n">Optional</span></td><td>A YouTube link for the dish. Leave blank if none.</td><td class="ex"><code>https://www.youtube.com/watch?v=…</code></td></tr>
+          <tr class="group"><td colspan="4">Cooking</td></tr>
+          <tr><td><code>base_servings</code></td><td><span class="req y">Required</span></td><td>How many adults the quantities feed. The app scales from this. Usually 4.</td><td class="ex">4</td></tr>
+          <tr><td><code>ingredients_text</code></td><td><span class="req y">Required</span></td><td>Each ingredient as "Name quantity unit", separated by <code>|</code>. <b>Put the main ingredient first.</b> Add <code>(optional)</code> after anything the cook can skip.</td><td class="ex"><code>Chawal 1/2 cup|Ghee 1 tbsp|Dhaniya (optional)</code></td></tr>
+          <tr><td><code>steps_en</code></td><td><span class="req y">Required</span></td><td>Steps in simple English, separated by <code>|</code>. 3 to 15 steps, at most 2 sentences each.</td><td class="ex">Soak for 20 minutes.|Heat ghee…</td></tr>
+          <tr><td><code>steps_hi</code></td><td><span class="req y">Required</span></td><td>The same steps in Hindi (Devanagari), same count and order. Cooks hear these read aloud.</td><td class="ex hi">20 मिनट भिगो दें।|घी गरम करें…</td></tr>
+          <tr class="group"><td colspan="4">Diet checks</td></tr>
+          <tr><td><code>editorial_diet</code></td><td><span class="req y">Required</span></td><td>What you believe the dish is: <code>veg</code>, <code>egg</code> or <code>non_veg</code>. The app also works this out from the ingredients and flags any mismatch.</td><td class="ex"><code>veg</code></td></tr>
+          <tr><td><code>editorial_jain_safe</code></td><td><span class="req y">Required</span></td><td><code>true</code> only if there is no onion, garlic, potato, ginger or any root vegetable, honey, mushroom or fermented item.</td><td class="ex"><code>false</code></td></tr>
+          <tr><td><code>vrat_ok</code></td><td><span class="req y">Required</span></td><td><code>true</code> if it is fit for a fasting day (sabudana, singhara or kuttu atta, sendha namak, no grains).</td><td class="ex"><code>false</code></td></tr>
+          <tr><td><code>status</code></td><td><span class="req n">Leave as is</span></td><td>Always <code>draft</code>. The Banega team publishes after checking.</td><td class="ex"><code>draft</code></td></tr>
+          <tr class="group"><td colspan="4">Review only (not imported)</td></tr>
+          <tr><td><code>image_credit</code></td><td><span class="req r">Recommended</span></td><td>Who shot the photo, and that we may use it.</td><td class="ex">Banega kitchen shoot</td></tr>
+          <tr><td><code>reviewer_name</code></td><td><span class="req n">Optional</span></td><td>Your name.</td><td class="ex"></td></tr>
+          <tr><td><code>review_status</code></td><td><span class="req n">Optional</span></td><td><code>pending</code>, <code>approved</code> or <code>changes_needed</code>.</td><td class="ex"><code>approved</code></td></tr>
+          <tr><td><code>review_notes</code></td><td><span class="req n">Optional</span></td><td>Anything the team should know: taste, authenticity, safety.</td><td class="ex">Add a pinch of sugar in Gujarati style</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="disp">Allowed values</h2>
+    <div class="rules">
+      <div class="box"><h3>dish_category</h3><div class="chips"><span class="chip">dal</span><span class="chip">sabzi</span><span class="chip">rice</span><span class="chip">roti_paratha</span><span class="chip">curry</span><span class="chip">snack</span><span class="chip">sweet</span><span class="chip">breakfast</span><span class="chip">one_pot</span><span class="chip">salad_raita</span><span class="chip">side</span><span class="chip">other</span></div><p class="lead" style="margin-top:8px;font-size:13px"><code>side</code> is for chutney, achaar, launji and kadhi-style accompaniments. <code>dry_sabzi</code> and <code>bread</code> are also accepted and read as <code>sabzi</code> and <code>roti_paratha</code>.</p></div>
+      <div class="box"><h3>meal_slots</h3><div class="chips"><span class="chip">nashta</span><span class="chip">lunch</span><span class="chip">dinner</span><span class="chip">tiffin</span><span class="chip">shaam</span></div><p class="lead" style="margin-top:8px;font-size:13px">Shaam is the evening snack with chai.</p></div>
+      <div class="box"><h3>tags</h3><div class="chips"><span class="chip">light</span><span class="chip">lowOil</span><span class="chip">lowSugar</span><span class="chip">protein</span><span class="chip">kid</span><span class="chip">special</span><span class="chip">rainy</span><span class="chip">maida</span><span class="chip">noMaidaOk</span></div><p class="lead" style="margin-top:8px;font-size:13px"><code>special</code> means good for guests. <code>maida</code> marks dishes that contain refined flour.</p></div>
+      <div class="box"><h3>Units in ingredients</h3><div class="chips"><span class="chip">cup</span><span class="chip">tbsp</span><span class="chip">tsp</span><span class="chip">g</span><span class="chip">kg</span><span class="chip">ml</span><span class="chip">l</span><span class="chip">gaddi</span><span class="chip">pc</span></div><p class="lead" style="margin-top:8px;font-size:13px">A number with no unit counts pieces: "Ande 6". Fractions like 1/2 are fine.</p></div>
+      <div class="box"><h3>cuisine (examples)</h3><div class="chips"><span class="chip">North Indian</span><span class="chip">South Indian</span><span class="chip">Gujarati</span><span class="chip">Rajasthani</span><span class="chip">Bengali</span><span class="chip">Maharashtrian</span><span class="chip">Indo-Chinese</span></div><p class="lead" style="margin-top:8px;font-size:13px">Other regions are fine; spell them the same way every time.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="disp">Ingredients and photos</h2>
+    <div class="rules">
+      <div class="box">
+        <h3>Writing ingredients</h3>
+        <ul>
+          <li>Use the everyday name: Pyaaz, Tamatar, Adrak-lahsun, Hari mirch.</li>
+          <li>Write two ingredients in one line with a hyphen: "Adrak-lahsun 1 tbsp".</li>
+          <li>The first ingredient is the main one. The app uses it for "don't like" and swap suggestions.</li>
+          <li>Mark skippable items with <code>(optional)</code>: "Dhaniya (optional)". The cook can then leave them out when they run short.</li>
+          <li>If an ingredient is new to Banega, the import lists it and the team adds it. Nothing is lost.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Photos</h3>
+        <ul>
+          <li>Landscape 4:3, at least 1600 × 1200 pixels, JPG or WebP under 1 MB.</li>
+          <li>The cooked dish in a katori or thali, from about 45°, in daylight. No text or watermark.</li>
+          <li>The link must open the image file itself. A Google Drive or Dropbox share page will not work.</li>
+          <li>Links to <code>example.com</code> are treated as "no photo yet", so the app shows its drawn placeholder until a real link is added.</li>
+          <li>If you cannot host photos, send the files named by slug (<code>moong-dal-khichdi.jpg</code>) and leave <code>image_url</code> blank. The team uploads them in the admin panel.</li>
+        </ul>
+      </div>
+      <div class="box warn">
+        <h3>Safety checks we rely on you for</h3>
+        <ul>
+          <li>List every ingredient, including garnish, tadka and oil. Allergies such as peanut, cashew, sesame, milk and gluten are detected from this list.</li>
+          <li>Mark Jain-safe only when you are sure; ginger, potato and onion rule it out.</li>
+          <li>Mark vrat only for ingredients allowed while fasting.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="disp">One complete row</h2>
+    <dl class="example">
+      <dt>slug</dt><dd><code>gatte-ki-sabzi</code></dd>
+      <dt>name / name_hi</dt><dd>Gatte ki Sabzi / <span class="hi">गट्टे की सब्ज़ी</span></dd>
+      <dt>sub</dt><dd>Rajasthani, bina pyaaz-lahsun</dd>
+      <dt>category · cuisine</dt><dd><code>curry</code> · Rajasthani</dd>
+      <dt>slots · mins · spice</dt><dd><code>lunch</code> · 40 · 3</dd>
+      <dt>tags</dt><dd><code>protein|special</code></dd>
+      <dt>ingredients_text</dt><dd><code>Besan 1 cup|Dahi 1 cup|Ajwain 1/2 tsp|Laal mirch 1 tsp|Hing 1/4 tsp|Kasuri methi 1 tsp|Tel 2 tbsp|Namak 1 tsp|Dhaniya (optional)</code></dd>
+      <dt>steps_en</dt><dd>1. Knead besan with ajwain, namak, a little oil and water into a stiff dough and roll into logs. 2. Boil the logs for 10 minutes, cool and cut. 3. Whisk dahi with laal mirch, haldi and namak. 4. Heat oil, add hing, then pour in the dahi on low heat, stirring. 5. Add the gatte and simmer 5 minutes; finish with kasuri methi.</dd>
+      <dt>steps_hi</dt><dd class="hi">1. बेसन में अजवाइन, नमक, थोड़ा तेल और पानी मिलाकर सख्त आटा गूंथें… 5. गट्टे डालकर 5 मिनट पकाएँ और कसूरी मेथी डालें।</dd>
+      <dt>diet checks</dt><dd>editorial_diet <code>veg</code> · jain_safe <code>true</code> · vrat_ok <code>false</code></dd>
+    </dl>
+  </section>
+
+  <section>
+    <div class="csvbar">
+      <h2 class="disp" style="margin:0">The sample sheet</h2>
+      <button class="btn" type="button" id="copy">Copy CSV</button>
+    </div>
+    <p class="lead">Six filled rows: veg, Jain, egg, fish, vrat and South Indian. Copy it into a text file saved as <code>.csv</code>, or ask the Banega team for the file <code>banega-recipes-master.csv</code>. The image links are placeholders to replace.</p>
+    <pre class="csv" id="csv">slug,name,name_hi,sub,dish_category,cuisine,meal_slots,mins,spice,tags,colour,image_url,video_url,base_servings,vrat_ok,editorial_diet,editorial_jain_safe,status,ingredients_text,steps_en,steps_hi,image_credit,reviewer_name,review_status,review_notes
+moong-dal-khichdi,Moong Dal Khichdi,मूंग दाल खिचड़ी,&quot;Pet ke liye sabse halka, ghee aur jeere ke saath&quot;,one_pot,Gujarati,lunch|dinner,25,1,light|lowOil|kid|protein|lowSugar,#E9C75A,https://images.example.com/banega/recipes/moong-dal-khichdi/cover.jpg,https://www.youtube.com/watch?v=EXAMPLE01,4,false,veg,true,draft,Chawal 1/2 cup|Peeli moong dal 1/2 cup|Ghee 1 tbsp|Jeera 1 tsp|Hing 1/4 tsp|Haldi 1/2 tsp|Namak 1 tsp,&quot;Wash the rice and moong dal together and soak for 20 minutes.|Heat ghee in a pressure cooker and add jeera and hing.|Add the rice and dal, haldi, namak and 4 cups of water.|Pressure cook for 3 whistles and let the pressure drop on its own.|Serve hot with dahi or papad.&quot;,&quot;चावल और मूंग दाल को साथ धोकर 20 मिनट भिगो दें।|कुकर में घी गरम करें, जीरा और हींग डालें।|चावल-दाल, हल्दी, नमक और 4 कप पानी डालें।|3 सीटी आने तक पकाएँ और प्रेशर अपने आप निकलने दें।|दही या पापड़ के साथ गरम परोसें।&quot;,Banega kitchen shoot,,pending,
+gatte-ki-sabzi,Gatte ki Sabzi,गट्टे की सब्ज़ी,&quot;Rajasthani, bina pyaaz-lahsun&quot;,curry,Rajasthani,lunch,40,3,protein|special,#D98C2B,https://images.example.com/banega/recipes/gatte-ki-sabzi/cover.jpg,,4,false,veg,true,draft,Besan 1 cup|Dahi 1 cup|Ajwain 1/2 tsp|Laal mirch 1 tsp|Hing 1/4 tsp|Kasuri methi 1 tsp|Tel 2 tbsp|Namak 1 tsp|Dhaniya (optional),&quot;Knead besan with ajwain, namak, a little oil and water into a stiff dough and roll into logs.|Boil the logs for 10 minutes, cool and cut into pieces.|Whisk dahi with laal mirch, haldi and namak.|Heat oil, add hing, then pour in the dahi on low heat, stirring all the time.|Add the gatte and simmer for 5 minutes; finish with kasuri methi.&quot;,&quot;बेसन में अजवाइन, नमक, थोड़ा तेल और पानी मिलाकर सख्त आटा गूंथें और लंबे रोल बनाएँ।|रोल को 10 मिनट उबालें, ठंडा करके टुकड़े काटें।|दही में लाल मिर्च, हल्दी और नमक फेंटें।|तेल गरम करें, हींग डालें, फिर धीमी आँच पर दही डालकर लगातार चलाएँ।|गट्टे डालकर 5 मिनट पकाएँ और कसूरी मेथी डालें।&quot;,Banega kitchen shoot,,pending,
+anda-curry,Anda Curry,अंडा करी,&quot;Masaledaar, rice ke saath&quot;,curry,North Indian,dinner,30,3,protein,#C8612C,https://images.example.com/banega/recipes/anda-curry/cover.jpg,,4,false,egg,false,draft,Ande 6|Pyaaz 2|Tamatar 2|Adrak-lahsun 1 tbsp|Garam masala 1 tsp|Haldi 1/2 tsp|Tel 2 tbsp|Namak 1 tsp|Kasuri methi (optional),&quot;Boil the eggs for 10 minutes, peel and make shallow cuts.|Fry the eggs lightly in oil and keep aside.|In the same oil cook the onion till golden, then add adrak-lahsun and tomato.|Add haldi, garam masala and namak and cook till the oil separates.|Add 1 cup water and the eggs and simmer for 10 minutes.&quot;,&quot;अंडे 10 मिनट उबालें, छीलकर हल्के चीरे लगाएँ।|तेल में अंडों को हल्का तलकर अलग रखें।|उसी तेल में प्याज़ सुनहरा करें, फिर अदरक-लहसुन और टमाटर डालें।|हल्दी, गरम मसाला और नमक डालकर तेल छूटने तक पकाएँ।|1 कप पानी और अंडे डालकर 10 मिनट पकाएँ।&quot;,Banega kitchen shoot,,pending,
+macher-jhol,Macher Jhol,माछेर झोल,&quot;Bengali, halki fish curry&quot;,curry,Bengali,lunch|dinner,40,2,protein|lowOil|light,#D4822E,https://images.example.com/banega/recipes/macher-jhol/cover.jpg,,4,false,non_veg,false,draft,Rohu 500 g|Aloo 2|Panch phoron 1 tsp|Haldi 1 tsp|Sarson tel 3 tbsp|Hari mirch 2|Namak 1 tsp,&quot;Rub the fish with haldi and namak and rest for 10 minutes.|Heat mustard oil till it smokes and lightly fry the fish; keep aside.|In the same oil add panch phoron and the potato wedges.|Add haldi, hari mirch and 2 cups of water and cook till the potatoes are soft.|Add the fish and simmer for 10 minutes.&quot;,&quot;मछली पर हल्दी और नमक लगाकर 10 मिनट रखें।|सरसों का तेल धुआँ आने तक गरम करें, मछली हल्की तलकर अलग रखें।|उसी तेल में पंच फोरन और आलू डालें।|हल्दी, हरी मिर्च और 2 कप पानी डालकर आलू नरम होने तक पकाएँ।|मछली डालकर 10 मिनट धीमी आँच पर पकाएँ।&quot;,Banega kitchen shoot,,pending,
+sabudana-khichdi,Sabudana Khichdi,साबूदाना खिचड़ी,&quot;Vrat ka nashta, moongphali ke saath&quot;,breakfast,Maharashtrian,nashta|tiffin,25,1,light|kid,#EFE6C8,https://images.example.com/banega/recipes/sabudana-khichdi/cover.jpg,,4,true,veg,false,draft,Sabudana 1 cup|Moongphali 1/2 cup|Aloo 1|Ghee 1 tbsp|Jeera 1 tsp|Hari mirch 2|Sendha namak 1 tsp|Nimbu (optional),&quot;Rinse the sabudana and soak it for 4 hours in just enough water to cover it.|Dry-roast the peanuts and crush them coarsely.|Heat ghee, add jeera, hari mirch and the diced potato and cook till soft.|Add sabudana, crushed peanuts and sendha namak and stir gently for 5 minutes till translucent.|Finish with a squeeze of nimbu.&quot;,&quot;साबूदाना धोकर उतने ही पानी में 4 घंटे भिगोएँ जितने में वह डूब जाए।|मूंगफली सूखी भूनकर दरदरी कूट लें।|घी गरम करें, जीरा, हरी मिर्च और आलू डालकर नरम होने तक पकाएँ।|साबूदाना, मूंगफली और सेंधा नमक डालकर 5 मिनट धीरे-धीरे चलाएँ, जब तक पारदर्शी न हो जाए।|ऊपर से नींबू निचोड़ें।&quot;,Banega kitchen shoot,,pending,
+idli-sambar,Idli Sambar,इडली सांभर,&quot;Bhaap mein bana, bilkul kam tel&quot;,breakfast,South Indian,nashta,30,2,lowOil|light|kid|lowSugar,#F3EFE6,https://images.example.com/banega/recipes/idli-sambar/cover.jpg,,4,false,veg,false,draft,Idli batter 4 cup|Toor dal 1/2 cup|Sambar masala 2 tbsp|Lauki 1 cup|Imli 1 tbsp|Rai 1 tsp|Kadi patta 10|Tel 1 tbsp|Namak 1 tsp,&quot;Fill greased idli moulds with batter and steam for 12 minutes.|Pressure cook the toor dal for 3 whistles and mash it.|Cook the lauki with imli water, sambar masala and namak.|Add the dal and simmer for 10 minutes.|Temper rai and kadi patta in oil and pour over the sambar.&quot;,&quot;चिकने इडली साँचों में बैटर भरकर 12 मिनट भाप में पकाएँ।|तूर दाल को 3 सीटी तक पकाकर मसल लें।|लौकी को इमली के पानी, सांभर मसाले और नमक के साथ पकाएँ।|दाल डालकर 10 मिनट पकाएँ।|तेल में राई और कड़ी पत्ता का तड़का लगाकर सांभर पर डालें।&quot;,Banega kitchen shoot,,pending,</pre>
+  </section>
+
+  <footer>Banega recipe sheet · columns match the admin panel's recipe import. Questions go to the Banega content team.</footer>
+</main>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy'), pre=document.getElementById('csv');
+  function select(){var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  btn.addEventListener('click',function(){
+    var text=pre.textContent;
+    function done(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy CSV';},1500);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){select();btn.textContent='Selected, press Ctrl+C';});}
+    else{select();btn.textContent='Selected, press Ctrl+C';}
+  });
+})();
+</script>

@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "banega-api"
+version = "0.1.0"
+description = "Banega backend: FastAPI service, models, migrations and workers"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "sqlalchemy[asyncio]>=2.0.30,<2.1",  # starlette-admin 1.0 does not support 2.1 yet
+    "asyncpg>=0.29",
+    "alembic>=1.13",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "redis>=5.0",
+    "arq>=0.26",
+    "pyjwt[crypto]>=2.8",  # crypto: App Store x5c JWS (ES256) + Pub/Sub OIDC (RS256)
+    "cryptography>=42",
+    "httpx>=0.27",
+    "structlog>=24.1",
+    "tzdata>=2024.1",
+    "pgvector>=0.3",
+    "anthropic>=1.8,<2",  # Maharaj chat parse/write (optional at runtime: no key = rules)
+    "argon2-cffi>=23.1",  # staff (admin) password hashes (argon2id)
+    "pyotp>=2.9",  # staff TOTP
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "aiosqlite>=0.20",
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+app = ["certs/*.cer"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+packages = ["app"]
+exclude = ["migrations/"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = ["migrations/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "ASYNC", "RUF"]
+ignore = ["B008", "RUF012"]
+
+[tool.ruff.lint.per-file-ignores]
+# The test env (DATABASE_URL etc.) must be set before the app is imported.
+"tests/conftest.py" = ["E402"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
