@@ -324,6 +324,8 @@ class NoopPush:
 
 
 FCM_URL = "https://fcm.googleapis.com/v1/projects/{project}/messages:send"
+# Android notification channel created by the app (core/push/push_messaging.dart).
+ANDROID_CHANNEL_ID = "banega_alerts"
 
 
 class FcmPush:
@@ -370,7 +372,16 @@ class FcmPush:
                 "token": token,
                 "notification": {"title": message.title, "body": message.body},
                 "data": data,
-                "android": {"priority": "high"},
+                "android": {
+                    "priority": "high",
+                    # Matches the app's high-importance channel, so the alert
+                    # rings and pops up even with the app in the background.
+                    "notification": {
+                        "channel_id": ANDROID_CHANNEL_ID,
+                        "default_sound": True,
+                        "notification_priority": "PRIORITY_HIGH",
+                    },
+                },
                 "apns": {"headers": {"apns-priority": "10"}},
             }
         }

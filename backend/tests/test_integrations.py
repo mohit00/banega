@@ -236,6 +236,8 @@ async def test_fcm_v1_request_shape() -> None:
     # Internal keys never reach the device.
     assert body["data"] == {"event": "ticket_created", "ticket_id": "t-1"}
     assert body["android"]["priority"] == "high"
+    assert body["android"]["notification"]["channel_id"] == "banega_alerts"
+    assert body["android"]["notification"]["default_sound"] is True
 
 
 async def test_fcm_classifies_per_device_errors() -> None:
