@@ -1,12 +1,15 @@
-# Prod override, from the repo root:
-#   docker compose -f infra/docker-compose.yml -f infra/docker-compose.prod.yml up -d
-# Pinned images, every secret required from the environment / infra/.env (":?" fails the
-# deploy when one is missing), Redis with a password, no bind mounts, restart policies, daily
-# backups. The API refuses to start with an unsafe configuration (app/core/config.py):
-# no fake store, no memory Redis, no default DB password, Play webhook auth and App Store
-# credentials set, PUSH_PROVIDER=fcm (or ALLOW_NOOP_PUSH=1 on staging).
-# TLS: terminate at a load balancer (nginx passes X-Forwarded-Proto through) or use
-# infra/nginx/tls.conf.example.
+# Prod override, from the repo root (infra/deploy/README.md walks through a fresh VM):
+#   docker compose -f infra/docker-compose.yml -f infra/docker-compose.prod.yml #     --env-file infra/.env up -d --build
+# Pinned images, every secret required from infra/.env (":?" fails the deploy when one is
+# missing; infra/.env.prod.example lists them all), Redis with a password, no source bind
+# mounts, restart policies, nightly off-site backups (restic). The API refuses to start with
+# an unsafe configuration (app/core/config.py): no fake store, no memory Redis, no default DB
+# password, Play webhook auth, MSG91 key + template, push credentials, App Store credentials
+# unless APPSTORE_ENABLED=0.
+# TLS: Caddy (infra/caddy/Caddyfile) owns ports 80/443, gets Let's Encrypt certificates for
+# API_DOMAIN and ADMIN_DOMAIN and proxies to nginx, which is no longer published.
+# Service-account JSON files (FCM, Play) go in infra/secrets/ (git-ignored), mounted
+# read-only at /run/secrets/banega in api and worker.
 
 x-restart: &restart
   restart: unless-stopped
@@ -17,13 +20,23 @@ x-prod-env: &prod-env
   REDIS_URL: redis://:${REDIS_PASSWORD:?set REDIS_PASSWORD}@redis:6379/0
   JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET}
   OTP_PROVIDER: ${OTP_PROVIDER:?set OTP_PROVIDER (msg91)}
+  MSG91_AUTH_KEY: ${MSG91_AUTH_KEY:?set MSG91_AUTH_KEY}
+  MSG91_OTP_TEMPLATE_ID: ${MSG91_OTP_TEMPLATE_ID:?set MSG91_OTP_TEMPLATE_ID (DLT-approved template)}
   STORE_VERIFIER: store
-  PLAY_WEBHOOK_SECRET: ${PLAY_WEBHOOK_SECRET:?set PLAY_WEBHOOK_SECRET}
-  APPSTORE_BUNDLE_ID: ${APPSTORE_BUNDLE_ID:?set APPSTORE_BUNDLE_ID}
-  APPSTORE_ISSUER_ID: ${APPSTORE_ISSUER_ID:?set APPSTORE_ISSUER_ID}
-  APPSTORE_KEY_ID: ${APPSTORE_KEY_ID:?set APPSTORE_KEY_ID}
-  APPSTORE_PRIVATE_KEY: ${APPSTORE_PRIVATE_KEY:?set APPSTORE_PRIVATE_KEY}
+  # Pub/Sub push cannot add a header: use the OIDC pair (the secret only helps behind a proxy
+  # that adds X-Webhook-Secret). The API requires one of the two.
+  PLAY_WEBHOOK_SECRET: ${PLAY_WEBHOOK_SECRET:-}
+  PLAY_PUBSUB_AUDIENCE: ${PLAY_PUBSUB_AUDIENCE:-}
+  PLAY_PUBSUB_SERVICE_ACCOUNT: ${PLAY_PUBSUB_SERVICE_ACCOUNT:-}
+  PLAY_PACKAGE_NAME: ${PLAY_PACKAGE_NAME:-in.kornea.banega}
+  PLAY_SERVICE_ACCOUNT_FILE: ${PLAY_SERVICE_ACCOUNT_FILE:-/run/secrets/banega/play-service-account.json}
+  APPSTORE_ENABLED: ${APPSTORE_ENABLED:-1}
+  APPSTORE_BUNDLE_ID: ${APPSTORE_BUNDLE_ID:-}
+  APPSTORE_ISSUER_ID: ${APPSTORE_ISSUER_ID:-}
+  APPSTORE_KEY_ID: ${APPSTORE_KEY_ID:-}
+  APPSTORE_PRIVATE_KEY: ${APPSTORE_PRIVATE_KEY:-}
   PUSH_PROVIDER: ${PUSH_PROVIDER:-fcm}
+  FCM_SERVICE_ACCOUNT_FILE: ${FCM_SERVICE_ACCOUNT_FILE:-/run/secrets/banega/fcm-service-account.json}
   ALLOW_NOOP_PUSH: ${ALLOW_NOOP_PUSH:-0}
   OTP_HMAC_KEY: ${OTP_HMAC_KEY:-}
   INVITE_HMAC_KEY: ${INVITE_HMAC_KEY:-}
@@ -57,9 +70,10 @@ services:
       - --workers=2
       # The API resolves the client IP from X-Forwarded-For itself (TRUSTED_PROXIES).
       - --no-proxy-headers
-    # No bind mounts; the media volume holds data exports (MEDIA_DIR/exports).
+    # No source bind mounts; the media volume holds data exports (MEDIA_DIR/exports).
     volumes: !override
       - media_data:/srv/media
+      - ./secrets:/run/secrets/banega:ro
     environment: *prod-env
 
   worker:
@@ -68,6 +82,7 @@ services:
     command: ["arq", "app.workers.worker.WorkerSettings"]
     volumes: !override
       - media_data:/srv/media
+      - ./secrets:/run/secrets/banega:ro
     environment: *prod-env
 
   admin:
@@ -92,35 +107,73 @@ services:
 
   nginx:
     <<: *restart
-    ports: !override
-      - "80:80"
+    # Only Caddy reaches nginx (compose network); nothing is published on the host.
+    ports: !reset []
     environment:
       # e.g. office / VPN egress: "203.0.113.0/24,198.51.100.7". Empty = open (+ TOTP).
       ADMIN_ALLOW_CIDR: ${ADMIN_ALLOW_CIDR:-}
+      # Caddy's X-Forwarded-For is the client address (compose bridge networks are private).
+      REAL_IP_FROM: ${REAL_IP_FROM:-172.16.0.0/12,192.168.0.0/16,10.0.0.0/8}
 
-  # Daily pg_dump (custom format), 14-day retention in a volume.
-  # TODO: sync /backups to object storage (not the same VM); restore drill before launch.
+  # TLS termination + automatic Let's Encrypt (infra/caddy/Caddyfile), HSTS, admin only on
+  # ADMIN_DOMAIN.
+  caddy:
+    <<: *restart
+    image: caddy:2.10-alpine
+    environment:
+      API_DOMAIN: ${API_DOMAIN:?set API_DOMAIN (e.g. api.banega.kornea.in)}
+      ADMIN_DOMAIN: ${ADMIN_DOMAIN:?set ADMIN_DOMAIN (e.g. admin.banega.kornea.in)}
+      ACME_EMAIL: ${ACME_EMAIL:?set ACME_EMAIL}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      nginx:
+        condition: service_healthy
+
+  # Nightly pg_dump (custom format) + the media volume -> restic repository in S3-compatible
+  # object storage (DigitalOcean Spaces / Backblaze B2), kept 7 daily / 4 weekly / 6 monthly.
+  # infra/deploy/backup.sh; restore drill: infra/deploy/restore.md.
   db-backup:
     <<: *restart
-    image: pgvector/pgvector:pg16
+    build:
+      context: ./deploy
+      dockerfile: backup.Dockerfile
+    image: banega-backup:${IMAGE_TAG:?set IMAGE_TAG}
+    command: ["loop"]
     environment:
       PGHOST: db
       PGUSER: ${POSTGRES_USER:-banega}
       PGPASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
       PGDATABASE: ${POSTGRES_DB:-banega}
-    entrypoint: ["/bin/sh", "-c"]
-    command:
-      - >-
-        while true; do
-        pg_dump -Fc -f "/backups/banega-$$(date +%Y%m%d-%H%M).dump" &&
-        find /backups -name "banega-*.dump" -mtime +14 -delete;
-        sleep 86400;
-        done
+      RESTIC_REPOSITORY: ${RESTIC_REPOSITORY:?set RESTIC_REPOSITORY (s3:https://<endpoint>/<bucket>/banega)}
+      RESTIC_PASSWORD: ${RESTIC_PASSWORD:?set RESTIC_PASSWORD (keep a copy off the VM)}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:?set AWS_ACCESS_KEY_ID (Spaces / B2 key id)}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:?set AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      BACKUP_AT: ${BACKUP_AT:-02:30}
+      BACKUP_HOST: ${BACKUP_HOST:-banega-prod}
+      BACKUP_HEALTHCHECK_URL: ${BACKUP_HEALTHCHECK_URL:-}
+      TZ: ${BACKUP_TZ:-Asia/Kolkata}
     volumes:
-      - db_backups:/backups
+      - db_backups:/backup
+      - media_data:/srv/media:ro
+    healthcheck:
+      # Unhealthy after a failed run until the next good one.
+      test: ["CMD", "sh", "-c", "test ! -f /backup/.last-failed"]
+      interval: 5m
+      timeout: 5s
+      retries: 1
     depends_on:
       db:
         condition: service_healthy
 
 volumes:
   db_backups:
+  caddy_data:
+  caddy_config:

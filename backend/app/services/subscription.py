@@ -9,8 +9,10 @@ Phase 7).
 - Expired = read-only (``enforce``): no new menus, chats or tickets; tickets for today and
   tomorrow stay workable (transitions, item out, stock issue, messages), F-5.1-05.
 - Store verification sits behind :class:`StoreVerifier`: ``FakeStoreVerifier`` in dev/test
-  (a stub receipt is valid unless it starts with "invalid"); ``StoreApiVerifier`` is the
-  production seam (Play Developer API / App Store Server API, TODO) and refuses for now.
+  (a stub receipt is valid unless it starts with "invalid"); ``StoreApiVerifier`` in prod:
+  Google Play via the Play Developer API (``purchases.subscriptionsv2.get`` with a service
+  account; the purchase is acknowledged when Play says it is not yet), App Store still TODO
+  (503). Each Play RTDN re-reads the authoritative state from the same API.
 - Webhooks: Play RTDN (Pub/Sub push; shared secret in the ``X-Webhook-Secret`` header or the
   Pub/Sub OIDC bearer token) and App Store Server Notifications v2 (JWS; outside dev/test the
   x5c chain to Apple Root CA - G3 and the ES256 signature are verified by
@@ -25,12 +27,15 @@ import base64
 import hashlib
 import json
 import math
+import re
 import uuid
 from dataclasses import dataclass
 from datetime import UTC, datetime, time, timedelta
 from typing import Any, Protocol
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
+import httpx
 import structlog
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -224,6 +229,8 @@ class StoreState:
     product_id: str
     original_transaction_id: str | None = None
     purchase_token: str | None = None
+    # Play: the token this purchase replaced (resubscribe / plan change).
+    linked_purchase_token: str | None = None
 
 
 class StoreVerifier(Protocol):
@@ -272,9 +279,180 @@ class FakeStoreVerifier:
         )
 
 
+def _store_unavailable() -> AppError:
+    return AppError(
+        "store_verification_unavailable",
+        "Purchase verification is not available right now. Please try again.",
+        "Kharid ki jaanch abhi nahi ho paayi. Thodi der baad try kijiye.",
+        status_code=503,
+    )
+
+
+def _store_not_supported() -> AppError:
+    return AppError(
+        "store_not_supported",
+        "Purchases from this store are not supported yet.",
+        "Is store ki kharid abhi support nahi hai.",
+        status_code=422,
+    )
+
+
+def _purchase_pending() -> AppError:
+    return AppError(
+        "purchase_pending",
+        "The payment is still pending. Your plan starts once it completes.",
+        "Payment abhi pending hai. Poora hote hi plan shuru ho jayega.",
+        status_code=409,
+    )
+
+
+PLAY_API = "https://androidpublisher.googleapis.com/androidpublisher/v3/applications/{package}"
+# Google may send more than 6 fractional digits; fromisoformat takes at most 6.
+_FRACTION = re.compile(r"\.(\d{6})\d+")
+
+
+def _rfc3339(value: Any) -> datetime | None:
+    if not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(_FRACTION.sub(r".\1", str(value)).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return parsed if parsed.tzinfo else parsed.replace(tzinfo=UTC)
+
+
+class PlayDeveloperApi:
+    """Google Play Developer API v3 for one package: ``purchases.subscriptionsv2.get`` and
+    ``purchases.subscriptions.acknowledge``, with a service-account token (scope
+    androidpublisher)."""
+
+    def __init__(
+        self,
+        package: str,
+        product_ids: frozenset[str],
+        tokens: Any,
+        *,
+        transport: httpx.AsyncBaseTransport | None = None,
+        timeout: float = 10.0,
+    ) -> None:
+        self.package = package
+        self.product_ids = product_ids
+        self.tokens = tokens  # google_sa.TokenSource
+        self.transport = transport
+        self.timeout = timeout
+
+    @classmethod
+    def from_settings(cls) -> PlayDeveloperApi:
+        from app.services import google_sa
+
+        s = get_settings()
+        info = google_sa.load_service_account(
+            s.PLAY_SERVICE_ACCOUNT_FILE, s.PLAY_SERVICE_ACCOUNT_JSON, "PLAY"
+        )
+        return cls(
+            s.PLAY_PACKAGE_NAME,
+            s.play_product_ids,
+            google_sa.GoogleTokenSource(info, [google_sa.PLAY_SCOPE]),
+        )
+
+    async def _request(self, method: str, path: str) -> httpx.Response:
+        url = PLAY_API.format(package=quote(self.package, safe="")) + path
+        try:
+            access = await self.tokens.token()
+            async with httpx.AsyncClient(
+                timeout=self.timeout,
+                transport=self.transport,
+                headers={"Authorization": f"Bearer {access}"},
+            ) as client:
+                if method == "POST":
+                    return await client.post(url, json={})
+                return await client.get(url)
+        except Exception as exc:  # network errors, token minting
+            log.warning("play_api_unreachable", error=type(exc).__name__)
+            raise _store_unavailable() from exc
+
+    async def get(self, purchase_token: str) -> dict[str, Any]:
+        resp = await self._request(
+            "GET", f"/purchases/subscriptionsv2/tokens/{quote(purchase_token, safe='')}"
+        )
+        if resp.is_success:
+            return dict(resp.json())
+        log.warning("play_api_get_failed", status=resp.status_code)
+        if resp.status_code in (400, 404, 410):
+            raise _receipt_invalid()
+        raise _store_unavailable()  # 401/403 (service-account access), 429, 5xx
+
+    async def acknowledge(self, product_id: str, purchase_token: str) -> None:
+        resp = await self._request(
+            "POST",
+            f"/purchases/subscriptions/{quote(product_id, safe='')}"
+            f"/tokens/{quote(purchase_token, safe='')}:acknowledge",
+        )
+        if not resp.is_success:
+            # The app acknowledges too (completePurchase); the next RTDN retries.
+            log.warning("play_acknowledge_failed", status=resp.status_code)
+
+
+# subscriptionsv2 subscriptionState -> our status (CANCELED keeps access until expiry).
+PLAY_STATES: dict[str, SubscriptionStatus] = {
+    "SUBSCRIPTION_STATE_ACTIVE": S.active,
+    "SUBSCRIPTION_STATE_CANCELED": S.active,
+    "SUBSCRIPTION_STATE_IN_GRACE_PERIOD": S.grace,
+    "SUBSCRIPTION_STATE_ON_HOLD": S.expired,
+    "SUBSCRIPTION_STATE_PAUSED": S.expired,
+    "SUBSCRIPTION_STATE_EXPIRED": S.expired,
+}
+
+
+def play_state(
+    data: dict[str, Any], purchase_token: str, product_ids: frozenset[str], now: datetime
+) -> StoreState:
+    """``SubscriptionPurchaseV2`` -> :class:`StoreState` (pure). Pending payments are 409
+    ``purchase_pending``; cancelled-pending, unknown states and products we do not sell are
+    422 ``receipt_invalid``."""
+    state = str(data.get("subscriptionState") or "")
+    if state == "SUBSCRIPTION_STATE_PENDING":
+        raise _purchase_pending()
+    status = PLAY_STATES.get(state)
+    if status is None:
+        raise _receipt_invalid()
+    items = [i for i in data.get("lineItems") or [] if isinstance(i, dict)]
+    ours = [i for i in items if not product_ids or i.get("productId") in product_ids]
+    if not ours:
+        log.warning("play_unknown_product", products=[str(i.get("productId")) for i in items])
+        raise _receipt_invalid()
+    expiries = [e for e in (_rfc3339(i.get("expiryTime")) for i in ours) if e is not None]
+    expiry = max(expiries) if expiries else None
+    if state == "SUBSCRIPTION_STATE_CANCELED" and (expiry is None or expiry <= now):
+        status = S.expired
+    return StoreState(
+        status=status,
+        renews_at=expiry,
+        product_id=str(ours[0].get("productId") or DEFAULT_PRODUCT),
+        purchase_token=purchase_token,
+        linked_purchase_token=str(data.get("linkedPurchaseToken") or "") or None,
+    )
+
+
 class StoreApiVerifier:
-    """Production seam. TODO: Play Developer API ``purchases.subscriptionsv2.get`` with the
-    service account, and App Store Server API ``/inApps/v1/subscriptions/{id}`` (JWT auth)."""
+    """Production verifier. Play: the Play Developer API (authoritative; acknowledges new
+    purchases). App Store: TODO (App Store Server API ``/inApps/v1/subscriptions/{id}``)."""
+
+    # The Play RTDN handler re-reads the state through this verifier.
+    authoritative = True
+
+    def __init__(self, play: PlayDeveloperApi | None = None) -> None:
+        self._play = play
+
+    @property
+    def play(self) -> PlayDeveloperApi:
+        if self._play is None:
+            try:
+                self._play = PlayDeveloperApi.from_settings()
+            except Exception as exc:
+                log.error("play_api_not_configured", error=type(exc).__name__)
+                raise _store_unavailable() from exc
+        return self._play
 
     async def verify(
         self,
@@ -285,12 +463,24 @@ class StoreApiVerifier:
         product_id: str | None,
         now: datetime,
     ) -> StoreState:
-        raise AppError(
-            "store_verification_unavailable",
-            "Purchase verification is not available yet.",
-            "Kharid ki jaanch abhi uplabdh nahi hai.",
-            status_code=503,
-        )
+        if store == "play":
+            if not purchase_token:
+                raise _receipt_invalid()
+            return await self.play_verify(purchase_token, now)
+        if store == "app_store" and not get_settings().APPSTORE_ENABLED:
+            raise _store_not_supported()
+        raise _store_unavailable()
+
+    async def play_verify(self, purchase_token: str, now: datetime) -> StoreState:
+        api = self.play
+        data = await api.get(purchase_token)
+        state = play_state(data, purchase_token, api.product_ids, now)
+        # Play refunds a purchase that is not acknowledged within 3 days.
+        if data.get("acknowledgementState") == "ACKNOWLEDGEMENT_STATE_PENDING" and (
+            state.status in (S.active, S.grace)
+        ):
+            await api.acknowledge(state.product_id, purchase_token)
+        return state
 
 
 _verifier: StoreVerifier | None = None
@@ -418,6 +608,9 @@ async def handle_play(
         return "ignored"
     if not token:
         return "ignored"  # test notifications, one-time products
+    verifier = get_verifier()
+    if getattr(verifier, "authoritative", False):
+        return await _handle_play_authoritative(db, verifier, note, token, ntype, now)
     sub = (
         await db.execute(select(Subscription).where(Subscription.purchase_token == token))
     ).scalar_one_or_none()
@@ -439,6 +632,54 @@ async def handle_play(
     sub.store = "play"
     if sn.get("subscriptionId"):
         sub.product_id = sn["subscriptionId"]
+    sub.last_event_at = event_at
+    await db.flush()
+    return str(sub.status)
+
+
+async def _handle_play_authoritative(
+    db: AsyncSession,
+    verifier: Any,
+    note: dict[str, Any],
+    token: str,
+    ntype: int,
+    now: datetime,
+) -> str:
+    """Prod RTDN: the notification only says "something changed"; status, expiry and
+    product come from ``purchases.subscriptionsv2.get``. A token we do not know is matched
+    through ``linkedPurchaseToken`` (resubscribe / plan change); otherwise the app's restore
+    call links it. Play API outages raise 503 so Pub/Sub redelivers."""
+    state: StoreState | None
+    try:
+        state = await verifier.play_verify(token, now)
+    except AppError as exc:
+        if exc.code == "purchase_pending":
+            return "pending"
+        if exc.code != "receipt_invalid":
+            raise
+        state = None  # Play no longer knows the token (or it is not our product)
+    sub = (
+        await db.execute(select(Subscription).where(Subscription.purchase_token == token))
+    ).scalar_one_or_none()
+    if sub is None and state is not None and state.linked_purchase_token:
+        sub = (
+            await db.execute(
+                select(Subscription).where(
+                    Subscription.purchase_token == state.linked_purchase_token
+                )
+            )
+        ).scalar_one_or_none()
+    if sub is None:
+        log.info("play_rtdn_unknown_token", notification_type=ntype)
+        return "unknown"
+    event_at = _ms(note.get("eventTimeMillis")) or now
+    if sub.last_event_at is not None and event_at < sub.last_event_at:
+        return "stale"
+    if state is None:
+        sub.status = S.expired
+        sub.grace_until = None
+    else:
+        _apply_state(sub, "play", state, now)
     sub.last_event_at = event_at
     await db.flush()
     return str(sub.status)
@@ -497,6 +738,8 @@ async def handle_appstore(
     db: AsyncSession, body: dict[str, Any], *, now: datetime | None = None
 ) -> str:
     now = now or utcnow()
+    if not get_settings().APPSTORE_ENABLED:
+        raise _store_not_supported()
     decoder = get_jws_decoder()
     payload = decoder.decode(str(body.get("signedPayload") or ""))
     ntype = str(payload.get("notificationType") or "")

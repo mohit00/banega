@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/config.dart' show kPrivacyPolicyUrl;
 import '../../../core/l10n/gen/app_localizations.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/theme/theme.dart';
@@ -11,8 +12,6 @@ import '../../../core/theme/tokens.dart';
 import '../../../ui/ui.dart';
 import '../../recipe/application/recipe_providers.dart' show urlLauncherProvider;
 import '../application/account_providers.dart';
-
-const kPrivacyPolicyUrl = 'https://banega.app/privacy';
 
 /// First-run DPDP consent (F-X-02, FR-A9): after Splash, before Family.
 /// "Maan liya" stores the consent on the device and POSTs /v1/consent.
@@ -62,6 +61,7 @@ class ConsentScreen extends ConsumerWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: BTextButton(
+                        key: const ValueKey('consent-privacy'),
                         label: l.consentPrivacy,
                         onPressed: () => ref.read(urlLauncherProvider)(Uri.parse(kPrivacyPolicyUrl)),
                       ),

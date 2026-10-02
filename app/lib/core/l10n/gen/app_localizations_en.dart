@@ -1490,6 +1490,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywallStoreSoon => 'Store billing is coming soon';
 
   @override
+  String get paywallPending => 'Payment is pending. Your plan starts once it completes.';
+
+  @override
+  String get paywallCancelled => 'Purchase cancelled';
+
+  @override
+  String get paywallNothingToRestore => 'No Banega plan found on this Play account';
+
+  @override
   String get paywallCancelNote => 'Cancel anytime in Play Store / App Store';
 
   @override
@@ -1509,11 +1518,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get consentBody =>
-      'Banega keeps your family\'s preferences, allergies and meal history only to plan menus, send tickets to your cook and power Maharaj\'s suggestions. Your data is never sold. You can export or delete it any time from Settings.';
+      'Banega uses your phone number to log you in, and your family\'s preferences, allergies, fasting days and meal history only to plan menus, send tickets to your cook and power Maharaj\'s suggestions. Your data is never sold. You can delete your account any time from Settings, and the household admin can export or delete the household\'s data.';
 
   @override
   String get consentLlmNote =>
-      'Maharaj chat questions are sent to an AI service; names and phone numbers are not sent with them.';
+      'Maharaj chat questions are sent to an AI service (Anthropic\'s Claude). Phone numbers and health needs are never sent; allergies go only as counts, and a family member\'s name only if you type it.';
 
   @override
   String get consentKids => 'You add kids\' profiles as their parent or guardian.';
@@ -1644,6 +1653,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsGrievance => 'Grievance contact: privacy@banega.app';
+
+  @override
+  String get settingsPrivacyPolicy => 'Privacy policy';
+
+  @override
+  String get settingsTerms => 'Terms of service';
 
   @override
   String get settingsExport => 'Export my data';

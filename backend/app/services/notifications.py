@@ -3,8 +3,9 @@
 ``MATRIX`` is the data: event -> recipient roles -> channels. :func:`emit` resolves the roles
 to users of one household, writes one ``InboxItem`` per user (the inbox is the source of
 truth) and queues a push in ``push_outbox`` in the same transaction; after commit the
-worker delivers it through the configured :class:`PushAdapter` (``NoopPush`` in dev and tests;
-see ``app.services.push_outbox``). Push respects the user's per-event switch and quiet hours;
+worker delivers it through the configured :class:`PushAdapter` (``NoopPush`` in dev and
+tests, ``FcmPush`` in prod; see ``app.services.push_outbox``). Push respects the user's
+per-event switch and quiet hours;
 mandatory events (ticket assigned/updated for the assignee, approvals) ignore both (F-X-01
 footnote). The inbox row is always written.
 
@@ -13,6 +14,7 @@ The actor who caused an event is never notified about it.
 
 from __future__ import annotations
 
+import asyncio
 import uuid
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
@@ -21,6 +23,7 @@ from enum import StrEnum
 from typing import Any, Protocol
 from zoneinfo import ZoneInfo
 
+import httpx
 import structlog
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -288,8 +291,18 @@ class PushMessage:
     data: Mapping[str, str] = field(default_factory=dict)
 
 
+@dataclass(frozen=True, slots=True)
+class PushResult:
+    """Per-device outcome. ``dead``: tokens the provider says are gone (their Device rows are
+    deleted); ``retry``: (platform, token) pairs that failed transiently (only those are
+    retried, with backoff, by the outbox). Everything else was delivered or dropped."""
+
+    dead: tuple[str, ...] = ()
+    retry: tuple[tuple[str, str], ...] = ()
+
+
 class PushAdapter(Protocol):
-    async def send(self, message: PushMessage) -> None: ...
+    async def send(self, message: PushMessage) -> PushResult | None: ...
 
 
 class NoopPush:
@@ -298,7 +311,7 @@ class NoopPush:
     def __init__(self) -> None:
         self.sent: list[PushMessage] = []
 
-    async def send(self, message: PushMessage) -> None:
+    async def send(self, message: PushMessage) -> PushResult | None:
         self.sent.append(message)
         log.info(
             "push_noop",
@@ -307,21 +320,120 @@ class NoopPush:
             title=message.title,
             notification=message.data.get("event"),
         )
+        return None
+
+
+FCM_URL = "https://fcm.googleapis.com/v1/projects/{project}/messages:send"
 
 
 class FcmPush:
-    """FCM HTTP v1 (Android + iOS via APNs bridging).
+    """FCM HTTP v1 (Android; iOS through APNs once there is an iOS app).
 
-    TODO(phase-5b): service-account OAuth token + POST to
-    https://fcm.googleapis.com/v1/projects/{FCM_PROJECT_ID}/messages:send, fanned out by the
-    ARQ worker; drop tokens FCM reports as UNREGISTERED. Until then this only logs.
+    One ``messages:send`` per device token with a ``notification`` (title, body), ``data``
+    (``event``, ``ticket_id``, ... as strings, read by the app on tap) and Android priority
+    high. OAuth2 access token from the service account (``google_sa``). Outcomes per token:
+    200 delivered; ``UNREGISTERED`` / 404, ``SENDER_ID_MISMATCH`` and an ``INVALID_ARGUMENT``
+    about the token -> dead (Device row deleted); 401/429/5xx/network -> retried by the
+    outbox; any other 4xx -> dropped and logged (retrying the same payload cannot help).
     """
 
-    def __init__(self, project_id: str) -> None:
+    def __init__(
+        self,
+        project_id: str,
+        tokens: Any,
+        *,
+        transport: httpx.AsyncBaseTransport | None = None,
+        timeout: float = 10.0,
+    ) -> None:
         self.project_id = project_id
+        self.tokens = tokens  # google_sa.TokenSource
+        self.transport = transport
+        self.timeout = timeout
 
-    async def send(self, message: PushMessage) -> None:
-        log.warning("push_fcm_not_implemented", project=self.project_id, title=message.title)
+    @classmethod
+    def from_settings(cls) -> FcmPush:
+        from app.services import google_sa
+
+        s = get_settings()
+        info = google_sa.load_service_account(
+            s.FCM_SERVICE_ACCOUNT_FILE, s.FCM_SERVICE_ACCOUNT_JSON, "FCM"
+        )
+        project = s.FCM_PROJECT_ID or str(info.get("project_id") or "")
+        if not project:
+            raise google_sa.ServiceAccountError("FCM_PROJECT_ID is not set")
+        return cls(project, google_sa.GoogleTokenSource(info, [google_sa.FCM_SCOPE]))
+
+    def payload(self, token: str, message: PushMessage) -> dict[str, Any]:
+        data = {str(k): str(v) for k, v in message.data.items() if not str(k).startswith("_")}
+        return {
+            "message": {
+                "token": token,
+                "notification": {"title": message.title, "body": message.body},
+                "data": data,
+                "android": {"priority": "high"},
+                "apns": {"headers": {"apns-priority": "10"}},
+            }
+        }
+
+    async def send(self, message: PushMessage) -> PushResult | None:
+        access = await self.tokens.token()
+        url = FCM_URL.format(project=self.project_id)
+        async with httpx.AsyncClient(
+            timeout=self.timeout,
+            transport=self.transport,
+            headers={"Authorization": f"Bearer {access}"},
+        ) as client:
+            outcomes = await asyncio.gather(
+                *(self._one(client, url, token, message) for _, token in message.tokens)
+            )
+        dead = tuple(t for (_, t), o in zip(message.tokens, outcomes, strict=True) if o == "dead")
+        retry = tuple(p for p, o in zip(message.tokens, outcomes, strict=True) if o == "retry")
+        return PushResult(dead=dead, retry=retry)
+
+    async def _one(
+        self, client: httpx.AsyncClient, url: str, token: str, message: PushMessage
+    ) -> str:
+        try:
+            resp = await client.post(url, json=self.payload(token, message))
+        except httpx.HTTPError as exc:
+            log.warning("fcm_unreachable", error=type(exc).__name__)
+            return "retry"
+        if resp.is_success:
+            return "ok"
+        outcome = classify_fcm_error(resp)
+        log.warning(
+            "fcm_send_failed",
+            status=resp.status_code,
+            outcome=outcome,
+            notification=message.data.get("event"),
+        )
+        return outcome
+
+
+def classify_fcm_error(resp: httpx.Response) -> str:
+    """dead | retry | drop for a non-2xx FCM v1 response."""
+    try:
+        err = resp.json().get("error") or {}
+    except (ValueError, AttributeError):
+        err = {}
+    codes: set[str] = set()
+    fields: set[str] = set()
+    for d in err.get("details") or []:
+        if isinstance(d, dict):
+            if d.get("errorCode"):
+                codes.add(str(d["errorCode"]))
+            for v in d.get("fieldViolations") or []:
+                if isinstance(v, dict):
+                    fields.add(str(v.get("field") or ""))
+    status = str(err.get("status") or "")
+    if "UNREGISTERED" in codes or "SENDER_ID_MISMATCH" in codes or resp.status_code == 404:
+        return "dead"
+    if "INVALID_ARGUMENT" in codes or status == "INVALID_ARGUMENT" or resp.status_code == 400:
+        about_token = "message.token" in fields or "token" in str(err.get("message", "")).lower()
+        return "dead" if about_token else "drop"
+    if resp.status_code in (401, 408, 429) or resp.status_code >= 500:
+        return "retry"
+    return "drop"
 
 
 _push: PushAdapter | None = None
@@ -331,7 +443,7 @@ def get_push() -> PushAdapter:
     global _push
     if _push is None:
         s = get_settings()
-        _push = FcmPush(s.FCM_PROJECT_ID) if s.PUSH_PROVIDER == "fcm" else NoopPush()
+        _push = FcmPush.from_settings() if s.PUSH_PROVIDER == "fcm" else NoopPush()
     return _push
 
 

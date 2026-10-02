@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import json
 import warnings
 from functools import lru_cache
 from pathlib import Path
@@ -39,6 +40,16 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_DAYS: int = 90
 
     OTP_PROVIDER: Literal["dev", "msg91", "twilio"] = "dev"
+    # MSG91 OTP API v5 (India, DLT). The auth key goes in the `authkey` header; the template
+    # id is the MSG91 template linked to the DLT-approved content template; the sender id
+    # (DLT header) normally lives on the template and is only sent when set here.
+    MSG91_AUTH_KEY: str = ""
+    MSG91_OTP_TEMPLATE_ID: str = ""
+    MSG91_SENDER_ID: str = ""
+    MSG91_BASE_URL: str = "https://control.msg91.com/api/v5"
+    # channel=voice requests: send the code (SMS) then ask MSG91 to call with it (retry
+    # endpoint, retrytype=voice). Off = a voice request is delivered by SMS.
+    OTP_VOICE_FALLBACK: bool = False
     OTP_TTL_SECONDS: int = 300
     OTP_RESEND_SECONDS: int = 30
     OTP_MAX_PER_NUMBER_PER_HOUR: int = 5
@@ -106,7 +117,12 @@ class Settings(BaseSettings):
     # ---- menus, tickets, notifications (Phase 5) ------------------------------------------
     # noop = log only (dev/tests); fcm = FCM HTTP v1 (Android + iOS via APNs).
     PUSH_PROVIDER: Literal["noop", "fcm"] = "noop"
+    # Empty = the service account's project_id.
     FCM_PROJECT_ID: str = ""
+    # Service-account key (JSON) with the "Firebase Cloud Messaging API Admin" role: a file
+    # path (preferred, mounted read-only) or the JSON itself.
+    FCM_SERVICE_ACCOUNT_FILE: str = ""
+    FCM_SERVICE_ACCOUNT_JSON: str = ""
     # Outside dev/test PUSH_PROVIDER=noop refuses to boot unless this is set (staging).
     ALLOW_NOOP_PUSH: bool = False
     # F-5.7-02 / F-5.7-12 timers.
@@ -132,11 +148,21 @@ class Settings(BaseSettings):
     # and/or the Pub/Sub push OIDC token (Authorization: Bearer, Google-signed; audience and
     # service account below). Outside dev/test at least one must be configured.
     PLAY_WEBHOOK_SECRET: str = ""
+    # Google Play Developer API (purchases.subscriptionsv2): the app's package, the
+    # subscription product ids we sell, and a service account invited in Play Console
+    # (Users and permissions: "View financial data" + "Manage orders and subscriptions").
+    PLAY_PACKAGE_NAME: str = "in.kornea.banega"
+    PLAY_PRODUCT_IDS: str = "banega_weekly_50"
+    PLAY_SERVICE_ACCOUNT_FILE: str = ""
+    PLAY_SERVICE_ACCOUNT_JSON: str = ""
     PLAY_PUBSUB_AUDIENCE: str = ""
     PLAY_PUBSUB_SERVICE_ACCOUNT: str = ""
     # App Store: bundle id + environment checked in every signed notification; the root
     # certificate the x5c chain must end in (Apple Root CA - G3, bundled); App Store Server
     # API credentials (issuer id, key id, .p8 private key) for purchase verification.
+    # False = no iOS build yet: the APPSTORE_* credentials are not required and App Store
+    # restores / notifications are refused (Android-only launch).
+    APPSTORE_ENABLED: bool = True
     APPSTORE_BUNDLE_ID: str = ""
     APPSTORE_ENVIRONMENT: Literal["Production", "Sandbox"] = "Production"
     APPSTORE_ROOT_CERT_PATH: str = str(APPLE_ROOT_CERT)
@@ -160,6 +186,10 @@ class Settings(BaseSettings):
             problems.append("JWT_SECRET must be a random value of at least 32 characters")
         if self.OTP_PROVIDER == "dev":
             problems.append("OTP_PROVIDER=dev is not allowed outside dev/test")
+        elif self.OTP_PROVIDER == "twilio":
+            problems.append("OTP_PROVIDER=twilio is not implemented; use msg91")
+        elif not (self.MSG91_AUTH_KEY and self.MSG91_OTP_TEMPLATE_ID):
+            problems.append("OTP_PROVIDER=msg91 needs MSG91_AUTH_KEY and MSG91_OTP_TEMPLATE_ID")
         if self.STORE_VERIFIER == "fake":
             problems.append(
                 "STORE_VERIFIER=fake is not allowed outside dev/test (any string would "
@@ -184,12 +214,25 @@ class Settings(BaseSettings):
                 "APPSTORE_KEY_ID",
                 "APPSTORE_PRIVATE_KEY",
             )
-            if not getattr(self, name)
+            if self.APPSTORE_ENABLED and not getattr(self, name)
         ]
         if missing:
-            problems.append("store verification is on outside dev/test; set " + ", ".join(missing))
-        if not Path(self.APPSTORE_ROOT_CERT_PATH).is_file():
+            problems.append(
+                "store verification is on outside dev/test; set "
+                + ", ".join(missing)
+                + " (or APPSTORE_ENABLED=0 without an iOS app)"
+            )
+        if self.APPSTORE_ENABLED and not Path(self.APPSTORE_ROOT_CERT_PATH).is_file():
             problems.append(f"APPSTORE_ROOT_CERT_PATH not found: {self.APPSTORE_ROOT_CERT_PATH}")
+        problems += _service_account_problems(
+            "PLAY", self.PLAY_SERVICE_ACCOUNT_FILE, self.PLAY_SERVICE_ACCOUNT_JSON
+        )
+        if not self.PLAY_PACKAGE_NAME or not self.play_product_ids:
+            problems.append("PLAY_PACKAGE_NAME and PLAY_PRODUCT_IDS must be set")
+        if self.PUSH_PROVIDER == "fcm":
+            problems += _service_account_problems(
+                "FCM", self.FCM_SERVICE_ACCOUNT_FILE, self.FCM_SERVICE_ACCOUNT_JSON
+            )
         if self.PUSH_PROVIDER == "noop":
             if not self.ALLOW_NOOP_PUSH:
                 problems.append(
@@ -210,6 +253,10 @@ class Settings(BaseSettings):
         return self
 
     @property
+    def play_product_ids(self) -> frozenset[str]:
+        return frozenset(p.strip() for p in self.PLAY_PRODUCT_IDS.split(",") if p.strip())
+
+    @property
     def is_dev(self) -> bool:
         return self.ENV in ("dev", "test")
 
@@ -219,6 +266,25 @@ class Settings(BaseSettings):
         if explicit:
             return explicit.encode()
         return hmac.new(self.JWT_SECRET.encode(), purpose.encode(), hashlib.sha256).digest()
+
+
+def _service_account_problems(prefix: str, file: str, raw: str) -> list[str]:
+    """``{prefix}_SERVICE_ACCOUNT_FILE`` (must exist) or ``_JSON`` (must parse)."""
+    if file:
+        if not Path(file).is_file():
+            return [f"{prefix}_SERVICE_ACCOUNT_FILE not found: {file}"]
+        return []
+    if raw:
+        try:
+            info = json.loads(raw)
+        except ValueError:
+            return [f"{prefix}_SERVICE_ACCOUNT_JSON is not valid JSON"]
+        if not isinstance(info, dict) or not info.get("client_email"):
+            return [f"{prefix}_SERVICE_ACCOUNT_JSON is not a service-account key"]
+        return []
+    return [
+        f"set {prefix}_SERVICE_ACCOUNT_FILE (or {prefix}_SERVICE_ACCOUNT_JSON) outside dev/test"
+    ]
 
 
 @lru_cache

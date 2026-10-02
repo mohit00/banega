@@ -7,14 +7,35 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// Release signing: android/key.properties (not committed) with storeFile,
-// storePassword, keyAlias, keyPassword. Without it the release build falls
-// back to the debug keys and says so (fine for local testing, never upload).
+// Firebase (FCM push): the google-services plugin turns app/google-services.json
+// into resources. It is applied only when that file exists, so the app still
+// builds without a Firebase project (push then stays off at runtime).
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+}
+
+// Release signing: android/key.properties (not committed) with storeFile
+// (relative to android/app/), storePassword, keyAlias, keyPassword.
+// - Building an App Bundle (bundleRelease: what Play takes) without it fails.
+// - A release APK without it falls back to the debug key with a warning
+//   (local testing only; never distribute it).
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
 val hasReleaseKeystore = keystorePropertiesFile.exists()
 if (hasReleaseKeystore) {
-    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+    FileInputStream(keystorePropertiesFile).use { keystoreProperties.load(it) }
+    val missing = listOf("storeFile", "storePassword", "keyAlias", "keyPassword")
+        .filter { keystoreProperties.getProperty(it).isNullOrBlank() }
+    if (missing.isNotEmpty()) {
+        throw GradleException("android/key.properties is missing: ${missing.joinToString()}")
+    }
+}
+val buildsBundle = gradle.startParameter.taskNames.any { it.contains("bundle", ignoreCase = true) && it.contains("Release", ignoreCase = true) }
+if (buildsBundle && !hasReleaseKeystore) {
+    throw GradleException(
+        "Refusing to build a release App Bundle without android/key.properties: Play needs it signed " +
+            "with the upload key (see app/README.md, Release signing)."
+    )
 }
 
 android {
@@ -46,10 +67,12 @@ android {
     signingConfigs {
         if (hasReleaseKeystore) {
             create("release") {
-                keyAlias = keystoreProperties["keyAlias"] as String
-                keyPassword = keystoreProperties["keyPassword"] as String
-                storeFile = file(keystoreProperties["storeFile"] as String)
-                storePassword = keystoreProperties["storePassword"] as String
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+                storeFile = file(keystoreProperties.getProperty("storeFile")).also {
+                    if (!it.exists()) throw GradleException("Upload keystore not found: $it (key.properties storeFile)")
+                }
+                storePassword = keystoreProperties.getProperty("storePassword")
             }
         }
     }

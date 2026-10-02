@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/clock.dart';
 import 'core/motion/motion.dart';
 import 'core/perf.dart';
+import 'core/push/push_registrar.dart';
 import 'core/l10n/gen/app_localizations.dart';
 import 'core/router/router.dart';
 import 'core/theme/theme.dart';
@@ -29,6 +30,10 @@ class BanegaApp extends ConsumerWidget {
     // API mode: one SyncService replays the offline queue on reconnect /
     // resume (idempotent start).
     if (ref.watch(cookUsesApiProvider)) ref.read(syncServiceProvider).start();
+    // API mode, signed in: register for push (FCM) and pick up store
+    // purchases that complete outside the paywall (pending payments).
+    ref.watch(pushBootstrapProvider);
+    ref.watch(billingListenerProvider);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
       child: LowEndScope(

@@ -20,6 +20,13 @@ set "ADMIN_USERNAME=admin"
 set "ADMIN_PASSWORD=change-me"
 set "ADMIN_SECRET_KEY=dev-only-admin-secret-change-me"
 set "ADMIN_BASE_URL=/admin"
+rem Real push when the Firebase server key is present (kept outside the repo).
+set "FCM_KEY=%USERPROFILE%\.banega\secrets\fcm-service-account.json"
+if exist "%FCM_KEY%" (
+  set "PUSH_PROVIDER=fcm"
+  set "FCM_PROJECT_ID=banega-fb1ed"
+  set "FCM_SERVICE_ACCOUNT_FILE=%FCM_KEY%"
+)
 
 echo [banega] Starting Postgres and Redis...
 docker compose -f "%ROOT%\infra\docker-compose.yml" --env-file "%ROOT%\infra\.env.example" up -d db redis || exit /b 1

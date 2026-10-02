@@ -122,16 +122,22 @@ policies, requires secrets and adds a daily `pg_dump`.
 | `DATABASE_URL` | postgres on localhost | `sqlite+aiosqlite://` works for tests |
 | `REDIS_URL` | `redis://localhost:6379/0` | empty or `memory://` = in-process store |
 | `JWT_SECRET` | dev value | at least 32 chars; must be changed in staging/prod (enforced) |
-| `OTP_PROVIDER` | `dev` | `msg91` / `twilio` are stubs (TODO) and `dev` is refused in prod |
+| `OTP_PROVIDER` | `dev` | `msg91` (see "MSG91 OTP"); `dev` and `twilio` (not implemented) are refused in prod |
+| `MSG91_AUTH_KEY` / `MSG91_OTP_TEMPLATE_ID` / `MSG91_SENDER_ID` | empty | MSG91 auth key (header), the MSG91 OTP template id, optional DLT sender id; key + template required for `msg91` in prod |
+| `OTP_VOICE_FALLBACK` | `0` | `1`: a `channel=voice` request also has MSG91 call the user with the same code |
 | `ANTHROPIC_API_KEY` | empty | empty = Maharaj runs on the rule parser + template replies only |
 | `MAHARAJ_PARSE_MODEL` / `MAHARAJ_WRITE_MODEL` | `claude-sonnet-5` | any Claude model id |
 | `MAHARAJ_DAILY_BUDGET` | `200` | LLM calls (parse + write) per household per local day |
 | `MAHARAJ_MIN_RESULTS` | `3` | relax soft filters while fewer cards match (1 = prototype behaviour) |
-| `PUSH_PROVIDER` | `noop` | `noop` logs pushes; `fcm` is a stub until FCM credentials are wired (TODO) |
+| `PUSH_PROVIDER` | `noop` | `noop` logs pushes; `fcm` = FCM HTTP v1 (see "Push (FCM)") |
+| `FCM_SERVICE_ACCOUNT_FILE` / `FCM_SERVICE_ACCOUNT_JSON` / `FCM_PROJECT_ID` | empty | Firebase service-account key (path or JSON; one required for `fcm` in prod); project id defaults to the key's (`banega-fb1ed`) |
 | `TICKET_NOT_CONFIRMED_AFTER_MINUTES` / `TICKET_NOT_CONFIRMED_CLOSE_HOURS` | `180` / `24` | worker timers |
 | `TICKET_NO_SHOW_BEFORE_MINUTES` / `TOMORROW_NOTIFY_LOCAL_TIME` | `90` / `20:00` | worker timers |
 | `TRIAL_DAYS` | `7` | server-side trial from household creation (F-3-03) |
-| `STORE_VERIFIER` | `auto` | `auto` = fake store + unverified App Store JWS in dev/test, real adapters elsewhere (TODO: they refuse with 503 until wired); `fake` / `store` force one |
+| `STORE_VERIFIER` | `auto` | `auto` = fake store + unverified App Store JWS in dev/test, real adapters elsewhere (Play: Developer API; App Store: still 503); `fake` / `store` force one |
+| `PLAY_PACKAGE_NAME` / `PLAY_PRODUCT_IDS` | `in.kornea.banega` / `banega_weekly_50` | the app and the subscription ids we accept |
+| `PLAY_SERVICE_ACCOUNT_FILE` / `PLAY_SERVICE_ACCOUNT_JSON` | empty | service account invited in Play Console; required outside dev/test |
+| `APPSTORE_ENABLED` | `1` | `0` = no iOS app yet: `APPSTORE_*` not required, App Store restores / notifications answer 422 `store_not_supported` |
 | `PLAY_WEBHOOK_SECRET` | empty | Play RTDN secret, `X-Webhook-Secret` header only (never `?token=`) |
 | `PLAY_PUBSUB_AUDIENCE` / `PLAY_PUBSUB_SERVICE_ACCOUNT` | empty | alternative: verify the Pub/Sub push OIDC token (Google JWKS, audience, service account) |
 | `APPSTORE_BUNDLE_ID` / `APPSTORE_ENVIRONMENT` | empty / `Production` | checked in every signed App Store notification |
@@ -332,7 +338,7 @@ notification matrix (F-X-01).
 Admin: Menus, Tickets (change log inline; search by status, slot, date), Cook duty log, Inbox
 items, and "Ticket board" (`/admin/ticket-board?date=`: one day's tickets by status).
 
-Not built yet: FCM/APNs delivery (the adapter is a stub), TTS audio URLs, scheduled or
+Not built yet: APNs (iOS) delivery, TTS audio URLs, scheduled or
 recurring off duty (FR-K9), and the "Badlav" re-share text for WhatsApp-only cooks. (The
 substitution ladder, pantry levels and rating prompts arrived in Phases 6-7, below.)
 
@@ -571,7 +577,12 @@ a hired cook deleting her account archives her cook row and unassigns her open t
 push token to another user is logged. The API image creates `/srv/media` owned by the app
 user; compose and image healthchecks use `/v1/health/ready`.
 
-**Launch gates (not done here)**
+**Integrations (Phase 9)**: MSG91 OTP, FCM push and Google Play verification are wired and
+switch on by configuration only (sections below; `tests/test_integrations.py`, mocked
+transports). The production VM kit (Caddy TLS, admin host, restic backups, restore drill) is in
+`infra/deploy/`.
+
+**Launch gates (historical; see Phase 9)**
 - OTP delivery: `OTP_PROVIDER=msg91` is still a stub (a send answers 503 `otp_unavailable`);
   wire MSG91 (DLT template, voice fallback). Consider Play Integrity / App Attest on
   `/auth/otp`.
@@ -584,6 +595,76 @@ user; compose and image healthchecks use `/v1/health/ready`.
   set `ADMIN_ALLOW_CIDR`; the admin cookie is Secure-only outside dev.
 - Backups off the VM (object storage) and a restore drill; Redis `requirepass` is in the
   prod override (`REDIS_PASSWORD`).
+
+## MSG91 OTP (India, DLT)
+
+`OTP_PROVIDER=msg91` (`services/otp.py`, `Msg91OtpProvider`). The server still generates,
+hashes and verifies every code; MSG91 only delivers it:
+
+- SMS: `POST https://control.msg91.com/api/v5/otp?template_id=<MSG91_OTP_TEMPLATE_ID>&mobile=91XXXXXXXXXX&otp=<our code>&otp_expiry=5`
+  with the `authkey: <MSG91_AUTH_KEY>` header (`sender=<MSG91_SENDER_ID>` only when set).
+- Voice (`channel=voice` and `OTP_VOICE_FALLBACK=1`): the SMS above, then
+  `GET .../api/v5/otp/retry?retrytype=voice&mobile=91...` (MSG91 calls and reads the same
+  code). A failed call after a delivered SMS is only logged.
+- 5 s timeout, one retry on timeouts / 5xx; any rejection (`{"type": "error"}`, 4xx) is 503
+  `otp_unavailable`. The code is never logged (httpx request logging is muted, and the Sentry
+  scrubber masks `otp=` / `authkey=` / `mobile=` in URLs).
+
+DLT setup (TRAI rules: unregistered SMS to Indian numbers are dropped):
+1. Register the business as a Principal Entity on a DLT portal (e.g. Jio TrueConnect,
+   Vodafone Idea Vilpower, Airtel DLT): company PAN / GST, letter of authorisation. Note the
+   Entity ID.
+2. Register a Header (sender ID), 6 letters, Transactional / Service-Implicit, e.g.
+   `KORNEA` or `BANEGA`.
+3. Register a Content Template, category Transactional (OTP) / Service Implicit, linked to the
+   header, with exactly this text (DLT variable `{#var#}`):
+
+   `Your Banega code is {#var#}. Valid 5 minutes. Do not share it. -Kornea`
+
+   Note the DLT Template ID once approved.
+4. MSG91: add the Entity ID (Settings / DLT), add the sender ID, then create an OTP template
+   (SendOTP / OTP section) with the same text, using MSG91's variable for the code:
+
+   `Your Banega code is ##OTP##. Valid 5 minutes. Do not share it. -Kornea`
+
+   and fill in the DLT Template ID. The template's MSG91 id is `MSG91_OTP_TEMPLATE_ID`;
+   the auth key (API / Authkey) is `MSG91_AUTH_KEY`. The text must match the DLT template
+   character for character (`OTP_TTL_SECONDS=300` keeps "5 minutes" true).
+5. Turn on voice OTP in MSG91 if `OTP_VOICE_FALLBACK=1`. Whitelist the VM's IP for the auth
+   key if API security is on.
+
+## Push (FCM)
+
+`PUSH_PROVIDER=fcm` (`services/notifications.py`, `FcmPush`): one FCM HTTP v1
+`POST https://fcm.googleapis.com/v1/projects/{FCM_PROJECT_ID}/messages:send` per device with
+`notification {title, body}`, `data {event, ticket_id?}` and Android priority high; OAuth2
+token from the service account (google-auth, `services/google_sa.py`, cached until expiry).
+Per device: `UNREGISTERED` / 404, `SENDER_ID_MISMATCH` and an `INVALID_ARGUMENT` about the
+token delete the `devices` row; 401 / 429 / 5xx / network errors are retried by the outbox for
+that device only (`_retry_tokens`), with backoff 0 / 1 / 5 / 15 / 60 min (5 attempts); other
+4xx are dropped and logged.
+
+Setup: Firebase console → project `banega-fb1ed` → Project settings → Service accounts →
+"Generate new private key" → put the JSON on the server (prod: `infra/secrets/fcm-service-account.json`,
+mounted at `/run/secrets/banega/`; dev: any path) and set `FCM_SERVICE_ACCOUNT_FILE`. The
+app side (google-services.json, token registration) is in `app/README.md`.
+
+## Google Play billing
+
+`StoreApiVerifier` (prod; `STORE_VERIFIER=store` or `auto` outside dev/test) reads
+`purchases.subscriptionsv2.get` for `PLAY_PACKAGE_NAME` with the Play service account:
+ACTIVE -> active, CANCELED -> active until expiry, IN_GRACE_PERIOD -> grace, ON_HOLD /
+PAUSED / EXPIRED -> expired, PENDING -> 409 `purchase_pending`; a product outside
+`PLAY_PRODUCT_IDS` or an unknown token is 422 `receipt_invalid`; Play API outages are 503.
+`renews_at` = the line item's `expiryTime`. A purchase Play reports as not acknowledged is
+acknowledged (`purchases.subscriptions.acknowledge`). Every RTDN re-reads the state through
+the same API (the notification type is only a trigger); a new token whose
+`linkedPurchaseToken` we know moves that household's subscription.
+
+Setup: Play Console → Users and permissions → invite the service account's email with "View
+financial data" and "Manage orders and subscriptions" → Monetize → Subscriptions →
+`banega_weekly_50`, base plan `weekly` (auto-renewing, 1 week, ₹50) → RTDN topic (see
+`infra/deploy/README.md`).
 
 ## Crash reporting (optional)
 

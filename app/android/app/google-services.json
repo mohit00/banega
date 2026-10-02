@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128095948232",
+    "project_id": "banega-fb1ed",
+    "storage_bucket": "banega-fb1ed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128095948232:android:25f35f080496db309144fd",
+        "android_client_info": {
+          "package_name": "in.kornea.banega"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkjEnKhUfz64YZCeu0qsAlcw5NvWxRCi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

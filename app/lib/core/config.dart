@@ -10,6 +10,16 @@ const String? kApiBaseUrl = null;
 
 const _fromEnv = String.fromEnvironment('BANEGA_API_BASE_URL');
 
+/// Public legal pages (docs/legal/site), opened from Settings and the consent
+/// screen. Play requires the privacy policy at a public URL. Override per
+/// build: `--dart-define=BANEGA_PRIVACY_URL=https://...` /
+/// `--dart-define=BANEGA_TERMS_URL=https://...`.
+const kPrivacyPolicyUrl = String.fromEnvironment(
+  'BANEGA_PRIVACY_URL',
+  defaultValue: 'https://banega.kornea.in/privacy',
+);
+const kTermsUrl = String.fromEnvironment('BANEGA_TERMS_URL', defaultValue: 'https://banega.kornea.in/terms');
+
 @immutable
 class AppConfig {
   const AppConfig({this.apiBaseUrl, this.connectTimeout = const Duration(seconds: 4)});

@@ -8,6 +8,7 @@ import '../../../core/config.dart';
 import '../../../core/network/api_client.dart';
 import '../../../core/network/app_error.dart';
 import '../../../core/network/network_status.dart';
+import '../../../core/push/push_registrar.dart';
 import '../../../core/session/local_data.dart';
 import '../../account/application/locale_controller.dart';
 import '../../kitchen/application/kitchen_providers.dart' show keyValueStoreProvider;
@@ -154,6 +155,10 @@ class AuthController extends Notifier<AuthState> {
   /// local caches.
   Future<void> logout() async {
     final t = state.tokens;
+    // Push: drop this device while the session can still authenticate.
+    try {
+      await ref.read(pushRegistrarProvider).unregister();
+    } catch (_) {}
     if (t != null) {
       try {
         await _repo.logout(t.accessToken);

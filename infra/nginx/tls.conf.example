@@ -1,4 +1,8 @@
-# TLS at nginx (instead of a cloud load balancer). This file is an http-context include.
+# ALTERNATIVE ONLY. The default production TLS is Caddy (infra/caddy/Caddyfile, service
+# "caddy" in docker-compose.prod.yml: automatic Let's Encrypt, HSTS, admin on its own host;
+# infra/deploy/README.md). Use this file only if you run nginx on 443 without Caddy.
+#
+# TLS at nginx (instead of Caddy / a cloud load balancer). This is an http-context include.
 #
 #  1. DNS: api.banega.app -> this VM; open ports 80 and 443.
 #  2. Certificate with certbot on the host, e.g.

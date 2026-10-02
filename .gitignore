@@ -26,3 +26,6 @@ app/test/failures/
 *.keystore
 app/android/key.properties
 app/android/local.properties
+
+# service-account keys on the VM (infra/deploy/README.md)
+infra/secrets/

@@ -10,6 +10,12 @@ x-backend-env: &backend-env
   REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
   JWT_SECRET: ${JWT_SECRET:-dev-only-jwt-secret-change-me-please-0123456789}
   OTP_PROVIDER: ${OTP_PROVIDER:-dev}
+  # MSG91 (OTP_PROVIDER=msg91): auth key, DLT-approved OTP template id, optional sender id;
+  # OTP_VOICE_FALLBACK=1 lets channel=voice requests use MSG91's voice retry.
+  MSG91_AUTH_KEY: ${MSG91_AUTH_KEY:-}
+  MSG91_OTP_TEMPLATE_ID: ${MSG91_OTP_TEMPLATE_ID:-}
+  MSG91_SENDER_ID: ${MSG91_SENDER_ID:-}
+  OTP_VOICE_FALLBACK: ${OTP_VOICE_FALLBACK:-0}
   LOG_LEVEL: ${LOG_LEVEL:-INFO}
   LOG_JSON: ${LOG_JSON:-true}
   SENTRY_DSN: ${SENTRY_DSN:-}
@@ -17,9 +23,12 @@ x-backend-env: &backend-env
   MAHARAJ_PARSE_MODEL: ${MAHARAJ_PARSE_MODEL:-claude-sonnet-5}
   MAHARAJ_WRITE_MODEL: ${MAHARAJ_WRITE_MODEL:-claude-sonnet-5}
   MAHARAJ_DAILY_BUDGET: ${MAHARAJ_DAILY_BUDGET:-200}
-  # Phase 5: push adapter (noop logs only; fcm needs FCM_PROJECT_ID + credentials, TODO).
+  # Phase 5: push adapter (noop logs only; fcm = FCM HTTP v1 with a service account, from
+  # a file or inline JSON; FCM_PROJECT_ID defaults to the service account's project_id).
   PUSH_PROVIDER: ${PUSH_PROVIDER:-noop}
   FCM_PROJECT_ID: ${FCM_PROJECT_ID:-}
+  FCM_SERVICE_ACCOUNT_FILE: ${FCM_SERVICE_ACCOUNT_FILE:-}
+  FCM_SERVICE_ACCOUNT_JSON: ${FCM_SERVICE_ACCOUNT_JSON:-}
   ALLOW_NOOP_PUSH: ${ALLOW_NOOP_PUSH:-0}
   # Phase 7: store verification (auto = fake in dev), Play RTDN auth (header secret or
   # Pub/Sub OIDC), App Store (bundle, env, Server API key), DPDP notice version, data exports
@@ -28,6 +37,13 @@ x-backend-env: &backend-env
   PLAY_WEBHOOK_SECRET: ${PLAY_WEBHOOK_SECRET:-}
   PLAY_PUBSUB_AUDIENCE: ${PLAY_PUBSUB_AUDIENCE:-}
   PLAY_PUBSUB_SERVICE_ACCOUNT: ${PLAY_PUBSUB_SERVICE_ACCOUNT:-}
+  # Play Developer API (purchases.subscriptionsv2.get + acknowledge) with a service account.
+  PLAY_PACKAGE_NAME: ${PLAY_PACKAGE_NAME:-in.kornea.banega}
+  PLAY_PRODUCT_IDS: ${PLAY_PRODUCT_IDS:-banega_weekly_50}
+  PLAY_SERVICE_ACCOUNT_FILE: ${PLAY_SERVICE_ACCOUNT_FILE:-}
+  PLAY_SERVICE_ACCOUNT_JSON: ${PLAY_SERVICE_ACCOUNT_JSON:-}
+  # 0 = Android-only launch: the APPSTORE_* credentials are not required.
+  APPSTORE_ENABLED: ${APPSTORE_ENABLED:-1}
   APPSTORE_BUNDLE_ID: ${APPSTORE_BUNDLE_ID:-}
   APPSTORE_ENVIRONMENT: ${APPSTORE_ENVIRONMENT:-Production}
   APPSTORE_ISSUER_ID: ${APPSTORE_ISSUER_ID:-}
@@ -198,6 +214,9 @@ services:
     entrypoint: ["/bin/sh", "/etc/nginx/render.sh"]
     environment:
       ADMIN_ALLOW_CIDR: ${ADMIN_ALLOW_CIDR:-}
+      # Proxies in front of nginx whose X-Forwarded-For sets the client address (prod:
+      # Caddy on the compose network). Empty in dev: nginx uses the TCP peer.
+      REAL_IP_FROM: ${REAL_IP_FROM:-}
     ports:
       - "${HTTP_PORT:-8080}:80"
     volumes:

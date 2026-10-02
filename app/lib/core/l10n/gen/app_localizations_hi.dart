@@ -1490,6 +1490,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get paywallStoreSoon => 'स्टोर बिलिंग जल्द आ रही है';
 
   @override
+  String get paywallPending => 'पेमेंट पेंडिंग है। पूरा होते ही प्लान चालू हो जाएगा।';
+
+  @override
+  String get paywallCancelled => 'खरीद कैंसल हो गई';
+
+  @override
+  String get paywallNothingToRestore => 'इस Play अकाउंट पर कोई बनेगा प्लान नहीं मिला';
+
+  @override
   String get paywallCancelNote => 'कभी भी Play Store / App Store से कैंसल करो';
 
   @override
@@ -1509,10 +1518,11 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get consentBody =>
-      'बनेगा आपके घर के सदस्यों की पसंद, एलर्जी और खाने का इतिहास सिर्फ मेन्यू बनाने, कुक को टिकट भेजने और महाराज के सुझाव के लिए रखता है। डेटा कभी बेचा नहीं जाता। सेटिंग्स से कभी भी एक्सपोर्ट या डिलीट कर सकते हो।';
+      'बनेगा आपका फ़ोन नंबर लॉगिन के लिए, और घर के सदस्यों की पसंद, एलर्जी, व्रत के दिन और खाने का इतिहास सिर्फ मेन्यू बनाने, कुक को टिकट भेजने और महाराज के सुझाव के लिए रखता है। डेटा कभी बेचा नहीं जाता। सेटिंग्स से कभी भी अपना अकाउंट डिलीट कर सकते हो; घर का एडमिन पूरे घर का डेटा एक्सपोर्ट या डिलीट कर सकता है।';
 
   @override
-  String get consentLlmNote => 'महाराज चैट के सवाल एक AI सेवा को जाते हैं; उनके साथ नाम या फ़ोन नंबर नहीं भेजे जाते।';
+  String get consentLlmNote =>
+      'महाराज चैट के सवाल एक AI सेवा (Anthropic Claude) को जाते हैं। फ़ोन नंबर और सेहत से जुड़ी ज़रूरतें कभी नहीं भेजी जातीं; एलर्जी सिर्फ गिनती में, और परिवार के किसी सदस्य का नाम सिर्फ तब जब आप खुद लिखें।';
 
   @override
   String get consentKids => 'बच्चों की प्रोफ़ाइल आप माता-पिता या अभिभावक की तरह बना रहे हो।';
@@ -1643,6 +1653,12 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get settingsGrievance => 'शिकायत के लिए: privacy@banega.app';
+
+  @override
+  String get settingsPrivacyPolicy => 'प्राइवेसी पॉलिसी';
+
+  @override
+  String get settingsTerms => 'नियम और शर्तें';
 
   @override
   String get settingsExport => 'मेरा डेटा एक्सपोर्ट करो';
@@ -3642,6 +3658,15 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
   String get paywallStoreSoon => 'Store billing jald aa raha hai';
 
   @override
+  String get paywallPending => 'Payment pending hai. Poora hote hi plan chalu ho jayega.';
+
+  @override
+  String get paywallCancelled => 'Purchase cancel ho gaya';
+
+  @override
+  String get paywallNothingToRestore => 'Is Play account par koi Banega plan nahi mila';
+
+  @override
   String get paywallCancelNote => 'Cancel kabhi bhi Play Store / App Store se';
 
   @override
@@ -3661,11 +3686,11 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
 
   @override
   String get consentBody =>
-      'Banega aapke ghar ke members ki pasand, allergy aur khaane ka itihaas sirf menu banane, cook ko ticket bhejne aur Maharaj ke sujhav ke liye rakhta hai. Data kabhi becha nahi jaata. Settings se kabhi bhi export ya delete kar sakte ho.';
+      'Banega aapka phone number login ke liye, aur ghar ke members ki pasand, allergy, vrat ke din aur khaane ka itihaas sirf menu banane, cook ko ticket bhejne aur Maharaj ke sujhav ke liye rakhta hai. Data kabhi becha nahi jaata. Settings se kabhi bhi apna account delete kar sakte ho; ghar ka admin poore ghar ka data export ya delete kar sakta hai.';
 
   @override
   String get consentLlmNote =>
-      'Maharaj chat ke sawaal ek AI service ko jaate hain; unke saath naam ya phone number nahi bheje jaate.';
+      'Maharaj chat ke sawaal ek AI service (Anthropic Claude) ko jaate hain. Phone number aur health needs kabhi nahi jaate; allergy sirf ginti mein, aur family ka naam sirf tab jab aap khud likho.';
 
   @override
   String get consentKids => 'Bachchon ki profile aap maa-baap ya guardian ki tarah bana rahe ho.';
@@ -3796,6 +3821,12 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
 
   @override
   String get settingsGrievance => 'Shikayat ke liye: privacy@banega.app';
+
+  @override
+  String get settingsPrivacyPolicy => 'Privacy policy dekho';
+
+  @override
+  String get settingsTerms => 'Terms aur shartein';
 
   @override
   String get settingsExport => 'Mera data export karo';

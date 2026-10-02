@@ -26,11 +26,13 @@ void main() {
           appConfigProvider.overrideWithValue(const AppConfig(apiBaseUrl: 'http://api.test')),
           keyValueStoreProvider.overrideWithValue(MemoryStore()),
           httpClientAdapterProvider.overrideWithValue(a),
+          // A platform without store billing (iOS / web today).
+          storeBillingSupportedProvider.overrideWithValue(false),
         ],
       );
       expect(c.read(billingAdapterProvider), isA<StoreBillingAdapter>());
       expect(await c.read(accountActionsProvider).restore(), isNull);
-      expect(await c.read(accountActionsProvider).subscribe(), isFalse);
+      expect(await c.read(accountActionsProvider).subscribe(), PurchaseOutcome.unavailable);
       expect(a.requests.where((r) => r.path.contains('/subscription/restore')), isEmpty);
     });
   });

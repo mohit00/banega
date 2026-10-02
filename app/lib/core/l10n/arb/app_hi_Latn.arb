@@ -1863,6 +1863,18 @@
   "@paywallStoreSoon": {
     "description": "Toast"
   },
+  "paywallPending": "Payment pending hai. Poora hote hi plan chalu ho jayega.",
+  "@paywallPending": {
+    "description": "Toast"
+  },
+  "paywallCancelled": "Purchase cancel ho gaya",
+  "@paywallCancelled": {
+    "description": "Toast"
+  },
+  "paywallNothingToRestore": "Is Play account par koi Banega plan nahi mila",
+  "@paywallNothingToRestore": {
+    "description": "Toast"
+  },
   "paywallCancelNote": "Cancel kabhi bhi Play Store / App Store se",
   "@paywallCancelNote": {
     "description": "S10 note"
@@ -1887,11 +1899,11 @@
   "@consentTitle": {
     "description": "Consent title (contract key consent_title)"
   },
-  "consentBody": "Banega aapke ghar ke members ki pasand, allergy aur khaane ka itihaas sirf menu banane, cook ko ticket bhejne aur Maharaj ke sujhav ke liye rakhta hai. Data kabhi becha nahi jaata. Settings se kabhi bhi export ya delete kar sakte ho.",
+  "consentBody": "Banega aapka phone number login ke liye, aur ghar ke members ki pasand, allergy, vrat ke din aur khaane ka itihaas sirf menu banane, cook ko ticket bhejne aur Maharaj ke sujhav ke liye rakhta hai. Data kabhi becha nahi jaata. Settings se kabhi bhi apna account delete kar sakte ho; ghar ka admin poore ghar ka data export ya delete kar sakta hai.",
   "@consentBody": {
     "description": "Consent body (contract key consent_body)"
   },
-  "consentLlmNote": "Maharaj chat ke sawaal ek AI service ko jaate hain; unke saath naam ya phone number nahi bheje jaate.",
+  "consentLlmNote": "Maharaj chat ke sawaal ek AI service (Anthropic Claude) ko jaate hain. Phone number aur health needs kabhi nahi jaate; allergy sirf ginti mein, aur family ka naam sirf tab jab aap khud likho.",
   "@consentLlmNote": {
     "description": "Consent LLM note (contract key consent_llm_note)"
   },
@@ -2072,6 +2084,14 @@
   "settingsGrievance": "Shikayat ke liye: privacy@banega.app",
   "@settingsGrievance": {
     "description": "Settings row"
+  },
+  "settingsPrivacyPolicy": "Privacy policy dekho",
+  "@settingsPrivacyPolicy": {
+    "description": "Settings row: opens the public privacy policy page"
+  },
+  "settingsTerms": "Terms aur shartein",
+  "@settingsTerms": {
+    "description": "Settings row: opens the public terms of service page"
   },
   "settingsExport": "Mera data export karo",
   "@settingsExport": {

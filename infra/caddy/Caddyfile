@@ -1,0 +1,50 @@
+# TLS in front of nginx (prod override, service "caddy"). Caddy gets and renews Let's Encrypt
+# certificates for both names on its own (HTTP-01 / TLS-ALPN-01 on ports 80/443; the DNS A
+# records must point at this VM first). Certificates live in the caddy_data volume.
+#
+#   API_DOMAIN    e.g. api.banega.kornea.in   -> /v1 and /media only; /admin is 404 here
+#   ADMIN_DOMAIN  e.g. admin.banega.kornea.in -> /admin (and the /media photos it shows)
+#   ACME_EMAIL    expiry / problem notices from Let's Encrypt
+#
+# Caddy sets X-Forwarded-For to the TCP peer (a client-sent X-Forwarded-For is replaced,
+# no trusted_proxies here) and X-Forwarded-Proto: https. nginx trusts it via REAL_IP_FROM,
+# so ADMIN_ALLOW_CIDR and the rate limits see the real client; the API resolves the same
+# address with TRUSTED_PROXIES (private ranges = caddy + nginx on the compose network).
+{
+	email {$ACME_EMAIL}
+}
+
+(hsts) {
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		# Replace nginx's copy of the header instead of sending it twice.
+		defer
+	}
+}
+
+{$API_DOMAIN} {
+	import hsts
+	handle /admin* {
+		respond 404
+	}
+	handle {
+		reverse_proxy nginx:80
+	}
+}
+
+{$ADMIN_DOMAIN} {
+	import hsts
+	handle / {
+		# "*" first: a lone path argument would be read as a matcher.
+		redir * /admin/ 302
+	}
+	handle /admin* {
+		reverse_proxy nginx:80
+	}
+	handle /media/* {
+		reverse_proxy nginx:80
+	}
+	handle {
+		respond 404
+	}
+}

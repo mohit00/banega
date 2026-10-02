@@ -26,6 +26,10 @@ _PHONE_RE = re.compile(
 )
 _JWT_RE = re.compile(r"eyJ[\w-]{5,}\.[\w-]{5,}\.[\w-]{5,}")
 _BEARER_RE = re.compile(r"(?i)\bbearer\s+[\w.~+/=-]+")
+# Secrets in URL query strings (outbound httpx breadcrumbs: MSG91 ?otp=, ?authkey=).
+_QUERY_SECRET_RE = re.compile(
+    r"(?i)([?&](?:otp|authkey|code|token|access_token|key|mobile)=)[^&#\s]+"
+)
 # Keys whose values are secrets or personal data whatever they contain.
 _SENSITIVE_KEYS = re.compile(
     r"(?i)(phone|token|password|passwd|secret|otp|authorization|cookie|api[_-]?key|dsn|"
@@ -45,6 +49,7 @@ _DROP_HEADERS = {
 def scrub_text(value: str) -> str:
     value = _JWT_RE.sub(FILTERED, value)
     value = _BEARER_RE.sub(f"Bearer {FILTERED}", value)
+    value = _QUERY_SECRET_RE.sub(rf"\g<1>{FILTERED}", value)
     return _PHONE_RE.sub(FILTERED, value)
 
 

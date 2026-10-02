@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/data_source.dart';
@@ -5,7 +6,9 @@ import '../../kitchen/application/kitchen_providers.dart';
 import '../../kitchen/domain/kitchen_models.dart';
 import '../data/account_api.dart';
 import '../data/account_repositories.dart';
+import '../../auth/application/auth_controller.dart';
 import '../data/billing_adapter.dart';
+import '../data/in_app_purchase_client.dart';
 import '../domain/account_models.dart';
 
 // ------------------------------------------------------------------ repositories
@@ -28,11 +31,40 @@ final ratingsRepositoryProvider = Provider<RatingsRepository>((ref) {
   return ApiRatingsRepository(ref.watch(dioProvider));
 });
 
-/// Store billing: the demo adapter flips the demo plan to active; the real
-/// adapter is a TODO (billing_adapter.dart).
-final billingAdapterProvider = Provider<BillingAdapter>(
-  (ref) => ref.watch(dataSourceProvider) == DataSource.demo ? const DemoBillingAdapter() : const StoreBillingAdapter(),
+/// Whether this platform has a real store adapter (Google Play on Android).
+final storeBillingSupportedProvider = Provider<bool>(
+  (ref) => !kIsWeb && defaultTargetPlatform == TargetPlatform.android,
 );
+
+/// The `in_app_purchase` seam (tests plug a fake store in).
+final storeClientProvider = Provider<StoreClient>((ref) => InAppPurchaseStoreClient());
+
+/// Store billing: the sandbox uses the demo adapter; API mode on Android uses
+/// Google Play; anything else has no store billing yet.
+final billingAdapterProvider = Provider<BillingAdapter>((ref) {
+  if (ref.watch(dataSourceProvider) == DataSource.demo) return const DemoBillingAdapter();
+  if (!ref.watch(storeBillingSupportedProvider)) return const StoreBillingAdapter();
+  final adapter = PlayBillingAdapter(ref.watch(storeClientProvider));
+  ref.onDispose(adapter.dispose);
+  return adapter;
+});
+
+/// API mode, signed in: purchases that complete outside the paywall (a
+/// pending UPI payment, an unfinished purchase from an earlier session) are
+/// verified by the server, then finished.
+final billingListenerProvider = Provider<void>((ref) {
+  if (ref.watch(dataSourceProvider) != DataSource.api) return;
+  if (!ref.watch(authControllerProvider.select((s) => s.signedIn))) return;
+  final billing = ref.watch(billingAdapterProvider);
+  if (!billing.available) return;
+  billing.listen((token) async {
+    await ref.read(subscriptionRepositoryProvider).restore(store: token.store, purchaseToken: token.token);
+    ref.read(kitchenRevisionProvider.notifier).bump();
+  });
+});
+
+/// What a subscribe attempt ended with (one toast each on the paywall).
+enum PurchaseOutcome { subscribed, cancelled, pending, unavailable }
 
 // ------------------------------------------------------------------ reads
 
@@ -129,30 +161,45 @@ class AccountActions {
     return t;
   }
 
-  /// Buys the weekly plan through the store adapter and has the server
-  /// verify it. Returns false when billing is not available in this build.
-  Future<bool> subscribe() async {
+  /// Buys the weekly plan through the store adapter, has the server verify
+  /// it (POST /v1/subscription/restore), then finishes the store purchase.
+  Future<PurchaseOutcome> subscribe() async {
     final billing = ref.read(billingAdapterProvider);
-    if (!billing.available) return false;
-    final token = await billing.purchaseWeekly();
-    if (token == null) return false;
+    if (!billing.available) return PurchaseOutcome.unavailable;
+    final PurchaseToken? token;
+    try {
+      token = await billing.purchaseWeekly();
+    } on BillingPending {
+      return PurchaseOutcome.pending;
+    } on BillingUnavailable {
+      return PurchaseOutcome.unavailable;
+    }
+    if (token == null) return PurchaseOutcome.cancelled;
     if (ref.read(dataSourceProvider) == DataSource.demo) {
       ref.read(demoKitchenProvider).account.subscribe();
     } else {
       await ref.read(subscriptionRepositoryProvider).restore(store: token.store, purchaseToken: token.token);
+      await billing.finish(token);
     }
     _changed();
-    return true;
+    return PurchaseOutcome.subscribed;
   }
 
-  /// POST /v1/subscription/restore with the store's token. Null when billing
-  /// is not available in this build (nothing is sent).
+  /// "Restore purchases": the store's active purchase → POST
+  /// /v1/subscription/restore. Null when billing is unavailable in this build
+  /// or the store has nothing to restore (nothing is sent).
   Future<Subscription?> restore() async {
     final billing = ref.read(billingAdapterProvider);
     if (!billing.available) return null;
-    final token = await billing.restoreToken();
+    final PurchaseToken? token;
+    try {
+      token = await billing.restoreToken();
+    } on BillingUnavailable {
+      return null;
+    }
     if (token == null) return null;
     final s = await ref.read(subscriptionRepositoryProvider).restore(store: token.store, purchaseToken: token.token);
+    await billing.finish(token);
     _changed();
     return s;
   }

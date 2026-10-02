@@ -148,18 +148,51 @@ without a DSN (`test/crash_reporting_test.dart`).
 
 ## Release signing (Android)
 
-Create `android/key.properties` (git-ignored):
+`android/key.properties` (git-ignored) points at the upload keystore:
 
 ```properties
-storeFile=/absolute/path/to/banega-release.jks
+storeFile=../banega-upload.jks
 storePassword=...
-keyAlias=banega
+keyAlias=...
 keyPassword=...
 ```
 
-Without this file, `flutter build appbundle --release` falls back to the
-debug key and Gradle logs a warning. That build is fine for local testing
-but must never be uploaded to Play.
+`storeFile` is relative to `android/app/`. `flutter build appbundle --release`
+(what Play takes) fails without this file or with a missing field / keystore;
+a release APK without it is debug-signed with a warning (local testing only).
+Keep the keystore and its passwords backed up outside the repo: losing the
+upload key means a key reset through Play Console.
+
+## Push notifications (FCM)
+
+- `android/app/google-services.json` (Firebase project `banega-fb1ed`, Android
+  app `in.kornea.banega`; not secret, tracked) is turned into resources by the
+  `com.google.gms.google-services` Gradle plugin, which is applied only when
+  the file exists. Without it the app still builds and push stays off.
+- At runtime (`lib/core/push/`): API mode + signed in → `Firebase.initializeApp`
+  (fails quietly without the config) → notification permission (Android 13+,
+  `POST_NOTIFICATIONS`) → `POST /v1/devices {platform: android, push_token}`,
+  again on every token refresh. Logout → `DELETE /v1/devices/{id}` before the
+  session ends, then the FCM token is deleted. A foreground message refreshes
+  the ticket views. Tapping a notification opens `ticket_id`'s ticket (cook mode
+  for a hired cook), else the inbox (K1 for a hired cook); on a cold start it
+  waits until Home / K1 is shown.
+- `--dart-define=FCM=0` builds without push.
+- Adding the Android app in Firebase: package `in.kornea.banega`, SHA-1 and
+  SHA-256 of the upload key and the debug key (`keytool -list -v -keystore
+  android/banega-upload.jks`); after Play App Signing is on, also add the
+  app-signing key's SHA-256 from Play Console → App integrity.
+
+## Store billing (Google Play)
+
+API mode on Android uses `PlayBillingAdapter` (`in_app_purchase`): product
+`banega_weekly_50`, base plan `weekly`. Purchase → the Play purchase token →
+`POST /v1/subscription/restore {store: play, purchase_token}` (the server
+verifies and acknowledges it) → `completePurchase`. Restore asks Play for owned
+purchases. Pending payments (UPI) show a "pending" toast and are posted by the
+background listener when they complete; cancel and errors get their own toasts.
+The sandbox keeps `DemoBillingAdapter`; other platforms have no store billing
+yet. Tests use a fake `StoreClient` (`test/push_billing_test.dart`).
 
 Debug-only surfaces: the design gallery (`/gallery`) and the demo cook-role
 switch in Settings exist only in debug builds.
@@ -175,9 +208,7 @@ switch in Settings exist only in debug builds.
 
 ## TODO (deferred)
 
-- **Push**: FCM and `POST /v1/devices` registration. This needs a Firebase
-  project (`google-services.json` / `GoogleService-Info.plist`).
+- **Push on iOS**: `GoogleService-Info.plist` + APNs key.
 - **Durable cache**: move the offline cache and outbox from
   shared_preferences to drift (per-row outbox, migrations).
-- **Store billing**: real `in_app_purchase` behind `StoreBillingAdapter`.
-  Until then purchase and restore are unavailable and send nothing.
+- **Store billing on iOS**: App Store (StoreKit + App Store Server API).

@@ -21,7 +21,6 @@ import '../../recipe/application/recipe_providers.dart' show urlLauncherProvider
 import '../application/account_providers.dart';
 import '../application/locale_controller.dart';
 import '../domain/account_models.dart';
-import 'consent_screen.dart' show kPrivacyPolicyUrl;
 
 /// S9 Settings: household name, cooks (add hired / primary / backup /
 /// remove), members, language, notifications, ratings / stock / cook
@@ -238,8 +237,14 @@ class SettingsScreen extends ConsumerWidget {
                         onTap: () => context.push('${Routes.consent}?review=1'),
                       ),
                       _Row(
-                        title: l.consentPrivacy,
+                        key: const ValueKey('settings-privacy-policy'),
+                        title: l.settingsPrivacyPolicy,
                         onTap: () => ref.read(urlLauncherProvider)(Uri.parse(kPrivacyPolicyUrl)),
+                      ),
+                      _Row(
+                        key: const ValueKey('settings-terms'),
+                        title: l.settingsTerms,
+                        onTap: () => ref.read(urlLauncherProvider)(Uri.parse(kTermsUrl)),
                       ),
                       _Row(title: l.settingsGrievance),
                       _Row(

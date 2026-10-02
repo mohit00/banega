@@ -133,8 +133,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                     onPressed: _busy
                         ? null
                         : () => _run(() async {
-                            final ok = await ref.read(accountActionsProvider).subscribe();
-                            if (context.mounted) BToast.show(context, ok ? l.paywallSubscribed : l.paywallStoreSoon);
+                            final outcome = await ref.read(accountActionsProvider).subscribe();
+                            if (!context.mounted) return;
+                            BToast.show(context, switch (outcome) {
+                              PurchaseOutcome.subscribed => l.paywallSubscribed,
+                              PurchaseOutcome.cancelled => l.paywallCancelled,
+                              PurchaseOutcome.pending => l.paywallPending,
+                              PurchaseOutcome.unavailable => l.paywallStoreSoon,
+                            });
                           }),
                   ),
                 if (!active) const SizedBox(height: 10),
@@ -144,8 +150,17 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                   onPressed: _busy
                       ? null
                       : () => _run(() async {
+                          final billing = ref.read(billingAdapterProvider);
                           final s = await ref.read(accountActionsProvider).restore();
-                          if (context.mounted) BToast.show(context, s != null ? l.paywallRestored : l.paywallStoreSoon);
+                          if (!context.mounted) return;
+                          BToast.show(
+                            context,
+                            s != null
+                                ? l.paywallRestored
+                                : billing.available
+                                ? l.paywallNothingToRestore
+                                : l.paywallStoreSoon,
+                          );
                         }),
                 ),
               ],

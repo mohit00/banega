@@ -27,6 +27,7 @@ dependencies = [
     "argon2-cffi>=23.1",  # staff (admin) password hashes (argon2id)
     "pyotp>=2.9",  # staff TOTP
     "sentry-sdk>=2.0",  # crash reporting, only initialised when SENTRY_DSN is set
+    "google-auth[requests]>=2.30",  # service-account OAuth tokens: FCM HTTP v1, Play Developer API
 ]
 
 [project.optional-dependencies]

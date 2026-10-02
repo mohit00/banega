@@ -101,4 +101,3 @@ void main() {
     expect(find.byKey(const ValueKey('cook-duty')), findsOneWidget);
   });
 }
-

@@ -2784,6 +2784,24 @@ abstract class AppLocalizations {
   /// **'Store billing jald aa raha hai'**
   String get paywallStoreSoon;
 
+  /// Toast
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Payment pending hai. Poora hote hi plan chalu ho jayega.'**
+  String get paywallPending;
+
+  /// Toast
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Purchase cancel ho gaya'**
+  String get paywallCancelled;
+
+  /// Toast
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Is Play account par koi Banega plan nahi mila'**
+  String get paywallNothingToRestore;
+
   /// S10 note
   ///
   /// In hi_Latn, this message translates to:
@@ -2823,13 +2841,13 @@ abstract class AppLocalizations {
   /// Consent body (contract key consent_body)
   ///
   /// In hi_Latn, this message translates to:
-  /// **'Banega aapke ghar ke members ki pasand, allergy aur khaane ka itihaas sirf menu banane, cook ko ticket bhejne aur Maharaj ke sujhav ke liye rakhta hai. Data kabhi becha nahi jaata. Settings se kabhi bhi export ya delete kar sakte ho.'**
+  /// **'Banega aapka phone number login ke liye, aur ghar ke members ki pasand, allergy, vrat ke din aur khaane ka itihaas sirf menu banane, cook ko ticket bhejne aur Maharaj ke sujhav ke liye rakhta hai. Data kabhi becha nahi jaata. Settings se kabhi bhi apna account delete kar sakte ho; ghar ka admin poore ghar ka data export ya delete kar sakta hai.'**
   String get consentBody;
 
   /// Consent LLM note (contract key consent_llm_note)
   ///
   /// In hi_Latn, this message translates to:
-  /// **'Maharaj chat ke sawaal ek AI service ko jaate hain; unke saath naam ya phone number nahi bheje jaate.'**
+  /// **'Maharaj chat ke sawaal ek AI service (Anthropic Claude) ko jaate hain. Phone number aur health needs kabhi nahi jaate; allergy sirf ginti mein, aur family ka naam sirf tab jab aap khud likho.'**
   String get consentLlmNote;
 
   /// Consent kids line
@@ -3083,6 +3101,18 @@ abstract class AppLocalizations {
   /// In hi_Latn, this message translates to:
   /// **'Shikayat ke liye: privacy@banega.app'**
   String get settingsGrievance;
+
+  /// Settings row: opens the public privacy policy page
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Privacy policy dekho'**
+  String get settingsPrivacyPolicy;
+
+  /// Settings row: opens the public terms of service page
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Terms aur shartein'**
+  String get settingsTerms;
 
   /// Settings row
   ///
