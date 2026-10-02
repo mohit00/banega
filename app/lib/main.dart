@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app.dart';
+import 'core/crash_reporting.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const ProviderScope(child: BanegaApp()));
+  // Sentry only when built with --dart-define=SENTRY_DSN=...; otherwise a no-op.
+  await runWithCrashReporting(() => runApp(const ProviderScope(child: BanegaApp())));
 }

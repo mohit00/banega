@@ -142,6 +142,16 @@ extension KitchenLabels on AppLocalizations {
     'expiry_reminder' => eventExpiry,
     'weekly_summary' => eventWeekly,
     'tomorrow_tickets' => eventTomorrow,
+    'ticket_unassigned' => eventTicketUnassigned,
+    'ticket_cancelled' => eventTicketCancelled,
+    'cook_message' => eventCookMessage,
+    'family_message' => eventFamilyMessage,
+    'chef_claimed' => eventChefClaimed,
+    'cook_on_duty' => eventCookOnDuty,
+    'ration_bought' => eventRationBought,
+    'stock_issue_resolved' => eventStockIssueResolved,
+    'export_ready' => eventExportReady,
+    'at_risk' => eventAtRisk,
     _ => event,
   };
 }

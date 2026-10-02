@@ -311,8 +311,10 @@ class HeroPickCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
+    // At least 176 tall (the prototype); a two-line name or a large text
+    // scale grows the card instead of clipping the name's second line.
     return Container(
-      height: 176,
+      constraints: const BoxConstraints(minHeight: 176),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(color: BColors.greenHero, borderRadius: BorderRadius.circular(BRadii.hero)),
       child: Stack(
@@ -327,53 +329,56 @@ class HeroPickCard extends StatelessWidget {
           // `width: 64%` (border-box) with 18px padding.
           FractionallySizedBox(
             widthFactor: .64,
-            heightFactor: 1,
             alignment: Alignment.topLeft,
             child: Padding(
               padding: const EdgeInsets.all(18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BBadge(label: l.maharajPick, background: BColors.haldi, foreground: BColors.ink),
-                  const SizedBox(height: 6),
-                  Flexible(
-                    child: Text(
-                      card.name,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: BText.display(BType.display22, color: BColors.card, height: 1.08),
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    l.heroMeta(l.summaryLabel(card.summary), card.mins),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: BText.body(BType.captionL, weight: FontWeight.w600, color: BColors.greenHeroText),
-                  ),
-                  const Spacer(),
-                  const SizedBox(height: 6),
-                  Pressable(
-                    onTap: onOpen,
-                    semanticLabel: l.recipeDekho,
-                    builder: (context, pressed) => PressScale(
-                      pressed: pressed,
-                      child: Container(
-                        height: 36,
-                        padding: const EdgeInsets.symmetric(horizontal: 14),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: BColors.card,
-                          borderRadius: BorderRadius.circular(BRadii.small),
-                        ),
-                        child: Text(
-                          l.recipeDekho,
-                          style: BText.body(BType.chip, weight: FontWeight.w800, color: BColors.greenHero),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minHeight: 176 - 36),
+                child: IntrinsicHeight(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BBadge(label: l.maharajPick, background: BColors.haldi, foreground: BColors.ink),
+                      const SizedBox(height: 6),
+                      Text(
+                        card.name,
+                        key: const ValueKey('hero-name'),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: BText.display(BType.display22, color: BColors.card, height: 1.08),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        l.heroMeta(l.summaryLabel(card.summary), card.mins),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: BText.body(BType.captionL, weight: FontWeight.w600, color: BColors.greenHeroText),
+                      ),
+                      const Spacer(),
+                      const SizedBox(height: 6),
+                      Pressable(
+                        onTap: onOpen,
+                        semanticLabel: l.recipeDekho,
+                        builder: (context, pressed) => PressScale(
+                          pressed: pressed,
+                          child: Container(
+                            height: 36,
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: BColors.card,
+                              borderRadius: BorderRadius.circular(BRadii.small),
+                            ),
+                            child: Text(
+                              l.recipeDekho,
+                              style: BText.body(BType.chip, weight: FontWeight.w800, color: BColors.greenHero),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),

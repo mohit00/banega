@@ -63,6 +63,22 @@
     "Mehmaan aa rahe hain",
     "High protein"
   ],
+  "quick_asks_en": [
+    "Something in 15 min",
+    "Something light",
+    "Rainy-day special",
+    "Daughter's tiffin",
+    "Guests are coming",
+    "High protein"
+  ],
+  "quick_asks_hi": [
+    "15 मिनट में कुछ",
+    "कुछ हल्का",
+    "बारिश स्पेशल",
+    "Daughter का टिफ़िन",
+    "मेहमान आ रहे हैं",
+    "हाई प्रोटीन"
+  ],
   "follow_ups": {
     "nashta": [
       "Protein wala nashta",
@@ -82,6 +98,44 @@
       "Dadi ke liye kya?"
     ]
   },
+  "follow_ups_en": {
+    "nashta": [
+      "High-protein breakfast",
+      "Daughter's tiffin",
+      "Something South Indian"
+    ],
+    "lunch": [
+      "Something light",
+      "Rainy-day special",
+      "Something with paneer",
+      "What for Dadi?"
+    ],
+    "dinner": [
+      "Something light",
+      "Rainy-day special",
+      "Something with paneer",
+      "What for Dadi?"
+    ]
+  },
+  "follow_ups_hi": {
+    "nashta": [
+      "प्रोटीन वाला नाश्ता",
+      "Daughter का टिफ़िन",
+      "कुछ साउथ इंडियन"
+    ],
+    "lunch": [
+      "कुछ हल्का",
+      "बारिश स्पेशल",
+      "पनीर वाला कुछ",
+      "दादी के लिए क्या?"
+    ],
+    "dinner": [
+      "कुछ हल्का",
+      "बारिश स्पेशल",
+      "पनीर वाला कुछ",
+      "दादी के लिए क्या?"
+    ]
+  },
   "ticker_asks": [
     "15 min mein nashta",
     "Dadi ke liye Jain dinner",
@@ -89,11 +143,25 @@
     "Daughter ka tiffin"
   ],
   "welcome": "Namaste! Main Maharaj hoon. Ghar ke {n} logon ki pasand mujhe yaad hai.\nBas pucho — aaj kya banaun?",
+  "welcome_en": "Namaste! I'm Maharaj. I remember what all {n} people at home like.\nJust ask — what shall I cook today?",
+  "welcome_hi": "नमस्ते! मैं महाराज हूँ। घर के {n} लोगों की पसंद मुझे याद है।\nबस पूछिए — आज क्या बनाऊँ?",
   "welcome_chips": [
     "Aaj lunch mein kya?",
     "Kuch halka dinner",
     "15 min mein nashta",
     "Mehmaan aa rahe hain"
+  ],
+  "welcome_chips_en": [
+    "What's for lunch today?",
+    "A light dinner",
+    "Breakfast in 15 min",
+    "Guests are coming"
+  ],
+  "welcome_chips_hi": [
+    "आज लंच में क्या?",
+    "कुछ हल्का डिनर",
+    "15 मिनट में नाश्ता",
+    "मेहमान आ रहे हैं"
   ],
   "consent": {
     "version": "2026-09",

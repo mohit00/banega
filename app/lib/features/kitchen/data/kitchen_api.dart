@@ -97,10 +97,11 @@ class ApiTicketsRepository with ApiGuard, _KitchenDio implements TicketsReposito
     required String idempotencyKey,
     String? reason,
     String? note,
+    String? assigneeCookId,
   }) => guard(() async {
     final res = await dio.post<Object?>(
       '/v1/tickets/${enc(id)}/transitions',
-      data: {'to': to.wire, 'reason': ?reason, 'note': ?note},
+      data: {'to': to.wire, 'reason': ?reason, 'note': ?note, 'assignee_cook_id': ?assigneeCookId},
       options: headers(version: version, idempotencyKey: idempotencyKey),
     );
     return Ticket.fromJson(map(res.data));

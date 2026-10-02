@@ -348,6 +348,15 @@ class InviteOut(ORM):
 class InviteCreatedOut(InviteOut):
     token: str
     link: str
+    # Short code the invitee types in the app ("Join my family with a code").
+    code: str
+    # WhatsApp-ready message (Hinglish, then English) with the code and the link.
+    share_text: str
+
+
+class InviteCodeIn(BaseModel):
+    # Accepts "k7q-4mx", " K7Q 4MX " etc.; normalised to upper case without separators.
+    code: str = Field(min_length=4, max_length=20)
 
 
 # ---- devices ----------------------------------------------------------------------------

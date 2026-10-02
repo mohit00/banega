@@ -138,7 +138,8 @@ class ApiChatRepository with ApiGuard implements ChatRepository {
         if ((m as Map).cast<String, dynamic>() case final j)
           ChatMessage(
             id: -(++i),
-            role: j['role'] == 'user' || j['role'] == 'me' ? ChatRole.me : ChatRole.bot,
+            // The server names the sender `author` (user | bot); older shapes used `role`.
+            role: const {'user', 'me'}.contains(j['author'] ?? j['role']) ? ChatRole.me : ChatRole.bot,
             text: _text(j['text']) == null ? null : PlainText(_text(j['text'])!),
             cards: [
               for (final c in (j['cards'] as List? ?? const []))

@@ -1589,7 +1589,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsLanguage => 'Language';
 
   @override
-  String get settingsLanguageHint => 'Cook mode stays in Hindi';
+  String get settingsLanguageHint => 'Cook mode opens in Hindi; the cook can change it there';
 
   @override
   String get langHinglish => 'Hinglish';
@@ -1969,4 +1969,192 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cookLanguage => 'Cook mode language';
+
+  @override
+  String get settingsFamilyOnBanega => 'Family members on Banega';
+
+  @override
+  String get invitesHint => 'Adults at home can use Banega on their own phone.';
+
+  @override
+  String get invitesEmpty => 'No pending invites';
+
+  @override
+  String get inviteCta => 'Invite a family member';
+
+  @override
+  String invitePendingRow(String phone, String date) {
+    return '$phone · until $date';
+  }
+
+  @override
+  String inviteFor(String name) {
+    return 'For $name';
+  }
+
+  @override
+  String get inviteRevoke => 'Revoke';
+
+  @override
+  String get inviteRevokeAsk => 'Revoke this invite? The old code will stop working.';
+
+  @override
+  String get inviteRevoked => 'Invite revoked';
+
+  @override
+  String get inviteWho => 'Who is it?';
+
+  @override
+  String get inviteNewMember => 'New member';
+
+  @override
+  String get inviteNewName => 'Name';
+
+  @override
+  String get invitePhone => 'Their phone number';
+
+  @override
+  String get inviteRoleNote => 'Joins as an adult member: can see and change menus and send them to the cook.';
+
+  @override
+  String get inviteCreate => 'Create invite';
+
+  @override
+  String get inviteNameRequired => 'Enter a name';
+
+  @override
+  String get inviteCodeTitle => 'Send them this code';
+
+  @override
+  String inviteCodeBody(String phone) {
+    return 'They log in with $phone, choose \"Join my family with a code\" and type this code.';
+  }
+
+  @override
+  String inviteCodeExpires(String date) {
+    return 'Valid until $date';
+  }
+
+  @override
+  String inviteCodeLabel(String code) {
+    return 'Invite code $code';
+  }
+
+  @override
+  String get inviteShareWhatsApp => 'Share on WhatsApp';
+
+  @override
+  String get inviteCopy => 'Copy code';
+
+  @override
+  String get inviteCopied => 'Code copied';
+
+  @override
+  String get inviteDone => 'Done';
+
+  @override
+  String get inviteErrPhoneTaken => 'This number is a cook in another household.';
+
+  @override
+  String get householdOr => 'or';
+
+  @override
+  String get householdJoinOption => 'Join my family with a code';
+
+  @override
+  String get householdJoinHint => 'Did your family invite you? Enter the code they sent.';
+
+  @override
+  String get joinTitle => 'Join your family';
+
+  @override
+  String get joinBody => 'Enter the 6-character code from the WhatsApp message.';
+
+  @override
+  String get joinCta => 'Join';
+
+  @override
+  String joinCodeBox(int n) {
+    return 'Code character $n';
+  }
+
+  @override
+  String get joinCreateInstead => 'Create a new home instead';
+
+  @override
+  String get joinErrInvalid => 'That code isn\'t right. Check the message and try again.';
+
+  @override
+  String get joinErrExpired => 'This code has expired. Ask your family admin for a new one.';
+
+  @override
+  String get joinErrPhone => 'This code was sent to a different number. Log in with the number that was invited.';
+
+  @override
+  String get joinErrAlready => 'Your number already belongs to a household.';
+
+  @override
+  String get joinErrLocked => 'Too many wrong codes. Try again later.';
+
+  @override
+  String get ticketUnassignedTitle => 'Nobody is cooking this yet';
+
+  @override
+  String get ticketUnassignedHint => 'Who\'s cooking? Pick a cook or take it yourself.';
+
+  @override
+  String get ticketUnassignedCard => 'Who\'s cooking? Tap to choose';
+
+  @override
+  String get ticketAssignTo => 'Assign to…';
+
+  @override
+  String get ticketClaim => 'I\'ll cook today';
+
+  @override
+  String get ticketClaimed => 'You\'re today\'s chef! Find it in the Rasoi tab.';
+
+  @override
+  String get ticketAlreadyClaimed => 'Someone already took this ticket.';
+
+  @override
+  String ticketAssignedToast(String name) {
+    return 'Assigned to $name';
+  }
+
+  @override
+  String get ticketAssigneeRequired => 'Choose who will cook';
+
+  @override
+  String get ticketNoCooks => 'No cooks added yet. Add one in Settings.';
+
+  @override
+  String get eventTicketUnassigned => 'Ticket not assigned';
+
+  @override
+  String get eventTicketCancelled => 'Ticket cancelled';
+
+  @override
+  String get eventCookMessage => 'Message from the cook';
+
+  @override
+  String get eventFamilyMessage => 'Message from the family';
+
+  @override
+  String get eventChefClaimed => 'Someone is cooking today';
+
+  @override
+  String get eventCookOnDuty => 'Cook back on duty';
+
+  @override
+  String get eventRationBought => 'Ration bought';
+
+  @override
+  String get eventStockIssueResolved => 'Stock issue resolved';
+
+  @override
+  String get eventExportReady => 'Data export ready';
+
+  @override
+  String get eventAtRisk => 'Meal may be late';
 }

@@ -33,6 +33,7 @@ from app.core.errors import install_error_handlers
 from app.core.kv import get_kv
 from app.core.logging_setup import configure_logging
 from app.core.middleware import IdempotencyMiddleware, RequestIdMiddleware
+from app.core.sentry import init_sentry
 
 API_PREFIX = "/v1"
 
@@ -46,6 +47,7 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
 def create_app() -> FastAPI:
     settings = get_settings()
     configure_logging(settings.LOG_LEVEL, settings.LOG_JSON)
+    init_sentry("api")
     app = FastAPI(
         title="Banega API",
         version="0.1.0",

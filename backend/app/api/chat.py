@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 from typing import Annotated
 from zoneinfo import ZoneInfo
 
-from fastapi import APIRouter, BackgroundTasks, Query
+from fastapi import APIRouter, BackgroundTasks, Header, Query
 from sqlalchemy import and_, or_, select
 
 from app.api.catalogue import card_out
@@ -55,7 +55,10 @@ async def _own_session(db: DB, ctx: HouseholdContext, session_id: uuid.UUID) -> 
 
 @router.post("/sessions", response_model=ChatSessionOut)
 async def open_session(
-    ctx: HouseholdCtx, db: DB, body: ChatSessionIn | None = None
+    ctx: HouseholdCtx,
+    db: DB,
+    body: ChatSessionIn | None = None,
+    accept_language: Annotated[str | None, Header()] = None,
 ) -> ChatSessionOut:
     """Reuses the caller's session if it was active in the last 30 min and the slot did not
     change (F-5.4-03); otherwise starts a new one."""
@@ -88,10 +91,8 @@ async def open_session(
         db.add(session)
     cfg = await pipeline.load_config(db)
     n = len(await pipeline.active_members(db, ctx.household.id))
-    welcome = ChatWelcomeOut(
-        text=str(cfg["welcome"]).replace("{n}", str(n)),
-        chips=[str(c) for c in cfg.get("welcome_chips") or []],
-    )
+    text, chips = pipeline.welcome(cfg, n, pipeline.ui_lang(accept_language, ctx.user))
+    welcome = ChatWelcomeOut(text=text, chips=chips)
     await db.commit()
     return ChatSessionOut(
         session_id=session.id,
@@ -176,6 +177,7 @@ async def post_message(
     ctx: HouseholdCtx,
     db: DB,
     background: BackgroundTasks,
+    accept_language: Annotated[str | None, Header()] = None,
 ) -> ChatReplyOut:
     session = await _own_session(db, ctx, session_id)
     if session.expires_at <= utcnow():
@@ -192,6 +194,7 @@ async def post_message(
         user=ctx.user,
         text=body.text.strip(),
         slot=body.slot,
+        ui=pipeline.ui_lang(accept_language, ctx.user),
     )
     await db.commit()
     if turn.needs_write:

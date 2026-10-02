@@ -34,3 +34,11 @@ Mismatches found and fixed in the app:
 Also added: `X-Device-Id` header (stable per install) on every request; member `vrat_days` (server 0 = Monday) and `show_on_home`; export is `POST /v1/export`.
 
 Open: follow-up chips come from the server config in Hinglish even when the app is in English. Plan/send-to-cook, cook mode, stock and ration not yet clicked through live.
+
+## Invites, chef for the day, chip language (2026-10-02)
+
+- `POST /v1/invites` → InviteOut + `{token, link, code, share_text}`; `code` is 6 chars (`A-Z 2-9`, no `0 O 1 I`). `GET /v1/invites` → bare list of pending InviteOut (`phone` in clear, the app masks it).
+- `POST /v1/invites/accept-code {code}` → MeOut (no `modes`; the app refetches `/v1/me`). Errors: 404 `invite_code_invalid`, 410 `invite_expired`, 403 `invite_phone_mismatch`, 409 `already_in_household`, 429 `invite_code_locked`.
+- `POST /v1/tickets/{id}/transitions {to: new|accepted, assignee_cook_id}` from `unassigned`: hired cook → `new`, family cook → `accepted`; 422 `assignee_required` without a cook; 409 `invalid_transition` with `allowed: [<the implied state>]` on a mismatch. `POST /v1/tickets/{id}/claim` → Ticket (`accepted`, the caller's family-cook row is created on first claim); 409 `already_claimed`.
+- Chat welcome text / chips and follow-up chips follow `Accept-Language` (`en*`, `hi`, `hi-Latn`), then the user's locale, then Hinglish (resolves the open chips item above). The en/hi texts are built-in defaults; reseeding (`app.cli seed`) copies them into AppConfig so the admin can edit them.
+- Migration `0012_invite_code` (invites.code_hash).

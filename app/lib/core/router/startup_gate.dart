@@ -72,7 +72,8 @@ const _authRoutes = {Routes.phone, Routes.otp};
 ///   first launch, else consent (if missing) → Home. The Splash demo link
 ///   passes consent itself.
 /// - API mode: signed out → Splash on first launch, else `/phone`; no
-///   consent → `/consent`; no household → create one; hired cook →
+///   consent → `/consent`; no household → create one (or join one with
+///   an invite code); hired cook →
 ///   `/cook`; entry screens → Home. Waits (null) while a piece is loading.
 String? startupRedirect(GateInput g, Uri uri) {
   final loc = uri.path;
@@ -99,12 +100,17 @@ String? startupRedirect(GateInput g, Uri uri) {
   final me = g.me;
   if (me == null) return null; // wait for /v1/me (the start screen fetches it)
   if (!me.hasHousehold) {
-    return loc == Routes.createHousehold || loc == Routes.consent ? null : Routes.createHousehold;
+    const open = {Routes.createHousehold, Routes.joinHousehold, Routes.consent};
+    return open.contains(loc) ? null : Routes.createHousehold;
   }
   if (me.cookOnly && !loc.startsWith(Routes.cook) && loc != Routes.settings && loc != Routes.consent) {
     return Routes.cook;
   }
-  if (loc == Routes.start || loc == Routes.splash || _authRoutes.contains(loc) || loc == Routes.createHousehold) {
+  if (loc == Routes.start ||
+      loc == Routes.splash ||
+      _authRoutes.contains(loc) ||
+      loc == Routes.createHousehold ||
+      loc == Routes.joinHousehold) {
     return SessionController.routeFor(me);
   }
   return null;

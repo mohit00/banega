@@ -32,11 +32,15 @@ class BBadge extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (leading != null) ...[BIcon(leading!, size: 11, color: foreground), const SizedBox(width: 4)],
-          Text(
-            label,
-            maxLines: 1,
-            softWrap: false,
-            style: BText.body(BType.badge, weight: FontWeight.w800, color: foreground),
+          // Large text in a narrow spot (the hero at 200%) ellipsizes.
+          Flexible(
+            child: Text(
+              label,
+              maxLines: 1,
+              softWrap: false,
+              overflow: TextOverflow.ellipsis,
+              style: BText.body(BType.badge, weight: FontWeight.w800, color: foreground),
+            ),
           ),
         ],
       ),

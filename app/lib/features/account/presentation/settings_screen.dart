@@ -15,6 +15,7 @@ import '../../../labels/kitchen_labels.dart';
 import '../../../ui/ui.dart';
 import '../../kitchen/application/kitchen_providers.dart';
 import '../../kitchen/domain/kitchen_models.dart';
+import '../../invites/presentation/family_invites.dart';
 import '../../kitchen/presentation/kitchen_widgets.dart';
 import '../../recipe/application/recipe_providers.dart' show urlLauncherProvider;
 import '../application/account_providers.dart';
@@ -102,6 +103,12 @@ class SettingsScreen extends ConsumerWidget {
                     ],
                   ),
                 ),
+                // ---------------------------------------------------- family on Banega
+                if (ref.watch(meProvider).value?.isAdmin ?? false) ...[
+                  KitchenSectionTitle(l.settingsFamilyOnBanega),
+                  const SizedBox(height: 6),
+                  const FamilyInvitesCard(),
+                ],
                 // ---------------------------------------------------- cooks
                 KitchenSectionTitle(l.settingsCooks),
                 const SizedBox(height: 6),

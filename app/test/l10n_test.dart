@@ -24,7 +24,14 @@ const _sameInEnglish = {
   'settingsTitle', 'slotDinner', 'slotLunch', 'slotTiffin', 'spiceMedium', 'stepOneOfTwo', 'stockCatDryFruits',
   'stockFilterLowOut', 'stockLevelIn', 'stockLevelLow', 'stockLevelOut', 'subStatusTrial', 'ticketDishes',
   'ticketNotes', 'ticketTitle', 'verdictPerfect', 'verdictTweak', 'videoRecipe', 'weeklyTop', 'whyProtein',
-  'wordmark', 'settingsDisplay',
+  'wordmark', 'settingsDisplay', 'inviteCodeLabel',
+};
+
+/// Hindi values that may equal the Hinglish or English ones: the brand,
+/// language names (shown in their own script) and pure formats.
+const _sameInHindi = {
+  'appTitle', 'wordmark', 'chatOptionsWhy', 'fitTweakNote', 'cookChipLabel', 'langHinglish', 'langEnglish', //
+  'langHindi',
 };
 
 Map<String, dynamic> _arb(String name) =>
@@ -42,6 +49,29 @@ void main() {
     final missing = [
       for (final k in hl.keys)
         if (!k.startsWith('@') && !en.containsKey(k)) k,
+    ];
+    expect(missing, isEmpty);
+  });
+
+  test('every Hindi string is translated to Devanagari (or allow-listed)', () {
+    final hl = _arb('app_hi_Latn.arb');
+    final en = _arb('app_en.arb');
+    final hi = _arb('app_hi.arb');
+    final untranslated = [
+      for (final k in hl.keys)
+        if (!k.startsWith('@') && !_sameInHindi.contains(k) && (hi[k] == hl[k] || hi[k] == en[k])) k,
+    ];
+    expect(untranslated, isEmpty, reason: 'app_hi.arb values still in Hinglish / English');
+    final devanagari = RegExp(r'[ऀ-ॿ]');
+    final latinOnly = [
+      for (final k in hl.keys)
+        if (!k.startsWith('@') && !_sameInHindi.contains(k) && hi[k] is String && !devanagari.hasMatch(hi[k] as String))
+          k,
+    ];
+    expect(latinOnly, isEmpty, reason: 'app_hi.arb values without any Devanagari');
+    final missing = [
+      for (final k in hl.keys)
+        if (!k.startsWith('@') && !hi.containsKey(k)) k,
     ];
     expect(missing, isEmpty);
   });

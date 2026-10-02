@@ -13,6 +13,8 @@ import '../../../core/theme/tokens.dart';
 import '../../../ui/ui.dart';
 import '../application/auth_controller.dart';
 import '../application/session.dart';
+import '../../invites/application/invites_providers.dart';
+import '../../invites/domain/invite_models.dart' show kInviteCodeLength;
 import '../domain/auth_models.dart';
 
 /// The OTP challenge the phone screen started (OTP screen reads it).
@@ -521,7 +523,195 @@ class _CreateHouseholdScreenState extends ConsumerState<CreateHouseholdScreen> {
             style: BText.body(BType.captionL, weight: FontWeight.w700, color: BColors.noFg),
           ),
         ],
+        const SizedBox(height: 22),
+        Row(
+          children: [
+            const Expanded(child: Divider(color: BColors.border)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                l.householdOr,
+                style: BText.body(BType.caption, weight: FontWeight.w700, color: BColors.ink3),
+              ),
+            ),
+            const Expanded(child: Divider(color: BColors.border)),
+          ],
+        ),
+        const SizedBox(height: 14),
+        BGhostButton(
+          key: const ValueKey('household-join'),
+          label: l.householdJoinOption,
+          leading: BIcons.users,
+          onPressed: _busy ? null : () => context.push(Routes.joinHousehold),
+        ),
+        const SizedBox(height: 6),
+        Text(
+          l.householdJoinHint,
+          textAlign: TextAlign.center,
+          style: BText.body(BType.caption, color: BColors.ink3),
+        ),
       ],
     );
   }
+}
+
+// ---------------------------------------------------------------- join
+
+/// "Code se judiye": the 6-character invite code from the admin's WhatsApp
+/// message (six boxes over one hidden field, like the OTP). The invite is
+/// bound to the phone this user signed in with.
+class JoinHouseholdScreen extends ConsumerStatefulWidget {
+  const JoinHouseholdScreen({super.key});
+
+  @override
+  ConsumerState<JoinHouseholdScreen> createState() => _JoinHouseholdScreenState();
+}
+
+class _JoinHouseholdScreenState extends ConsumerState<JoinHouseholdScreen> {
+  static const _len = kInviteCodeLength;
+  final _c = TextEditingController();
+  final _focus = FocusNode();
+  bool _busy = false;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _c.addListener(() {
+      setState(() {});
+      if (_c.text.length == _len) _join();
+    });
+  }
+
+  @override
+  void dispose() {
+    _c.dispose();
+    _focus.dispose();
+    super.dispose();
+  }
+
+  Future<void> _join() async {
+    if (_busy || _c.text.length != _len) return;
+    final l = AppLocalizations.of(context);
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      await ref.read(inviteActionsProvider).join(_c.text);
+      final me = ref.read(sessionProvider);
+      if (mounted) context.go(me == null ? Routes.start : SessionController.routeFor(me));
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _error = joinErrorText(l, e);
+        if (appErrorCode(e) == 'invite_code_invalid') _c.clear();
+      });
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final chars = _c.text;
+    return _AuthScaffold(
+      title: l.joinTitle,
+      body: l.joinBody,
+      onBack: () => context.canPop() ? context.pop() : context.go(Routes.createHousehold),
+      cta: BCta(
+        key: const ValueKey('join-submit'),
+        label: l.joinCta,
+        trailing: BIcons.arrowRight,
+        onPressed: _busy || chars.length != _len ? null : _join,
+      ),
+      children: [
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: _focus.requestFocus,
+          child: Stack(
+            children: [
+              // The real input: invisible, drives the six boxes.
+              Opacity(
+                opacity: 0,
+                child: SizedBox(
+                  height: 56,
+                  child: TextField(
+                    key: const ValueKey('join-code'),
+                    controller: _c,
+                    focusNode: _focus,
+                    autofocus: true,
+                    autocorrect: false,
+                    enableSuggestions: false,
+                    keyboardType: TextInputType.visiblePassword,
+                    textCapitalization: TextCapitalization.characters,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[A-Za-z0-9]')),
+                      const _UpperCase(),
+                      LengthLimitingTextInputFormatter(_len),
+                    ],
+                    showCursor: false,
+                  ),
+                ),
+              ),
+              IgnorePointer(
+                child: Row(
+                  children: [
+                    for (var i = 0; i < _len; i++) ...[
+                      if (i > 0) const SizedBox(width: 8),
+                      Expanded(
+                        child: Semantics(
+                          label: l.joinCodeBox(i + 1),
+                          value: i < chars.length ? chars[i] : '',
+                          child: Container(
+                            height: 56,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: BColors.card,
+                              borderRadius: BorderRadius.circular(BRadii.cta),
+                              border: Border.all(
+                                color: i == chars.length && _focus.hasFocus ? BColors.green : BColors.chipBorder,
+                                width: 1.5,
+                              ),
+                            ),
+                            child: Text(i < chars.length ? chars[i] : '', style: BText.display(BType.display22)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        if (_error != null) ...[
+          const SizedBox(height: 10),
+          Text(
+            _error!,
+            key: const ValueKey('join-error'),
+            style: BText.body(BType.captionL, weight: FontWeight.w700, color: BColors.noFg),
+          ),
+        ],
+        const SizedBox(height: 16),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: BTextButton(
+            key: const ValueKey('join-create-instead'),
+            label: l.joinCreateInstead,
+            onPressed: () => context.canPop() ? context.pop() : context.go(Routes.createHousehold),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _UpperCase extends TextInputFormatter {
+  const _UpperCase();
+
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) =>
+      newValue.copyWith(text: newValue.text.toUpperCase());
 }

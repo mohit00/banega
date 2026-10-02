@@ -714,11 +714,16 @@ class CookPatch {
 /// The caller's cook role (`GET /v1/me` → `cook`).
 @immutable
 class MeCook {
-  const MeCook({required this.id, required this.kind, this.loginMode = 'app'});
+  const MeCook({required this.id, required this.kind, this.loginMode = 'app', this.onDuty = true, this.offDutyUntil});
 
   final String id;
   final CookKind kind;
   final String loginMode;
+
+  /// From `/v1/me.cook`: a hired cook cannot read `/v1/cooks` (403), so this is
+  /// where cook mode learns its own duty state.
+  final bool onDuty;
+  final DateTime? offDutyUntil;
 }
 
 /// `GET /v1/me`: modes, cook role, membership and consent state.
@@ -773,6 +778,8 @@ class Me {
               id: '${c['id']}',
               kind: CookKind.fromWire(c['kind'] as String?),
               loginMode: c['login_mode'] as String? ?? 'app',
+              onDuty: c['on_duty'] as bool? ?? true,
+              offDutyUntil: c['off_duty_until'] is String ? DateTime.tryParse(c['off_duty_until'] as String) : null,
             )
           : null,
       userId: user is Map ? _str(user['id']) : null,

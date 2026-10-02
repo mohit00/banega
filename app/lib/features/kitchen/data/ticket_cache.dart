@@ -233,8 +233,17 @@ class CachingTicketsRepository implements TicketsRepository {
     required String idempotencyKey,
     String? reason,
     String? note,
+    String? assigneeCookId,
   }) => _write(
-    () => inner.transition(id, to, version: version, idempotencyKey: idempotencyKey, reason: reason, note: note),
+    () => inner.transition(
+      id,
+      to,
+      version: version,
+      idempotencyKey: idempotencyKey,
+      reason: reason,
+      note: note,
+      assigneeCookId: assigneeCookId,
+    ),
   );
 
   @override

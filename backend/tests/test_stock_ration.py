@@ -101,6 +101,8 @@ async def test_ration_hired_cook_raise_decide_bought(client: AsyncClient, login:
     req = r.json()
     assert req["status"] == "pending" and req["auto_approved"] is False
     assert req["raised_by"]["id"]
+    # A hired cook never set User.name: the cook name is used.
+    assert req["raised_by"]["name"] == "Ramesh ji"
     names = [(i["name"], i["ingredient_id"]) for i in req["items"]]
     assert names[1][0] == "pyaaz" and names[1][1] == await ing("onion")  # alias match
     assert names[2] == ("kuch naya masala", None)  # free text kept

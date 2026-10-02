@@ -11,6 +11,19 @@ from typing import Any, Literal
 from app.models.enums import Diet, Spice
 
 
+def cuisine_key(value: str) -> str:
+    """ "North Indian", "north_indian" and "north-indian" compare equal."""
+    return "_".join(value.strip().lower().replace("-", " ").replace("_", " ").split())
+
+
+def likes_cuisine(cuisine: str | None, liked: Iterable[str]) -> bool:
+    """True when ``cuisine`` (the recipe's) is among a member's favourites, in any spelling."""
+    if cuisine is None:
+        return False
+    key = cuisine_key(cuisine)
+    return any(cuisine_key(c) == key for c in liked)
+
+
 class FitStatus(StrEnum):
     fit = "fit"
     tweak = "tweak"

@@ -249,7 +249,7 @@ class _MessageView extends ConsumerWidget {
     final m = message;
     final memberCount = ref.watch(membersProvider.select((ms) => ms.length));
     final text = m.text == null ? null : l.replyText(m.text!, memberCount: memberCount);
-    final chips = m.chipSet != null ? l.chips(m.chipSet!) : m.chips;
+    final chips = m.chipSet != null ? l.chips(m.chipSet!) : [for (final c in m.chips) l.localizeChip(c)];
     return Entrance.rise(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

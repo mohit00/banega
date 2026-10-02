@@ -16,181 +16,181 @@ class AppLocalizationsHi extends AppLocalizations {
   String get wordmark => 'banega';
 
   @override
-  String get aiMaharajBadge => 'AI MAHARAJ';
+  String get aiMaharajBadge => 'AI महाराज';
 
   @override
-  String get thaliAlt => 'Ghar ki thali';
+  String get thaliAlt => 'घर की थाली';
 
   @override
   String get back => 'वापस';
 
   @override
-  String get splashTitle => 'Aaj khaane\nmein kya hai?';
+  String get splashTitle => 'आज खाने\nमें क्या है?';
 
   @override
   String get splashBody =>
-      'Har ghar ka roz ka sawaal. Ek AI jo aapke poore parivaar ki pasand yaad rakhta hai — aur har meal pe options deta hai.';
+      'हर घर का रोज़ का सवाल। एक AI जो आपके पूरे परिवार की पसंद याद रखता है — और हर खाने के लिए विकल्प देता है।';
 
   @override
-  String get splashCta => 'Apna ghar set karo';
+  String get splashCta => 'अपना घर सेट करो';
 
   @override
-  String get splashDemo => 'Demo family ke saath dekho';
+  String get splashDemo => 'डेमो परिवार के साथ देखो';
 
   @override
-  String get stepOneOfTwo => 'STEP 1 OF 2';
+  String get stepOneOfTwo => 'चरण 1 / 2';
 
   @override
-  String get familyTitle => 'Ghar mein kaun\nkaun hai?';
+  String get familyTitle => 'घर में कौन\nकौन है?';
 
   @override
-  String get familyBody => 'Har member ki pasand alag. Tap karke set karo — Maharaj sab yaad rakhega.';
+  String get familyBody => 'हर सदस्य की पसंद अलग। टैप करके सेट करो — महाराज सब याद रखेगा।';
 
   @override
-  String get addMember => 'Member jodo';
+  String get addMember => 'सदस्य जोड़ो';
 
   @override
   String familyCta(int count) {
-    return '$count log · Aage badho';
+    return '$count लोग · आगे बढ़ो';
   }
 
   @override
   String spiceSummary(String spice) {
-    return '$spice mirch';
+    return '$spice मिर्च';
   }
 
   @override
-  String get prefsStep => 'STEP 2 OF 2 · PASAND';
+  String get prefsStep => 'चरण 2 / 2 · पसंद';
 
   @override
   String prefsTitle(String name) {
-    return '$name ki pasand';
+    return '$name की पसंद';
   }
 
   @override
-  String get prefsSubtitle => 'Maharaj isi hisaab se suggest karega';
+  String get prefsSubtitle => 'महाराज इसी हिसाब से सुझाएगा';
 
   @override
-  String get prefsDietTitle => 'Kya khaate hain?';
+  String get prefsDietTitle => 'क्या खाते हैं?';
 
   @override
-  String get prefsSpiceTitle => 'Mirch kitni?';
+  String get prefsSpiceTitle => 'मिर्च कितनी?';
 
   @override
-  String get prefsNeedsTitle => 'Koi zaroorat ya parhez?';
+  String get prefsNeedsTitle => 'कोई ज़रूरत या परहेज़?';
 
   @override
-  String get prefsCuisineTitle => 'Favourite cuisine';
+  String get prefsCuisineTitle => 'पसंदीदा खाना';
 
   @override
   String prefsSave(String name) {
-    return 'Save · $name';
+    return 'सेव करो · $name';
   }
 
   @override
-  String get dietVeg => 'Veg';
+  String get dietVeg => 'शाकाहारी';
 
   @override
-  String get dietVegHint => 'Shakahari';
+  String get dietVegHint => 'सिर्फ़ शाकाहारी';
 
   @override
-  String get dietJain => 'Jain';
+  String get dietJain => 'जैन';
 
   @override
-  String get dietJainHint => 'Bina pyaaz-lahsun';
+  String get dietJainHint => 'बिना प्याज़-लहसुन';
 
   @override
-  String get dietEgg => 'Egg';
+  String get dietEgg => 'अंडा';
 
   @override
-  String get dietEggHint => 'Veg + ande';
+  String get dietEggHint => 'शाकाहारी + अंडे';
 
   @override
-  String get dietNonveg => 'Non-veg';
+  String get dietNonveg => 'मांसाहारी';
 
   @override
-  String get dietNonvegHint => 'Sab kuch';
+  String get dietNonvegHint => 'सब कुछ';
 
   @override
-  String get dietJainFriendly => 'Jain-friendly';
+  String get dietJainFriendly => 'जैन के लिए ठीक';
 
   @override
-  String get spiceKam => 'Kam';
+  String get spiceKam => 'कम';
 
   @override
-  String get spiceMedium => 'Medium';
+  String get spiceMedium => 'मध्यम';
 
   @override
-  String get spiceTeekha => 'Teekha';
+  String get spiceTeekha => 'तीखा';
 
   @override
-  String get needLowOil => 'Low oil';
+  String get needLowOil => 'कम तेल';
 
   @override
-  String get needLowSugar => 'Low sugar';
+  String get needLowSugar => 'कम चीनी';
 
   @override
-  String get needHighProtein => 'High protein';
+  String get needHighProtein => 'ज़्यादा प्रोटीन';
 
   @override
-  String get needNoMaida => 'No maida';
+  String get needNoMaida => 'बिना मैदा';
 
   @override
-  String get needKidFriendly => 'Kid-friendly';
+  String get needKidFriendly => 'बच्चों के लिए';
 
   @override
-  String get cuisineNorthIndian => 'North Indian';
+  String get cuisineNorthIndian => 'उत्तर भारतीय';
 
   @override
-  String get cuisineSouthIndian => 'South Indian';
+  String get cuisineSouthIndian => 'दक्षिण भारतीय';
 
   @override
-  String get cuisineGujarati => 'Gujarati';
+  String get cuisineGujarati => 'गुजराती';
 
   @override
-  String get cuisineRajasthani => 'Rajasthani';
+  String get cuisineRajasthani => 'राजस्थानी';
 
   @override
-  String get cuisineBengali => 'Bengali';
+  String get cuisineBengali => 'बंगाली';
 
   @override
-  String get cuisineMaharashtrian => 'Maharashtrian';
+  String get cuisineMaharashtrian => 'महाराष्ट्रीयन';
 
   @override
-  String get cuisineIndoChinese => 'Indo-Chinese';
+  String get cuisineIndoChinese => 'इंडो-चाइनीज़';
 
   @override
-  String get loadingTitle => 'Maharaj aapke ghar\nko samajh raha hai…';
+  String get loadingTitle => 'महाराज आपके घर\nको समझ रहा है…';
 
   @override
   String constraintLine(String items) {
-    return 'Dhyaan rakha: $items';
+    return 'ध्यान रखा: $items';
   }
 
   @override
-  String get constraintNone => 'Sabki pasand dhyaan mein hai';
+  String get constraintNone => 'सबकी पसंद ध्यान में है';
 
   @override
   String constraintJain(String name) {
-    return '$name (Jain)';
+    return '$name (जैन)';
   }
 
   @override
   String constraintLowSugar(String name) {
-    return '$name (low sugar)';
+    return '$name (कम चीनी)';
   }
 
   @override
   String constraintKamMirch(String name) {
-    return '$name (kam mirch)';
+    return '$name (कम मिर्च)';
   }
 
   @override
-  String get householdName => 'Purohit Parivaar';
+  String get householdName => 'पुरोहित परिवार';
 
   @override
   String familyLine(int count, String items) {
-    return '$count log · $items';
+    return '$count लोग · $items';
   }
 
   @override
@@ -203,153 +203,153 @@ class AppLocalizationsHi extends AppLocalizations {
   String get slotDinner => 'रात का खाना';
 
   @override
-  String get eyebrowBreakfast => 'SUBAH KA NASHTA';
+  String get eyebrowBreakfast => 'सुबह का नाश्ता';
 
   @override
-  String get eyebrowLunch => 'DOPAHAR KA KHAANA';
+  String get eyebrowLunch => 'दोपहर का खाना';
 
   @override
-  String get eyebrowDinner => 'RAAT KA KHAANA';
+  String get eyebrowDinner => 'रात का खाना';
 
   @override
-  String get searchPrefix => 'Pucho';
+  String get searchPrefix => 'पूछो';
 
   @override
-  String get tickerAsk1 => '“15 min mein nashta”';
+  String get tickerAsk1 => '“15 मिनट में नाश्ता”';
 
   @override
-  String get tickerAsk2 => '“Dadi ke liye Jain dinner”';
+  String get tickerAsk2 => '“दादी के लिए जैन डिनर”';
 
   @override
-  String get tickerAsk3 => '“baarish wala khaana”';
+  String get tickerAsk3 => '“बारिश वाला खाना”';
 
   @override
-  String get tickerAsk4 => '“Daughter ka tiffin”';
+  String get tickerAsk4 => '“Daughter का टिफ़िन”';
 
   @override
-  String get maharajPick => 'MAHARAJ KA PICK';
+  String get maharajPick => 'महाराज की पसंद';
 
   @override
   String heroMeta(String fitLabel, int mins) {
-    return '$fitLabel · $mins min';
+    return '$fitLabel · $mins मिनट';
   }
 
   @override
-  String get recipeDekho => 'Recipe dekho';
+  String get recipeDekho => 'रेसिपी देखो';
 
   @override
-  String get quickAsk15Min => '15 min mein kuch';
+  String get quickAsk15Min => '15 मिनट में कुछ';
 
   @override
-  String get quickAskHalka => 'Kuch halka';
+  String get quickAskHalka => 'कुछ हल्का';
 
   @override
-  String get quickAskBaarish => 'Baarish special';
+  String get quickAskBaarish => 'बारिश स्पेशल';
 
   @override
-  String get quickAskTiffin => 'Daughter ka tiffin';
+  String get quickAskTiffin => 'Daughter का टिफ़िन';
 
   @override
-  String get quickAskMehmaan => 'Mehmaan aa rahe hain';
+  String get quickAskMehmaan => 'मेहमान आ रहे हैं';
 
   @override
-  String get quickAskProtein => 'High protein';
+  String get quickAskProtein => 'ज़्यादा प्रोटीन';
 
   @override
   String slotOptions(String slot) {
-    return '$slot ke options';
+    return '$slot के विकल्प';
   }
 
   @override
-  String get sabkeHisaab => 'sabke hisaab se';
+  String get sabkeHisaab => 'सबके हिसाब से';
 
   @override
   String minBadge(int mins) {
-    return '$mins MIN';
+    return '$mins मिनट';
   }
 
   @override
-  String get addLabel => 'ADD';
+  String get addLabel => 'जोड़ो';
 
   @override
-  String get addedLabel => 'ADDED';
+  String get addedLabel => 'जुड़ गया';
 
   @override
   String planBarTitle(int count) {
-    return '$count dish · Aaj ka menu';
+    return '$count डिश · आज का मेन्यू';
   }
 
   @override
-  String get cookKoBhejo => 'Cook ko bhejo';
+  String get cookKoBhejo => 'कुक को भेजो';
 
   @override
-  String get navGhar => 'Ghar';
+  String get navGhar => 'घर';
 
   @override
-  String get navMaharaj => 'Maharaj se pucho';
+  String get navMaharaj => 'महाराज से पूछो';
 
   @override
-  String get navParivaar => 'Parivaar';
+  String get navParivaar => 'परिवार';
 
   @override
-  String get chatName => 'Maharaj';
+  String get chatName => 'महाराज';
 
   @override
   String chatMemory(int count) {
-    return '$count logon ki pasand yaad hai';
+    return '$count लोगों की पसंद याद है';
   }
 
   @override
   String chatMenuPill(int count) {
-    return 'Menu · $count';
+    return 'मेन्यू · $count';
   }
 
   @override
   String chatGreeting(int count) {
-    return 'Namaste! Main Maharaj hoon. Ghar ke $count logon ki pasand mujhe yaad hai.\nBas pucho — aaj kya banaun?';
+    return 'नमस्ते! मैं महाराज हूँ। घर के $count लोगों की पसंद मुझे याद है।\nबस पूछो — आज क्या बनाऊँ?';
   }
 
   @override
-  String get chatChipLunch => 'Aaj lunch mein kya?';
+  String get chatChipLunch => 'आज दोपहर में क्या?';
 
   @override
-  String get chatChipHalkaDinner => 'Kuch halka dinner';
+  String get chatChipHalkaDinner => 'रात में कुछ हल्का';
 
   @override
-  String get chatChipNashta => '15 min mein nashta';
+  String get chatChipNashta => '15 मिनट में नाश्ता';
 
   @override
-  String get chatChipMehmaan => 'Mehmaan aa rahe hain';
+  String get chatChipMehmaan => 'मेहमान आ रहे हैं';
 
   @override
-  String get chatPlaceholder => 'Aaj dinner mein kuch halka…';
+  String get chatPlaceholder => 'आज रात के खाने में कुछ हल्का…';
 
   @override
-  String get chatVoice => 'Voice';
+  String get chatVoice => 'बोलो';
 
   @override
-  String get chatSend => 'Send';
+  String get chatSend => 'भेजो';
 
   @override
-  String get typing => 'rotiyaan sek raha hoon…';
+  String get typing => 'रोटियाँ सेक रहा हूँ…';
 
   @override
-  String get voiceToast => 'Voice input — real app mein Hinglish mein bol sakte ho';
+  String get voiceToast => 'बोलकर लिखना — असली ऐप में आप हिंदी में बोल सकते हो';
 
   @override
-  String get chatError => 'Maharaj abhi jawab nahi de paaye. Phir se pucho.';
+  String get chatError => 'महाराज अभी जवाब नहीं दे पाए। फिर से पूछो।';
 
   @override
-  String get chatInputLabel => 'Maharaj se pucho';
+  String get chatInputLabel => 'महाराज से पूछो';
 
   @override
   String chatNoMatch(String slot) {
-    return 'Is combo mein exact match nahi mila. $slot ke liye ye sabse kareeb hain:';
+    return 'इस मेल में बिल्कुल सही कुछ नहीं मिला। $slot के लिए ये सबसे क़रीब हैं:';
   }
 
   @override
   String chatOptions(String slot, int count) {
-    return '$slot ke liye $count options';
+    return '$slot के लिए $count विकल्प';
   }
 
   @override
@@ -359,84 +359,84 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String chatFamilyCan(int ok) {
-    return '$ok mein poora parivaar kha sakta hai.';
+    return '$ok पूरा परिवार खा सकता है।';
   }
 
   @override
-  String get whyHalka => 'halka';
+  String get whyHalka => 'हल्का';
 
   @override
-  String get whyProtein => 'high protein';
+  String get whyProtein => 'ज़्यादा प्रोटीन';
 
   @override
-  String get whyMehmaan => 'mehmaan-worthy';
+  String get whyMehmaan => 'मेहमानों के लायक';
 
   @override
-  String get whyBaarish => 'baarish wala';
+  String get whyBaarish => 'बारिश वाला';
 
   @override
-  String get whyKid => 'bachchon ko pasand';
+  String get whyKid => 'बच्चों को पसंद';
 
   @override
-  String get why20Min => '20 min ke andar';
+  String get why20Min => '20 मिनट के अंदर';
 
   @override
-  String get whyPaneer => 'paneer wala';
+  String get whyPaneer => 'पनीर वाला';
 
   @override
   String whyMember(String name) {
-    return '$name ke hisaab se';
+    return '$name के हिसाब से';
   }
 
   @override
-  String get followProteinNashta => 'Protein wala nashta';
+  String get followProteinNashta => 'प्रोटीन वाला नाश्ता';
 
   @override
-  String get followTiffin => 'Daughter ka tiffin';
+  String get followTiffin => 'Daughter का टिफ़िन';
 
   @override
-  String get followSouth => 'Kuch South Indian';
+  String get followSouth => 'कुछ दक्षिण भारतीय';
 
   @override
-  String get followHalka => 'Kuch halka';
+  String get followHalka => 'कुछ हल्का';
 
   @override
-  String get followBaarish => 'Baarish special';
+  String get followBaarish => 'बारिश स्पेशल';
 
   @override
-  String get followPaneer => 'Paneer wala kuch';
+  String get followPaneer => 'पनीर वाला कुछ';
 
   @override
-  String get followDadi => 'Dadi ke liye kya?';
+  String get followDadi => 'दादी के लिए क्या?';
 
   @override
-  String get fitAllPerfect => 'Sabke liye perfect';
+  String get fitAllPerfect => 'सबके लिए बढ़िया';
 
   @override
-  String get fitAllPerfectShort => 'Sabke liye';
+  String get fitAllPerfectShort => 'सबके लिए';
 
   @override
   String fitAllTweak(int count) {
-    return 'Sabke liye · $count tweak';
+    return 'सबके लिए · $count बदलाव';
   }
 
   @override
   String fitAllTweakShort(int count) {
-    return 'Sab · $count tweak';
+    return 'सब · $count बदलाव';
   }
 
   @override
   String fitPartial(int can, int total) {
-    return '$can/$total ke liye';
+    return '$can/$total के लिए';
   }
 
   @override
   String fitNotFor(String names) {
-    return '$names ke liye nahi';
+    return '$names के लिए नहीं';
   }
 
   @override
-  String get fitAllHappy => 'Sab khush, koi badlaav nahi';
+  String get fitAllHappy => 'सब ख़ुश, कोई बदलाव नहीं';
 
   @override
   String fitTweakNote(String name, String note) {
@@ -444,150 +444,150 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get reasonOnionGarlic => 'Pyaaz-lahsun hai';
+  String get reasonOnionGarlic => 'प्याज़-लहसुन है';
 
   @override
-  String get reasonEgg => 'Isme anda hai';
+  String get reasonEgg => 'इसमें अंडा है';
 
   @override
-  String get reasonNonveg => 'Non-veg hai';
+  String get reasonNonveg => 'मांसाहारी है';
 
   @override
-  String get reasonMaida => 'Maida hai';
+  String get reasonMaida => 'मैदा है';
 
   @override
-  String get reasonLessChilli => 'Unki katori mein kam mirch';
+  String get reasonLessChilli => 'उनकी कटोरी में कम मिर्च';
 
   @override
-  String get reasonExtraChilli => 'Upar se laal mirch / achaar';
+  String get reasonExtraChilli => 'ऊपर से लाल मिर्च / अचार';
 
   @override
-  String get reasonLowSugar => 'Portion chhota, salad zyada';
+  String get reasonLowSugar => 'हिस्सा छोटा, सलाद ज़्यादा';
 
   @override
-  String get reasonLowOil => 'Kam tel mein banao';
+  String get reasonLowOil => 'कम तेल में बनाओ';
 
   @override
-  String get reasonProtein => 'Saath mein dahi/paneer';
+  String get reasonProtein => 'साथ में दही/पनीर';
 
   @override
-  String get reasonKid => 'Bachche ke liye alag, halka';
+  String get reasonKid => 'बच्चे के लिए अलग, हल्का';
 
   @override
-  String get reasonFavCuisine => 'Favourite cuisine bhi';
+  String get reasonFavCuisine => 'पसंदीदा खाना भी';
 
   @override
-  String get reasonPerfect => 'Bilkul sahi';
+  String get reasonPerfect => 'बिल्कुल सही';
 
   @override
-  String get verdictPerfect => 'Perfect';
+  String get verdictPerfect => 'बढ़िया';
 
   @override
-  String get verdictTweak => 'Tweak';
+  String get verdictTweak => 'थोड़ा बदलो';
 
   @override
-  String get verdictNo => 'Nahi';
+  String get verdictNo => 'नहीं';
 
   @override
   String detailMeta(String diet, String cuisine, int mins) {
-    return '$diet · $cuisine · $mins min';
+    return '$diet · $cuisine · $mins मिनट';
   }
 
   @override
-  String get kaunKhayega => 'Kaun khayega';
+  String get kaunKhayega => 'कौन खाएगा';
 
   @override
-  String get saaman => 'Saaman';
+  String get saaman => 'सामान';
 
   @override
-  String get kaiseBanega => 'Kaise banega';
+  String get kaiseBanega => 'कैसे बनेगा';
 
   @override
-  String get videoRecipe => 'Video recipe';
+  String get videoRecipe => 'वीडियो रेसिपी';
 
   @override
-  String get menuMeinDaalo => 'Menu mein daalo';
+  String get menuMeinDaalo => 'मेन्यू में डालो';
 
   @override
-  String get menuMeinHai => 'Menu mein hai';
+  String get menuMeinHai => 'मेन्यू में है';
 
   @override
   String planTitle(String slot) {
-    return 'Aaj ka $slot menu';
+    return 'आज का $slot मेन्यू';
   }
 
   @override
   String planSubtitle(int count, String coverage) {
-    return '$count logon ke liye · $coverage';
+    return '$count लोगों के लिए · $coverage';
   }
 
   @override
-  String get planCoverageAll => 'har member ke liye kuch na kuch hai';
+  String get planCoverageAll => 'हर सदस्य के लिए कुछ न कुछ है';
 
   @override
-  String get planCoverageSome => 'kuch members ke liye aur dish chahiye';
+  String get planCoverageSome => 'कुछ सदस्यों के लिए और डिश चाहिए';
 
   @override
-  String get planEmpty => 'Menu khaali hai — Ghar se dishes ADD karo.';
+  String get planEmpty => 'मेन्यू ख़ाली है — घर से डिश जोड़ो।';
 
   @override
-  String get planSaamanList => 'Saaman ki list';
+  String get planSaamanList => 'सामान की लिस्ट';
 
   @override
-  String get planSendCook => 'Maharaj / cook ko bhejo';
+  String get planSendCook => 'महाराज / कुक को भेजो';
 
   @override
-  String get planOrderMissing => 'Missing saaman order karo';
+  String get planOrderMissing => 'कम सामान ऑर्डर करो';
 
   @override
-  String get toastSentCook => 'Menu + saaman list cook ko WhatsApp par bhej di';
+  String get toastSentCook => 'मेन्यू + सामान लिस्ट कुक को WhatsApp पर भेज दी';
 
   @override
-  String get toastMissingCart => 'Missing saaman cart mein daal diya';
+  String get toastMissingCart => 'कम सामान कार्ट में डाल दिया';
 
   @override
-  String get galleryTitle => 'Component gallery';
+  String get galleryTitle => 'कंपोनेंट गैलरी';
 
   @override
-  String get dietNoOnionGarlic => 'No pyaaz-lahsun';
+  String get dietNoOnionGarlic => 'बिना प्याज़-लहसुन';
 
   @override
-  String get dietNoOnionGarlicHint => 'Veg, bina pyaaz-lahsun';
+  String get dietNoOnionGarlicHint => 'शाकाहारी, बिना प्याज़-लहसुन';
 
   @override
-  String get dietPescatarian => 'Pescatarian';
+  String get dietPescatarian => 'पेस्केटेरियन';
 
   @override
-  String get dietPescatarianHint => 'Veg + machli';
+  String get dietPescatarianHint => 'शाकाहारी + मछली';
 
   @override
   String reasonAllergen(String item) {
-    return '$item se allergy';
+    return '$item से एलर्जी';
   }
 
   @override
-  String get reasonRootVeg => 'Zameen ke neeche ki sabzi hai';
+  String get reasonRootVeg => 'ज़मीन के नीचे की सब्ज़ी है';
 
   @override
   String reasonNonvegItem(String item) {
-    return 'Isme $item hai';
+    return 'इसमें $item है';
   }
 
   @override
-  String get reasonDairy => 'Dairy hai';
+  String get reasonDairy => 'दूध से बनी चीज़ है';
 
   @override
   String reasonDislikeMain(String item) {
-    return 'Unko $item pasand nahi';
+    return 'उनको $item पसंद नहीं';
   }
 
   @override
   String reasonDislikeSkip(String item) {
-    return 'Unki katori mein $item mat daalo';
+    return 'उनकी कटोरी में $item मत डालो';
   }
 
   @override
-  String get reasonVrat => 'Aaj vrat hai';
+  String get reasonVrat => 'आज व्रत है';
 
   @override
   String get allergenPeanut => 'मूंगफली';
@@ -596,7 +596,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get allergenTreeNut => 'काजू-बादाम';
 
   @override
-  String get allergenDairy => 'Dairy';
+  String get allergenDairy => 'दूध की चीज़ें';
 
   @override
   String get allergenGluten => 'गेहूं (ग्लूटेन)';
@@ -614,24 +614,24 @@ class AppLocalizationsHi extends AppLocalizations {
   String get allergenSoy => 'सोया';
 
   @override
-  String get demoDataPill => 'Demo data';
+  String get demoDataPill => 'डेमो डेटा';
 
   @override
   String servingsCount(int count) {
-    return '$count log';
+    return '$count लोग';
   }
 
   @override
-  String get servingsLess => 'Kam log';
+  String get servingsLess => 'कम लोग';
 
   @override
-  String get servingsMore => 'Zyada log';
+  String get servingsMore => 'ज़्यादा लोग';
 
   @override
-  String get batchWarning => 'Itne logon ke liye do batch mein pakao';
+  String get batchWarning => 'इतने लोगों के लिए दो बार में पकाओ';
 
   @override
-  String get homeLoadError => 'Options load nahi hue';
+  String get homeLoadError => 'विकल्प लोड नहीं हुए';
 
   @override
   String get retry => 'फिर से कोशिश करो';
@@ -646,58 +646,58 @@ class AppLocalizationsHi extends AppLocalizations {
   String get slotShaam => 'शाम का नाश्ता';
 
   @override
-  String get dateToday => 'Aaj';
+  String get dateToday => 'आज';
 
   @override
-  String get dateTomorrow => 'Kal';
+  String get dateTomorrow => 'कल';
 
   @override
   String planTitleOn(String day, String slot) {
-    return '$day ka $slot menu';
+    return '$day का $slot मेन्यू';
   }
 
   @override
   String planCoverageMissing(String names) {
-    return '$names ke liye aur dish chahiye';
+    return '$names के लिए और डिश चाहिए';
   }
 
   @override
-  String get planLoadError => 'Menu load nahi hua';
+  String get planLoadError => 'मेन्यू लोड नहीं हुआ';
 
   @override
-  String get planEatersTitle => 'Kaun kha raha hai?';
+  String get planEatersTitle => 'कौन खा रहा है?';
 
   @override
-  String get planGuestAdults => 'Mehmaan · bade';
+  String get planGuestAdults => 'मेहमान · बड़े';
 
   @override
-  String get planGuestKids => 'Mehmaan · bachche';
+  String get planGuestKids => 'मेहमान · बच्चे';
 
   @override
-  String get planGuestDiet => 'Mehmaan kya khaate hain?';
+  String get planGuestDiet => 'मेहमान क्या खाते हैं?';
 
   @override
-  String get planServingsTitle => 'Kitne log';
+  String get planServingsTitle => 'कितने लोग';
 
   @override
   String planServingsValue(String servings) {
-    return '$servings servings';
+    return '$servings लोगों का';
   }
 
   @override
-  String get planServingsHint => 'Bade 1 · bachche ½ · mehmaan jode';
+  String get planServingsHint => 'बड़े 1 · बच्चे ½ · मेहमान जोड़े';
 
   @override
-  String get planDueTitle => 'Kab tak';
+  String get planDueTitle => 'कब तक';
 
   @override
-  String get planDueHint => 'Khaana kitne baje tak taiyaar ho';
+  String get planDueHint => 'खाना कितने बजे तक तैयार हो';
 
   @override
-  String get planAssigneeTitle => 'Kaun banayega';
+  String get planAssigneeTitle => 'कौन बनाएगा';
 
   @override
-  String get planAssigneeNone => 'Koi nahi';
+  String get planAssigneeNone => 'कोई नहीं';
 
   @override
   String cookChipLabel(String name, String kind) {
@@ -714,25 +714,25 @@ class AppLocalizationsHi extends AppLocalizations {
   String get cookOffDutyTag => 'छुट्टी';
 
   @override
-  String get planViewTicket => 'Ticket dekho';
+  String get planViewTicket => 'टिकट देखो';
 
   @override
-  String get planShareWhatsApp => 'WhatsApp par bhi bhejo';
+  String get planShareWhatsApp => 'WhatsApp पर भी भेजो';
 
   @override
-  String get removeDish => 'Hatao';
+  String get removeDish => 'हटाओ';
 
   @override
-  String get toastTicketSent => 'Ticket bhej diya';
+  String get toastTicketSent => 'टिकट भेज दिया';
 
   @override
-  String get toastOrderSoon => 'Saaman order karna jaldi aa raha hai';
+  String get toastOrderSoon => 'सामान ऑर्डर करना जल्द आ रहा है';
 
   @override
-  String get toastError => 'Kuch gadbad hui, phir se try karo';
+  String get toastError => 'कुछ गड़बड़ हुई, फिर से कोशिश करो';
 
   @override
-  String get toastConflict => 'Ticket badal gaya tha — naya status dikha rahe hain';
+  String get toastConflict => 'टिकट बदल गया था — नया हाल दिखा रहे हैं';
 
   @override
   String get itemIn => 'है';
@@ -792,49 +792,49 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get ticketDishes => 'Dishes';
+  String get ticketDishes => 'डिश';
 
   @override
-  String get ticketNotes => 'Note';
+  String get ticketNotes => 'नोट';
 
   @override
-  String get ticketNotesHint => 'Cook ke liye note…';
+  String get ticketNotesHint => 'कुक के लिए नोट…';
 
   @override
-  String get ticketChangeLog => 'Kya kya badla';
+  String get ticketChangeLog => 'क्या क्या बदला';
 
   @override
-  String get ticketEdit => 'Badlo';
+  String get ticketEdit => 'बदलो';
 
   @override
-  String get ticketSave => 'Save karo';
+  String get ticketSave => 'सेव करो';
 
   @override
-  String get ticketSavedToast => 'Ticket update ho gaya';
+  String get ticketSavedToast => 'टिकट बदल गया';
 
   @override
-  String get ticketCancel => 'Cancel karo';
+  String get ticketCancel => 'रद्द करो';
 
   @override
-  String get ticketCancelReason => 'Cancel kyun kar rahe ho?';
+  String get ticketCancelReason => 'रद्द क्यों कर रहे हो?';
 
   @override
-  String get ticketCancelReasonHint => 'Wajah likho';
+  String get ticketCancelReasonHint => 'वजह लिखो';
 
   @override
-  String get ticketCancelConfirm => 'Haan, cancel karo';
+  String get ticketCancelConfirm => 'हाँ, रद्द करो';
 
   @override
-  String get ticketKeep => 'Rehne do';
+  String get ticketKeep => 'रहने दो';
 
   @override
-  String get ticketCancelledToast => 'Ticket cancel ho gaya';
+  String get ticketCancelledToast => 'टिकट रद्द हो गया';
 
   @override
-  String get ticketMarkDone => 'Ho gaya mark karo';
+  String get ticketMarkDone => 'हो गया मार्क करो';
 
   @override
-  String get ticketAskCook => 'Cook se baat karo';
+  String get ticketAskCook => 'कुक से बात करो';
 
   @override
   String get ticketUpdatedTag => 'बदला गया';
@@ -843,78 +843,78 @@ class AppLocalizationsHi extends AppLocalizations {
   String get ticketStockIssueTag => 'सामान खत्म';
 
   @override
-  String get ticketLoadError => 'Ticket load nahi hua';
+  String get ticketLoadError => 'टिकट लोड नहीं हुआ';
 
   @override
-  String get khanaBanaPrompt => 'Khaana bana?';
+  String get khanaBanaPrompt => 'खाना बना?';
 
   @override
-  String get khanaBanaHint => 'Cook ne \'Ban gaya\' nahi dabaya. Bata do, taaki hisaab sahi rahe.';
+  String get khanaBanaHint => 'कुक ने \'बन गया\' नहीं दबाया। बता दो, ताकि हिसाब सही रहे।';
 
   @override
-  String get khanaBanaYes => 'Haan, bana';
+  String get khanaBanaYes => 'हाँ, बना';
 
   @override
-  String get khanaBanaNo => 'Nahi bana';
+  String get khanaBanaNo => 'नहीं बना';
 
   @override
-  String get logCreated => 'Ticket bana';
+  String get logCreated => 'टिकट बना';
 
   @override
-  String get logAccepted => 'Accept kiya';
+  String get logAccepted => 'स्वीकार किया';
 
   @override
-  String get logCooking => 'Banana shuru';
+  String get logCooking => 'बनाना शुरू';
 
   @override
-  String get logReady => 'Taiyaar';
+  String get logReady => 'तैयार';
 
   @override
-  String get logCompleted => 'Ho gaya';
+  String get logCompleted => 'हो गया';
 
   @override
-  String get logCancelled => 'Cancel kiya';
+  String get logCancelled => 'रद्द किया';
 
   @override
-  String get logNotConfirmed => 'Confirm nahi hua';
+  String get logNotConfirmed => 'पक्का नहीं हुआ';
 
   @override
-  String get logUpdated => 'Badla';
+  String get logUpdated => 'बदला';
 
   @override
-  String get logItemOut => 'Saaman khatam';
+  String get logItemOut => 'सामान ख़त्म';
 
   @override
-  String get logClaimed => 'Claim kiya';
+  String get logClaimed => 'अपने नाम किया';
 
   @override
-  String get logReassigned => 'Dusre cook ko diya';
+  String get logReassigned => 'दूसरे कुक को दिया';
 
   @override
-  String get logUnassigned => 'Assign hataya';
+  String get logUnassigned => 'किसी को नहीं दिया';
 
   @override
-  String get logAutoCancelled => 'Apne aap cancel';
+  String get logAutoCancelled => 'अपने आप रद्द';
 
   @override
-  String get inboxTitle => 'Inbox';
+  String get inboxTitle => 'इनबॉक्स';
 
   @override
   String inboxBellUnread(int count) {
-    return 'Inbox, $count naye';
+    return 'इनबॉक्स, $count नए';
   }
 
   @override
-  String get inboxEmpty => 'Abhi koi khabar nahi';
+  String get inboxEmpty => 'अभी कोई ख़बर नहीं';
 
   @override
-  String get settingsTitle => 'Settings';
+  String get settingsTitle => 'सेटिंग्स';
 
   @override
-  String get settingsDemoCook => 'Demo: cook role';
+  String get settingsDemoCook => 'डेमो: कुक का रोल';
 
   @override
-  String get settingsDemoCookHint => 'Cook role ho to neeche \'Rasoi\' tab dikhega (cook mode).';
+  String get settingsDemoCookHint => 'कुक का रोल हो तो नीचे \'रसोई\' टैब दिखेगा (कुक मोड)।';
 
   @override
   String get cookTitle => 'आज के टिकट';
@@ -1588,7 +1588,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get settingsLanguage => 'भाषा';
 
   @override
-  String get settingsLanguageHint => 'कुक मोड हमेशा हिंदी में रहता है';
+  String get settingsLanguageHint => 'कुक मोड हिंदी में खुलता है; कुक वहाँ अपनी भाषा चुन सकते हैं';
 
   @override
   String get langHinglish => 'Hinglish';
@@ -1967,6 +1967,194 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get cookLanguage => 'कुक मोड की भाषा';
+
+  @override
+  String get settingsFamilyOnBanega => 'बनेगा पर परिवार';
+
+  @override
+  String get invitesHint => 'घर के बड़े अपने फ़ोन से बनेगा चला सकते हैं।';
+
+  @override
+  String get invitesEmpty => 'अभी कोई निमंत्रण बाकी नहीं';
+
+  @override
+  String get inviteCta => 'परिवार के किसी सदस्य को बुलाएँ';
+
+  @override
+  String invitePendingRow(String phone, String date) {
+    return '$phone · $date तक';
+  }
+
+  @override
+  String inviteFor(String name) {
+    return '$name के लिए';
+  }
+
+  @override
+  String get inviteRevoke => 'रद्द करें';
+
+  @override
+  String get inviteRevokeAsk => 'यह निमंत्रण रद्द करें? पुराना कोड काम नहीं करेगा।';
+
+  @override
+  String get inviteRevoked => 'निमंत्रण रद्द कर दिया';
+
+  @override
+  String get inviteWho => 'कौन हैं?';
+
+  @override
+  String get inviteNewMember => 'नया सदस्य';
+
+  @override
+  String get inviteNewName => 'नाम';
+
+  @override
+  String get invitePhone => 'उनका फ़ोन नंबर';
+
+  @override
+  String get inviteRoleNote => 'बड़े सदस्य की तरह जुड़ेंगे: मेन्यू देख और बदल सकते हैं, कुक को भेज सकते हैं।';
+
+  @override
+  String get inviteCreate => 'निमंत्रण बनाएँ';
+
+  @override
+  String get inviteNameRequired => 'नाम लिखें';
+
+  @override
+  String get inviteCodeTitle => 'यह कोड भेजें';
+
+  @override
+  String inviteCodeBody(String phone) {
+    return '$phone से लॉगिन करके \"कोड से जुड़ें\" चुनें और यह कोड डालें।';
+  }
+
+  @override
+  String inviteCodeExpires(String date) {
+    return '$date तक चलेगा';
+  }
+
+  @override
+  String inviteCodeLabel(String code) {
+    return 'निमंत्रण कोड $code';
+  }
+
+  @override
+  String get inviteShareWhatsApp => 'WhatsApp पर भेजें';
+
+  @override
+  String get inviteCopy => 'कोड कॉपी करें';
+
+  @override
+  String get inviteCopied => 'कोड कॉपी हो गया';
+
+  @override
+  String get inviteDone => 'हो गया';
+
+  @override
+  String get inviteErrPhoneTaken => 'यह नंबर किसी और घर में कुक है।';
+
+  @override
+  String get householdOr => 'या';
+
+  @override
+  String get householdJoinOption => 'कोड से जुड़ें';
+
+  @override
+  String get householdJoinHint => 'घर वालों ने बनेगा पर बुलाया है? उनका भेजा कोड डालें।';
+
+  @override
+  String get joinTitle => 'अपने परिवार से जुड़ें';
+
+  @override
+  String get joinBody => 'WhatsApp पर आया 6 अक्षर का कोड डालें।';
+
+  @override
+  String get joinCta => 'जुड़ें';
+
+  @override
+  String joinCodeBox(int n) {
+    return 'कोड का अक्षर $n';
+  }
+
+  @override
+  String get joinCreateInstead => 'नया घर बनाएँ';
+
+  @override
+  String get joinErrInvalid => 'यह कोड सही नहीं है। मैसेज देखकर दोबारा डालें।';
+
+  @override
+  String get joinErrExpired => 'यह कोड पुराना हो गया। घर के एडमिन से नया कोड माँगें।';
+
+  @override
+  String get joinErrPhone => 'यह कोड किसी और नंबर के लिए है। उसी नंबर से लॉगिन करें जिस पर निमंत्रण आया।';
+
+  @override
+  String get joinErrAlready => 'आपका नंबर पहले से एक घर में है।';
+
+  @override
+  String get joinErrLocked => 'बहुत बार गलत कोड। थोड़ी देर बाद कोशिश करें।';
+
+  @override
+  String get ticketUnassignedTitle => 'अभी किसी को नहीं दिया';
+
+  @override
+  String get ticketUnassignedHint => 'कौन बनाएगा? कुक चुनें या खुद ले लें।';
+
+  @override
+  String get ticketUnassignedCard => 'कौन बनाएगा? टैप करके चुनें';
+
+  @override
+  String get ticketAssignTo => 'किसे दें…';
+
+  @override
+  String get ticketClaim => 'मैं बनाऊँगा';
+
+  @override
+  String get ticketClaimed => 'आज के शेफ़ आप! रसोई टैब में देखें।';
+
+  @override
+  String get ticketAlreadyClaimed => 'यह टिकट किसी और ने ले लिया।';
+
+  @override
+  String ticketAssignedToast(String name) {
+    return '$name को दे दिया';
+  }
+
+  @override
+  String get ticketAssigneeRequired => 'चुनें कौन बनाएगा';
+
+  @override
+  String get ticketNoCooks => 'अभी कोई कुक नहीं जोड़ा। सेटिंग्स में जोड़ें।';
+
+  @override
+  String get eventTicketUnassigned => 'टिकट किसी को नहीं दिया';
+
+  @override
+  String get eventTicketCancelled => 'टिकट रद्द हुआ';
+
+  @override
+  String get eventCookMessage => 'कुक का संदेश';
+
+  @override
+  String get eventFamilyMessage => 'परिवार का संदेश';
+
+  @override
+  String get eventChefClaimed => 'किसी ने आज बनाना चुना';
+
+  @override
+  String get eventCookOnDuty => 'कुक वापस ड्यूटी पर';
+
+  @override
+  String get eventRationBought => 'राशन खरीद लिया';
+
+  @override
+  String get eventStockIssueResolved => 'सामान की दिक्कत सुलझी';
+
+  @override
+  String get eventExportReady => 'डेटा निर्यात तैयार';
+
+  @override
+  String get eventAtRisk => 'खाना देर से हो सकता है';
 }
 
 /// The translations for Hindi, using the Latin script (`hi_Latn`).
@@ -3553,7 +3741,7 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
   String get settingsLanguage => 'Bhasha';
 
   @override
-  String get settingsLanguageHint => 'Cook mode hamesha Hindi mein rehta hai';
+  String get settingsLanguageHint => 'Cook mode Hindi mein khulta hai; cook wahan apni bhasha chun sakte hain';
 
   @override
   String get langHinglish => 'Hinglish';
@@ -3933,4 +4121,192 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
 
   @override
   String get cookLanguage => 'Cook mode ki bhasha';
+
+  @override
+  String get settingsFamilyOnBanega => 'Banega par parivaar';
+
+  @override
+  String get invitesHint => 'Ghar ke bade apne phone se Banega chala sakte hain.';
+
+  @override
+  String get invitesEmpty => 'Abhi koi invite pending nahi';
+
+  @override
+  String get inviteCta => 'Parivaar ke kisi ko bulao';
+
+  @override
+  String invitePendingRow(String phone, String date) {
+    return '$phone · $date tak';
+  }
+
+  @override
+  String inviteFor(String name) {
+    return '$name ke liye';
+  }
+
+  @override
+  String get inviteRevoke => 'Hatao';
+
+  @override
+  String get inviteRevokeAsk => 'Ye invite band kar dein? Purana code kaam nahi karega.';
+
+  @override
+  String get inviteRevoked => 'Invite band kar diya';
+
+  @override
+  String get inviteWho => 'Kaun hain?';
+
+  @override
+  String get inviteNewMember => 'Naya member';
+
+  @override
+  String get inviteNewName => 'Naam';
+
+  @override
+  String get invitePhone => 'Unka phone number';
+
+  @override
+  String get inviteRoleNote => 'Bade member ki tarah judenge: menu dekh aur badal sakte hain, cook ko bhej sakte hain.';
+
+  @override
+  String get inviteCreate => 'Invite banao';
+
+  @override
+  String get inviteNameRequired => 'Naam likho';
+
+  @override
+  String get inviteCodeTitle => 'Ye code bhejo';
+
+  @override
+  String inviteCodeBody(String phone) {
+    return '$phone se login karke \"Code se judiye\" chunein aur ye code daalein.';
+  }
+
+  @override
+  String inviteCodeExpires(String date) {
+    return '$date tak chalega';
+  }
+
+  @override
+  String inviteCodeLabel(String code) {
+    return 'Invite code $code';
+  }
+
+  @override
+  String get inviteShareWhatsApp => 'WhatsApp par bhejo';
+
+  @override
+  String get inviteCopy => 'Code copy karo';
+
+  @override
+  String get inviteCopied => 'Code copy ho gaya';
+
+  @override
+  String get inviteDone => 'Ho gaya';
+
+  @override
+  String get inviteErrPhoneTaken => 'Ye number kisi aur ghar mein cook hai.';
+
+  @override
+  String get householdOr => 'ya';
+
+  @override
+  String get householdJoinOption => 'Code se judiye';
+
+  @override
+  String get householdJoinHint => 'Ghar walon ne Banega par bulaya hai? Unka bheja code daaliye.';
+
+  @override
+  String get joinTitle => 'Parivaar se judiye';
+
+  @override
+  String get joinBody => 'WhatsApp par aaya 6 akshar ka code daaliye.';
+
+  @override
+  String get joinCta => 'Judiye';
+
+  @override
+  String joinCodeBox(int n) {
+    return 'Code ka akshar $n';
+  }
+
+  @override
+  String get joinCreateInstead => 'Naya ghar banao';
+
+  @override
+  String get joinErrInvalid => 'Ye code sahi nahi hai. Message dekh kar dobara daaliye.';
+
+  @override
+  String get joinErrExpired => 'Ye code purana ho gaya. Ghar ke admin se naya code maangiye.';
+
+  @override
+  String get joinErrPhone => 'Ye code kisi aur number ke liye hai. Usi number se login kijiye jis par invite aaya.';
+
+  @override
+  String get joinErrAlready => 'Aapka number pehle se ek ghar mein hai.';
+
+  @override
+  String get joinErrLocked => 'Bahut baar galat code. Thodi der baad try kijiye.';
+
+  @override
+  String get ticketUnassignedTitle => 'Abhi kisi ko nahi diya';
+
+  @override
+  String get ticketUnassignedHint => 'Kaun banayega? Cook chuniye ya khud le lijiye.';
+
+  @override
+  String get ticketUnassignedCard => 'Kaun banayega? Tap karke chuniye';
+
+  @override
+  String get ticketAssignTo => 'Kisko dein…';
+
+  @override
+  String get ticketClaim => 'Main banaunga';
+
+  @override
+  String get ticketClaimed => 'Aaj ke chef aap! Rasoi tab mein dekhiye.';
+
+  @override
+  String get ticketAlreadyClaimed => 'Ye ticket kisi aur ne le liya.';
+
+  @override
+  String ticketAssignedToast(String name) {
+    return '$name ko de diya';
+  }
+
+  @override
+  String get ticketAssigneeRequired => 'Chuniye kaun banayega';
+
+  @override
+  String get ticketNoCooks => 'Abhi koi cook nahi jodi. Settings mein jodiye.';
+
+  @override
+  String get eventTicketUnassigned => 'Ticket kisi ko nahi diya';
+
+  @override
+  String get eventTicketCancelled => 'Ticket cancel hua';
+
+  @override
+  String get eventCookMessage => 'Cook ka message';
+
+  @override
+  String get eventFamilyMessage => 'Parivaar ka message';
+
+  @override
+  String get eventChefClaimed => 'Kisi ne aaj banana chuna';
+
+  @override
+  String get eventCookOnDuty => 'Cook wapas on duty';
+
+  @override
+  String get eventRationBought => 'Ration kharid liya';
+
+  @override
+  String get eventStockIssueResolved => 'Saaman ki dikkat suljhi';
+
+  @override
+  String get eventExportReady => 'Data export taiyaar';
+
+  @override
+  String get eventAtRisk => 'Khaana late ho sakta hai';
 }

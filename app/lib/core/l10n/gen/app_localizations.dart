@@ -2973,7 +2973,7 @@ abstract class AppLocalizations {
   /// Settings hint
   ///
   /// In hi_Latn, this message translates to:
-  /// **'Cook mode hamesha Hindi mein rehta hai'**
+  /// **'Cook mode Hindi mein khulta hai; cook wahan apni bhasha chun sakte hain'**
   String get settingsLanguageHint;
 
   /// Language option
@@ -3701,6 +3701,354 @@ abstract class AppLocalizations {
   /// In hi_Latn, this message translates to:
   /// **'Cook mode ki bhasha'**
   String get cookLanguage;
+
+  /// Settings section: adults with their own login
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Banega par parivaar'**
+  String get settingsFamilyOnBanega;
+
+  /// Settings: family-on-Banega hint
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ghar ke bade apne phone se Banega chala sakte hain.'**
+  String get invitesHint;
+
+  /// Settings: no pending invites
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Abhi koi invite pending nahi'**
+  String get invitesEmpty;
+
+  /// Settings: open the invite sheet
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Parivaar ke kisi ko bulao'**
+  String get inviteCta;
+
+  /// Pending invite row: masked phone and expiry date
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'{phone} · {date} tak'**
+  String invitePendingRow(String phone, String date);
+
+  /// Pending invite: linked member
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'{name} ke liye'**
+  String inviteFor(String name);
+
+  /// Revoke a pending invite
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Hatao'**
+  String get inviteRevoke;
+
+  /// Revoke confirmation
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ye invite band kar dein? Purana code kaam nahi karega.'**
+  String get inviteRevokeAsk;
+
+  /// Toast after revoke
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Invite band kar diya'**
+  String get inviteRevoked;
+
+  /// Invite sheet: pick the member to link
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Kaun hain?'**
+  String get inviteWho;
+
+  /// Invite sheet: create a new member
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Naya member'**
+  String get inviteNewMember;
+
+  /// Invite sheet: new member's name
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Naam'**
+  String get inviteNewName;
+
+  /// Invite sheet: phone field label
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Unka phone number'**
+  String get invitePhone;
+
+  /// Invite sheet: what the role allows
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Bade member ki tarah judenge: menu dekh aur badal sakte hain, cook ko bhej sakte hain.'**
+  String get inviteRoleNote;
+
+  /// Invite sheet CTA
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Invite banao'**
+  String get inviteCreate;
+
+  /// Invite sheet: name missing
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Naam likho'**
+  String get inviteNameRequired;
+
+  /// Invite created: title above the code
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ye code bhejo'**
+  String get inviteCodeTitle;
+
+  /// Invite created: how the invitee uses the code
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'{phone} se login karke \"Code se judiye\" chunein aur ye code daalein.'**
+  String inviteCodeBody(String phone);
+
+  /// Invite created: expiry
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'{date} tak chalega'**
+  String inviteCodeExpires(String date);
+
+  /// Semantics: the invite code
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Invite code {code}'**
+  String inviteCodeLabel(String code);
+
+  /// Invite created: share
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'WhatsApp par bhejo'**
+  String get inviteShareWhatsApp;
+
+  /// Invite created: copy
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Code copy karo'**
+  String get inviteCopy;
+
+  /// Toast after copy
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Code copy ho gaya'**
+  String get inviteCopied;
+
+  /// Invite created: close
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ho gaya'**
+  String get inviteDone;
+
+  /// Invite error: phone_in_other_household
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ye number kisi aur ghar mein cook hai.'**
+  String get inviteErrPhoneTaken;
+
+  /// Create household: divider between create and join
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'ya'**
+  String get householdOr;
+
+  /// Create household: join an existing family (must match the invite message)
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Code se judiye'**
+  String get householdJoinOption;
+
+  /// Create household: join hint
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ghar walon ne Banega par bulaya hai? Unka bheja code daaliye.'**
+  String get householdJoinHint;
+
+  /// Join screen title
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Parivaar se judiye'**
+  String get joinTitle;
+
+  /// Join screen body
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'WhatsApp par aaya 6 akshar ka code daaliye.'**
+  String get joinBody;
+
+  /// Join screen CTA
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Judiye'**
+  String get joinCta;
+
+  /// Semantics: one code box
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Code ka akshar {n}'**
+  String joinCodeBox(int n);
+
+  /// Join screen: back to create
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Naya ghar banao'**
+  String get joinCreateInstead;
+
+  /// Join error: invite_code_invalid
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ye code sahi nahi hai. Message dekh kar dobara daaliye.'**
+  String get joinErrInvalid;
+
+  /// Join error: invite_expired
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ye code purana ho gaya. Ghar ke admin se naya code maangiye.'**
+  String get joinErrExpired;
+
+  /// Join error: invite_phone_mismatch
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ye code kisi aur number ke liye hai. Usi number se login kijiye jis par invite aaya.'**
+  String get joinErrPhone;
+
+  /// Join error: already_in_household
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Aapka number pehle se ek ghar mein hai.'**
+  String get joinErrAlready;
+
+  /// Join error: invite_code_locked
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Bahut baar galat code. Thodi der baad try kijiye.'**
+  String get joinErrLocked;
+
+  /// Ticket: unassigned state
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Abhi kisi ko nahi diya'**
+  String get ticketUnassignedTitle;
+
+  /// Ticket detail: unassigned hint
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Kaun banayega? Cook chuniye ya khud le lijiye.'**
+  String get ticketUnassignedHint;
+
+  /// Home ticket card: unassigned call to action
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Kaun banayega? Tap karke chuniye'**
+  String get ticketUnassignedCard;
+
+  /// Ticket detail: admin assigns a cook
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Kisko dein…'**
+  String get ticketAssignTo;
+
+  /// Ticket detail: chef for the day claims the ticket
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Main banaunga'**
+  String get ticketClaim;
+
+  /// Toast after claim
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Aaj ke chef aap! Rasoi tab mein dekhiye.'**
+  String get ticketClaimed;
+
+  /// Toast: claim lost (409 already_claimed)
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ye ticket kisi aur ne le liya.'**
+  String get ticketAlreadyClaimed;
+
+  /// Toast after assigning
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'{name} ko de diya'**
+  String ticketAssignedToast(String name);
+
+  /// Toast: 422 assignee_required
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Chuniye kaun banayega'**
+  String get ticketAssigneeRequired;
+
+  /// Ticket detail: no cooks to assign
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Abhi koi cook nahi jodi. Settings mein jodiye.'**
+  String get ticketNoCooks;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ticket kisi ko nahi diya'**
+  String get eventTicketUnassigned;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ticket cancel hua'**
+  String get eventTicketCancelled;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Cook ka message'**
+  String get eventCookMessage;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Parivaar ka message'**
+  String get eventFamilyMessage;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Kisi ne aaj banana chuna'**
+  String get eventChefClaimed;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Cook wapas on duty'**
+  String get eventCookOnDuty;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Ration kharid liya'**
+  String get eventRationBought;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Saaman ki dikkat suljhi'**
+  String get eventStockIssueResolved;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Data export taiyaar'**
+  String get eventExportReady;
+
+  /// Notification event name on the Settings toggles
+  ///
+  /// In hi_Latn, this message translates to:
+  /// **'Khaana late ho sakta hai'**
+  String get eventAtRisk;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

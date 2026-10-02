@@ -395,3 +395,14 @@ def test_constraint_line_health_hidden_by_default() -> None:
     assert items == []
     items, _ = constraint_line([papa], show_health=True)
     assert {c.key for c in items} == {"low_oil", "low_sugar"}
+
+
+def test_favourite_cuisine_matches_any_spelling() -> None:
+    """The app saves cuisine keys ("north_indian"); recipes carry labels ("North Indian")."""
+    from app.engine.types import likes_cuisine
+
+    assert likes_cuisine("North Indian", ["north_indian"])
+    assert likes_cuisine("North Indian", ["North Indian"])
+    assert likes_cuisine("Indo-Chinese", ["indo_chinese"])
+    assert not likes_cuisine("Gujarati", ["north_indian"])
+    assert not likes_cuisine(None, ["north_indian"])

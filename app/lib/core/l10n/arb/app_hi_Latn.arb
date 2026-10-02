@@ -1997,7 +1997,7 @@
   "@settingsLanguage": {
     "description": "Settings section"
   },
-  "settingsLanguageHint": "Cook mode hamesha Hindi mein rehta hai",
+  "settingsLanguageHint": "Cook mode Hindi mein khulta hai; cook wahan apni bhasha chun sakte hain",
   "@settingsLanguageHint": {
     "description": "Settings hint"
   },
@@ -2540,5 +2540,275 @@
   "cookLanguage": "Cook mode ki bhasha",
   "@cookLanguage": {
     "description": "Semantics: cook-mode language switch"
+  },
+  "settingsFamilyOnBanega": "Banega par parivaar",
+  "@settingsFamilyOnBanega": {
+    "description": "Settings section: adults with their own login"
+  },
+  "invitesHint": "Ghar ke bade apne phone se Banega chala sakte hain.",
+  "@invitesHint": {
+    "description": "Settings: family-on-Banega hint"
+  },
+  "invitesEmpty": "Abhi koi invite pending nahi",
+  "@invitesEmpty": {
+    "description": "Settings: no pending invites"
+  },
+  "inviteCta": "Parivaar ke kisi ko bulao",
+  "@inviteCta": {
+    "description": "Settings: open the invite sheet"
+  },
+  "invitePendingRow": "{phone} · {date} tak",
+  "@invitePendingRow": {
+    "description": "Pending invite row: masked phone and expiry date",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteFor": "{name} ke liye",
+  "@inviteFor": {
+    "description": "Pending invite: linked member",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteRevoke": "Hatao",
+  "@inviteRevoke": {
+    "description": "Revoke a pending invite"
+  },
+  "inviteRevokeAsk": "Ye invite band kar dein? Purana code kaam nahi karega.",
+  "@inviteRevokeAsk": {
+    "description": "Revoke confirmation"
+  },
+  "inviteRevoked": "Invite band kar diya",
+  "@inviteRevoked": {
+    "description": "Toast after revoke"
+  },
+  "inviteWho": "Kaun hain?",
+  "@inviteWho": {
+    "description": "Invite sheet: pick the member to link"
+  },
+  "inviteNewMember": "Naya member",
+  "@inviteNewMember": {
+    "description": "Invite sheet: create a new member"
+  },
+  "inviteNewName": "Naam",
+  "@inviteNewName": {
+    "description": "Invite sheet: new member's name"
+  },
+  "invitePhone": "Unka phone number",
+  "@invitePhone": {
+    "description": "Invite sheet: phone field label"
+  },
+  "inviteRoleNote": "Bade member ki tarah judenge: menu dekh aur badal sakte hain, cook ko bhej sakte hain.",
+  "@inviteRoleNote": {
+    "description": "Invite sheet: what the role allows"
+  },
+  "inviteCreate": "Invite banao",
+  "@inviteCreate": {
+    "description": "Invite sheet CTA"
+  },
+  "inviteNameRequired": "Naam likho",
+  "@inviteNameRequired": {
+    "description": "Invite sheet: name missing"
+  },
+  "inviteCodeTitle": "Ye code bhejo",
+  "@inviteCodeTitle": {
+    "description": "Invite created: title above the code"
+  },
+  "inviteCodeBody": "{phone} se login karke \"Code se judiye\" chunein aur ye code daalein.",
+  "@inviteCodeBody": {
+    "description": "Invite created: how the invitee uses the code",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteCodeExpires": "{date} tak chalega",
+  "@inviteCodeExpires": {
+    "description": "Invite created: expiry",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteCodeLabel": "Invite code {code}",
+  "@inviteCodeLabel": {
+    "description": "Semantics: the invite code",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteShareWhatsApp": "WhatsApp par bhejo",
+  "@inviteShareWhatsApp": {
+    "description": "Invite created: share"
+  },
+  "inviteCopy": "Code copy karo",
+  "@inviteCopy": {
+    "description": "Invite created: copy"
+  },
+  "inviteCopied": "Code copy ho gaya",
+  "@inviteCopied": {
+    "description": "Toast after copy"
+  },
+  "inviteDone": "Ho gaya",
+  "@inviteDone": {
+    "description": "Invite created: close"
+  },
+  "inviteErrPhoneTaken": "Ye number kisi aur ghar mein cook hai.",
+  "@inviteErrPhoneTaken": {
+    "description": "Invite error: phone_in_other_household"
+  },
+  "householdOr": "ya",
+  "@householdOr": {
+    "description": "Create household: divider between create and join"
+  },
+  "householdJoinOption": "Code se judiye",
+  "@householdJoinOption": {
+    "description": "Create household: join an existing family (must match the invite message)"
+  },
+  "householdJoinHint": "Ghar walon ne Banega par bulaya hai? Unka bheja code daaliye.",
+  "@householdJoinHint": {
+    "description": "Create household: join hint"
+  },
+  "joinTitle": "Parivaar se judiye",
+  "@joinTitle": {
+    "description": "Join screen title"
+  },
+  "joinBody": "WhatsApp par aaya 6 akshar ka code daaliye.",
+  "@joinBody": {
+    "description": "Join screen body"
+  },
+  "joinCta": "Judiye",
+  "@joinCta": {
+    "description": "Join screen CTA"
+  },
+  "joinCodeBox": "Code ka akshar {n}",
+  "@joinCodeBox": {
+    "description": "Semantics: one code box",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "joinCreateInstead": "Naya ghar banao",
+  "@joinCreateInstead": {
+    "description": "Join screen: back to create"
+  },
+  "joinErrInvalid": "Ye code sahi nahi hai. Message dekh kar dobara daaliye.",
+  "@joinErrInvalid": {
+    "description": "Join error: invite_code_invalid"
+  },
+  "joinErrExpired": "Ye code purana ho gaya. Ghar ke admin se naya code maangiye.",
+  "@joinErrExpired": {
+    "description": "Join error: invite_expired"
+  },
+  "joinErrPhone": "Ye code kisi aur number ke liye hai. Usi number se login kijiye jis par invite aaya.",
+  "@joinErrPhone": {
+    "description": "Join error: invite_phone_mismatch"
+  },
+  "joinErrAlready": "Aapka number pehle se ek ghar mein hai.",
+  "@joinErrAlready": {
+    "description": "Join error: already_in_household"
+  },
+  "joinErrLocked": "Bahut baar galat code. Thodi der baad try kijiye.",
+  "@joinErrLocked": {
+    "description": "Join error: invite_code_locked"
+  },
+  "ticketUnassignedTitle": "Abhi kisi ko nahi diya",
+  "@ticketUnassignedTitle": {
+    "description": "Ticket: unassigned state"
+  },
+  "ticketUnassignedHint": "Kaun banayega? Cook chuniye ya khud le lijiye.",
+  "@ticketUnassignedHint": {
+    "description": "Ticket detail: unassigned hint"
+  },
+  "ticketUnassignedCard": "Kaun banayega? Tap karke chuniye",
+  "@ticketUnassignedCard": {
+    "description": "Home ticket card: unassigned call to action"
+  },
+  "ticketAssignTo": "Kisko dein…",
+  "@ticketAssignTo": {
+    "description": "Ticket detail: admin assigns a cook"
+  },
+  "ticketClaim": "Main banaunga",
+  "@ticketClaim": {
+    "description": "Ticket detail: chef for the day claims the ticket"
+  },
+  "ticketClaimed": "Aaj ke chef aap! Rasoi tab mein dekhiye.",
+  "@ticketClaimed": {
+    "description": "Toast after claim"
+  },
+  "ticketAlreadyClaimed": "Ye ticket kisi aur ne le liya.",
+  "@ticketAlreadyClaimed": {
+    "description": "Toast: claim lost (409 already_claimed)"
+  },
+  "ticketAssignedToast": "{name} ko de diya",
+  "@ticketAssignedToast": {
+    "description": "Toast after assigning",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketAssigneeRequired": "Chuniye kaun banayega",
+  "@ticketAssigneeRequired": {
+    "description": "Toast: 422 assignee_required"
+  },
+  "ticketNoCooks": "Abhi koi cook nahi jodi. Settings mein jodiye.",
+  "@ticketNoCooks": {
+    "description": "Ticket detail: no cooks to assign"
+  },
+  "eventTicketUnassigned": "Ticket kisi ko nahi diya",
+  "@eventTicketUnassigned": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventTicketCancelled": "Ticket cancel hua",
+  "@eventTicketCancelled": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventCookMessage": "Cook ka message",
+  "@eventCookMessage": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventFamilyMessage": "Parivaar ka message",
+  "@eventFamilyMessage": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventChefClaimed": "Kisi ne aaj banana chuna",
+  "@eventChefClaimed": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventCookOnDuty": "Cook wapas on duty",
+  "@eventCookOnDuty": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventRationBought": "Ration kharid liya",
+  "@eventRationBought": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventStockIssueResolved": "Saaman ki dikkat suljhi",
+  "@eventStockIssueResolved": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventExportReady": "Data export taiyaar",
+  "@eventExportReady": {
+    "description": "Notification event name on the Settings toggles"
+  },
+  "eventAtRisk": "Khaana late ho sakta hai",
+  "@eventAtRisk": {
+    "description": "Notification event name on the Settings toggles"
   }
 }

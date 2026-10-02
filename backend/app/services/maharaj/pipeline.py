@@ -70,6 +70,43 @@ DEFAULT_CONFIG: dict[str, Any] = {
         {"key": "lunch", "label": "Lunch"},
         {"key": "dinner", "label": "Dinner"},
     ],
+    # Per-language variants (`<key>_en`, `<key>_hi`); the plain key is Hinglish and the
+    # fallback. Every chip parses to the same query as its Hinglish original.
+    "welcome_en": "Namaste! I'm Maharaj. I remember what all {n} people at home like.\n"
+    "Just ask — what shall I cook today?",
+    "welcome_hi": "नमस्ते! मैं महाराज हूँ। घर के {n} लोगों की पसंद मुझे याद है।\nबस पूछिए — आज क्या बनाऊँ?",
+    "welcome_chips_en": [
+        "What's for lunch today?",
+        "A light dinner",
+        "Breakfast in 15 min",
+        "Guests are coming",
+    ],
+    "welcome_chips_hi": [
+        "आज लंच में क्या?",
+        "कुछ हल्का डिनर",
+        "15 मिनट में नाश्ता",
+        "मेहमान आ रहे हैं",
+    ],
+    "follow_ups_en": {
+        "nashta": ["High-protein breakfast", "Daughter's tiffin", "Something South Indian"],
+        "lunch": [
+            "Something light",
+            "Rainy-day special",
+            "Something with paneer",
+            "What for Dadi?",
+        ],
+        "dinner": [
+            "Something light",
+            "Rainy-day special",
+            "Something with paneer",
+            "What for Dadi?",
+        ],
+    },
+    "follow_ups_hi": {
+        "nashta": ["प्रोटीन वाला नाश्ता", "Daughter का टिफ़िन", "कुछ साउथ इंडियन"],
+        "lunch": ["कुछ हल्का", "बारिश स्पेशल", "पनीर वाला कुछ", "दादी के लिए क्या?"],
+        "dinner": ["कुछ हल्का", "बारिश स्पेशल", "पनीर वाला कुछ", "दादी के लिए क्या?"],
+    },
 }
 CHAT_SLOTS: tuple[Slot, ...] = ("nashta", "lunch", "dinner")
 
@@ -82,10 +119,53 @@ async def load_config(db: AsyncSession) -> dict[str, Any]:
     return cfg
 
 
-def follow_ups(cfg: dict[str, Any], slot: str) -> list[str]:
-    fu = cfg.get("follow_ups") or {}
-    chips = fu.get(slot) or DEFAULT_CONFIG["follow_ups"].get(slot) or []
+def lang_from_header(accept_language: str | None) -> Lang | None:
+    """The app sends its language tag: ``hi-Latn`` (Hinglish), ``en`` / ``en-IN``, ``hi``.
+    Browsers may send a weighted list; the first tag decides."""
+    if not accept_language:
+        return None
+    tag = accept_language.split(",")[0].split(";")[0].strip().lower().replace("_", "-")
+    if tag.startswith("hi-latn") or tag in ("hinglish", "hi-en"):
+        return "hinglish"
+    if tag == "hi" or tag.startswith("hi-"):
+        return "hi"
+    if tag == "en" or tag.startswith("en-"):
+        return "en"
+    return None
+
+
+def ui_lang(accept_language: str | None, user: User | None) -> Lang:
+    """Language for server-side UI text (chips, welcome): request header, then the user's
+    setting, then Hinglish."""
+    lang = lang_from_header(accept_language)
+    if lang is not None:
+        return lang
+    locale = user.locale if user is not None else None
+    return locale if locale in ("en", "hi", "hinglish") else "hinglish"  # type: ignore[return-value]
+
+
+def localized(cfg: dict[str, Any], key: str, lang: Lang) -> Any:
+    """``<key>_<lang>`` when configured and non-empty, else the Hinglish ``<key>``."""
+    if lang != "hinglish":
+        value = cfg.get(f"{key}_{lang}")
+        if value:
+            return value
+    return cfg.get(key)
+
+
+def follow_ups(cfg: dict[str, Any], slot: str, lang: Lang = "hinglish") -> list[str]:
+    fu = localized(cfg, "follow_ups", lang) or {}
+    chips = fu.get(slot) if isinstance(fu, dict) else None
+    if not chips:
+        base = cfg.get("follow_ups") or {}
+        chips = base.get(slot) or DEFAULT_CONFIG["follow_ups"].get(slot) or []
     return [str(c) for c in chips]
+
+
+def welcome(cfg: dict[str, Any], n: int, lang: Lang = "hinglish") -> tuple[str, list[str]]:
+    text = str(localized(cfg, "welcome", lang) or DEFAULT_CONFIG["welcome"])
+    chips = localized(cfg, "welcome_chips", lang) or []
+    return text.replace("{n}", str(n)), [str(c) for c in chips]
 
 
 def slot_label_from(cfg: dict[str, Any], slot: str) -> str:
@@ -225,6 +305,7 @@ async def answer(
     user: User,
     text: str,
     slot: str | None,
+    ui: Lang | None = None,
 ) -> Turn:
     """Runs parse -> retrieve -> rank and stores both messages. The bot text is filled here
     (template) unless the LLM writer will fill it later (``needs_write``)."""
@@ -310,7 +391,7 @@ async def answer(
             "template_text": template,
         },
         recipe_ids=[x.recipe.id for x in result.items],
-        chips=follow_ups(cfg, result.slot),
+        chips=follow_ups(cfg, result.slot, ui or ui_lang(None, user)),
         slot=result.slot,
         latency_ms=latency,
         status=ChatMessageStatus.pending if needs_write else ChatMessageStatus.complete,

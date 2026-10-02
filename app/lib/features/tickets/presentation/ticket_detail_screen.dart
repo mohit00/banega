@@ -121,6 +121,10 @@ class TicketDetailScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 12),
                   ],
+                  if (t.status == TicketStatus.unassigned) ...[
+                    _UnassignedPanel(ticket: t, busy: busy),
+                    const SizedBox(height: 12),
+                  ],
                   KitchenCard(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -557,6 +561,115 @@ class _EditSheetState extends State<_EditSheet> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// An unassigned ticket: the admin picks a cook ("Kisko dein…"), and any
+/// adult can take it as chef for the day ("Main banaunga").
+class _UnassignedPanel extends ConsumerWidget {
+  const _UnassignedPanel({required this.ticket, required this.busy});
+
+  final Ticket ticket;
+  final bool busy;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = AppLocalizations.of(context);
+    final me = ref.watch(meProvider).value;
+    final isAdmin = me?.isAdmin ?? false;
+    final canClaim = me?.hasFamily ?? false;
+    final cooks = isAdmin ? (ref.watch(cooksProvider).value ?? const <Cook>[]) : const <Cook>[];
+    final actions = ref.read(familyTicketActionsProvider);
+
+    Future<void> assign(Cook c) async {
+      try {
+        await actions.assign(ticket, c.id, c.kind);
+        if (context.mounted) BToast.show(context, l.ticketAssignedToast(c.name));
+      } on AlreadyInFlight {
+        // Double tap: ignored.
+      } on KitchenError catch (e) {
+        if (!context.mounted) return;
+        BToast.show(context, switch (e.code) {
+          'assignee_required' => l.ticketAssigneeRequired,
+          _ when e.isConflict => l.toastConflict,
+          _ => l.toastError,
+        });
+      } catch (_) {
+        if (context.mounted) BToast.show(context, l.toastError);
+      }
+    }
+
+    Future<void> claim() async {
+      try {
+        await actions.claim(ticket);
+        if (context.mounted) BToast.show(context, l.ticketClaimed);
+      } on AlreadyInFlight {
+        // Double tap: ignored.
+      } on KitchenError catch (e) {
+        if (!context.mounted) return;
+        BToast.show(context, e.code == 'already_claimed' || e.isConflict ? l.ticketAlreadyClaimed : l.toastError);
+        ref.invalidate(ticketProvider(ticket.id));
+      } catch (_) {
+        if (context.mounted) BToast.show(context, l.toastError);
+      }
+    }
+
+    return Container(
+      key: const ValueKey('ticket-unassigned'),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(color: BColors.tweakBg, borderRadius: BorderRadius.circular(BRadii.tile)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              const BIcon(BIcons.alert, size: 18, color: BColors.tweakFg),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  l.ticketUnassignedTitle,
+                  style: BText.body(BType.body, weight: FontWeight.w800, color: BColors.tweakFg),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            l.ticketUnassignedHint,
+            style: BText.body(BType.caption, weight: FontWeight.w600, color: BColors.ink2),
+          ),
+          if (isAdmin) ...[
+            const SizedBox(height: 12),
+            Text(l.ticketAssignTo, style: BText.body(BType.chip, weight: FontWeight.w800)),
+            const SizedBox(height: 6),
+            if (cooks.isEmpty)
+              Text(l.ticketNoCooks, style: BText.body(BType.caption, color: BColors.ink3))
+            else
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  for (final c in cooks)
+                    BChip(
+                      key: ValueKey('assign-${c.id}'),
+                      label: l.cookChip(c),
+                      onTap: busy || !c.onDuty ? null : () => assign(c),
+                    ),
+                ],
+              ),
+          ],
+          if (canClaim) ...[
+            const SizedBox(height: 12),
+            BCta(
+              key: const ValueKey('ticket-claim'),
+              label: l.ticketClaim,
+              trailing: BIcons.pot,
+              onPressed: busy ? null : claim,
+            ),
+          ],
+        ],
       ),
     );
   }

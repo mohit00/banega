@@ -2,15 +2,18 @@
 
 from __future__ import annotations
 
+import re
+import secrets
 import uuid
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from fastapi import APIRouter, status
 from sqlalchemy import ColumnElement, select, update
 
-from app.api.deps import DB, Auth, HouseholdCtx, active_membership
+from app.api.deps import DB, Auth, AuthContext, HouseholdCtx, active_membership
 from app.core.config import get_settings
-from app.core.errors import Conflict, Forbidden, Gone, NotFound
+from app.core.errors import Conflict, Forbidden, Gone, NotFound, TooManyRequests
+from app.core.kv import get_kv
 from app.core.security import hmac_hash, hmac_hash_candidates, new_url_token, utcnow
 from app.models import (
     Cook,
@@ -24,7 +27,15 @@ from app.models import (
     MembershipStatus,
 )
 from app.permissions import Action
-from app.schemas import InviteCreatedOut, InviteIn, InviteOut, MembershipOut, MeOut, UserOut
+from app.schemas import (
+    InviteCodeIn,
+    InviteCreatedOut,
+    InviteIn,
+    InviteOut,
+    MembershipOut,
+    MeOut,
+    UserOut,
+)
 from app.services.cooks import check_hired_limit, check_phone_free
 from app.services.membership import release_deleted_memberships
 
@@ -54,6 +65,50 @@ def _pending() -> list[ColumnElement[bool]]:
     return [Invite.used_at.is_(None), Invite.revoked_at.is_(None), Invite.expires_at > now]
 
 
+# No 0/O/1/I: the code is read out over the phone and typed on a small keyboard.
+CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+CODE_LENGTH = 6
+# Wrong codes per user per hour before accept-code locks (the code space is 32^6 and every
+# invite is also bound to the invitee's phone; this only stops scripted guessing).
+CODE_MAX_WRONG_PER_HOUR = 10
+
+
+def normalise_code(raw: str) -> str:
+    return re.sub(r"[\s\-_.]", "", raw).upper()
+
+
+def _code_hash(code: str) -> str:
+    return hmac_hash(f"invite-code:{code}", "invite")
+
+
+async def _new_code(db: DB) -> tuple[str, str]:
+    """A code no pending invite uses (any household)."""
+    for _ in range(10):
+        code = "".join(secrets.choice(CODE_ALPHABET) for _ in range(CODE_LENGTH))
+        digest = _code_hash(code)
+        taken = await db.execute(
+            select(Invite.id).where(Invite.code_hash == digest, *_pending()).limit(1)
+        )
+        if taken.first() is None:
+            return code, digest
+    raise Conflict("invite_code_exhausted")  # pragma: no cover - 1e9 codes
+
+
+def share_text(household: str, inviter: str | None, code: str, link: str, expires: datetime) -> str:
+    """WhatsApp-ready invite message: Hinglish first, then English, then the link."""
+    days = max(1, round((expires - utcnow()).total_seconds() / 86400))
+    who_hi = f"{inviter} ne aapko" if inviter else "Aapko"
+    who_en = f"{inviter} invited you" if inviter else "You're invited"
+    return (
+        f'Namaste! {who_hi} Banega par "{household}" ghar mein joda hai. '
+        f'Banega app kholiye, isi number se login kijiye aur "Code se judiye" mein ye code '
+        f"daaliye: {code} ({days} din tak chalega).\n\n"
+        f'Hi! {who_en} to the "{household}" family on Banega. Open the Banega app, log in '
+        f'with this phone number and choose "Join my family with a code": {code} '
+        f"(valid for {days} days).\n{link}"
+    )
+
+
 @router.post("", response_model=InviteCreatedOut, status_code=status.HTTP_201_CREATED)
 async def create_invite(body: InviteIn, ctx: HouseholdCtx, db: DB) -> InviteCreatedOut:
     ctx.require(Action.manage_members)
@@ -76,12 +131,14 @@ async def create_invite(body: InviteIn, ctx: HouseholdCtx, db: DB) -> InviteCrea
         .values(revoked_at=now)
     )
     token = new_url_token()
+    code, code_hash = await _new_code(db)
     invite = Invite(
         household_id=ctx.household.id,
         phone=body.phone,
         role=body.role,
         member_id=body.member_id,
         token_hash=hmac_hash(f"invite:{token}", "invite"),
+        code_hash=code_hash,
         expires_at=now + timedelta(days=get_settings().INVITE_TTL_DAYS),
         created_by=ctx.user.id,
     )
@@ -89,7 +146,14 @@ async def create_invite(body: InviteIn, ctx: HouseholdCtx, db: DB) -> InviteCrea
     await db.commit()
     await db.refresh(invite)
     base = InviteOut.model_validate(invite).model_dump()
-    return InviteCreatedOut(**base, token=token, link=f"{get_settings().INVITE_LINK_BASE}{token}")
+    link = f"{get_settings().INVITE_LINK_BASE}{token}"
+    return InviteCreatedOut(
+        **base,
+        token=token,
+        link=link,
+        code=code,
+        share_text=share_text(ctx.household.name, ctx.user.name, code, link, invite.expires_at),
+    )
 
 
 @router.get("", response_model=list[InviteOut])
@@ -121,6 +185,41 @@ _EXPIRED = Gone(
 )
 
 
+@router.post("/accept-code", response_model=MeOut)
+async def accept_invite_code(body: InviteCodeIn, auth: Auth, db: DB) -> MeOut:
+    """Join with the short code from the admin's WhatsApp message (same rules as the link)."""
+    kv = get_kv()
+    wrong_key = f"invite:code:wrong:{auth.user.id}"
+    if int(await kv.get(wrong_key) or 0) >= CODE_MAX_WRONG_PER_HOUR:
+        raise TooManyRequests(
+            "invite_code_locked",
+            "Too many wrong codes. Please try again in an hour.",
+            "Bahut baar galat code. Ek ghante baad try kijiye.",
+            details={"retry_after": await kv.ttl(wrong_key)},
+        )
+    code = normalise_code(body.code)
+    rows = (
+        await db.execute(
+            select(Invite)
+            .where(Invite.code_hash == _code_hash(code))
+            .order_by(Invite.created_at.desc())
+        )
+    ).scalars()
+    candidates = list(rows)
+    now = utcnow()
+    live = [
+        i for i in candidates if i.used_at is None and i.revoked_at is None and i.expires_at > now
+    ]
+    if not candidates:
+        await kv.incr(wrong_key, 3600)
+        raise NotFound(
+            "invite_code_invalid",
+            "This code is not right. Check the message and try again.",
+            "Ye code sahi nahi hai. Message dekh kar dobara daaliye.",
+        )
+    return await _accept(live[0] if live else candidates[0], auth, db)
+
+
 @router.post("/{token}/accept", response_model=MeOut)
 async def accept_invite(token: str, auth: Auth, db: DB) -> MeOut:
     """The invitee must be logged in by OTP on the same phone the admin invited."""
@@ -133,6 +232,10 @@ async def accept_invite(token: str, auth: Auth, db: DB) -> MeOut:
     ).scalar_one_or_none()
     if invite is None:
         raise NotFound("invite_not_found")
+    return await _accept(invite, auth, db)
+
+
+async def _accept(invite: Invite, auth: AuthContext, db: DB) -> MeOut:
     now = utcnow()
     if invite.used_at is not None or invite.revoked_at is not None or invite.expires_at <= now:
         raise _EXPIRED

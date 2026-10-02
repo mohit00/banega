@@ -31,6 +31,9 @@ abstract interface class TicketsRepository {
   Future<Ticket> ticket(String id);
 
   /// POST /v1/tickets/{id}/transitions; throws [KitchenError] on 409.
+  /// [assigneeCookId] picks the cook when an unassigned ticket moves to
+  /// new (hired cook) or accepted (family cook); the server answers 422
+  /// `assignee_required` without it.
   Future<Ticket> transition(
     String id,
     TicketStatus to, {
@@ -38,6 +41,7 @@ abstract interface class TicketsRepository {
     required String idempotencyKey,
     String? reason,
     String? note,
+    String? assigneeCookId,
   });
 
   /// PATCH /v1/tickets/{id} (If-Match version).

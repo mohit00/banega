@@ -68,7 +68,11 @@ class Settings(BaseSettings):
 
     LOG_LEVEL: str = "INFO"
     LOG_JSON: bool = True
+    # Crash reporting (optional): empty DSN = Sentry is never initialised. Events are
+    # scrubbed of phone numbers, tokens, auth headers and request bodies (app/core/sentry.py).
     SENTRY_DSN: str = ""
+    SENTRY_TRACES_SAMPLE_RATE: float = 0.0
+    SENTRY_RELEASE: str = ""
 
     # ---- Maharaj chat (Phase 4) ----------------------------------------------------------
     # Empty key = no LLM: the rule parser and the template writer answer every message.

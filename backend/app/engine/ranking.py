@@ -18,6 +18,7 @@ from app.engine.types import (
     ScoreContext,
     Summary,
     Weights,
+    likes_cuisine,
 )
 from app.models.enums import Diet, Spice
 
@@ -52,8 +53,8 @@ def score(
         total += w.can
         if status == FitStatus.fit:
             total += w.perfect
-        if ef.fit.reason_key == "favourite_cuisine" or (
-            recipe.cuisine is not None and recipe.cuisine in cuisines_by_id.get(ef.eater_id, ())
+        if ef.fit.reason_key == "favourite_cuisine" or likes_cuisine(
+            recipe.cuisine, cuisines_by_id.get(ef.eater_id, ())
         ):
             total += w.favourite_cuisine
         needs = needs_by_id.get(ef.eater_id, frozenset())

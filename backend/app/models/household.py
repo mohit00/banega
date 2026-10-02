@@ -214,6 +214,9 @@ class Invite(UUIDPk, Timestamped, Base):
         ForeignKey("members.id", ondelete="SET NULL"), index=True
     )
     token_hash: Mapped[str] = mapped_column(String(64), unique=True, nullable=False)
+    # Short human-typeable code (e.g. "K7Q4MX"), hashed like the token. Unique among pending
+    # invites only (checked at creation), so the column is indexed, not unique.
+    code_hash: Mapped[str | None] = mapped_column(String(64), index=True)
     expires_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
     used_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
     revoked_at: Mapped[datetime | None] = mapped_column(UTCDateTime())

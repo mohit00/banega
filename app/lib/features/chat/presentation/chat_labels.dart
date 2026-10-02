@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart' show Locale;
+
 import '../../../core/l10n/gen/app_localizations.dart';
 import '../../../labels/labels.dart';
 import '../domain/chat_models.dart';
@@ -28,6 +30,38 @@ extension ChatLabels on AppLocalizations {
     final options = chatOptions(slot(t.slot), t.count);
     final head = t.why.isEmpty ? options : chatOptionsWhy(options, t.why.map(why).join(', '));
     return '$head.\n${chatFamilyCan(t.allOk)} ${constraintLineFor(t.members)}.';
+  }
+
+  /// Server chips arrive in the request language; an older server (or an
+  /// admin-edited config without translations) sends Hinglish. Known
+  /// Hinglish chips are shown in the app's language; anything else as is.
+  String localizeChip(String chip) {
+    final hl = lookupAppLocalizations(const Locale.fromSubtags(languageCode: 'hi', scriptCode: 'Latn'));
+    if (localeName == hl.localeName) return chip;
+    final key = chip.trim().toLowerCase();
+    final pairs = <(String, String)>[
+      (hl.chatChipLunch, chatChipLunch),
+      (hl.chatChipHalkaDinner, chatChipHalkaDinner),
+      (hl.chatChipNashta, chatChipNashta),
+      (hl.chatChipMehmaan, chatChipMehmaan),
+      (hl.followProteinNashta, followProteinNashta),
+      (hl.followTiffin, followTiffin),
+      (hl.followSouth, followSouth),
+      (hl.followHalka, followHalka),
+      (hl.followBaarish, followBaarish),
+      (hl.followPaneer, followPaneer),
+      (hl.followDadi, followDadi),
+      (hl.quickAsk15Min, quickAsk15Min),
+      (hl.quickAskHalka, quickAskHalka),
+      (hl.quickAskBaarish, quickAskBaarish),
+      (hl.quickAskTiffin, quickAskTiffin),
+      (hl.quickAskMehmaan, quickAskMehmaan),
+      (hl.quickAskProtein, quickAskProtein),
+    ];
+    for (final (source, translated) in pairs) {
+      if (source.trim().toLowerCase() == key) return translated;
+    }
+    return chip;
   }
 
   List<String> chips(ChipSet s) => switch (s) {

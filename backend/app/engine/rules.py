@@ -27,6 +27,7 @@ from app.engine.types import (
     NonVegExclusion,
     RecipeView,
     Summary,
+    likes_cuisine,
 )
 from app.models.enums import Diet, Spice
 
@@ -107,9 +108,7 @@ def fit(eater: EaterView, recipe: RecipeView) -> Fit:
         or _first_tweak(eater, recipe)
         or Fit(
             FitStatus.fit,
-            "favourite_cuisine"
-            if recipe.cuisine is not None and recipe.cuisine in eater.cuisines
-            else "perfect",
+            "favourite_cuisine" if likes_cuisine(recipe.cuisine, eater.cuisines) else "perfect",
         )
     )
 
@@ -123,9 +122,7 @@ def summarize(eaters: Sequence[EaterView], recipe: RecipeView) -> Summary:
     like = sum(
         1
         for e, f in zip(eaters, fits, strict=True)
-        if recipe.cuisine is not None
-        and recipe.cuisine in e.cuisines
-        and f.fit.status != FitStatus.no
+        if likes_cuisine(recipe.cuisine, e.cuisines) and f.fit.status != FitStatus.no
     )
     tweaks = [f for f in fits if f.fit.status == FitStatus.tweak]
     nos = [f for f in fits if f.fit.status == FitStatus.no]

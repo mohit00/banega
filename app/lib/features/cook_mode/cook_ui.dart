@@ -284,15 +284,20 @@ class _DutyToggle extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context);
+    // A hired cook cannot read /v1/cooks (403), so fall back to /v1/me.cook.
     final cooks = ref.watch(cooksProvider).value ?? const <Cook>[];
-    final cook = cooks.where((c) => c.id == cookId).firstOrNull;
-    if (cook == null) return const SizedBox.shrink();
-    final on = cook.onDuty;
+    final listed = cooks.where((c) => c.id == cookId).firstOrNull;
+    final self = ref.watch(meProvider).value?.cook;
+    final mine = self != null && self.id == cookId ? self : null;
+    if (listed == null && mine == null) return const SizedBox.shrink();
+    final on = listed?.onDuty ?? mine!.onDuty;
+    final offDutyUntil = listed?.offDutyUntil ?? mine?.offDutyUntil;
 
     Future<void> patch(CookPatch p) async {
       try {
         await ref.read(cooksRepositoryProvider).patchCook(cookId, p);
         ref.read(kitchenRevisionProvider.notifier).bump();
+        ref.invalidate(meProvider);
       } catch (_) {
         if (context.mounted) BToast.show(context, l.cookError);
       }
@@ -349,7 +354,7 @@ class _DutyToggle extends ConsumerWidget {
       if (until != null) await patch(CookPatch(onDuty: false, offDutyUntil: until));
     }
 
-    final untilDay = cook.offDutyUntil?.subtract(const Duration(days: 1));
+    final untilDay = offDutyUntil?.subtract(const Duration(days: 1));
     final label = on
         ? l.cookOnDuty
         : untilDay == null

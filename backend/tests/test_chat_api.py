@@ -498,3 +498,52 @@ async def test_llm_never_sees_untyped_names_allergens_or_health(
     assert "Dadi: Jain" in write_prompt
     assert "one mild spice eater" in write_prompt
     assert "Mummy (peanut" not in write_prompt
+
+
+async def test_chips_follow_the_request_language(client: AsyncClient, login: Login) -> None:
+    """Welcome text and chips come back in the app's language (Accept-Language); Hinglish is
+    the fallback, and the user's saved locale is used when the header says nothing."""
+    await _seed()
+    h = await login(DEMO_PHONE)
+    en = {**h, "Accept-Language": "en-IN"}
+    r = (await client.post("/v1/chat/sessions", json={"slot": "lunch"}, headers=en)).json()
+    assert r["welcome"]["text"].startswith("Namaste! I'm Maharaj.")
+    assert r["welcome"]["chips"][0] == "What's for lunch today?"
+    reply_en = (await _ask(client, en, r["session_id"], "Kuch halka", slot="lunch")).json()
+    assert reply_en["chips"] == [
+        "Something light",
+        "Rainy-day special",
+        "Something with paneer",
+        "What for Dadi?",
+    ]
+
+    hi = {**h, "Accept-Language": "hi"}
+    r = (await client.post("/v1/chat/sessions", json={"slot": "nashta"}, headers=hi)).json()
+    assert r["welcome"]["chips"][0] == "आज लंच में क्या?"
+    reply_hi = (await _ask(client, hi, r["session_id"], "Kuch halka", slot="nashta")).json()
+    assert reply_hi["chips"][0] == "प्रोटीन वाला नाश्ता"
+
+    hinglish = {**h, "Accept-Language": "hi-Latn"}
+    r = (await client.post("/v1/chat/sessions", json={"slot": "dinner"}, headers=hinglish)).json()
+    assert r["welcome"]["chips"][0] == "Aaj lunch mein kya?"
+    reply_hl = (await _ask(client, hinglish, r["session_id"], "Kuch halka", slot="dinner")).json()
+    assert reply_hl["chips"][0] == "Kuch halka"
+
+
+async def test_translated_chips_ask_the_same_thing(client: AsyncClient, login: Login) -> None:
+    """Tapping an English or Hindi chip finds the same dishes as its Hinglish original."""
+    await _seed()
+    h = await login(DEMO_PHONE)
+    sid = await _session(client, h)
+    from app.services.maharaj.pipeline import DEFAULT_CONFIG
+
+    for lang in ("en", "hi"):
+        pairs = zip(
+            DEFAULT_CONFIG["follow_ups"]["lunch"],
+            DEFAULT_CONFIG[f"follow_ups_{lang}"]["lunch"],
+            strict=True,
+        )
+        for base, translated in pairs:
+            a = (await _ask(client, h, sid, base, slot="lunch")).json()
+            b = (await _ask(client, h, sid, translated, slot="lunch")).json()
+            assert [c["slug"] for c in a["cards"]] == [c["slug"] for c in b["cards"]], translated

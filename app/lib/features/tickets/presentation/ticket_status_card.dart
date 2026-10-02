@@ -55,12 +55,13 @@ class TicketStatusCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
-    final who = ticket.assignee?.name ?? l.ticketNoAssignee;
+    final unassigned = ticket.status == TicketStatus.unassigned;
+    final who = unassigned ? l.ticketUnassignedTitle : (ticket.assignee?.name ?? l.ticketNoAssignee);
     final title = l.ticketCardTitle(l.slotKey(ticket.slot));
     return Pressable(
       key: const ValueKey('home-ticket-card'),
       onTap: onTap,
-      semanticLabel: '$title. ${l.ticketStatus(ticket.status)}. $who',
+      semanticLabel: [title, l.ticketStatus(ticket.status), who, if (unassigned) l.ticketUnassignedCard].join('. '),
       builder: (context, pressed) => PressScale(
         pressed: pressed,
         child: ExcludeSemantics(
@@ -81,8 +82,35 @@ class TicketStatusCard extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   [who, if (ticket.dueAt != null) l.dueBy(hm(ticket.dueAt!))].join(' · '),
-                  style: BText.body(BType.caption, weight: FontWeight.w700, color: BColors.ink3),
+                  style: BText.body(
+                    BType.caption,
+                    weight: unassigned ? FontWeight.w800 : FontWeight.w700,
+                    color: unassigned ? BColors.tweakFg : BColors.ink3,
+                  ),
                 ),
+                if (unassigned) ...[
+                  const SizedBox(height: 6),
+                  Container(
+                    key: const ValueKey('home-ticket-unassigned'),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: BColors.tweakBg,
+                      borderRadius: BorderRadius.circular(BRadii.small),
+                    ),
+                    child: Row(
+                      children: [
+                        const BIcon(BIcons.alert, size: 14, color: BColors.tweakFg),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            l.ticketUnassignedCard,
+                            style: BText.body(BType.caption, weight: FontWeight.w800, color: BColors.tweakFg),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 4),
                 Text(
                   ticket.dishes.map((d) => d.name).join(', '),

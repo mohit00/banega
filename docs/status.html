@@ -110,19 +110,19 @@ footer{margin-top:36px;color:var(--ink3);font-size:12.5px}
     </div>
     <h1 class="disp">Kya ban gaya, kya baaki hai</h1>
     <p>Every Banega feature across the Flutter app, the FastAPI backend and the admin panel, marked as done, being fixed now, or left. Each card says how to use the feature today.</p>
-    <div class="meta">Status as of 27 Sep 2026, evening · Stack: Flutter · FastAPI · Postgres + pgvector · Redis · Docker · Starlette-Admin</div>
+    <div class="meta">Status as of 2 Oct 2026 · Stack: Flutter · FastAPI · Postgres + pgvector · Redis · Docker · Starlette-Admin</div>
   </div>
 </header>
 
 <main class="wrap">
   <div class="summary" aria-label="Summary">
-    <div class="sum done"><b>44</b><span>Features done and working</span></div>
+    <div class="sum done"><b>48</b><span>Features done and working</span></div>
     <div class="sum fix"><b>0</b><span>Nothing in progress; all fixes landed</span></div>
-    <div class="sum left"><b>10</b><span>Left, mostly need outside accounts</span></div>
+    <div class="sum left"><b>9</b><span>Left, mostly need outside accounts</span></div>
     <div class="sum"><b>7/7</b><span>Build phases complete on both sides</span></div>
   </div>
-  <div class="bar" role="img" aria-label="44 done, 0 being fixed, 10 left">
-    <i class="d" style="width:81.5%"></i><i class="f" style="width:0.0%"></i><i class="l" style="width:18.5%"></i>
+  <div class="bar" role="img" aria-label="48 done, 0 being fixed, 9 left">
+    <i class="d" style="width:84.2%"></i><i class="f" style="width:0.0%"></i><i class="l" style="width:15.8%"></i>
   </div>
 
   <nav class="filters" aria-label="Filter features">
@@ -328,6 +328,30 @@ footer{margin-top:36px;color:var(--ink3);font-size:12.5px}
         <ol class="how"><li>Trial banner on Home shows days left. Tap it to open the paywall.</li></ol>
       </article>
 
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Invite a family member</h3><span class="tag done">Done</span></div>
+        <p>The admin invites another adult by phone and gets a 6-character code to share on WhatsApp. The invitee logs in and joins with the code instead of creating a new home.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how">
+          <li>Admin: Settings, then <b>Invite a family member</b>: pick the profile, enter their phone, <b>Create invite</b>.</li>
+          <li>Share the code with <b>Share on WhatsApp</b> or <b>Copy code</b>. Pending invites can be revoked.</li>
+          <li>Invitee: log in with that phone, tap <b>Join my family with a code</b>, type the code.</li>
+        </ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Unassigned tickets and "I'll cook today"</h3><span class="tag done">Done</span></div>
+        <p>A ticket with no cook shows clearly on Home. The admin assigns a cook, or any adult claims it and gets the Rasoi tab.</p>
+        <div class="lbl">How to use</div>
+        <ol class="how"><li>Tap the "Not assigned" ticket card, then <b>Assign to</b> a cook or <b>I'll cook today</b>.</li></ol>
+      </article>
+
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>Log out</h3><span class="tag done">Done</span></div>
+        <p>Family: the gear on Home, then the bottom of Settings. Cook: the <b>Log out</b> button on the main tickets screen, with a confirmation.</p>
+      </article>
+
       <article class="feat" data-status="left">
         <div class="feat-top"><h3>Real store billing</h3><span class="tag left">Left</span></div>
         <p>Needs the Play Console and App Store Connect products (banega_weekly_50) and the in_app_purchase plugin wired to the adapter.</p>
@@ -340,7 +364,7 @@ footer{margin-top:36px;color:var(--ink3);font-size:12.5px}
 
       <article class="feat" data-status="left">
         <div class="feat-top"><h3>Recipe photos</h3><span class="tag left">Left</span></div>
-        <p>The prototype's photos were external links. Tiles show a painted katori until photos are uploaded in the admin panel.</p>
+        <p>No recipe has a photo yet: every link in the sheet is a placeholder. Add real image links to the sheet and re-import, or upload in the admin panel.</p>
       </article>
 
       <article class="feat" data-status="left">
@@ -481,9 +505,12 @@ footer{margin-top:36px;color:var(--ink3);font-size:12.5px}
         <p>Pre-rendered TTS files per recipe. On-device Hindi voice works today.</p>
       </article>
 
-      <article class="feat" data-status="left">
-        <div class="feat-top"><h3>1,000 recipes with reviewed Hindi steps</h3><span class="tag left">Left</span></div>
-        <p>Content work: grow from 22 to the FRD's 1,000 target, with Hindi steps reviewed by a native speaker.</p>
+      <article class="feat" data-status="done">
+        <div class="feat-top"><h3>1,000-recipe catalogue</h3><span class="tag done">Done</span></div>
+        <p>The master sheet is imported: 989 recipes published with English and Hindi steps, 286 ingredients with allergy and Jain flags. 17 are held for review in the admin panel.</p>
+        <div class="lbl">How to update</div>
+        <ol class="how"><li>Edit <code>content\recipes-master.csv</code> and run the import command in <code>backend\README.md</code>, or upload the CSV in the admin panel.</li></ol>
+        <div class="note">Hindi steps still need a native-speaker review before launch.</div>
       </article>
 
       <article class="feat" data-status="left">
@@ -597,12 +624,12 @@ footer{margin-top:36px;color:var(--ink3);font-size:12.5px}
       <table>
         <thead><tr><th>Check</th><th>Result</th><th>Notes</th></tr></thead>
         <tbody>
-          <tr><td>Backend tests</td><td class="n">693 passed</td><td>On SQLite and on Postgres; ruff and mypy strict clean</td></tr>
-          <tr><td>Flutter tests</td><td class="n">286 passed</td><td>flutter analyze clean; goldens and 200% text checks included</td></tr>
-          <tr><td>Migrations on Postgres</td><td class="n">0001 → 0010</td><td>Round trip down and up passes</td></tr>
-          <tr><td>App on emulator, live server</td><td class="n">Passed</td><td>OTP login, Home recommendations, Maharaj chat</td></tr>
-          <tr><td>Maharaj parser</td><td class="n">112 / 112</td><td>Golden set, 95% gate</td></tr>
-          <tr><td>Docker images</td><td class="n">Build</td><td>API and admin; nginx config passes nginx -t</td></tr>
+          <tr><td>Backend tests</td><td class="n">712 passed</td><td>SQLite and Postgres; ruff and mypy strict clean</td></tr>
+          <tr><td>Flutter tests</td><td class="n">310 passed</td><td>flutter analyze clean; goldens and 200% text checks</td></tr>
+          <tr><td>Live API test (app code vs server)</td><td class="n">7 / 7 flows</td><td>Login, members, recipes, chat, menu to ticket, full cook flow with swap, admin</td></tr>
+          <tr><td>Emulator, live server</td><td class="n">Passed</td><td>Login, Home, recipe detail, day menu, invite and join with code</td></tr>
+          <tr><td>Migrations on Postgres</td><td class="n">0001 to 0012</td><td>Round trip down and up passes</td></tr>
+          <tr><td>Catalogue</td><td class="n">989 published</td><td>From the 1,000-row master sheet; 17 held for review</td></tr>
         </tbody>
       </table>
     </div>

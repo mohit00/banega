@@ -486,6 +486,7 @@ class DemoKitchen implements MenusRepository, TicketsRepository, CooksRepository
     required String idempotencyKey,
     String? reason,
     String? note,
+    String? assigneeCookId,
   }) async {
     final replay = _idempotent[idempotencyKey];
     if (replay is Ticket) return _tickets[replay.id] ?? replay;
@@ -502,7 +503,19 @@ class DemoKitchen implements MenusRepository, TicketsRepository, CooksRepository
     }
     var base = t;
     if (t.status == TicketStatus.unassigned && to != TicketStatus.cancelled) {
-      final c = _cook(meCookId) ?? _primaryOnDuty(t.dueAt ?? now());
+      // Like the server: the chosen cook decides the state (hired → new,
+      // family → accepted); a mismatch is a 409 naming the right one.
+      final chosen = _cook(assigneeCookId);
+      if (assigneeCookId != null && chosen == null) {
+        throw KitchenError(status: 404, code: 'cook_not_found', allowed: allowed);
+      }
+      if (chosen != null) {
+        final implied = chosen.kind == CookKind.hired ? TicketStatus.fresh : TicketStatus.accepted;
+        if (implied != to) {
+          throw KitchenError(status: 409, code: KitchenError.invalidTransition, allowed: [implied]);
+        }
+      }
+      final c = chosen ?? _cook(meCookId) ?? _primaryOnDuty(t.dueAt ?? now());
       if (c != null) base = _reassign(t, c);
     }
     final by = switch (to) {
@@ -975,7 +988,16 @@ class _CookView implements TicketsRepository {
     required String idempotencyKey,
     String? reason,
     String? note,
-  }) => k.transition(id, to, version: version, idempotencyKey: idempotencyKey, reason: reason, note: note);
+    String? assigneeCookId,
+  }) => k.transition(
+    id,
+    to,
+    version: version,
+    idempotencyKey: idempotencyKey,
+    reason: reason,
+    note: note,
+    assigneeCookId: assigneeCookId,
+  );
 
   @override
   Future<Ticket> patchTicket(String id, TicketPatch patch, {required int version}) =>

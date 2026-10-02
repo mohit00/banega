@@ -56,8 +56,9 @@ lib/
 ## Notes
 
 - **Locale.** Hinglish is the template locale, coded `hi_Latn`
-  (`app_hi_Latn.arb`). `app_en.arb` and `app_hi.arb` are copies waiting for
-  translation. The app pins `hi-Latn` via `localeProvider` in `app.dart`;
+  (`app_hi_Latn.arb`). `app_en.arb` (English) and `app_hi.arb` (Hindi,
+  Devanagari) are translated; `test/l10n_test.dart` fails on a value left in
+  Hinglish (allow-lists for brand names and formats). The app pins `hi-Latn` via `localeProvider` in `app.dart`;
   set it to `null` to follow the device once en/hi are translated.
 - **Fonts** are bundled (no runtime fetching): Figtree, Bricolage Grotesque
   and Noto Sans Devanagari, all variable TTFs from github.com/google/fonts
@@ -109,6 +110,42 @@ lib/
 - **Device-only member fields**: vrat days and "show health on Home" have no
   API field yet. They are stored on the device (`member.local.<id>`).
 
+## Family invites and chef for the day
+
+- **Invite a second adult** (admin): Settings → "Banega par parivaar" lists
+  pending invites (masked phone, expiry, revoke) and "Parivaar ke kisi ko
+  bulao" opens a sheet: pick an existing profile or a new member, the phone
+  (+91), then the 6-character code with "WhatsApp par bhejo" (the server's
+  share text) and copy (`features/invites/`).
+- **Join with a code** (invitee): a signed-in user without a household sees
+  "Code se judiye" under "Ghar banao" → `/household/join` (six boxes, like
+  the OTP) → `POST /v1/invites/accept-code` → `/v1/me` refresh → Home. Wrong,
+  expired, other-number, already-in-a-household and locked codes each get
+  their own message.
+- **Unassigned tickets**: the Home ticket card says "Kaun banayega?"; the
+  ticket detail lets the admin assign a cook (hired → `new`, family →
+  `accepted`, with `assignee_cook_id`) and any adult take it as chef for the
+  day ("Main banaunga", `POST /claim`; a lost race shows a toast). After a
+  claim `/v1/me` is refetched, so the Rasoi tab appears. Inbox
+  `ticket_unassigned` / `no_show` items open the ticket.
+- **Chat chips** follow the app language: the server localizes them from
+  `Accept-Language`, and known Hinglish chips are translated on the device
+  as a fallback (`ChatLabels.localizeChip`).
+
+## Crash reporting (optional)
+
+Sentry is off unless the build passes a DSN:
+
+```powershell
+& "D:\DevTools\flutter\bin\flutter.bat" build appbundle --release --dart-define=SENTRY_DSN=https://<key>@<org>.ingest.sentry.io/<project> --dart-define=SENTRY_ENVIRONMENT=production
+```
+
+With no DSN `runWithCrashReporting` (`lib/core/crash_reporting.dart`) just runs
+the app. With one, `beforeSend` / `beforeBreadcrumb` mask phone numbers, JWTs,
+bearer tokens and OTP / invite codes, drop request bodies, cookies and
+headers, and keep only the user's id; screenshots and PII are off. Tests run
+without a DSN (`test/crash_reporting_test.dart`).
+
 ## Release signing (Android)
 
 Create `android/key.properties` (git-ignored):
@@ -144,5 +181,3 @@ switch in Settings exist only in debug builds.
   shared_preferences to drift (per-row outbox, migrations).
 - **Store billing**: real `in_app_purchase` behind `StoreBillingAdapter`.
   Until then purchase and restore are unavailable and send nothing.
-- `app_hi.arb` (Devanagari) still has many untranslated keys that fall back
-  to Hinglish.

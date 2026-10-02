@@ -47,6 +47,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: Routes.phone, pageBuilder: (c, s) => _rise(s, const PhoneScreen())),
       GoRoute(path: Routes.otp, pageBuilder: (c, s) => _rise(s, const OtpScreen())),
       GoRoute(path: Routes.createHousehold, pageBuilder: (c, s) => _rise(s, const CreateHouseholdScreen())),
+      GoRoute(path: Routes.joinHousehold, pageBuilder: (c, s) => _rise(s, const JoinHouseholdScreen())),
       GoRoute(path: Routes.family, pageBuilder: (c, s) => _rise(s, const FamilyScreen())),
       GoRoute(
         path: Routes.prefsPattern,

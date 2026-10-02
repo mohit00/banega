@@ -361,6 +361,63 @@ class TicketActions {
     }
   }
 
+  /// Admin: an unassigned ticket goes to [cookId] — `new` for a hired cook
+  /// (she accepts it), `accepted` for a family cook. When the server's 409
+  /// names the one state this cook implies, that state is tried once.
+  Future<Ticket> assign(Ticket t, String cookId, CookKind kind) => _once(t.id, () async {
+    final to = kind == CookKind.hired ? TicketStatus.fresh : TicketStatus.accepted;
+    try {
+      return await _assign(t, to, cookId);
+    } on KitchenError catch (e) {
+      final implied = e.allowed.length == 1 ? e.allowed.single : null;
+      final retry =
+          e.code == KitchenError.invalidTransition &&
+          implied != to &&
+          (implied == TicketStatus.fresh || implied == TicketStatus.accepted);
+      if (!retry) rethrow;
+      return _assign(t, implied!, cookId);
+    }
+  });
+
+  Future<Ticket> _assign(Ticket t, TicketStatus to, String cookId) async {
+    try {
+      final next = await _repo.transition(
+        t.id,
+        to,
+        version: t.version,
+        idempotencyKey: _intent(['assign', t.id, t.version, to.wire, cookId]),
+        assigneeCookId: cookId,
+      );
+      _changed();
+      return next;
+    } on KitchenError {
+      _changed();
+      rethrow;
+    }
+  }
+
+  /// "Main banaunga": the caller becomes today's chef (first claim wins;
+  /// 409 `already_claimed` otherwise). The caller now holds a cook role, so
+  /// /v1/me is refetched and the Rasoi tab appears.
+  Future<Ticket> claim(Ticket t) => _once(t.id, () async {
+    try {
+      final next = await _repo.claim(t.id);
+      _changed();
+      if (ref.read(dataSourceProvider) == DataSource.demo) {
+        final cookId = next.assignee?.cookId;
+        if (ref.read(demoCookRoleProvider) == null && cookId != null) {
+          ref.read(demoCookRoleProvider.notifier).set(cookId);
+        }
+      } else {
+        ref.invalidate(meProvider);
+      }
+      return next;
+    } on KitchenError {
+      _changed();
+      rethrow;
+    }
+  });
+
   Future<Ticket> markItemOut(Ticket t, RequiredItem item) => _once(t.id, () => _markItemOut(t, item));
 
   Future<Ticket> _markItemOut(Ticket t, RequiredItem item) async {

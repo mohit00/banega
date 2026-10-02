@@ -8,6 +8,9 @@ abstract final class Routes {
   static const phone = '/phone';
   static const otp = '/otp';
   static const createHousehold = '/household/new';
+
+  /// "Code se judiye": join an existing family with an invite code.
+  static const joinHousehold = '/household/join';
   static const family = '/family';
   static const prefsPattern = '/prefs/:memberId';
   static String prefs(String memberId) => '/prefs/$memberId';

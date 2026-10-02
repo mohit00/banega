@@ -33,6 +33,7 @@ from app.core.config import get_settings
 from app.core.db import get_sessionmaker
 from app.core.logging_setup import configure_logging
 from app.core.security import utcnow
+from app.core.sentry import init_sentry
 from app.models import (
     Approval,
     AuthSession,
@@ -266,6 +267,7 @@ async def heartbeat(ctx: dict[str, Any]) -> None:
 async def startup(ctx: dict[str, Any]) -> None:
     s = get_settings()
     configure_logging(s.LOG_LEVEL, s.LOG_JSON)
+    init_sentry("worker")
     log.info("worker_startup")
 
 

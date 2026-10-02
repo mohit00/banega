@@ -19,7 +19,8 @@ if (hasReleaseKeystore) {
 
 android {
     namespace = "in.kornea.banega"
-    compileSdk = flutter.compileSdkVersion
+    // 36: package_info_plus (via sentry_flutter) needs it; Flutter's default is older.
+    compileSdk = maxOf(flutter.compileSdkVersion, 36)
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

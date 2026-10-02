@@ -148,6 +148,8 @@ policies, requires secrets and adds a daily `pg_dump`.
 | `CATALOGUE_CACHE_SECONDS` | `60` | published-catalogue snapshot re-check interval |
 | `EXPORT_TTL_DAYS` | `7` | data exports (files + rows) are deleted after this |
 | `CONSENT_VERSION` | `2026-09` | DPDP notice version the app must post to `/v1/consent` |
+| `SENTRY_DSN` | empty | crash reporting for the API and the worker; empty = Sentry is never initialised (see "Crash reporting") |
+| `SENTRY_TRACES_SAMPLE_RATE` / `SENTRY_RELEASE` | `0.0` / empty | performance sampling (off by default); release tag |
 | `MEDIA_DIR` | `media` | data exports go to `MEDIA_DIR/exports/{household}/` (nginx returns 404 for `/media/exports/`) |
 
 Access tokens last 15 minutes. Refresh tokens last 90 days and rotate on every use; if an old
@@ -173,6 +175,12 @@ refresh token is used again, the whole session is revoked.
 | `GET/POST /v1/members`, `GET/PATCH/DELETE /v1/members/{id}` | DELETE archives the member |
 | `GET/POST /v1/invites`, `DELETE /v1/invites/{id}` | admin only; bound to a phone, 7 days, single use |
 | `POST /v1/invites/{token}/accept` | the OTP-verified phone must match the invite |
+| `POST /v1/invites/accept-code {code}` | same rules with the short code ("Join my family with a code"): 404 `invite_code_invalid`, 410 `invite_expired` (used / revoked / expired), 403 `invite_phone_mismatch`, 409 `already_in_household`, 429 `invite_code_locked` after 10 wrong codes per user per hour |
+
+`POST /v1/invites` also returns `code` (6 characters, `A-Z 2-9` without `0 O 1 I`, unique among
+pending invites, stored only as an HMAC hash like the token; separators and lower case are
+accepted on input), `expires_at` and `share_text` (Hinglish, then English, with the code and the
+link) for the WhatsApp share sheet. A new invite to the same phone revokes the pending one.
 | `GET/PATCH/DELETE /v1/me`, `POST /v1/me/restore` | account deletion with a 7-day undo |
 | `POST /v1/devices`, `DELETE /v1/devices/{id}` | registers push tokens |
 
@@ -219,6 +227,13 @@ The LLM sees the user's text as quoted data and member names only when the user 
 | `GET /v1/chat/sessions/{id}/messages?cursor=&limit=` | oldest first; bot messages carry `cards` |
 | `POST /v1/chat/sessions/{id}/messages {text, slot?}` | 200 `{message_id, cards, slot, chips, text, status}`. With an LLM writer: `text: null, status: pending`, the write runs in the ARQ worker (`maharaj_write`) or, with `REDIS_URL=memory://`, a background task. Without: template text inline. 410 on an expired session, 429 over 30 messages / user / 10 min |
 | `GET /v1/chat/messages/{id}` | `{message_id, text, status}` for polling the pending text |
+
+Welcome text and chips (session open) and follow-up chips (each reply) come back in the
+request's language: `Accept-Language` `en*` -> English, `hi` -> Hindi (Devanagari), `hi-Latn`
+-> Hinglish; without a usable header the user's saved locale, then Hinglish. The texts are the
+AppConfig keys `welcome`, `welcome_chips`, `follow_ups`, `quick_asks` (Hinglish, the fallback)
+plus `<key>_en` / `<key>_hi` (`content/app-config.seed.json`; reseed to load them). Every
+translated chip parses to the same query as its Hinglish original (tested).
 
 Cards are `RecipeCardOut`, the same schema as `/v1/recommendations` tiles. Sessions are per
 user and private (F-5.4-01): other users, including the admin, get 404; a hired cook gets 403
@@ -570,7 +585,21 @@ user; compose and image healthchecks use `/v1/health/ready`.
 - Backups off the VM (object storage) and a restore drill; Redis `requirepass` is in the
   prod override (`REDIS_PASSWORD`).
 
+## Crash reporting (optional)
+
+Set `SENTRY_DSN` to send unhandled errors from the API (FastAPI / Starlette integration) and
+the worker (ARQ integration) to Sentry; without it nothing is initialised and nothing leaves
+the server. `app/core/sentry.py` scrubs every event and breadcrumb before it is sent:
+`send_default_pii=False`, request bodies never attached, cookies and the `Authorization`,
+`X-Device-Id`, `Idempotency-Key` and forwarding headers dropped, the user reduced to its id,
+and phone numbers, JWTs, bearer tokens and keys such as `phone`, `*token*`, `otp`, `code`
+masked anywhere in messages, exception values, extras and breadcrumbs. Local variables are not
+captured. `tests/test_sentry.py` covers the scrubber and the no-DSN no-op.
+
 ## Migrations
+
+`0012_invite_code` adds `invites.code_hash` (indexed, nullable: invites created before it have
+no code and keep working by link).
 
 ```bash
 scripts/dev.sh revision "add tickets"   # autogenerate against DATABASE_URL

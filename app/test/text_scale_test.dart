@@ -25,6 +25,7 @@ void main() {
       Routes.consent,
       Routes.phone,
       Routes.createHousehold,
+      Routes.joinHousehold,
     ]) {
       c.read(routerProvider).go(route);
       await settle(tester);

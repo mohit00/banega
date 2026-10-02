@@ -162,6 +162,9 @@ Future<void> openInboxItem(BuildContext context, WidgetRef ref, InboxItem i) asy
       await context.push(Routes.stock);
     case 'expiry_reminder':
       await context.push(Routes.paywall);
+    case 'ticket_unassigned' || 'no_show' || 'cook_off_duty' when i.ticketId != null:
+      // "Kaun banayega?": the ticket detail offers assign / claim.
+      await context.push(Routes.ticket(i.ticketId!));
     case 'export_ready' when i.link != null:
       await ref.read(urlLauncherProvider)(Uri.parse(i.link!));
     default:
